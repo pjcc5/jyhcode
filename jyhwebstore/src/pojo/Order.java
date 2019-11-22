@@ -4,7 +4,7 @@ import java.io.Serializable;
 import java.util.Date;
 
 public class Order implements Serializable{
-		
+	
 	private int aid;
 	private String comid;
 	private String comname;
