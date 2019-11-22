@@ -16,22 +16,24 @@ public class Pack {
 					Document doc = Jsoup.connect(url).ignoreContentType(true).get();
 					
 					Elements goods = doc.select("div[class=mod_search_pro]");
-					//Ñ­»·ÏòÏÂ²éÕÒ
+					//å¾ªç¯å‘ä¸‹æŸ¥æ‰¾
 					for (Element element : goods) {
 						Element e1 = element.select("div[class=itemBox]").get(0);
-						//»ñÈ¡ÉÌÆ·Ãû³Æ
+						//è·å–å•†å“åç§°
 						Element e2 = e1.select(".proName").get(0);
 						if(e2.select(".mainTitle").size()!=0)
 						{
 							Element e3 = e2.select(".mainTitle").get(0);
+							String goodsdetailurl ="https://"+ e3.attr("href").substring(2);
+							System.out.println("è¯¦æƒ…:"+goodsdetailurl);
 							System.out.println(e3.attr("title"));
-							//»ñÈ¡ÉÌÆ·¼Û¸ñ
+							//è·å–å•†å“ä»·æ ¼
 							Element e4 =  e1.select(".proPrice").get(0).select(".num").get(0);
 							String price = e4.attr("yhdprice");
-							System.out.println("¼Û¸ñ:"+price);
-							//»ñÈ¡ÉÌÆ·Í¼Æ¬
+							System.out.println("ä»·æ ¼:"+price);
+							//è·å–å•†å“å›¾ç‰‡
 							Elements imgs = e1.select("div[class=proImg]").get(0).select("a[class=img]").get(0).select("img");
-							System.out.println("×Ü¹²ÕÕÆ¬Êı:"+imgs.size());
+//							System.out.println("æ€»å…±ç…§ç‰‡æ•°:"+imgs.size());
 							Element img = imgs.get(0);
 							String  imgurl="";
 							if("".equals(img.attr("src")))
@@ -42,7 +44,15 @@ public class Pack {
 								imgurl = img.attr("src").substring(2);
 							}
 							count++;
-							System.out.println("µØÖ·:"+imgurl);
+							System.out.println("åœ°å€:"+imgurl);
+							
+							//è·å–å•†å“é¢œè‰²
+							//è¿›å…¥è¯¦æƒ…é¡µ
+							Document detaildoc = Jsoup.connect(goodsdetailurl).ignoreContentType(true).get();
+							Element colorfather = detaildoc.select("#choose-attr-1").get(0);
+							String color = colorfather.select(".dd").select(".selected").attr("title");
+							
+							System.out.println(color);
 							
 						}
 						
