@@ -1,4 +1,4 @@
-package chao.pack;
+package pack;
 
 public class Test {
 
