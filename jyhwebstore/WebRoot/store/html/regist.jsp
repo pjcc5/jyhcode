@@ -23,7 +23,7 @@
 						<img src="../img/Logo.jpg" class="nav-height-img">
 					</a>
 				</div>
-				<a href="login.html" class="navbar-btn navbar-right  btn-xs nav-height-a">请登录</a>
+				<a href="login.jsp" class="navbar-btn navbar-right  btn-xs nav-height-a">请登录</a>
 				<p class="navbar-text hidden-sm hidden-xs navbar-right">您好，欢迎光临聚优汇！</p>
 			</div>
 		</nav>

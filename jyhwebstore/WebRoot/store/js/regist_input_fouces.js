@@ -221,7 +221,7 @@ $('#regists').click(function() {
 						var usernames = $('input:eq(0)').val();
 						var passwords = $('input:eq(3)').val();
 						var str = encodeURI(passwords);
-						location.href = `login.html?a=${usernames}&b=${passwords}`;
+						location.href = `login.jsp?a=${usernames}&b=${passwords}`;
 					});
 				} else if (obj.code == 2001) {
 					$('#success').slideDown().children('#success-container').children('#success-container-exist').show().siblings()

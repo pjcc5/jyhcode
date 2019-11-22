@@ -20,7 +20,7 @@
 						<img src="../img/Logo.jpg" class="nav-height-img">
 					</a>
 				</div>
-				<a href="login.html" class="navbar-btn navbar-right  btn-xs nav-height-a" >请登录</a>
+				<a href="login.jsp" class="navbar-btn navbar-right  btn-xs nav-height-a" >请登录</a>
 				<p class="navbar-text hidden-sm hidden-xs navbar-right" >您好，欢迎光临聚优汇！</p>
 			</div>
 		</nav>
@@ -32,7 +32,7 @@
 			<div class="login-div2">			
 				<div class="login-div2-div1" id="login-div2-div1" style="display: none;">
 					<label class="login-div2-div1-lable">聚优汇登录</label>
-					<a href="regist.html" class="login-div2-div1-regist">注册新账号</a>
+					<a href="regist.jsp" class="login-div2-div1-regist">注册新账号</a>
 					<input type="text" class="form-control" placeholder="用户名" id="loginUsername"/>
 					<input type="password" class="form-control" placeholder="密码" id="loginPassword"/>
 					<input type="checkbox" class="login-div2-div1-checkedbox"style="margin-top: 20px;" value="记住密码" />
