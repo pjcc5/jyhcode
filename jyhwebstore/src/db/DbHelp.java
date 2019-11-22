@@ -1,4 +1,4 @@
-package mao.soft.db;
+package db;
 
 import java.sql.Connection;
 import java.sql.DriverManager;
@@ -8,7 +8,7 @@ public class DbHelp {
 	private static Properties prop = new Properties();
 	static{
 		try {
-			prop.load(DbHelp.class.getResourceAsStream("/mao/soft/prop/db.properties"));
+			prop.load(DbHelp.class.getResourceAsStream("/db/prop/db.properties"));
 			Class.forName(prop.getProperty("driver"));
 		} catch (Exception e) {
 			e.printStackTrace();

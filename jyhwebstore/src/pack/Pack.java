@@ -35,7 +35,12 @@ public class Pack {
 							Element e3 = e2.select(".mainTitle").get(0);
 							String goodsdetailurl ="https://"+ e3.attr("href").substring(2);
 							System.out.println("详情:"+goodsdetailurl);
-							System.out.println(e3.attr("title"));
+							String goodsname = e3.attr("title");
+							
+							System.out.println(goodsname);
+							//获取商品品牌
+							String goodsbrand = getgoodsbrand(goodsname);
+							System.out.println("品牌:"+goodsbrand);
 							//获取商品价格
 							Element e4 =  e1.select(".proPrice").get(0).select(".num").get(0);
 							String price = e4.attr("yhdprice");
@@ -84,4 +89,25 @@ public class Pack {
 		
 	}
 	
+	
+	public String getgoodsbrand(String goodsname)
+	{	
+		String brandname =null;
+		int index = goodsname.indexOf("】");
+		if(index == -1)
+		{
+			//说明这个字符串没有】
+			//取得第一个空格所在的索引
+			int blankindex = goodsname.indexOf(" ");
+			brandname = goodsname.substring(0,blankindex);
+			
+		}else{
+			//有】
+			goodsname = goodsname.substring(index+1);
+			int blankindex = goodsname.indexOf(" ");
+			brandname = goodsname.substring(0,blankindex);
+			
+		}
+		return brandname;
+	}
 }
