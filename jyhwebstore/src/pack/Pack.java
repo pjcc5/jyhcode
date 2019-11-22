@@ -11,13 +11,22 @@ public class Pack {
 	public void getContent(String url){
 		try {	int count=0;
 				for(int i=1;i<3;i++)
-				{
-					url="https://search.yhd.com/c0-0-1005412/#page="+i+"&sort=1";
-					Document doc = Jsoup.connect(url).ignoreContentType(true).get();
+				{	
+				
+					url="https://search.yhd.com/c0-0-1005412/#page="+i;
+					Document doc = Jsoup.connect(url).ignoreContentType(true).timeout(3000).post();
 					
 					Elements goods = doc.select("div[class=mod_search_pro]");
 					//循环向下查找
 					for (Element element : goods) {
+						try {
+							Thread.sleep(300);
+						} catch (InterruptedException e) {
+							// TODO Auto-generated catch block
+							e.printStackTrace();
+						}
+						
+						
 						Element e1 = element.select("div[class=itemBox]").get(0);
 						//获取商品名称
 						Element e2 = e1.select(".proName").get(0);
@@ -48,7 +57,7 @@ public class Pack {
 							
 							//获取商品颜色
 							//进入详情页
-							Document detaildoc = Jsoup.connect(goodsdetailurl).ignoreContentType(true).get();
+							Document detaildoc = Jsoup.connect(goodsdetailurl).ignoreContentType(true).post();
 							Element colorfather = detaildoc.select("#choose-attr-1").get(0);
 							String color = colorfather.select(".dd").select(".selected").attr("title");
 							
