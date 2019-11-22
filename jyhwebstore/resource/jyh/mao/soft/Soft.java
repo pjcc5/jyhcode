@@ -1,0 +1,7 @@
+package jyh.mao.soft;
+
+public class Soft {
+	public static void main(String[] args) {
+		System.out.println("this is a test class");
+	}
+}
