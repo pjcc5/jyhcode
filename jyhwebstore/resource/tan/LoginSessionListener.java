@@ -14,37 +14,35 @@ public class LoginSessionListener implements HttpSessionAttributeListener{
 	
 
 
-	//key==µÇÂ¼ÓÃ»§Ãû£¨PersonInfoµÄÕËºÅAccount£©
-	//	value==×îĞÂµÄsession
+	
 		Map<String, HttpSession> map = new HashMap<String, HttpSession>();
 
 		public void attributeAdded(HttpSessionBindingEvent event) {
 			
-			//»ñµÃsessionÖĞ´æÈëµÄkey£¨¹Ì¶¨ÊÇpersonInfo£©
+			
+			System.out.println("add");
 			String name = event.getName();
 			
 			
 
-			// µÇÂ¼
+
 			if (name.equals("personInfo")) {
 
 				PersonInfo personInfo = (PersonInfo) event.getValue();
 
 				if (map.get(personInfo.getAccount()) != null) {
 
-					// map ÖĞÓĞ¼ÇÂ¼£¬±íÃ÷¸ÃÕÊºÅÔÚÆäËû»úÆ÷ÉÏµÇÂ¼¹ı£¬½«ÒÔÇ°µÄµÇÂ¼Ê§Ğ§
-					HttpSession session = map.get(personInfo.getAccount());//ÄÃ³öÔ­À´µÄsession
-					PersonInfo oldPersonInfo = (PersonInfo) session.getAttribute("personInfo");//mapÒÑ¾­´æÔÚµÄ¾ÉµÄĞÅÏ¢
-
-					System.out.println("ÕÊºÅ" + oldPersonInfo.getAccount() + "ÔÚ" + oldPersonInfo.getIp() + "ÒÑ¾­µÇÂ¼£¬¸ÃµÇÂ¼½«±»ÆÈÏÂÏß¡£");
-
+					
+					HttpSession session = map.get(personInfo.getAccount());
+					PersonInfo oldPersonInfo = (PersonInfo) session.getAttribute("personInfo");
+					System.out.println("å¸å·" + oldPersonInfo.getAccount() + "åœ¨" + oldPersonInfo.getIp() + "å·²ç»ç™»å½•ï¼Œè¯¥ç™»å½•å°†è¢«è¿«ä¸‹çº¿ã€‚");
 					session.removeAttribute("personInfo");
-					session.setAttribute("msg", "ÄúµÄÕÊºÅÒÑ¾­ÔÚÆäËû»úÆ÷ÉÏµÇÂ¼£¬Äú±»ÆÈÏÂÏß¡£");
+					session.setAttribute("msg", "æ‚¨çš„å¸å·å·²ç»åœ¨å…¶ä»–æœºå™¨ä¸Šç™»å½•ï¼Œæ‚¨è¢«è¿«ä¸‹çº¿ã€‚");
 				}
 
-				// ½«sessionÒÔÓÃ»§ÃûÎªË÷Òı£¬·ÅÈëmapÖĞ
+				
 				map.put(personInfo.getAccount(), event.getSession());
-				System.out.println("ÕÊºÅ" + personInfo.getAccount() + "ÔÚ" + personInfo.getIp() + "µÇÂ¼¡£");
+				System.out.println("å¸å·" + personInfo.getAccount() + "åœ¨" + personInfo.getIp() + "ç™»å½•ã€‚");
 				System.out.println(map.size());
 			}
 			
@@ -54,12 +52,12 @@ public class LoginSessionListener implements HttpSessionAttributeListener{
 
 			String name = event.getName();
 
-			// ×¢Ïú
+			// ×¢ï¿½ï¿½
 			if (name.equals("personInfo")) {
-				// ½«¸Ãsession´ÓmapÖĞÒÆ³ı
+				
 				PersonInfo personInfo = (PersonInfo) event.getValue();
 				map.remove(personInfo.getAccount());
-				System.out.println("ÕÊºÅ" + personInfo.getAccount() + "×¢Ïú¡£");
+				System.out.println("å¸å·" + personInfo.getAccount() + "æ³¨é”€ã€‚");
 				
 			}
 		}
@@ -68,22 +66,22 @@ public class LoginSessionListener implements HttpSessionAttributeListener{
 
 			String name = event.getName();
 
-			// Ã»ÓĞ×¢ÏúµÄÇé¿öÏÂ£¬ÓÃÁíÒ»¸öÕÊºÅµÇÂ¼
+			
 			if (name.equals("personInfo")) {
 
-				// ÒÆ³ı¾ÉµÄµÄµÇÂ¼ĞÅÏ¢
+				
 				PersonInfo oldPersonInfo = (PersonInfo) event.getValue();
 				map.remove(oldPersonInfo.getAccount());
 
-				// ĞÂµÄµÇÂ¼ĞÅÏ¢
+			
 				PersonInfo personInfo = (PersonInfo) event.getSession().getAttribute("personInfo");
 
-				// Ò²Òª¼ì²éĞÂµÇÂ¼µÄÕÊºÅÊÇ·ñÔÚ±ğµÄ»úÆ÷ÉÏµÇÂ¼¹ı
+			
 				if (map.get(personInfo.getAccount()) != null) {
-					// map ÖĞÓĞ¼ÇÂ¼£¬±íÃ÷¸ÃÕÊºÅÔÚÆäËû»úÆ÷ÉÏµÇÂ¼¹ı£¬½«ÒÔÇ°µÄµÇÂ¼Ê§Ğ§
+					
 					HttpSession session = map.get(personInfo.getAccount());
 					session.removeAttribute("personInfo");
-					session.setAttribute("msg", "ÄúµÄÕÊºÅÒÑ¾­ÔÚÆäËû»úÆ÷ÉÏµÇÂ¼£¬Äú±»ÆÈÏÂÏß¡£");
+					session.setAttribute("msg", "æ‚¨çš„å¸å·å·²ç»åœ¨å…¶ä»–æœºå™¨ä¸Šç™»å½•ï¼Œæ‚¨è¢«è¿«ä¸‹çº¿ã€‚");
 
 				}
 				map.put(personInfo.getAccount(), event.getSession());
