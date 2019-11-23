@@ -1,0 +1,522 @@
+a{
+			text-decoration: none;
+		}
+		*{margin: 0px;padding: 0px;}
+		img{
+		   border: none;vertical-align: bottom;
+		}
+		li{
+			list-style: none;
+		}
+		.top_bar{
+			width: 100%;
+			height: 30px;
+			background:#f4f4f4 ;
+		}
+		.clearfix{
+			width: 1200px;
+			height:30px;
+			margin: 0px auto;
+			background:#f4f4f4;
+		}
+		.left{
+			height: 30px;
+			float: left;
+		}
+		.clearfix a{
+			
+			display: block;
+			height: 30px;
+			line-height: 30px;
+			color:#666 ;
+		}
+		.left a{
+			margin-right: 40px;
+			float: left;
+		}
+		.clearfix a:hover{
+			text-decoration: none;
+			color: orangered;
+		}
+		.left span{
+			float: left;
+			line-height: 25px;
+			color: orangered;
+			margin-right: 4px;
+		}
+		
+		.right{
+			height: 30px;
+			float: right;
+		}
+		
+		.right a{
+			float: right;
+			margin-right: 30px;
+		}
+		
+		
+		
+		 .header{
+		  	width: 100%;
+		  	height: 182px;
+		  	 border-bottom: solid orangered 2px; 
+		  	}
+		  	
+		  	.hd-logo img{
+		  		width: 140px;
+		  		height:140px ;
+		  		float: left;margin-left: 40px;
+		  		}	
+		  			.header-bp{
+		  				width:1200px ;
+		  				height: 182px;
+		  				border-bottom: solid orangered 2px;
+		  				margin: 0 auto;
+		  				}
+		  				.logo{width: 200px;float: left;}
+		  				.logo:after{
+		  					content: '';display: block;clear: both;
+		  					}
+		  					.header-right{width: 1000px;height: 180px;float: left;}
+		  						.cart-2{
+		  							width: 150px;
+		  							float: right;
+		  							margin-top: 40px;
+		  							height: 50px;
+		  							border: solid 1px darkgray;
+		  							border-radius: 2px;
+		  							text-align: center;
+		  							line-height: 48px;
+		  							color: gray;
+		  							font-size: 20px;
+		  							cursor: pointer;
+		  							margin-left: 40px;
+		  							}
+		  					   
+		  					   
+		  					   .cart-2 a{ color: gray;}
+		  					.hd-search{width: 800px;height: 50px;border: solid 1px orangered;border-radius:0px ;padding-left:26px ;float: left;
+		  				
+		  					
+		  					}
+		  					.search{
+		  							margin-top: 40px;
+		  						width: 800px;
+		  						height: 70px;
+		  						float: left;
+		  					}
+		  					
+		  					.search li{
+		  						float: left;
+		  						margin-top: 4px;
+		  						margin-left: 10px;
+		  						
+		  					}
+		  					
+		  					.search li a{
+		  						color: gray;
+		  					}
+		  					
+		  					.hd-search input{
+		  						margin-top: 4px;
+		  						  height:40px;
+		  						  width: 700px;
+		  						  border: none;
+		  						  outline: none;
+		  						  float: left;
+		  						}
+		  						.hd-search .button{
+		  							height: 49px;
+		  							width: 68px;
+		  							float: right;
+		  							background: orangered;
+		  							font-size: 28px;
+		  							text-align: center;
+		  							padding-top:10px;
+		  							
+		  							cursor: pointer;
+		  							color: white;
+		  							/*border-bottom-right-radius: 25px;
+		  							border-top-right-radius: 24px;*/
+		  						}
+		  						
+		  						.hd-search .button span{
+		  						color: white;
+		  						font-size: 28px;
+		  						}
+		  						
+		  	.mycontent{
+		  		width: 100%;
+		  		
+		  		background: rgb(233,233,233);
+		  		padding-top: 20px;
+		  		padding-bottom: 80px;
+		  		
+		  	}
+		  	.body-clearfix{
+		  		width: 1200px;
+		  		background: rgb(233,233,233);
+		  		margin: 0px auto;
+		  	}
+		  	.body-clearfix:after{
+		  		display: block;
+		  		content: "";
+		  		clear: both;
+		  	}
+		  	
+		  	.information{
+		  		width: 860px;
+		  		height: 600px;
+		  		background: white;
+		  		
+		  		padding-bottom: 20px;
+		  		float: right;
+		  	}
+		  
+		  	.side-nav{
+		  		width: 300px;
+		  		height: 600px;
+		  		float: left;
+		  		background: white;
+		  	}
+		  	.side-nav div{
+		  		width: 200px;
+		  		margin: 10px auto;
+		  	}
+		  	
+		  	.side-nav div p{
+		  		font-size: 20px;
+		  		font-weight: bold;
+		  		margin-top: 20px;
+		  		
+		  	}
+		  	.side-nav div p span{
+		  		
+		  		color: orangered;
+		  	}
+		  	
+		  	.side-nav div a{
+		  		margin-top: 15px;
+		  		display: block;
+		  		margin-left: 26px;
+		  		color: #999;
+		  		text-decoration: none;
+		  	}
+		  	.side-nav div a:hover{
+		  		color: orangered;
+		  	}
+		  	
+		  	
+		  	
+		  		section{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+
+
+.footer{
+	width: 100%;
+	/* height: 100px; */
+	float: left;
+	margin-left: 80px;
+	margin-top: 20px;
+	border-bottom: 1px solid #ebebeb;
+	/* border-top: 2px solid #5E5E5E; */
+}
+.footer-top{
+	
+}
+.icon{
+	width: 24%;
+	float: left;
+}
+.icons{
+	/* width: ; */
+	float:left;
+	padding-top: 12px;
+	padding-right: 10px;
+}
+.list-bottom{
+	margin-top: 120px;
+}
+.content-1{
+	font-size: 16px;
+    font-weight: bold;
+	color: #333;
+}
+.sub-content{
+	color: #999;
+}
+.sundry{
+	margin-top: 50px;
+}
+.details{
+	overflow: hidden;
+	width: 20%;
+	float: left;
+	padding: 10px;
+	border-top: 1px solid #ebebeb;
+	}
+.details ul{
+	width: 100%;
+	
+}
+.details ul li:first-child {
+	margin-bottom: 10px;
+}
+.details ul li:first-child a{
+	font-size: 14px;
+	font-weight: bold;
+	
+	/* color: red; */
+}
+.details li{
+	
+	display: inline-block;
+	width: 100%;
+	padding: 2px;
+}
+.QR-codes{
+	float: left;
+}
+.QR-codes img{
+	width: 100px;
+	position: fixed;
+	bottom: 120px;
+	right: 20px;
+}
+.contact{
+	display: block;
+	border: 2px solid white;
+	background: #ff7f62;
+	width: 100px;
+	position: fixed;
+	bottom: 230px;
+	right: 20px;
+}
+.statment{
+	text-align: center;
+	/*float: left;*/
+}
+.statment p a{
+	margin: 5px;
+}
+
+	.turnpagebottom{
+		height: 40px;
+		width: 802px;
+		
+		margin: 0px auto;
+	}	 
+	
+	.turnpage{
+		height: 40px;
+		/*width: 200px;*/
+		float: right;
+		
+	}	
+	
+	.pre{
+		height: 30px;
+		width: 30px;
+		border: solid 1px;
+		margin-left: 6px;
+		float: left;
+		line-height: 30px;
+		text-align: center;
+		cursor: pointer;
+		background: #fafafa;
+	}
+	
+	.next{
+		margin-left: 6px;
+		height: 30px;
+		width: 30px;
+		border: solid 1px;
+		float: left;
+		line-height: 30px;
+		text-align: center;
+		cursor: pointer;
+		
+		
+	}
+	
+	.next span{
+		color: #9E9E9E;
+	}
+	.pre span{
+		color: #9E9E9E;
+	}
+	
+	.num{
+		
+		margin-left: 6px;
+		height: 30px;
+		width: 30px;
+		border: solid 1px orangered;
+		float: left;
+		color: orangered;
+		line-height: 30px;
+		text-align: center;
+	}
+	
+	.turnpage p{
+		float: left;
+		margin-left: 6px;
+		line-height: 30px;
+	}
+	
+	.in{
+		margin-left: 6px;
+		float: left;
+		line-height: 30px;
+		text-align: center;
+	}
+	
+	.in input{
+		width: 30px;
+		height: 30px;
+		text-align: center;
+	}
+	
+	
+	.sure{
+		height: 30px;
+		line-height: 30px;
+		width: 40px;
+		float: left;
+		margin-left: 6px;
+		border: solid 1px;
+		text-align: center;
+		background: #fafafa;
+		cursor: pointer;
+	}
+	
+	.order-item>.active{
+		display: block;
+	}	
+	
+	
+	.edit-left{
+		float: left;
+	} 
+	
+	.edit-left>div{
+		margin-left: 40px;
+		margin-bottom: 30px;
+	}
+	
+	.header-img{
+		width: 360px;
+		height: 80px;
+		margin-top: 30px;
+		
+	} 	
+	.header-img img{
+		width: 80px;
+		height: 80px;
+
+	}
+	.header-img a{
+		width: 82px;
+		height: 82px;
+		display: block;
+		
+		float: left;
+		border: solid 1px #269ABC;
+	}
+	
+	.header-img label{
+		float: left;
+	}
+	
+	
+	
+	label{
+		width: 67px;
+		height: 16px;
+		text-align: right;
+		color: #9E9E9E;
+		margin-right: 20px;
+	
+		float: left;
+		
+	}
+	
+	.input{
+		float: left;
+		width: 300px;
+		height: 60px;
+	}
+	.input input{
+		width: 300px;
+		height: 40px;
+	}
+	.edit-nickname label{
+		height: 40px;
+		line-height: 40px;
+	}
+	span{
+		color: #9E9E9E;
+		font-size:18px ;
+	}
+	
+	.edit-left>div:after{
+		content: "";
+		display: block;
+		clear: both;
+	}
+	
+	.edit-name input{
+		width: 300px;
+		height: 40px;
+	}
+	.edit-name label{
+		line-height: 40px;
+	}
+	
+	.edit-sex input{
+		height: 20px;
+		width: 20px;
+	}
+	.edit-sex label{
+		line-height: 30px;
+	}
+	.edit-sex span{
+		margin-right: 20px;
+		line-height: 30px;
+		font-size: 16px;
+	}
+	
+	.edit-birth{
+		width: 860px;
+		height:40px;
+		float: left;
+		margin-left: 40px;
+	}
+	
+	select{
+		width:102px;
+		height: 40px;
+		margin-right: 2px
+	}
+	.edit-birth label{
+		line-height: 40px;
+	}
+	
+	.sumit{
+		background: orangered;
+		color: white;
+		font-size: 20px;
+		text-align: center;
+		line-height: 46px;
+		width: 120px;
+		height: 46px;
+		float: left;
+		margin-left:130px;
+		margin-top: 60px;
+		cursor: pointer;
+		border-radius:4px;
+	}
