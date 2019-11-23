@@ -72,6 +72,7 @@ public class Pack2 {
 				String productbrand = getgoodsbrand(productname);
 				//获取商品小图以及图片
 				ArrayList<String> goodsimgs = new ArrayList<String>();
+				ArrayList<String> finalgoodsimgs = new ArrayList<String>();
 				Elements el1 = doc.select(".mbox").select("b");
 				
 //				System.out.println("https://img10.360buyimg.com/n1/s50x50_"+el1.get(0).select("img").attr("original_src"));
@@ -81,8 +82,28 @@ public class Pack2 {
 					
 				}
 				
-				for (String s  : goodsimgs) {
-					System.out.println(s);
+				if(goodsimgs.size() >= 5)
+				{
+					for (int j = 0; j < 5; j++) {
+						finalgoodsimgs.add(goodsimgs.get(j));
+					}
+				}else
+				{
+					for (int j = 0; j <5 ; j++) {
+						if(j==5)
+						{
+							break;
+						}
+						if(j<=goodsimgs.size()-1)
+						{
+							finalgoodsimgs.add(goodsimgs.get(j));
+						}else{
+							finalgoodsimgs.add("");
+						}
+					}
+				}
+				for (String str : finalgoodsimgs) {
+					System.out.println(str);
 				}
 //				
 				log.debug("商品名:"+productname);
