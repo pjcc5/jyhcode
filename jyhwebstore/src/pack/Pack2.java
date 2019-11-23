@@ -15,7 +15,7 @@ public class Pack2 {
 		ArrayList<String> array = new ArrayList<String>();//存放商品id
 		ArrayList<String> array2 = new ArrayList<String>();//存放价格
 		
-		for (int j = 1; j < 2; j++) {
+		for (int j = 1; j < 50; j++) {
 			String url ="https://search.yhd.com/c0-0-1005412/mbname-b/a-s1-v4-p"+j+"-price-d0-f0b-m1-rt0-pid-mid0-color-size-k/";
 			try {
 				
