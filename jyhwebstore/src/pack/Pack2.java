@@ -3,13 +3,14 @@ package pack;
 import java.io.IOException;
 import java.util.ArrayList;
 
+import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class Pack2 {
-
+	static final Logger log =Logger.getLogger(Pack2.class);
 	public static void main(String[] args) {
 		ArrayList<String> array = new ArrayList<String>();//存放商品id
 		ArrayList<String> array2 = new ArrayList<String>();//存放价格
@@ -71,11 +72,17 @@ public class Pack2 {
 				String productbrand = getgoodsbrand(productname);
 				//获取商品小图以及图片
 //				String product = 
-				System.out.println("商品名:"+productname);
-				System.out.println("商品品牌:"+productbrand);
-				System.out.println("商品价格:"+arr2.get(i));
-				System.out.println("商品颜色:"+productcolor);
 				
+				log.debug("商品名:"+productname);
+				log.debug("商品品牌:"+productbrand);
+				log.debug("商品价格:"+arr2.get(i));
+				log.debug("商品颜色:"+productcolor);
+				
+//				System.out.println("商品名:"+productname);
+//				System.out.println("商品品牌:"+productbrand);
+//				System.out.println("商品价格:"+arr2.get(i));
+//				System.out.println("商品颜色:"+productcolor);
+//				
 				
 				
 				
