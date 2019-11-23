@@ -15,23 +15,25 @@
     <servlet-name>Log4JTestServlet</servlet-name>
     <servlet-class>mao.soft.web.servlet.Log4JTestServlet</servlet-class>
   </servlet>
+  <servlet-mapping>
+    <servlet-name>Log4JTestServlet</servlet-name>
+    <url-pattern>/Log4JTestServlet</url-pattern>
+  </servlet-mapping>
   <!-- log4j的servlet -->
   <servlet>
     <servlet-name>Log4jInitServlet</servlet-name>
     <servlet-class>mao.soft.web.servlet.Log4jInitServlet</servlet-class>
     <init-param>
     	<param-name>log4jInitLocation</param-name>
-    	<param-value>/mao/log4j.properties</param-value>
+    	<param-value>log4j.properties</param-value>
     </init-param>
+    <load-on-startup>1</load-on-startup>   <!-- 设置加载顺序 -->
   </servlet>
-  <servlet-mapping>
-    <servlet-name>Log4JTestServlet</servlet-name>
-    <url-pattern>/Log4JTestServlet</url-pattern>
-  </servlet-mapping>
   <servlet-mapping>
     <servlet-name>Log4jInitServlet</servlet-name>
     <url-pattern>/Log4jInitServlet</url-pattern>
   </servlet-mapping>
+  
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
     <welcome-file>index.htm</welcome-file>

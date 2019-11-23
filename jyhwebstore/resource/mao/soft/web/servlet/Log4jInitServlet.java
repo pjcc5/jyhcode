@@ -40,20 +40,20 @@ public class Log4jInitServlet extends HttpServlet {
 		System.out.println("......正在初始化配置文件......");
 		String log4jLocation = config.getInitParameter("log4jInitLocation");
 		ServletContext sc = config.getServletContext();
-		System.out.println("我的sc"+sc);
+		System.out.println("我的sc:------"+sc);
 		if (log4jLocation == null) {
 			System.out.println("....配置初始化的配置文件....");
 			BasicConfigurator.configure();
 		}else
 		{
-			System.out.println("我的log4jLocation"+log4jLocation);
+			System.out.println("我的log4jLocation:-------"+log4jLocation);
 			String webAppPath = sc.getRealPath("/");
-			System.out.println("我的webAppPath"+webAppPath);
+			System.out.println("我的webAppPath:--------"+webAppPath);
 			String log4jProp = webAppPath+log4jLocation;
-			System.out.println("我的log4jPropPath"+log4jProp);
+			System.out.println("我的log4jPropPath:-------"+log4jProp);
 			File file = new File(log4jProp);
 			if (file.exists()) {
-				System.out.println("使用"+log4jProp+"初始化配信息文件");
+				System.out.println("使用:-------"+log4jProp+"初始化配信息文件");
 				PropertyConfigurator.configure(log4jProp);
 			}
 			else {
