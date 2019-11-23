@@ -23,5 +23,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
    <%=DbHelp.getConnection() %>
+   <center>
+   		<div>
+   			<form action="Log4JTestServlet">
+   				<input type="submit" value="tijiao">
+   			</form>
+   		</div>
+   </center>
   </body>
 </html>
