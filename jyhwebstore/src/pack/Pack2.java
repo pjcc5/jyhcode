@@ -1,7 +1,9 @@
 package pack;
 
 import java.io.IOException;
+import java.sql.Connection;
 import java.util.ArrayList;
+import java.util.UUID;
 
 import org.apache.log4j.Logger;
 import org.jsoup.Jsoup;
@@ -9,9 +11,15 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
+import chao.dao.CommodityDao;
+import chao.dao.impl.CommodityDaoImpl;
+import pojo.Commodity;
+import db.DbHelp2;
+
 public class Pack2 {
 	static final Logger log =Logger.getLogger(Pack2.class);
 	public static void main(String[] args) {
+		Connection conn = DbHelp2.getConnection();
 		ArrayList<String> array = new ArrayList<String>();//存放商品id
 		ArrayList<String> array2 = new ArrayList<String>();//存放价格
 		
@@ -110,6 +118,18 @@ public class Pack2 {
 				log.debug("商品品牌:"+productbrand);
 				log.debug("商品价格:"+arr2.get(i));
 				log.debug("商品颜色:"+productcolor);
+				
+				
+				Commodity comm = new Commodity();
+				String comid =UUID.randomUUID().toString();//设置统一商品id
+				comm.setComid(comid);
+				comm.setComname(productname);
+				comm.setCompic(finalgoodsimgs.get(0));
+				comm.setComdetails(comid);
+				comm.setComprice(Double.parseDouble(arr2.get(i)));
+				comm.setComclass(10);
+				
+				
 				
 				
 				
