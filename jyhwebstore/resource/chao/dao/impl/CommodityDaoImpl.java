@@ -24,7 +24,7 @@ public class CommodityDaoImpl implements CommodityDao{
 
 	@Override
 	public boolean insertCommodity(Commodity commodity, Connection conn) {
-		String url = "insert into commodity(comid,comname,compic,)"
+		String url = "insert into commodity(comid,comname,compic,)";
 		return false;
 	}
 
