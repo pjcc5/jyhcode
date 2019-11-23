@@ -33,12 +33,15 @@
 				<div class="login-div2-div1" id="login-div2-div1" style="display: none;">
 					<label class="login-div2-div1-lable">聚优汇登录</label>
 					<a href="regist.jsp" class="login-div2-div1-regist">注册新账号</a>
-					<input type="text" class="form-control" placeholder="用户名" id="loginUsername"/>
-					<input type="password" class="form-control" placeholder="密码" id="loginPassword"/>
+					<form id="myform">
+					<input type="text" class="form-control" placeholder="用户名" id="loginUsername"
+					name="uname"/>
+					<input type="password" class="form-control" placeholder="密码" id="loginPassword" name="upass"/>
 					<input type="checkbox" class="login-div2-div1-checkedbox"style="margin-top: 20px;" value="记住密码" />
 					<p class="login-div2-div1-p">自动登录</p>
 					<a href="#" class="login-div2-div1-a">忘记密码？</a>
-					<input type="button" value="登录" class="btn btn-danger login-login" id="loginBtn" />
+					<input type="button" value="登录" class="btn btn-danger login-login" id="loginBtn" onclick="login()"/>
+					</form>
 				</div>
 				<div id="div1" style="float: right;margin-top: 40px;margin-right: -110px; color: red;display: none;">
 					请填写用户名
@@ -51,8 +54,10 @@
 	</body>
 </html>
 <script src="../js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
-<script src="../js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="../js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+
 <script src="../js/login_jyh.js" type="text/javascript" charset="utf-8"></script>
+
 <script type="text/javascript">
 	$("#loginUsername").focus(function(){
 		$("#div1").fadeIn();
@@ -74,5 +79,10 @@
 			
 		}
 	})
+	
+	
+	
+	
+
 	
 </script>

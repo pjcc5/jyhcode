@@ -10,7 +10,7 @@ public class Acount  implements Serializable{
 	private java.lang.Integer isadm;//isadm
 	private java.lang.String aphone;//aphone
 	private java.lang.String amail;//amail
-	private java.lang.String add;//add
+	private java.lang.String addr;//addr
 	public java.lang.String getAid(){
 		return this.aid;
 	}
@@ -47,17 +47,17 @@ public class Acount  implements Serializable{
 	public void setAmail(java.lang.String amail){
 		this.amail	= amail;
 	}
-	public java.lang.String getAdd(){
-		return this.add;
+	public java.lang.String getAddr(){
+		return this.addr;
 	}
-	public void setAdd(java.lang.String add){
-		this.add	= add;
+	public void setAddr(java.lang.String addr){
+		this.addr	= addr;
 	}
 	@Override
 	public String toString() {
 		return "Acount [aid=" + aid + ", aname=" + aname + ", apass=" + apass
 				+ ", isadm=" + isadm + ", aphone=" + aphone + ", amail="
-				+ amail + ", add=" + add + "]";
+				+ amail + ", addr=" + addr + "]";
 	}
 	
 	
