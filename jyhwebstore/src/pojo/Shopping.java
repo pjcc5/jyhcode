@@ -5,7 +5,7 @@ import java.io.Serializable;
 
 
 public class Shopping  implements Serializable{
-	private java.lang.Integer aid;//aid
+	private java.lang.Integer shopid;//aid
 	private java.lang.String comid;//comid
 	private java.lang.Integer count;//count
 	private java.sql.Timestamp date;//date
@@ -13,11 +13,12 @@ public class Shopping  implements Serializable{
 	private java.lang.String test2;//test2
 	private java.lang.String test3;//test3
 	private java.lang.String test4;//test4
-	public java.lang.Integer getAid(){
-		return this.aid;
+	
+	public java.lang.Integer getShopid() {
+		return shopid;
 	}
-	public void setAid(java.lang.Integer aid){
-		this.aid	= aid;
+	public void setShopid(java.lang.Integer shopid) {
+		this.shopid = shopid;
 	}
 	public java.lang.String getComid(){
 		return this.comid;
@@ -63,9 +64,10 @@ public class Shopping  implements Serializable{
 	}
 	@Override
 	public String toString() {
-		return "Shopping [aid=" + aid + ", comid=" + comid + ", count=" + count
-				+ ", date=" + date + ", test1=" + test1 + ", test2=" + test2
-				+ ", test3=" + test3 + ", test4=" + test4 + "]";
+		return "Shopping [shopid=" + shopid + ", comid=" + comid + ", count="
+				+ count + ", date=" + date + ", test1=" + test1 + ", test2="
+				+ test2 + ", test3=" + test3 + ", test4=" + test4 + "]";
 	}
+	
 	
 }

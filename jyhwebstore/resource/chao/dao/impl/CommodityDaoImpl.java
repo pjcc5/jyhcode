@@ -21,13 +21,13 @@ public class CommodityDaoImpl implements CommodityDao{
 		// TODO Auto-generated method stub
 		return null;
 	}
-
+	
 	@Override
 	public boolean insertCommodity(Commodity commodity, Connection conn) {
-		String url = "insert into commodity(comid,comname,compic,)"
+		String url = "insert into commodity(comid,comname,compic,)";
 		return false;
 	}
-
+	
 	@Override
 	public boolean deleteCommodityByid(String comid, Connection conn) {
 		// TODO Auto-generated method stub
