@@ -1,5 +1,6 @@
-package chao.dao.impl;
+package chao.dao;
 
 public interface OrderDao {
+	
 
 }
