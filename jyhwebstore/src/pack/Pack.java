@@ -1,6 +1,7 @@
 package pack;
 
 import java.io.IOException;
+import java.util.ArrayList;
 
 import org.jsoup.Jsoup;
 import org.jsoup.nodes.Document;
@@ -8,23 +9,32 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 public class Pack {
+
+	public String getgoodsid(String content){
+		String id = "";
+		int index = content.indexOf("_");
+		id=content.substring(index+1);
+		return id;
+		
+	}
+	
 	public void getContent(String url){
 		try {	int count=0;
 				for(int i=1;i<3;i++)
 				{	
 				
-					url="https://search.yhd.com/c0-0-1005412/#page="+i;
-					Document doc = Jsoup.connect(url).ignoreContentType(true).timeout(3000).post();
-					
+					url="https://search.yhd.com/c15249-0-0/mbname-b/a-s1-v4-p"+i+"-price-d0-f0b-m1-rt0-pid-mid0-color-size-k/";
+					Document doc = Jsoup.connect(url).ignoreContentType(true).timeout(30000).get();
+					try {
+						Thread.sleep(1000);
+					} catch (InterruptedException e) {
+						// TODO Auto-generated catch block
+						e.printStackTrace();
+					}
 					Elements goods = doc.select("div[class=mod_search_pro]");
 					//循环向下查找
 					for (Element element : goods) {
-						try {
-							Thread.sleep(300);
-						} catch (InterruptedException e) {
-							// TODO Auto-generated catch block
-							e.printStackTrace();
-						}
+						
 						
 						
 						Element e1 = element.select("div[class=itemBox]").get(0);
@@ -35,7 +45,12 @@ public class Pack {
 							Element e3 = e2.select(".mainTitle").get(0);
 							String goodsdetailurl ="https://"+ e3.attr("href").substring(2);
 							System.out.println("详情:"+goodsdetailurl);
-							System.out.println(e3.attr("title"));
+							String goodsname = e3.attr("title");
+							
+							System.out.println(goodsname);
+							//获取商品品牌
+							String goodsbrand = getgoodsbrand(goodsname);
+							System.out.println("品牌:"+goodsbrand);
 							//获取商品价格
 							Element e4 =  e1.select(".proPrice").get(0).select(".num").get(0);
 							String price = e4.attr("yhdprice");
@@ -57,7 +72,13 @@ public class Pack {
 							
 							//获取商品颜色
 							//进入详情页
-							Document detaildoc = Jsoup.connect(goodsdetailurl).ignoreContentType(true).post();
+							Document detaildoc = Jsoup.connect(goodsdetailurl).ignoreContentType(true).timeout(30000).post();
+							try {
+								Thread.sleep(300);
+							} catch (InterruptedException e) {
+								// TODO Auto-generated catch block
+								e.printStackTrace();
+							}
 							Element colorfather = detaildoc.select("#choose-attr-1").get(0);
 							String color = colorfather.select(".dd").select(".selected").attr("title");
 							
@@ -70,7 +91,7 @@ public class Pack {
 				}
 				
 				 
-				
+				//https://search.yhd.com/c15249-0-0/mbname-b/a-s1-v4-p5-price-d0-f0b-m1-rt0-pid-mid0-color-size-k/
 				
 				
 				
@@ -84,4 +105,25 @@ public class Pack {
 		
 	}
 	
+	
+	public String getgoodsbrand(String goodsname)
+	{	
+		String brandname =null;
+		int index = goodsname.indexOf("】");
+		if(index == -1)
+		{
+			//说明这个字符串没有】
+			//取得第一个空格所在的索引
+			int blankindex = goodsname.indexOf(" ");
+			brandname = goodsname.substring(0,blankindex);
+			
+		}else{
+			//有】
+			goodsname = goodsname.substring(index+1);
+			int blankindex = goodsname.indexOf(" ");
+			brandname = goodsname.substring(0,blankindex);
+			
+		}
+		return brandname;
+	}
 }
