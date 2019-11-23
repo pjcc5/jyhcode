@@ -13,4 +13,5 @@ public interface AcountDao {
 	public boolean deleteAcountByid(String aid,Connection conn);//删除账号的方法
 	public boolean modifyAcount(Acount acount,Connection conn);//修改账号的方法
 	
+	
 }
