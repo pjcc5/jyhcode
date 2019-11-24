@@ -11,7 +11,7 @@ import chao.dao.DetailsDao;
 public class DetailsDaoImpl implements DetailsDao{
 
 	@Override
-	public List<Details> getAllDetails() {
+	public List<Details> getAllDetails(Connection conn) {
 		// TODO Auto-generated method stub
 		return null;
 	}

@@ -17,8 +17,8 @@ public class CommodityDaoImpl implements CommodityDao{
  * 商品表操作
  */
 	@Override
-	public List<Commodity> getAllCommodity() {
-		Connection conn= DbHelp2.getConnection();
+	public List<Commodity> getAllCommodity(Connection conn) {
+		
 		if(conn==null){
 			return null;
 		}

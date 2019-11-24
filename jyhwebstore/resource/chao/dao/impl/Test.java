@@ -40,16 +40,19 @@ public class Test {
 //		System.out.println(dd.insertDetails(dt, conn));
 
 		//测试连接表的插入OK
-		Compic com =new Compic();
-		String comid =UUID.randomUUID().toString();
-		com.setComid(comid);
-		com.setPicurl1("照片1");
-		com.setPicurl2("照片2");
-		com.setPicurl3("照片3");
-		com.setPicurl4("照片4");
-		com.setPicurl5("照片5");
-		CompicDao cd =new CompicDaoImpl();
-		System.out.println(cd.insertCompic(com, conn));
+//		Compic com =new Compic();
+//		String comid =UUID.randomUUID().toString();
+//		com.setComid(comid);
+//		com.setPicurl1("照片1");
+//		com.setPicurl2("照片2");
+//		com.setPicurl3("照片3");
+//		com.setPicurl4("照片4");
+//		com.setPicurl5("照片5");
+//		CompicDao cd =new CompicDaoImpl();
+//		System.out.println(cd.insertCompic(com, conn));
+		
+		//
+		
 		
 	}
 
