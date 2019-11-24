@@ -16,6 +16,7 @@ public class DetailsDaoImpl implements DetailsDao{
 
 	@Override
 	public List<Details> getAllDetails(Connection conn) {
+
 		if(conn == null)
 		{
 			return null;
@@ -132,12 +133,56 @@ public class DetailsDaoImpl implements DetailsDao{
 	@Override
 	public boolean deleteDetailsByid(String aid, Connection conn) {
 		// TODO Auto-generated method stub
+		if(conn==null){
+			return false;
+		}
+		try {
+			if(!conn.isClosed()){
+				String sql="delete from details where detailsid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setString(1, aid);
+				int rs=ps.executeUpdate();
+				if(rs>0){
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+		}
 		return false;
 	}
 
 	@Override
 	public boolean modifyDetails(Details details, Connection conn) {
 		// TODO Auto-generated method stub
+		if(conn==null){
+			return false;
+		}
+		try {
+			String sql="update details set detailsstock=?,detailsprice=?,detailsdrawing=?,"
+					+ "detailsdot=?,detailssale=?,test1=?,test2=?,test3=?,test4=?,test5=?,test6=? where detailsid=?";
+		   PreparedStatement ps=conn.prepareStatement(sql);
+		   ps.setInt(1, details.getDetailsstock());
+		   ps.setDouble(2, details.getDetailsprice());
+		   ps.setString(3, details.getDetailsdrawing());
+		   ps.setInt(4, details.getDetailsdot());
+		   ps.setInt(5, details.getDetailssale());
+		   ps.setString(6, details.getTest1());
+		   ps.setString(7, details.getTest2());
+		   ps.setString(8, details.getTest3());
+		   ps.setString(9, details.getTest4());
+		   ps.setString(10, details.getTest5());
+		   ps.setString(11, details.getTest6());
+		   ps.setString(12, details.getDetailsid());
+		   
+		  int rs= ps.executeUpdate();
+		  if(rs>0){
+			  return true;
+		  }
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		return false;
 	}
 

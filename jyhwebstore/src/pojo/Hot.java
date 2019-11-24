@@ -1,39 +1,44 @@
 package pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 public class Hot  implements Serializable{
-	private java.lang.String hotcom;//hotcom
-	private java.lang.Integer hotcomid;//hotcomid
-	private java.sql.Timestamp hotdatestart;//hotdatestart
-	private java.sql.Timestamp hotdatend;//hotdatend
+	private int hotcom;//hotcom
+	private java.lang.String hotcomid;//hotcomid
+	private Date hotdatestart;//hotdatestart
+	private Date hotdatend;//hotdatend
 	private java.lang.String test1;//test1
 	private java.lang.String test2;//test2
 	private java.lang.String test3;//test3
-	public java.lang.String getHotcom(){
-		return this.hotcom;
+	
+	
+	public int getHotcom() {
+		return hotcom;
 	}
-	public void setHotcom(java.lang.String hotcom){
-		this.hotcom	= hotcom;
+	public void setHotcom(int hotcom) {
+		this.hotcom = hotcom;
 	}
-	public java.lang.Integer getHotcomid(){
-		return this.hotcomid;
+	public java.lang.String getHotcomid() {
+		return hotcomid;
 	}
-	public void setHotcomid(java.lang.Integer hotcomid){
-		this.hotcomid	= hotcomid;
+	public void setHotcomid(java.lang.String hotcomid) {
+		this.hotcomid = hotcomid;
 	}
-	public java.sql.Timestamp getHotdatestart(){
-		return this.hotdatestart;
+	
+
+	public Date getHotdatestart() {
+		return hotdatestart;
 	}
-	public void setHotdatestart(java.sql.Timestamp hotdatestart){
-		this.hotdatestart	= hotdatestart;
+	public void setHotdatestart(Date hotdatestart) {
+		this.hotdatestart = hotdatestart;
 	}
-	public java.sql.Timestamp getHotdatend(){
-		return this.hotdatend;
+	public Date getHotdatend() {
+		return hotdatend;
 	}
-	public void setHotdatend(java.sql.Timestamp hotdatend){
-		this.hotdatend	= hotdatend;
+	public void setHotdatend(Date hotdatend) {
+		this.hotdatend = hotdatend;
 	}
 	public java.lang.String getTest1(){
 		return this.test1;
