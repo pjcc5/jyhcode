@@ -51,7 +51,7 @@ public class Test {
 //		CompicDao cd =new CompicDaoImpl();
 //		System.out.println(cd.insertCompic(com, conn));
 		
-		//
+		
 		
 		
 	}

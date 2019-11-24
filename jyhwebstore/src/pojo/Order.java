@@ -13,7 +13,7 @@ public class Order implements Serializable{
 	private String orderphone;
 	private double orderprice;
 	private Date orderdate;
-	private String orderstatement;
+	private int orderstatement;
 	private int orderpay;
 	private int orderreturn;
 	private String orderid;
@@ -70,10 +70,10 @@ public class Order implements Serializable{
 	public void setOrderdate(Date orderdate) {
 		this.orderdate = orderdate;
 	}
-	public String getOrderstatement() {
+	public int getOrderstatement() {
 		return orderstatement;
 	}
-	public void setOrderstatement(String orderstatement) {
+	public void setOrderstatement(int orderstatement) {
 		this.orderstatement = orderstatement;
 	}
 	public int getOrderpay() {

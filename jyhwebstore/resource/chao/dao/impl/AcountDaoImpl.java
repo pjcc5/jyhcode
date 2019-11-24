@@ -93,7 +93,6 @@ public class AcountDaoImpl implements AcountDao{
 			if(!conn.isClosed()){
 				UUID.randomUUID().toString();
 				String sql="insert into  acount values(?,?,?,?,?,?,?)";
-			
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, acount.getAid());
 				ps.setString(2,acount.getAname() );
@@ -102,10 +101,10 @@ public class AcountDaoImpl implements AcountDao{
 				ps.setString(5, acount.getAphone());
 				ps.setString(6, acount.getAmail());
 				ps.setString(7, acount.getAddr());
-			int rs=ps.executeUpdate();
-			if(rs>0){
-				return true;
-			}
+				int rs=ps.executeUpdate();
+				if(rs>0){
+					return true;
+				}
 				
 			}
 		} catch (Exception e) {
@@ -159,10 +158,11 @@ public class AcountDaoImpl implements AcountDao{
 			ps.setString(5, acount.getAmail());
 			ps.setString(6,acount.getAddr());
 			ps.setString(7, acount.getAid());
-		int i=	ps.executeUpdate();
-		if(i>0){
-			return true;
-		}
+			int i=	ps.executeUpdate();
+			if(i>0){
+				return true;
+			}
+			
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
