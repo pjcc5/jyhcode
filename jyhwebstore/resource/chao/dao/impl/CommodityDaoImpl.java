@@ -63,24 +63,164 @@ public class CommodityDaoImpl implements CommodityDao{
 	@Override
 	public Commodity getCommodityById(String comid, Connection conn) {
 		// TODO Auto-generated method stub
+		
+		if(conn==null){
+			return null;
+		}
+		
+	
+		try {
+			if(!conn.isClosed()){
+				String sql="select * from commodity where comid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setString(1, comid);
+			ResultSet rs=ps.executeQuery();
+			Commodity commodity=new Commodity();
+			if(rs.next()){
+			
+			commodity.setComid(rs.getString("comid"));
+			commodity.setComname(rs.getString("comname"));
+			commodity.setCompic(rs.getString("compic"));
+			commodity.setComdetails(rs.getString("comdetails"));
+			commodity.setComprice(rs.getDouble("comprice"));
+			commodity.setComclass(rs.getInt("comclass"));
+			commodity.setTest1(rs.getString("test1"));
+			commodity.setTest2(rs.getString("test2"));
+			commodity.setTest3(rs.getString("test3"));
+			commodity.setTest4(rs.getString("test4"));
+			
+			}
+				return commodity;
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		return null;
 	}
 	
 	@Override
 	public boolean insertCommodity(Commodity commodity, Connection conn) {
-		String url = "insert into commodity(comid,comname,compic,)";
+		
+		if(conn==null){
+			return false;
+		}
+		
+	
+		try {
+			if(!conn.isClosed()){
+				String sql = "insert into commodity values(?,?,?,?,?,?,?,?,?,?)";
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setString(1, commodity.getComid());
+				ps.setString(2, commodity.getComname());
+				ps.setString(3, commodity.getCompic());
+				ps.setString(4, commodity.getComdetails());
+				ps.setDouble(5, commodity.getComprice());
+				ps.setInt(6, commodity.getComclass());
+				ps.setString(7, commodity.getTest1());
+				ps.setString(8, commodity.getTest2());
+				ps.setString(9, commodity.getTest3());
+				ps.setString(10, commodity.getTest4());
+			int rs=ps.executeUpdate();
+			if(rs>0){
+				return true;
+			}
+			
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
 		return false;
 	}
 	
 	@Override
 	public boolean deleteCommodityByid(String comid, Connection conn) {
 		// TODO Auto-generated method stub
+		if(conn==null){
+			return false;
+		}
+		try {
+			if(!conn.isClosed()){
+				String sql = "delete from commodity where comid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setString(1, comid);
+			int rs=ps.executeUpdate();
+			if(rs>0){
+				return true;
+			}
+			
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		return false;
 	}
 
 	@Override
 	public boolean modifyCommodity(Commodity commodity, Connection conn) {
 		// TODO Auto-generated method stub
+		if(conn==null){
+			return false;
+		}
+		
+	
+		try {
+			if(!conn.isClosed()){
+				String sql = "update commodity set comname=?,compic=?,comdetails=?,"
+						+"comprice=?,comclass=?,test1=?,test2=?,test3=?,test4=? where comid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+			
+				ps.setString(1, commodity.getComname());
+				ps.setString(2, commodity.getCompic());
+				ps.setString(3, commodity.getComdetails());
+				ps.setDouble(4, commodity.getComprice());
+				ps.setInt(5, commodity.getComclass());
+				ps.setString(6, commodity.getTest1());
+				ps.setString(7, commodity.getTest2());
+				ps.setString(8, commodity.getTest3());
+				ps.setString(9, commodity.getTest4());
+				ps.setString(10, commodity.getComid());
+			int rs=ps.executeUpdate();
+			if(rs>0){
+				return true;
+			}
+			
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}finally{
+			try {
+				conn.close();
+			} catch (SQLException e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
 		return false;
 	}
 
