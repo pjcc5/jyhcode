@@ -61,7 +61,6 @@ public class DetailsDaoImpl implements DetailsDao{
 			return null;
 		}
 		
-		List<Details> list=new ArrayList<>();
 		try {
 			if(!conn.isClosed()){
 				String sql="select * from details where detailsid=?";
