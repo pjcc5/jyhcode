@@ -5,8 +5,18 @@ import java.util.List;
 import java.util.UUID;
 
 import pojo.Acount;
+import pojo.Commodity;
+import pojo.Compic;
 import chao.dao.AcountDao;
+import chao.dao.ClassesDao;
+import chao.dao.CommodityDao;
+import chao.dao.CompicDao;
+import chao.dao.DetailsDao;
 import chao.dao.impl.AcountDaoImpl;
+import chao.dao.impl.ClassesDaoImpl;
+import chao.dao.impl.CommodityDaoImpl;
+import chao.dao.impl.CompicDaoImpl;
+import chao.dao.impl.DetailsDaoImpl;
 import db.DbHelp;
 import db.DbHelp2;
 
@@ -17,11 +27,11 @@ private void mian() {
 }
 public static void main(String[] args) {
 	Connection conn= DbHelp2.getConnection();
-	
-AcountDao dao=new AcountDaoImpl();
-Acount acount=new Acount();
-acount.setAid("1");
-acount.setIsadm(1);
-dao.modifyAcount(acount, conn);
+	DetailsDao dao=new DetailsDaoImpl();
+	Compic compic=new Compic();
+	compic.setComid("1");
+	compic.setPicurl1("456");
+System.out.println(dao.getDetailsById("1", conn));;
+
 }
 }

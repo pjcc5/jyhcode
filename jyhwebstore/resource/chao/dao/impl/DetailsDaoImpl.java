@@ -2,23 +2,94 @@ package chao.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
 import java.util.List;
 
+import pojo.Compic;
 import pojo.Details;
 import chao.dao.DetailsDao;
+import db.DbHelp2;
 
 public class DetailsDaoImpl implements DetailsDao{
 
 	@Override
 	public List<Details> getAllDetails(Connection conn) {
 		// TODO Auto-generated method stub
-		return null;
+		Connection conn=DbHelp2.getConnection();
+		if(conn == null)
+		{
+			return null;
+		}
+		
+		List<Details> list=new ArrayList<>();
+		try {
+			if(!conn.isClosed()){
+				String sql="select * from details";
+				PreparedStatement ps=conn.prepareStatement(sql);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()){
+			Details details=new Details();
+			details.setDetailsdot(rs.getInt("detailsdot"));
+			details.setDetailsdrawing(rs.getString("detailsdrawing"));
+			details.setDetailsid(rs.getString("detailsid"));
+			details.setDetailsprice(rs.getDouble("detailsprice"));
+			details.setDetailssale(rs.getInt("detailssal"));
+			details.setDetailsstock(rs.getInt("detailsstock"));
+			details.setTest1(rs.getString("test1"));
+			details.setTest1(rs.getString("test2"));
+			details.setTest1(rs.getString("test3"));
+			details.setTest1(rs.getString("test4"));
+			details.setTest1(rs.getString("test5"));
+			list.add(details);
+			}
+				
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
+		return list;
 	}
 
 	@Override
 	public Details getDetailsById(String detailsid, Connection conn) {
 		// TODO Auto-generated method stub
+		if(conn == null)
+		{
+			return null;
+		}
+		
+		List<Details> list=new ArrayList<>();
+		try {
+			if(!conn.isClosed()){
+				String sql="select * from details where detailsid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setString(1, detailsid);
+				ResultSet rs=ps.executeQuery();
+			if(rs.next()){
+			Details details=new Details();
+			details.setDetailsdot(rs.getInt("detailsdot"));
+			details.setDetailsdrawing(rs.getString("detailsdrawing"));
+			details.setDetailsid(rs.getString("detailsid"));
+			details.setDetailsprice(rs.getDouble("detailsprice"));
+			details.setDetailssale(rs.getInt("detailssale"));
+			details.setDetailsstock(rs.getInt("detailsstock"));
+			details.setTest1(rs.getString("test1"));
+			details.setTest1(rs.getString("test2"));
+			details.setTest1(rs.getString("test3"));
+			details.setTest1(rs.getString("test4"));
+			details.setTest1(rs.getString("test5"));
+			return details;
+			}
+				
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		return null;
 	}
 
