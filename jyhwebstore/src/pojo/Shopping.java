@@ -1,6 +1,7 @@
 package pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 
@@ -8,7 +9,7 @@ public class Shopping  implements Serializable{
 	private java.lang.Integer shopid;//aid
 	private java.lang.String comid;//comid
 	private java.lang.Integer count;//count
-	private java.sql.Timestamp date;//date
+	private Date date;//date
 	private java.lang.String test1;//test1
 	private java.lang.String test2;//test2
 	private java.lang.String test3;//test3
@@ -32,11 +33,12 @@ public class Shopping  implements Serializable{
 	public void setCount(java.lang.Integer count){
 		this.count	= count;
 	}
-	public java.sql.Timestamp getDate(){
-		return this.date;
+
+	public Date getDate() {
+		return date;
 	}
-	public void setDate(java.sql.Timestamp date){
-		this.date	= date;
+	public void setDate(Date date) {
+		this.date = date;
 	}
 	public java.lang.String getTest1(){
 		return this.test1;

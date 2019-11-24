@@ -1,6 +1,7 @@
 package pojo;
 
 import java.io.Serializable;
+import java.util.Date;
 
 
 
@@ -10,7 +11,7 @@ public class User  implements Serializable{
 	private java.lang.Integer uid;//uid
 	private java.lang.String uname;//uname
 	private java.lang.String pic;//pic
-	private java.sql.Date birth;//birth
+	private Date birth;//birth
 	private java.lang.String sex;//sex
 	private java.lang.String uphone;//uphone
 	private java.lang.String mail;//mail
@@ -33,11 +34,12 @@ public class User  implements Serializable{
 	public void setPic(java.lang.String pic){
 		this.pic	= pic;
 	}
-	public java.sql.Date getBirth(){
-		return this.birth;
+
+	public Date getBirth() {
+		return birth;
 	}
-	public void setBirth(java.sql.Date birth){
-		this.birth	= birth;
+	public void setBirth(Date birth) {
+		this.birth = birth;
 	}
 	public java.lang.String getSex(){
 		return this.sex;
