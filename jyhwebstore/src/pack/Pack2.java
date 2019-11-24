@@ -14,6 +14,8 @@ import org.jsoup.select.Elements;
 import chao.dao.CommodityDao;
 import chao.dao.impl.CommodityDaoImpl;
 import pojo.Commodity;
+import pojo.Compic;
+import pojo.Details;
 import db.DbHelp2;
 
 public class Pack2 {
@@ -110,16 +112,16 @@ public class Pack2 {
 						}
 					}
 				}
-				for (String str : finalgoodsimgs) {
-					System.out.println(str);
-				}
+//				for (String str : finalgoodsimgs) {
+//					System.out.println(str);
+//				}
 //				
 				log.debug("商品名:"+productname);
 				log.debug("商品品牌:"+productbrand);
 				log.debug("商品价格:"+arr2.get(i));
 				log.debug("商品颜色:"+productcolor);
 				
-				
+				//插入商品表
 				Commodity comm = new Commodity();
 				String comid =UUID.randomUUID().toString();//设置统一商品id
 				comm.setComid(comid);
@@ -128,6 +130,28 @@ public class Pack2 {
 				comm.setComdetails(comid);
 				comm.setComprice(Double.parseDouble(arr2.get(i)));
 				comm.setComclass(10);
+				
+				
+				//插入商品详情表
+				Details dt =new Details();
+				dt.setDetailsid(comid);
+				dt.setDetailsstock(200);//库存
+				dt.setDetailsprice(Double.parseDouble(arr2.get(i)));//单价
+				dt.setDetailsdrawing(finalgoodsimgs.get(0));//详细图
+				dt.setDetailsdot(0);//点赞数
+				dt.setDetailssale(0);//已经卖出了多少件
+				
+				//插入图片连接表
+				Compic com = new Compic();
+				com.setComid(comid);
+				com.setPicurl1(finalgoodsimgs.get(0));
+				com.setPicurl2(finalgoodsimgs.get(1));
+				com.setPicurl3(finalgoodsimgs.get(2));
+				com.setPicurl4(finalgoodsimgs.get(3));
+				com.setPicurl5(finalgoodsimgs.get(4));
+				
+				
+				
 				
 				
 				
