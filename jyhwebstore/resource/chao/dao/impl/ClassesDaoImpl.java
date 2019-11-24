@@ -41,7 +41,6 @@ public class ClassesDaoImpl implements ClassesDao{
 			classes.setTest4(rs.getString("test4"));
 			classes.setTest5(rs.getString("test5"));
 			list.add(classes);
-			
 			}
 				
 			}
@@ -71,7 +70,7 @@ public class ClassesDaoImpl implements ClassesDao{
 
 	@Override
 	public boolean insertClasses(Classes classes, Connection conn) {
-		String url ="insert into classes() ";
+		
 		return false;
 	}
 
