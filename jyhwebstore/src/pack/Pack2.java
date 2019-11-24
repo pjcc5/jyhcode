@@ -222,7 +222,13 @@ public class Pack2 {
 			String nofirstblank = goodsname1.substring(firstblank+1);
 			
 			int secondblank =nofirstblank.indexOf(" ");
-			brandname = nofirstblank.substring(0,secondblank);
+			if(secondblank == -1)
+			{
+				brandname = nofirstblank.substring(0,firstblank);
+			}else{
+				
+				brandname = nofirstblank.substring(0,secondblank);
+			}
 		}
 		
 		
