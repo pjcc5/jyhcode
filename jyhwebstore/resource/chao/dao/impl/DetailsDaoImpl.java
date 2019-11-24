@@ -16,8 +16,6 @@ public class DetailsDaoImpl implements DetailsDao{
 
 	@Override
 	public List<Details> getAllDetails(Connection conn) {
-		// TODO Auto-generated method stub
-		Connection conn=DbHelp2.getConnection();
 		if(conn == null)
 		{
 			return null;
