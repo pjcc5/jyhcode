@@ -2,6 +2,7 @@ package pack;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.UUID;
 
@@ -12,13 +13,18 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
 import chao.dao.CommodityDao;
+import chao.dao.CompicDao;
+import chao.dao.DetailsDao;
 import chao.dao.impl.CommodityDaoImpl;
+import chao.dao.impl.CompicDaoImpl;
+import chao.dao.impl.DetailsDaoImpl;
 import pojo.Commodity;
 import pojo.Compic;
 import pojo.Details;
 import db.DbHelp2;
 
 public class Pack2 {
+	
 	static final Logger log =Logger.getLogger(Pack2.class);
 	public static void main(String[] args) {
 		Connection conn = DbHelp2.getConnection();
@@ -26,6 +32,7 @@ public class Pack2 {
 		ArrayList<String> array2 = new ArrayList<String>();//存放价格
 		
 		for (int j = 1; j < 50; j++) {
+			
 			String url ="https://search.yhd.com/c0-0-1005412/mbname-b/a-s1-v4-p"+j+"-price-d0-f0b-m1-rt0-pid-mid0-color-size-k/";
 			try {
 				
@@ -64,13 +71,17 @@ public class Pack2 {
 		
 	}
 	public static void soup(ArrayList<String> arr,ArrayList<String> arr2,int index)
-	{
+	{	
 		for (int i = index; i < arr.size(); i++) {
+			System.out.println(i);
 			String url = arr.get(i);
 			try {
 				Document doc = Jsoup.connect(url).ignoreContentType(true).timeout(30000).get();
 				//获取商品名称
-				
+				if(doc.select("#productMainName").size()==0)
+				{
+					continue;
+				}
 				String productname =  doc.select("#productMainName").get(0).html();
 				
 				//获取商品价格
@@ -130,8 +141,8 @@ public class Pack2 {
 				comm.setComdetails(comid);
 				comm.setComprice(Double.parseDouble(arr2.get(i)));
 				comm.setComclass(10);
-				
-				
+//				
+//				
 				//插入商品详情表
 				Details dt =new Details();
 				dt.setDetailsid(comid);
@@ -152,7 +163,26 @@ public class Pack2 {
 				
 				
 				
+				CommodityDao commdao =new CommodityDaoImpl();
+				DetailsDao dd =new DetailsDaoImpl();
+				CompicDao cd =new CompicDaoImpl();
 				
+				Connection conn = DbHelp2.getConnection();
+				commdao.insertCommodity(comm, conn);
+				System.out.println(conn);
+				System.out.println(dd.insertDetails(dt, conn));
+				System.out.println(cd.insertCompic(com, conn));
+				
+				try {
+					if(!conn.isClosed())
+					{
+						conn.close();
+					}
+				} catch (SQLException e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
+				System.out.println("插入"+i+"次");
 				
 				
 				

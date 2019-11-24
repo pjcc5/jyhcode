@@ -95,13 +95,6 @@ public class CommodityDaoImpl implements CommodityDao{
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally{
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		return null;
 	}
@@ -160,13 +153,6 @@ public class CommodityDaoImpl implements CommodityDao{
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally{
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 //>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 		

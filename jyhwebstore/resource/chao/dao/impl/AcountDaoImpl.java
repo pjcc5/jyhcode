@@ -85,13 +85,6 @@ public class AcountDaoImpl implements AcountDao{
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally{
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		return acount;
 	}

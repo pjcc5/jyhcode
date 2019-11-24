@@ -30,6 +30,7 @@ public class DetailsDaoImpl implements DetailsDao{
 		}
 		
 		try {
+			System.out.println("连接状态:"+conn.isClosed());
 			if(!conn.isClosed()){
 				String sql = "insert into details values(?,?,?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -54,13 +55,6 @@ public class DetailsDaoImpl implements DetailsDao{
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally{
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
 		
 		
