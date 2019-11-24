@@ -7,6 +7,7 @@ import java.util.UUID;
 import pojo.Acount;
 import pojo.Commodity;
 import pojo.Compic;
+import pojo.Details;
 import chao.dao.AcountDao;
 import chao.dao.ClassesDao;
 import chao.dao.CommodityDao;
@@ -28,10 +29,14 @@ private void mian() {
 public static void main(String[] args) {
 	Connection conn= DbHelp2.getConnection();
 	DetailsDao dao=new DetailsDaoImpl();
-	Compic compic=new Compic();
-	compic.setComid("1");
-	compic.setPicurl1("456");
-System.out.println(dao.getDetailsById("1", conn));;
+	Details details=new Details();
+	
+	details.setDetailsid("1");
+	details.setDetailsdot(2);
+	details.setDetailsprice(10.0);
+	details.setDetailssale(4);
+	details.setDetailsstock(5);
+System.out.println(dao.deleteDetailsByid("1", conn));;
 
 }
 }
