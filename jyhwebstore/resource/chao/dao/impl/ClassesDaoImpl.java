@@ -15,8 +15,7 @@ import db.DbHelp2;
 public class ClassesDaoImpl implements ClassesDao{
   
 	@Override
-	public List<Classes> getAllClasses() {
-		Connection conn= DbHelp2.getConnection();
+	public List<Classes> getAllClasses(Connection conn) {
 		if(conn==null){
 			return null;
 		}

@@ -16,7 +16,7 @@ public class DetailsDaoImpl implements DetailsDao{
 
 	@Override
 	public List<Details> getAllDetails(Connection conn) {
-		
+
 		if(conn == null)
 		{
 			return null;

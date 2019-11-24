@@ -110,7 +110,7 @@ public class Pack2 {
 					}
 				}else
 				{
-					for (int j = 0; j <5 ; j++) {
+					for(int j = 0; j <5 ; j++) {
 						if(j==5)
 						{
 							break;
@@ -222,7 +222,13 @@ public class Pack2 {
 			String nofirstblank = goodsname1.substring(firstblank+1);
 			
 			int secondblank =nofirstblank.indexOf(" ");
-			brandname = nofirstblank.substring(0,secondblank);
+			if(secondblank == -1)
+			{
+				brandname = nofirstblank.substring(0,firstblank);
+			}else{
+				
+				brandname = nofirstblank.substring(0,secondblank);
+			}
 		}
 		
 		
