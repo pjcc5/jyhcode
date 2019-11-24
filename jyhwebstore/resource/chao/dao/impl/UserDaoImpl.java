@@ -113,13 +113,54 @@ public class UserDaoImpl implements UserDao{
 	@Override
 	public boolean deleteUserByid(int uid, Connection conn) {
 		// TODO Auto-generated method stub
-		
+		if(conn==null){
+			return false;
+		}
+		try {
+			String sql="delete from user where uid=?";
+			if(!conn.isClosed()){
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setInt(1, uid);
+			int rs=	ps.executeUpdate();
+			if(rs>0){
+				return true;
+			}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
 	public boolean modifyUser(User user, Connection conn) {
 		// TODO Auto-generated method stub
+		if(conn==null){
+			return false;
+		}
+		try {
+			if(!conn.isClosed()){
+				String sql="update user set uname=?,pic=?,birth=?,sex=?,uphone=?,mail=?,setadd=? where uid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+			   ps.setString(1, user.getUname());
+				ps.setString(2, user.getPic());
+				ps.setDate(3, new Date(user.getBirth().getTime()));
+				ps.setString(4, user.getSex());
+				ps.setString(5, user.getUphone());
+				ps.setString(6, user.getMail());
+				ps.setString(7, user.getSetadd());
+				ps.setInt(8, user.getUid());
+				int rs= ps.executeUpdate();
+				if(rs>0){
+					return true;
+				}
+			}
+			
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		return false;
 	}
 

@@ -44,8 +44,8 @@ public static void main(String[] args) {
 	UserDao dao=new chao.dao.impl.UserDaoImpl();
 	User user=new User();
 	user.setBirth(new Date());
-	user.setUid(2);
-	System.out.println(dao.insertUser(user, conn));
+	user.setUid(1);
+	System.out.println(dao.modifyUser(user, conn));
 
 
 }
