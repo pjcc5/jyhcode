@@ -9,19 +9,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pojo.Details;
-import pojo.Order;
+import pojo.Orderform;
 import chao.dao.OrderDao;
 
 public class OrderDaoImpl implements OrderDao{
 
 	@Override
-	public List<Order> getAllOrder(Connection conn) {
+	public List<Orderform> getAllOrder(Connection conn) {
 		if(conn==null)
 		{
 			return null;
 			
 		}
-		List<Order> list=new ArrayList<Order>();
+		List<Orderform> list=new ArrayList<Orderform>();
 		try {
 			if(!conn.isClosed())
 			{
@@ -31,7 +31,7 @@ public class OrderDaoImpl implements OrderDao{
 				ResultSet rs=ps.executeQuery();
 				while(rs.next()){
 					
-					Order order =new Order();
+					Orderform order =new Orderform();
 					order.setAid(rs.getInt("aid"));
 					order.setComid(rs.getString("comid"));
 					order.setComname(rs.getString("comname"));
@@ -64,7 +64,7 @@ public class OrderDaoImpl implements OrderDao{
 	}
 
 	@Override
-	public Order getOrderById(int aid, Connection conn) {
+	public Orderform getOrderById(int aid, Connection conn) {
 		if(conn == null)
 		{
 			return null;
@@ -76,7 +76,7 @@ public class OrderDaoImpl implements OrderDao{
 			ps.setInt(1, aid);
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()){
-			Order o =new Order();
+			Orderform o =new Orderform();
 			o.setAid(rs.getInt("aid"));
 			o.setComid(rs.getString("comid"));
 			o.setComname(rs.getString("comname"));
@@ -106,7 +106,7 @@ public class OrderDaoImpl implements OrderDao{
 	}
 
 	@Override
-	public boolean insertOrder(Order order, Connection conn) {
+	public boolean insertOrder(Orderform order, Connection conn) {
 		if(conn == null)
 		{
 			return false;
@@ -171,7 +171,7 @@ public class OrderDaoImpl implements OrderDao{
 	}
 
 	@Override
-	public boolean modifyOrder(Order order, Connection conn) {
+	public boolean modifyOrder(Orderform order, Connection conn) {
 		if(conn == null)
 		{
 			return false;

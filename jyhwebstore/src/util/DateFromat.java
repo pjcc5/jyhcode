@@ -4,7 +4,7 @@ import java.text.SimpleDateFormat;
 import java.util.Date;
 
 public class DateFromat {
-	public String DateFormat(Date date){
+	public static String DateFormat(Date date){
 		if(date==null){
 			return null;
 		}

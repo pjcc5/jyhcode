@@ -13,7 +13,7 @@ import pojo.Commodity;
 import pojo.Compic;
 import pojo.Details;
 import pojo.Hot;
-import pojo.Order;
+import pojo.Orderform;
 import pojo.Shopmiddle;
 import pojo.Shopping;
 import pojo.User;
@@ -91,7 +91,7 @@ public static void main(String[] args) {
 //System.out.println(dao.deleteShopmiddleByid("12", conn));
 
 
-Order order=new Order();
+Orderform order=new Orderform();
 order.setAid(2);
 order.setComid("2");
 order.setComname("3");

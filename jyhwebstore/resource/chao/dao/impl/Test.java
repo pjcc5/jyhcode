@@ -19,6 +19,8 @@ import org.w3c.dom.stylesheets.DocumentStyle;
 
 
 
+
+
 import chao.dao.AcountDao;
 //=======
 import chao.dao.ClassesDao;
@@ -27,6 +29,7 @@ import chao.dao.CommodityDao;
 import chao.dao.CompicDao;
 import chao.dao.DetailsDao;
 import chao.dao.HotDao;
+import chao.dao.OrderDao;
 import chao.dao.ShopmiddleDao;
 import chao.dao.ShoppingDao;
 import db.DbHelp2;
@@ -38,10 +41,11 @@ import pojo.Classes;
 import pojo.Commodity;
 import pojo.Compic;
 import pojo.Details;
-import pojo.Order;
+import pojo.Orderform;
 import pojo.Hot;
 import pojo.Shopmiddle;
 import pojo.Shopping;
+import util.DateFromat;
 public class Test {
 
 	public static void main(String[] args) {
@@ -319,6 +323,50 @@ public class Test {
 //		o.setAid(1);
 //		o.setComid("comid");
 //		o.setComname(comname);
+		
+		/*
+		 * 测试order表
+		 */
+		//测试order表插入一条数据OK
+		Orderform o =new Orderform();
+		OrderDao od = new OrderDaoImpl();
+//		o.setAid(1);
+//		o.setComid("comid");
+//		o.setComname("华为");
+//		o.setOrderadd("湖南省长沙市");
+//		o.setOrdercompany("公司");
+//		o.setOrderdate(new java.util.Date());
+//		o.setOrderid("orderid");
+//		o.setOrdername("ordername");
+//		o.setOrderpay(1998);
+//		o.setOrderphone("17363651951");
+//		o.setOrderprice(1998.00d);
+//		o.setOrderreturn(1);
+//		o.setOrderstatement(1);
+//		o.setTest1("test1");
+//		o.setTest2("test2");
+//		o.setTest3("test3");
+//		o.setTest4("test4");
+//		boolean result = od.insertOrder(o, conn);
+//		System.out.println(result);
+		//测试order表查询所有数据OK
+//		List<Orderform> list =od.getAllOrder(conn);
+//		for (Orderform orderform : list) {
+//			System.out.println(orderform);
+//		}
+//		
+		//测试order表查询一条数据OK
+//		Orderform of =od.getOrderById(1, conn);
+//		System.out.println(of.getOrderdate().getHours());
+//		System.out.println(of);
+		//测试order表修改一条数据OK
+		
+//		boolean result = od.modifyOrder(o, conn);
+//		System.out.println(result);
+		
+		//测试order表删除一条数据OK
+//		boolean  result = od.deleteOrderByid(1, conn);
+//		System.out.println(result);
 		
 		
 	}
