@@ -19,9 +19,6 @@ import org.w3c.dom.stylesheets.DocumentStyle;
 
 
 
-
-
-//<<<<<<< HEAD
 import chao.dao.AcountDao;
 //=======
 import chao.dao.ClassesDao;
@@ -30,6 +27,7 @@ import chao.dao.CommodityDao;
 import chao.dao.CompicDao;
 import chao.dao.DetailsDao;
 import chao.dao.HotDao;
+import chao.dao.ShopmiddleDao;
 import chao.dao.ShoppingDao;
 import db.DbHelp2;
 //<<<<<<< HEAD
@@ -40,9 +38,10 @@ import pojo.Classes;
 import pojo.Commodity;
 import pojo.Compic;
 import pojo.Details;
+import pojo.Order;
 import pojo.Hot;
+import pojo.Shopmiddle;
 import pojo.Shopping;
-
 public class Test {
 
 	public static void main(String[] args) {
@@ -55,7 +54,7 @@ public class Test {
 //		comm.setComdetails("aaa");
 //		comm.setComprice(1998.00d);
 //		comm.setComclass(10);
-//		Connection conn = DbHelp2.getConnection();
+		Connection conn = DbHelp2.getConnection();
 //		CommodityDao cd =new CommodityDaoImpl();
 //		System.out.println(cd.insertCommodity(comm, conn));
 		//测试商品详情OK
@@ -209,12 +208,6 @@ public class Test {
 //		Classes clas =cd.getClassesById(1, conn);
 //		System.out.println(clas);
 		
-//<<<<<<< HEAD
-//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
-//<<<<<<< HEAD
-//=======
-//=======
-//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 		//测试classes表的删除一个方法Ok
 //		boolean result =cd.deleteClassesByid(1, conn);
 //		System.out.println(result);
@@ -233,8 +226,6 @@ public class Test {
 //		c.setTest4("测试4");
 //		boolean result = cd.modifyClasses(c, conn);
 //		System.out.println(result);
-//<<<<<<< HEAD
-//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 				//测试hot表
 //				HotDao hd = new HotDaoImpl();
 //				Connection  conn = DbHelp2.getConnection();
@@ -299,7 +290,36 @@ public class Test {
 //		boolean result = cd.deleteCompicByid("Id1", conn);
 //		System.out.println(result);
 		
-//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
+		/*
+		 *测试shoppingmiddle 
+		 */
+		//测试shoppingmiddle表的插入一条OK
+		ShopmiddleDao smd =new ShopmiddleDaoImpl();
+//		Shopmiddle sm =new Shopmiddle();
+//		sm.setAis("sid");
+//		sm.setShopid(1);
+//		boolean result = smd.insertShopmiddle(sm, conn);
+//		System.out.println(result);
+		
+		//测试shopmiddle表查询所有OK
+//		List<Shopmiddle> list = smd.getAllShopmiddle(conn);
+//		for (Shopmiddle shopmiddle : list) {
+//			System.out.println(shopmiddle);
+//		}
+		
+		//测试shopmiddle查询一条Ok
+//		Shopmiddle s =smd.getSById("sid", conn);
+//		System.out.println(s);
+//		
+		//测试shopmiddle删除一条OK
+//		boolean result = smd.deleteShopmiddleByid("sid", conn);
+//		System.out.println(result);
+		//测试order 的插入一个
+//		Order o = new Order();
+//		o.setAid(1);
+//		o.setComid("comid");
+//		o.setComname(comname);
+		
 		
 	}
 

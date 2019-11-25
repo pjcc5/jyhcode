@@ -17,6 +17,7 @@ import pojo.Hot;
 import pojo.Order;
 import pojo.Shopmiddle;
 import pojo.Shopping;
+import pojo.Size;
 import pojo.User;
 import util.DateFromat;
 import chao.dao.AcountDao;
@@ -28,6 +29,7 @@ import chao.dao.HotDao;
 import chao.dao.OrderDao;
 import chao.dao.ShopmiddleDao;
 import chao.dao.ShoppingDao;
+import chao.dao.SizeDao;
 import chao.dao.UserDao;
 import chao.dao.impl.AcountDaoImpl;
 import chao.dao.impl.ClassesDaoImpl;
@@ -38,6 +40,7 @@ import chao.dao.impl.HotDaoImpl;
 import chao.dao.impl.OrderDaoImpl;
 import chao.dao.impl.ShopmiddleDaoImpl;
 import chao.dao.impl.ShoppingDaoImpl;
+import chao.dao.impl.SizeDaoImpl;
 import db.DbHelp;
 import db.DbHelp2;
 
@@ -129,7 +132,18 @@ public static void main(String[] args) {
 	
 	
 	
-	HotDao dao=new HotDaoImpl();
+SizeDao dao=new SizeDaoImpl();
+//System.out.println(dao.getAllSize(conn));
+//System.out.println(dao.getSizeById(1, conn));
+//System.out.println(dao.deleteSizetByid(1, conn));
+Size size=new Size();
+size.setComid("4");
+size.setSize1("11");
+size.setSize2("22");
+size.setSize3("33");
+size.setSize4("44");
+size.setSize5("55");
+System.out.println(dao.modifySize(size, conn));
 	
 
 	
