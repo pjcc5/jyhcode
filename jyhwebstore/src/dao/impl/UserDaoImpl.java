@@ -49,7 +49,7 @@ private void mian() {
 	// TODO Auto-generated method stub
 
 }
-public static void main(String[] args) {
+public static void main(String[] args) throws Exception {
 	Connection conn= DbHelp2.getConnection();
 //   UserDao user=new chao.dao.impl.UserDaoImpl();
 //   User user1=new User();
@@ -143,6 +143,7 @@ size.setSize2("22");
 size.setSize3("33");
 size.setSize4("44");
 size.setSize5("55");
+
 System.out.println(dao.modifySize(size, conn));
 	
 
