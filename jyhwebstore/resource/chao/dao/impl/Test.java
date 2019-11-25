@@ -15,6 +15,7 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.w3c.dom.stylesheets.DocumentStyle;
 
+
 //<<<<<<< HEAD
 import chao.dao.AcountDao;
 //=======
@@ -32,6 +33,7 @@ import pojo.Classes;
 import pojo.Commodity;
 import pojo.Compic;
 import pojo.Details;
+import pojo.Order;
 
 public class Test {
 
@@ -263,6 +265,17 @@ public class Test {
 		//测试compic表的删除一条数据OK
 //		boolean result = cd.deleteCompicByid("Id1", conn);
 //		System.out.println(result);
+		
+		
+		/*
+		 * 测试order表
+		 */
+		
+		//测试order 的插入一个
+		Order o = new Order();
+		o.setAid(1);
+		o.setComid("comid");
+		o.setComname(comname);
 		
 		
 	}
