@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -24,10 +25,12 @@ public class OrderDaoImpl implements OrderDao{
 		try {
 			if(!conn.isClosed())
 			{
-				String sql ="select * from order";
+				
+				String sql ="select * from orderform";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ResultSet rs=ps.executeQuery();
 				while(rs.next()){
+					
 					Order order =new Order();
 					order.setAid(rs.getInt("aid"));
 					order.setComid(rs.getString("comid"));
@@ -36,7 +39,7 @@ public class OrderDaoImpl implements OrderDao{
 					order.setOrdername(rs.getString("ordername"));
 					order.setOrderphone(rs.getString("orderphone"));
 					order.setOrderprice(rs.getDouble("orderprice"));
-					order.setOrderdate(rs.getDate("orderdate"));
+					order.setOrderdate(rs.getTimestamp("orderdate"));
 					order.setOrderstatement(rs.getInt("orderstatement"));
 					order.setOrderpay(rs.getInt("orderpay"));
 					order.setOrderreturn(rs.getInt("orderreturn"));
@@ -45,6 +48,7 @@ public class OrderDaoImpl implements OrderDao{
 					order.setTest1(rs.getString("test1"));
 					order.setTest2(rs.getString("test2"));
 					order.setTest3(rs.getString("test3"));
+					order.setTest4(rs.getString("test4"));
 					list.add(order);
 				}
 				
@@ -60,16 +64,16 @@ public class OrderDaoImpl implements OrderDao{
 	}
 
 	@Override
-	public Order getOrderById(String aid, Connection conn) {
+	public Order getOrderById(int aid, Connection conn) {
 		if(conn == null)
 		{
 			return null;
 		}
 		try {
 			if(!conn.isClosed()){
-			String sql="select * from order where aid=?";
+			String sql="select * from orderform where aid=?";
 			PreparedStatement ps=conn.prepareStatement(sql);
-			ps.setString(1, aid);
+			ps.setInt(1, aid);
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()){
 			Order o =new Order();
@@ -80,7 +84,7 @@ public class OrderDaoImpl implements OrderDao{
 			o.setOrdername(rs.getString("ordername"));
 			o.setOrderphone(rs.getString("orderphone"));
 			o.setOrderprice(rs.getDouble("orderprice"));
-			o.setOrderdate(rs.getDate("orderdate"));
+			o.setOrderdate(rs.getTimestamp("orderdate"));
 			o.setOrderstatement(rs.getInt("orderstatement"));
 			o.setOrderpay(rs.getInt("orderpay"));
 			o.setOrderreturn(rs.getInt("orderreturn"));
@@ -111,7 +115,7 @@ public class OrderDaoImpl implements OrderDao{
 		try {
 			
 			if(!conn.isClosed()){
-				String sql = "insert into order values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
+				String sql = "insert into orderform values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setInt(1, order.getAid());
 				ps.setString(2, order.getComid());
@@ -120,7 +124,7 @@ public class OrderDaoImpl implements OrderDao{
 				ps.setString(5, order.getOrdername());
 				ps.setString(6, order.getOrderphone());
 				ps.setDouble(7, order.getOrderprice());
-				ps.setDate(8, new Date(order.getOrderdate().getTime()));
+				ps.setTimestamp(8, new Timestamp(order.getOrderdate().getTime()));
 				ps.setInt(9, order.getOrderstatement());
 				ps.setInt(10, order.getOrderpay());
 				ps.setInt(11, order.getOrderreturn());
@@ -146,15 +150,15 @@ public class OrderDaoImpl implements OrderDao{
 	}
 
 	@Override
-	public boolean deleteOrderByid(String aid, Connection conn) {
+	public boolean deleteOrderByid(int aid, Connection conn) {
 		if(conn==null){
 			return false;
 		}
 		try {
 			if(!conn.isClosed()){
-				String sql="delete from order where aid=?";
+				String sql="delete from orderform where aid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setString(1, aid);
+				ps.setInt(1, aid);
 				int rs=ps.executeUpdate();
 				if(rs>0){
 					return true;
@@ -176,9 +180,9 @@ public class OrderDaoImpl implements OrderDao{
 		try {
 			
 			if(!conn.isClosed()){
-				String sql = "update order set aid=?,comid=?,comname=?,orderadd=?,ordername=?"
+				String sql = "update orderform set aid=?,comid=?,comname=?,orderadd=?,ordername=?,"
 						+ "orderphone=?,orderprice=?,orderdate=?,orderstatement=?,orderpay=?,orderreturn=?,"
-						+ "orderid=?,ordercompany=?,test1=?,test2=?,test3=?test4=?";
+						+ "orderid=?,ordercompany=?,test1=?,test2=?,test3=?,test4=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setInt(1, order.getAid());
 				ps.setString(2, order.getComid());
@@ -187,7 +191,7 @@ public class OrderDaoImpl implements OrderDao{
 				ps.setString(5, order.getOrdername());
 				ps.setString(6, order.getOrderphone());
 				ps.setDouble(7, order.getOrderprice());
-				ps.setDate(8, new Date(order.getOrderdate().getTime()));
+				ps.setTimestamp(8, new Timestamp(order.getOrderdate().getTime()));
 				ps.setInt(9, order.getOrderstatement());
 				ps.setInt(10, order.getOrderpay());
 				ps.setInt(11, order.getOrderreturn());
