@@ -2,6 +2,7 @@ package chao.dao.impl;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 //<<<<<<< HEAD
 //=======
 import java.util.ArrayList;
@@ -16,7 +17,6 @@ import org.jsoup.select.Elements;
 import org.w3c.dom.stylesheets.DocumentStyle;
 
 
-//<<<<<<< HEAD
 import chao.dao.AcountDao;
 //=======
 import chao.dao.ClassesDao;
@@ -24,6 +24,8 @@ import chao.dao.ClassesDao;
 import chao.dao.CommodityDao;
 import chao.dao.CompicDao;
 import chao.dao.DetailsDao;
+import chao.dao.HotDao;
+import chao.dao.ShoppingDao;
 import db.DbHelp2;
 //<<<<<<< HEAD
 import pojo.Acount;
@@ -34,7 +36,8 @@ import pojo.Commodity;
 import pojo.Compic;
 import pojo.Details;
 import pojo.Order;
-
+import pojo.Hot;
+import pojo.Shopping;
 public class Test {
 
 	public static void main(String[] args) {
@@ -203,6 +206,10 @@ public class Test {
 		
 //<<<<<<< HEAD
 //>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
+//<<<<<<< HEAD
+//=======
+//=======
+//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 		//测试classes表的删除一个方法Ok
 //		boolean result =cd.deleteClassesByid(1, conn);
 //		System.out.println(result);
@@ -221,12 +228,33 @@ public class Test {
 //		c.setTest4("测试4");
 //		boolean result = cd.modifyClasses(c, conn);
 //		System.out.println(result);
+//<<<<<<< HEAD
+//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
+				//测试hot表
+//				HotDao hd = new HotDaoImpl();
+//				Connection  conn = DbHelp2.getConnection();
+//				Hot hot = new Hot();
+//				java.util.Date date = new java.util.Date();
+//				
+//				hot.setHotcom(1);
+//				hot.setHotcomid("123");
+//				hot.setHotdatestart(date);
+//				hot.setHotdatend(date);
+//			boolean f =	hd.insertHot(hot, conn);
+//			System.out.println(f);
+		
+//		java.util.Date date = new java.util.Date();
+//		
+//		System.out.println(date.getTime());
+//		java.util.Date dates = new java.util.Date(1574671301296l);
+//		System.out.println(dates.toLocaleString());
+//=======
 		
 		
-		/**
-		 * 测试compic表OK
-		 * 
-		 */
+//		/**
+//		 * 测试compic表OK
+//		 * 
+//		 */
 		//测试compic表的插入一条OK
 //		Compic c =new Compic();
 //		CompicDao cd =new CompicDaoImpl();
@@ -266,6 +294,7 @@ public class Test {
 //		boolean result = cd.deleteCompicByid("Id1", conn);
 //		System.out.println(result);
 		
+//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 		
 		/*
 		 * 测试order表
