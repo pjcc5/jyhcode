@@ -301,10 +301,10 @@ public class Test {
 		 */
 		
 		//测试order 的插入一个
-		Order o = new Order();
-		o.setAid(1);
-		o.setComid("comid");
-		o.setComname(comname);
+//		Order o = new Order();
+//		o.setAid(1);
+//		o.setComid("comid");
+//		o.setComname(comname);
 		
 		
 	}
