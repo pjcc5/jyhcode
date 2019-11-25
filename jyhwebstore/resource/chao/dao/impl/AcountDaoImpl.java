@@ -16,7 +16,7 @@ import chao.dao.AcountDao;
 public class AcountDaoImpl implements AcountDao{
 
 	@Override
-	public List<Acount> getAllAcount(Connection conn) {
+	public List<Acount> getAllAcount(Connection conn)  {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return null;
@@ -76,7 +76,6 @@ public class AcountDaoImpl implements AcountDao{
 				
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return acount;
@@ -84,7 +83,6 @@ public class AcountDaoImpl implements AcountDao{
 
 	@Override
 	public boolean insertAcount(Acount acount, Connection conn) {
-		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
@@ -108,7 +106,6 @@ public class AcountDaoImpl implements AcountDao{
 				
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		
@@ -117,7 +114,6 @@ public class AcountDaoImpl implements AcountDao{
 
 	@Override
 	public boolean deleteAcountByid(String aid, Connection conn) {
-		// TODO Auto-generated method stub
 		String sql="delete from acount where aid=?";
 		if(conn==null){
 			return false;
@@ -132,7 +128,6 @@ public class AcountDaoImpl implements AcountDao{
 			}	
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		
@@ -141,16 +136,12 @@ public class AcountDaoImpl implements AcountDao{
 
 	@Override
 	public boolean modifyAcount(Acount acount, Connection conn) {
-		// TODO Auto-generated method stub
-		//update user where uid =? set uid =?,name=?.....
 		if(conn==null){
 			return false;
 		}
 		try {
 			String sql="update acount set aname=?,apass=?,isadm=?,aphone=?,amail=?,addr=? where aid=? ";
 			PreparedStatement ps=conn.prepareStatement(sql);
-			
-			
 			ps.setString(1, acount.getAname());
 			ps.setString(2, acount.getApass());
 			ps.setInt(3, acount.getIsadm());
@@ -164,7 +155,6 @@ public class AcountDaoImpl implements AcountDao{
 			}
 			
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		

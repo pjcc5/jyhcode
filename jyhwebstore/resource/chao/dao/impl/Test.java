@@ -17,11 +17,6 @@ import org.jsoup.select.Elements;
 import org.w3c.dom.stylesheets.DocumentStyle;
 
 
-
-
-
-
-//<<<<<<< HEAD
 import chao.dao.AcountDao;
 //=======
 import chao.dao.ClassesDao;
@@ -40,9 +35,9 @@ import pojo.Classes;
 import pojo.Commodity;
 import pojo.Compic;
 import pojo.Details;
+import pojo.Order;
 import pojo.Hot;
 import pojo.Shopping;
-
 public class Test {
 
 	public static void main(String[] args) {
@@ -300,6 +295,17 @@ public class Test {
 //		System.out.println(result);
 		
 //>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
+		
+		/*
+		 * 测试order表
+		 */
+		
+		//测试order 的插入一个
+		Order o = new Order();
+		o.setAid(1);
+		o.setComid("comid");
+		o.setComname(comname);
+		
 		
 	}
 

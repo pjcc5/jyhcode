@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<class name="pojo.Acount" table="acount">
+	<property name="aid" column="aid" type="java.lang.String"></property>
+	<property name="aname" column="aname" type="java.lang.String"></property>
+	<property name="apass" column="apass" type="java.lang.String"></property>
+	<property name="isadm" column="isadm" type="java.lang.Integer"></property>
+	<property name="aphone" column="aphone" type="java.lang.String"></property>
+	<property name="amail" column="amail" type="java.lang.String"></property>
+	<property name="addr" column="addr" type="java.lang.String"></property>
+	
+</class>
