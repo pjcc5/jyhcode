@@ -1,7 +1,14 @@
 package chao.dao.impl;
 
+import java.io.IOException;
 import java.sql.Connection;
 import java.util.UUID;
+
+import org.jsoup.Jsoup;
+import org.jsoup.nodes.Document;
+import org.jsoup.nodes.Element;
+import org.jsoup.select.Elements;
+import org.w3c.dom.stylesheets.DocumentStyle;
 
 import chao.dao.CommodityDao;
 import chao.dao.CompicDao;
@@ -23,7 +30,7 @@ public class Test {
 //		comm.setComdetails("aaa");
 //		comm.setComprice(1998.00d);
 //		comm.setComclass(10);
-		Connection conn = DbHelp2.getConnection();
+//		Connection conn = DbHelp2.getConnection();
 //		CommodityDao cd =new CommodityDaoImpl();
 //		System.out.println(cd.insertCommodity(comm, conn));
 		//测试商品详情OK
@@ -50,6 +57,21 @@ public class Test {
 //		com.setPicurl5("照片5");
 //		CompicDao cd =new CompicDaoImpl();
 //		System.out.println(cd.insertCompic(com, conn));
+		
+		
+		String url = "https://item.yhd.com/57268990549.html";
+		try {
+			
+			Document doc = Jsoup.connect(url).ignoreContentType(true).get();
+			Elements  docs = doc.select("script");
+			for (Element element : docs) {
+				System.out.println(element);
+			}
+		} catch (IOException e) {
+			e.printStackTrace();
+		}
+		
+		
 		
 		
 		
