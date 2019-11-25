@@ -167,10 +167,15 @@ public class Pack2 {
 				CompicDao cd =new CompicDaoImpl();
 				
 				Connection conn = DbHelp2.getConnection();
-				commdao.insertCommodity(comm, conn);
-				System.out.println(conn);
-				System.out.println(dd.insertDetails(dt, conn));
-				System.out.println(cd.insertCompic(com, conn));
+				try {
+					commdao.insertCommodity(comm, conn);
+					System.out.println(conn);
+					System.out.println(dd.insertDetails(dt, conn));
+					System.out.println(cd.insertCompic(com, conn));
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
 				
 				try {
 					if(!conn.isClosed())

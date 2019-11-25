@@ -12,12 +12,12 @@ import chao.dao.SizeDao;
 public class SizeDaoImpl implements SizeDao{
 
 	@Override
-	public List<Size> getAllSize(Connection conn) {
+	public List<Size> getAllSize(Connection conn)throws Exception {
 		if(conn == null)
 		{
 			return null;
 		}
-		try {
+	
 			if(!conn.isClosed()){
 				String sql="select * from size";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -35,9 +35,7 @@ public class SizeDaoImpl implements SizeDao{
 				}
 				return list;//返回所有的size
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		
 		
 		
@@ -45,11 +43,11 @@ public class SizeDaoImpl implements SizeDao{
 	}
 
 	@Override
-	public Size getSizeById(int comid, Connection conn) {
+	public Size getSizeById(int comid, Connection conn) throws Exception{
 		if(conn==null){
 			return null;
 		}
-		try {
+	
 			if(!conn.isClosed()){
 				String sql="select * from size where comid=?";
 				
@@ -69,18 +67,16 @@ public class SizeDaoImpl implements SizeDao{
 				}
 			
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+	
 		return null;
 	}
 
 	@Override
-	public boolean insertSize(Size size, Connection conn) {
+	public boolean insertSize(Size size, Connection conn)throws Exception {
 		if(conn==null){
 			return false;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="insert into size values(?,?,?,?,?,?) ";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -96,19 +92,16 @@ public class SizeDaoImpl implements SizeDao{
 			    	return true;
 			    }
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean deleteSizetByid(int comid, Connection conn) {
+	public boolean deleteSizetByid(int comid, Connection conn)throws Exception {
 		if(conn==null){
 			return false;
 		}
-		try {
+		
 			String sql="delete from size where comid=?";
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ps.setInt(1, comid);
@@ -116,32 +109,32 @@ public class SizeDaoImpl implements SizeDao{
 			 if(rs > 0){
 				 return true;
 			 }
-		} catch (Exception e) {
-			e.printStackTrace();
-			
-		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean modifySize(Size size, Connection conn) {
+	public boolean modifySize(Size size, Connection conn)throws Exception {
 		if(conn==null){
 			return false;
 		}
-		try {
+	
 			if(!conn.isClosed()){
-				String sql="update size set comid=?,size1=?,size2=?,size3=?,size4=?,size5=? where comid=?";
+				String sql="update size set size1=?,size2=?,size3=?,size4=?,size5=? where comid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				
+				ps.setString(1, size.getSize1());
+				ps.setString(2, size.getSize2());
+				ps.setString(3, size.getSize3());
+				ps.setString(4, size.getSize4());
+				ps.setString(5, size.getSize5());
+				ps.setString(6, size.getComid());
 				int rs=ps.executeUpdate();
 				if(rs > 0){
 					return true;
 				}
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+	
 		return false;
 	}
 

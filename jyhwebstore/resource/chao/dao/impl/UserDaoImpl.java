@@ -14,12 +14,12 @@ import chao.dao.UserDao;
 public class UserDaoImpl implements UserDao{
 
 	@Override
-	public List<User> getAllUser(Connection conn) {
+	public List<User> getAllUser(Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return null;
 		}
-		try {
+
 			if(!conn.isClosed()){
 				String sql="select * from user";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -40,20 +40,17 @@ public class UserDaoImpl implements UserDao{
 				}
 				return list;
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return null;
 	}
 
 	@Override
-	public User getUserById(int uid, Connection conn) {
+	public User getUserById(int uid, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return null;
 		}
-		try {
+	
 			if(!conn.isClosed()){
 				String sql="select * from user where uid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -74,20 +71,18 @@ public class UserDaoImpl implements UserDao{
 					
 				}
 			}
-		}catch(Exception e){
-			e.printStackTrace();
-		}
+		
 		
 		return null;
 	}
 
 	@Override
-	public boolean insertUser(User user, Connection conn) {
+	public boolean insertUser(User user, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+	
 			if(!conn.isClosed()){
 				String sql="insert into user values(?,?,?,?,?,?,?,?) ";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -104,20 +99,17 @@ public class UserDaoImpl implements UserDao{
 			    	return true;
 			    }
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean deleteUserByid(int uid, Connection conn) {
+	public boolean deleteUserByid(int uid, Connection conn) throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+	
 			String sql="delete from user where uid=?";
 			if(!conn.isClosed()){
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -127,20 +119,17 @@ public class UserDaoImpl implements UserDao{
 				return true;
 			}
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+	
 		return false;
 	}
 
 	@Override
-	public boolean modifyUser(User user, Connection conn) {
+	public boolean modifyUser(User user, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+	
 			if(!conn.isClosed()){
 				String sql="update user set uname=?,pic=?,birth=?,sex=?,uphone=?,mail=?,setadd=? where uid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -158,10 +147,7 @@ public class UserDaoImpl implements UserDao{
 				}
 			}
 			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 

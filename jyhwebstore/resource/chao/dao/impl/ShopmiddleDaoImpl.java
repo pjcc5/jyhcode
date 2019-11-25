@@ -12,12 +12,12 @@ import chao.dao.ShopmiddleDao;
 public class ShopmiddleDaoImpl implements ShopmiddleDao{
 
 	@Override
-	public List<Shopmiddle> getAllShopmiddle(Connection conn) {
+	public List<Shopmiddle> getAllShopmiddle(Connection conn) throws Exception{
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return null;
 		}
-		try {
+
 			if(!conn.isClosed()){
 			String sql="select * from shopmiddle";
 			PreparedStatement ps=conn.prepareStatement(sql);
@@ -31,20 +31,17 @@ public class ShopmiddleDaoImpl implements ShopmiddleDao{
 			}
 			return list;
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return null;
 	}
 
 	@Override
-	public Shopmiddle getSById(String aid, Connection conn) {
+	public Shopmiddle getSById(String aid, Connection conn) throws Exception{
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return null;
 		}
-		try {
+	
 			if(!conn.isClosed()){
 			String sql="select * from shopmiddle where ais=?";
 			PreparedStatement ps=conn.prepareStatement(sql);
@@ -59,20 +56,17 @@ public class ShopmiddleDaoImpl implements ShopmiddleDao{
 			}
 			
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+	
 		return null;
 	}
 
 	@Override
-	public boolean insertShopmiddle(Shopmiddle shopmiddle, Connection conn) {
+	public boolean insertShopmiddle(Shopmiddle shopmiddle, Connection conn) throws Exception{
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+	
 			if(conn.isClosed()){
 				return false;
 			}
@@ -85,20 +79,17 @@ public class ShopmiddleDaoImpl implements ShopmiddleDao{
 				return true;
 			}
 			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean deleteShopmiddleByid(String aid, Connection conn) {
+	public boolean deleteShopmiddleByid(String aid, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+	
 			if(conn.isClosed()){
 				return false;
 			}
@@ -111,21 +102,18 @@ public class ShopmiddleDaoImpl implements ShopmiddleDao{
 				return true;
 			}
 			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean modifyShopmiddle(Shopmiddle shopmiddle, Connection conn) {
+	public boolean modifyShopmiddle(Shopmiddle shopmiddle, Connection conn) throws Exception{
 		// TODO Auto-generated method stub
 		System.out.println(shopmiddle);
 		if(conn==null){
 			return false;
 		}
-		try {
+		
 			if(conn.isClosed()){
 				return false;
 			}
@@ -138,10 +126,7 @@ public class ShopmiddleDaoImpl implements ShopmiddleDao{
 				return true;
 			}
 			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 
