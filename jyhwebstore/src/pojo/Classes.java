@@ -16,6 +16,7 @@ public class Classes  implements Serializable{
 	private java.lang.String test4;//test4
 	private java.lang.String test5;//test5
 	public java.lang.Integer getClassid(){
+		
 		return this.classid;
 	}
 	public void setClassid(java.lang.Integer classid){
