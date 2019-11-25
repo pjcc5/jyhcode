@@ -34,12 +34,12 @@ public class CommodityDaoImpl implements CommodityDao{
 			commodity.setComid(rs.getString("comid"));
 			commodity.setComname(rs.getString("comname"));
 			commodity.setCompic(rs.getString("compic"));
-			commodity.setComdetails(rs.getString("comdetails"));
+			commodity.setComdetails(rs.getInt("comdetails"));
 			commodity.setComprice(rs.getDouble("comprice"));
-			commodity.setComclass(rs.getInt("comclass"));
-			commodity.setTest1(rs.getString("test1"));
-			commodity.setTest2(rs.getString("test2"));
-			commodity.setTest3(rs.getString("test3"));
+			commodity.setComclass(rs.getString("comclass"));
+			commodity.setColor(rs.getString("color"));
+			commodity.setPai(rs.getString("pai"));
+			commodity.setSize(rs.getString("size"));
 			commodity.setTest4(rs.getString("test4"));
 			list.add(commodity);
 			}
@@ -74,12 +74,12 @@ public class CommodityDaoImpl implements CommodityDao{
 			commodity.setComid(rs.getString("comid"));
 			commodity.setComname(rs.getString("comname"));
 			commodity.setCompic(rs.getString("compic"));
-			commodity.setComdetails(rs.getString("comdetails"));
+			commodity.setComdetails(rs.getInt("comdetails"));
 			commodity.setComprice(rs.getDouble("comprice"));
-			commodity.setComclass(rs.getInt("comclass"));
-			commodity.setTest1(rs.getString("test1"));
-			commodity.setTest2(rs.getString("test2"));
-			commodity.setTest3(rs.getString("test3"));
+			commodity.setComclass(rs.getString("comclass"));
+			commodity.setColor(rs.getString("test1"));
+			commodity.setPai(rs.getString("test2"));
+			commodity.setSize(rs.getString("test3"));
 			commodity.setTest4(rs.getString("test4"));
 			
 			}
@@ -130,12 +130,12 @@ public class CommodityDaoImpl implements CommodityDao{
 				ps.setString(1, commodity.getComid());
 				ps.setString(2, commodity.getComname());
 				ps.setString(3, commodity.getCompic());
-				ps.setString(4, commodity.getComdetails());
+				ps.setInt(4, commodity.getComdetails());
 				ps.setDouble(5, commodity.getComprice());
-				ps.setInt(6, commodity.getComclass());
-				ps.setString(7, commodity.getTest1());
-				ps.setString(8, commodity.getTest2());
-				ps.setString(9, commodity.getTest3());
+				ps.setString(6, commodity.getComclass());
+				ps.setString(7, commodity.getColor());
+				ps.setString(8, commodity.getPai());
+				ps.setString(9, commodity.getSize());
 				ps.setString(10, commodity.getTest4());
 			int rs=ps.executeUpdate();
 			if(rs>0){
@@ -189,17 +189,17 @@ public class CommodityDaoImpl implements CommodityDao{
 				String sql = "update commodity set comname=?,compic=?,comdetails=?,"
 						+"comprice=?,comclass=?,test1=?,test2=?,test3=?,test4=? where comid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
-			
-				ps.setString(1, commodity.getComname());
-				ps.setString(2, commodity.getCompic());
-				ps.setString(3, commodity.getComdetails());
-				ps.setDouble(4, commodity.getComprice());
-				ps.setInt(5, commodity.getComclass());
-				ps.setString(6, commodity.getTest1());
-				ps.setString(7, commodity.getTest2());
-				ps.setString(8, commodity.getTest3());
-				ps.setString(9, commodity.getTest4());
-				ps.setString(10, commodity.getComid());
+//			
+//				ps.setString(1, commodity.getComname());
+//				ps.setString(2, commodity.getCompic());
+//				ps.setString(3, commodity.getComdetails());
+//				ps.setDouble(4, commodity.getComprice());
+//				ps.setInt(5, commodity.getComclass());
+//				ps.setString(6, commodity.getTest1());
+//				ps.setString(7, commodity.getTest2());
+//				ps.setString(8, commodity.getTest3());
+//				ps.setString(9, commodity.getTest4());
+//				ps.setString(10, commodity.getComid());
 			int rs=ps.executeUpdate();
 			if(rs>0){
 				return true;

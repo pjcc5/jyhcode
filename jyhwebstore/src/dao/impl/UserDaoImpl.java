@@ -7,6 +7,7 @@ import java.util.List;
 import java.util.UUID;
 
 import pojo.Acount;
+import pojo.Classes;
 import pojo.Commodity;
 import pojo.Compic;
 import pojo.Details;
@@ -41,12 +42,21 @@ private void mian() {
 }
 public static void main(String[] args) {
 	Connection conn= DbHelp2.getConnection();
-	UserDao dao=new chao.dao.impl.UserDaoImpl();
-	User user=new User();
-	user.setBirth(new Date());
-	user.setUid(1);
-	System.out.println(dao.modifyUser(user, conn));
-
-
+	Details details=new Details();
+	DetailsDao dao=new DetailsDaoImpl();
+	details.setColor("2");
+	details.setDetailsdot(2);
+	details.setDetailsdrawing("2");
+	details.setDetailsid(1);
+	details.setDetailsprice(20.0);
+	details.setDetailssale(2);
+	details.setDetailsstock(2);
+	details.setPai("2");
+	details.setSize("2");
+	details.setTest4("2");
+	details.setTest5("2");
+	details.setTest6("2");
+	
+	System.out.println(dao.modifyDetails(details, conn));
 }
 }

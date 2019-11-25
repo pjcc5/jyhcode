@@ -32,15 +32,16 @@ public class DetailsDaoImpl implements DetailsDao{
 			Details details=new Details();
 			details.setDetailsdot(rs.getInt("detailsdot"));
 			details.setDetailsdrawing(rs.getString("detailsdrawing"));
-			details.setDetailsid(rs.getString("detailsid"));
+			details.setDetailsid(rs.getInt("detailsid"));
 			details.setDetailsprice(rs.getDouble("detailsprice"));
-			details.setDetailssale(rs.getInt("detailssal"));
+			details.setDetailssale(rs.getInt("detailssale"));
 			details.setDetailsstock(rs.getInt("detailsstock"));
-			details.setTest1(rs.getString("test1"));
-			details.setTest1(rs.getString("test2"));
-			details.setTest1(rs.getString("test3"));
-			details.setTest1(rs.getString("test4"));
-			details.setTest1(rs.getString("test5"));
+			details.setColor(rs.getString("color"));
+			details.setSize(rs.getString("size"));
+			details.setPai(rs.getString("pai"));
+			details.setTest4(rs.getString("test4"));
+			details.setTest5(rs.getString("test5"));
+			details.setTest6(rs.getString("test6"));
 			list.add(details);
 			}
 				
@@ -54,7 +55,7 @@ public class DetailsDaoImpl implements DetailsDao{
 	}
 
 	@Override
-	public Details getDetailsById(String detailsid, Connection conn) {
+	public Details getDetailsById(int detailsid, Connection conn) {
 		// TODO Auto-generated method stub
 		if(conn == null)
 		{
@@ -65,21 +66,22 @@ public class DetailsDaoImpl implements DetailsDao{
 			if(!conn.isClosed()){
 				String sql="select * from details where detailsid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
-			ps.setString(1, detailsid);
+			ps.setInt(1, detailsid);
 				ResultSet rs=ps.executeQuery();
 			if(rs.next()){
 			Details details=new Details();
 			details.setDetailsdot(rs.getInt("detailsdot"));
 			details.setDetailsdrawing(rs.getString("detailsdrawing"));
-			details.setDetailsid(rs.getString("detailsid"));
+			details.setDetailsid(rs.getInt("detailsid"));
 			details.setDetailsprice(rs.getDouble("detailsprice"));
 			details.setDetailssale(rs.getInt("detailssale"));
 			details.setDetailsstock(rs.getInt("detailsstock"));
-			details.setTest1(rs.getString("test1"));
-			details.setTest1(rs.getString("test2"));
-			details.setTest1(rs.getString("test3"));
-			details.setTest1(rs.getString("test4"));
-			details.setTest1(rs.getString("test5"));
+			details.setColor(rs.getString("color"));
+			details.setSize(rs.getString("size"));
+			details.setPai(rs.getString("pai"));
+			details.setTest4(rs.getString("test4"));
+			details.setTest5(rs.getString("test5"));
+			details.setTest6(rs.getString("test6"));
 			return details;
 			}
 				
@@ -103,15 +105,15 @@ public class DetailsDaoImpl implements DetailsDao{
 			if(!conn.isClosed()){
 				String sql = "insert into details values(?,?,?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setString(1, details.getDetailsid());
+				ps.setInt(1, details.getDetailsid());
 				ps.setInt(2, details.getDetailsstock());
 				ps.setDouble(3, details.getDetailsprice());
 				ps.setString(4, details.getDetailsdrawing());
 				ps.setInt(5, details.getDetailsdot());
 				ps.setInt(6, details.getDetailssale());
-				ps.setString(7, details.getTest1());
-				ps.setString(8, details.getTest2());
-				ps.setString(9, details.getTest3());
+				ps.setString(7, details.getColor());
+				ps.setString(8, details.getSize());
+				ps.setString(9, details.getPai());
 				ps.setString(10, details.getTest4());
 				ps.setString(11, details.getTest5());
 				ps.setString(12, details.getTest6());
@@ -131,7 +133,7 @@ public class DetailsDaoImpl implements DetailsDao{
 	}
 
 	@Override
-	public boolean deleteDetailsByid(String aid, Connection conn) {
+	public boolean deleteDetailsByid(int aid, Connection conn) {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
@@ -140,7 +142,7 @@ public class DetailsDaoImpl implements DetailsDao{
 			if(!conn.isClosed()){
 				String sql="delete from details where detailsid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setString(1, aid);
+				ps.setInt(1, aid);
 				int rs=ps.executeUpdate();
 				if(rs>0){
 					return true;
@@ -160,20 +162,20 @@ public class DetailsDaoImpl implements DetailsDao{
 		}
 		try {
 			String sql="update details set detailsstock=?,detailsprice=?,detailsdrawing=?,"
-					+ "detailsdot=?,detailssale=?,test1=?,test2=?,test3=?,test4=?,test5=?,test6=? where detailsid=?";
+					+ "detailsdot=?,detailssale=?,color=?,size=?,pai=?,test4=?,test5=?,test6=? where detailsid=?";
 		   PreparedStatement ps=conn.prepareStatement(sql);
 		   ps.setInt(1, details.getDetailsstock());
 		   ps.setDouble(2, details.getDetailsprice());
 		   ps.setString(3, details.getDetailsdrawing());
 		   ps.setInt(4, details.getDetailsdot());
 		   ps.setInt(5, details.getDetailssale());
-		   ps.setString(6, details.getTest1());
-		   ps.setString(7, details.getTest2());
-		   ps.setString(8, details.getTest3());
+		   ps.setString(6, details.getColor());
+		   ps.setString(7, details.getSize());
+		   ps.setString(8, details.getPai());
 		   ps.setString(9, details.getTest4());
 		   ps.setString(10, details.getTest5());
 		   ps.setString(11, details.getTest6());
-		   ps.setString(12, details.getDetailsid());
+		   ps.setInt(12, details.getDetailsid());
 		   
 		  int rs= ps.executeUpdate();
 		  if(rs>0){
