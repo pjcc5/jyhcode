@@ -56,8 +56,6 @@ public class ClassesDaoImpl implements ClassesDao{
 		if(conn==null){
 			return null;
 		}
-		
-		
 		try {
 			if(!conn.isClosed()){
 				String sql="select * from classes where classid=?";

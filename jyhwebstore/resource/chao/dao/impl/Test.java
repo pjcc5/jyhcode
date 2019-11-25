@@ -2,6 +2,10 @@ package chao.dao.impl;
 
 import java.io.IOException;
 import java.sql.Connection;
+//<<<<<<< HEAD
+//=======
+import java.util.ArrayList;
+//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 import java.util.List;
 import java.util.UUID;
 
@@ -11,12 +15,20 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.w3c.dom.stylesheets.DocumentStyle;
 
+//<<<<<<< HEAD
 import chao.dao.AcountDao;
+//=======
+import chao.dao.ClassesDao;
+//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 import chao.dao.CommodityDao;
 import chao.dao.CompicDao;
 import chao.dao.DetailsDao;
 import db.DbHelp2;
+//<<<<<<< HEAD
 import pojo.Acount;
+//=======
+import pojo.Classes;
+//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 import pojo.Commodity;
 import pojo.Compic;
 import pojo.Details;
@@ -157,8 +169,56 @@ public class Test {
 //		}
 //		
 		
+	/*
+	 *	测试calsses表OK
+	 */
+	//测试classes表的前插入方法Ok
+		ClassesDao cd =new ClassesDaoImpl();
+//		Classes c = new Classes();
+		connection conn =DbHelp2.getConnection();
+//		c.setClassid(1);
+//		c.setSize("大");
+//		c.setSeason(10);
+//		c.setColor("至尊蓝");
+//		c.setBrand("苹果");
+//		c.setClasses("手机");
+//		c.setTest1("测试1");
+//		c.setTest2("测试2");
+//		c.setTest3("测试3");
+//		c.setTest4("测试4");
+//		boolean result = cd.insertClasses(c, conn);
+//		System.out.println(result);
+		//测试classes表的拿到所有方法Ok
+//		List<Classes> list = cd.getAllClasses(conn);
+//		for (Classes classes : list) {
+//			System.out.println(classes);
+//		}
 		
+		//测试classes表的拿到一个方法Ok
+//		Classes clas =cd.getClassesById(1, conn);
+//		System.out.println(clas);
 		
+//<<<<<<< HEAD
+//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
+=======
+		//测试classes表的删除一个方法Ok
+//		boolean result =cd.deleteClassesByid(1, conn);
+//		System.out.println(result);
+		
+		//测试classes表的修改一个方法OK
+//		Classes c = new Classes();
+//		c.setClassid(2);
+//		c.setSize("小");
+//		c.setSeason(12);
+//		c.setColor("至尊红");
+//		c.setBrand("华为");
+//		c.setClasses("手机");
+//		c.setTest1("测试1");
+//		c.setTest2("测试2");
+//		c.setTest3("测试3");
+//		c.setTest4("测试4");
+//		boolean result = cd.modifyClasses(c, conn);
+//		System.out.println(result);
 //>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 	}
 
