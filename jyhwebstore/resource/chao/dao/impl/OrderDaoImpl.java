@@ -15,14 +15,14 @@ import chao.dao.OrderDao;
 public class OrderDaoImpl implements OrderDao{
 
 	@Override
-	public List<Order> getAllOrder(Connection conn) {
+	public List<Order> getAllOrder(Connection conn)throws Exception {
 		if(conn==null)
 		{
 			return null;
 			
 		}
 		List<Order> list=new ArrayList<Order>();
-		try {
+		
 			if(!conn.isClosed())
 			{
 				
@@ -57,19 +57,17 @@ public class OrderDaoImpl implements OrderDao{
 			
 			
 			
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		
 		return list;
 	}
 
 	@Override
-	public Order getOrderById(int aid, Connection conn) {
+	public Order getOrderById(int aid, Connection conn) throws Exception{
 		if(conn == null)
 		{
 			return null;
 		}
-		try {
+
 			if(!conn.isClosed()){
 			String sql="select * from orderform where aid=?";
 			PreparedStatement ps=conn.prepareStatement(sql);
@@ -98,21 +96,18 @@ public class OrderDaoImpl implements OrderDao{
 			}
 				
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return null;
 	}
 
 	@Override
-	public boolean insertOrder(Order order, Connection conn) {
+	public boolean insertOrder(Order order, Connection conn) throws Exception{
 		if(conn == null)
 		{
 			return false;
 		}
 		
-		try {
+	
 			
 			if(!conn.isClosed()){
 				String sql = "insert into orderform values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -140,21 +135,18 @@ public class OrderDaoImpl implements OrderDao{
 			}
 			 
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		
 		
 		return false;
 	}
 
 	@Override
-	public boolean deleteOrderByid(int aid, Connection conn) {
+	public boolean deleteOrderByid(int aid, Connection conn)throws Exception {
 		if(conn==null){
 			return false;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="delete from orderform where aid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -164,20 +156,18 @@ public class OrderDaoImpl implements OrderDao{
 					return true;
 				}
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean modifyOrder(Order order, Connection conn) {
+	public boolean modifyOrder(Order order, Connection conn)throws Exception {
 		if(conn == null)
 		{
 			return false;
 		}
 		
-		try {
+		
 			
 			if(!conn.isClosed()){
 				String sql = "update orderform set aid=?,comid=?,comname=?,orderadd=?,ordername=?,"
@@ -207,10 +197,7 @@ public class OrderDaoImpl implements OrderDao{
 			}
 			 
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		
 		
 		return false;

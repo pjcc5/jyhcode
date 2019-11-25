@@ -17,14 +17,14 @@ public class CommodityDaoImpl implements CommodityDao{
  * 商品表操作
  */
 	@Override
-	public List<Commodity> getAllCommodity(Connection conn) {
+	public List<Commodity> getAllCommodity(Connection conn) throws Exception{
 		
 		if(conn==null){
 			return null;
 		}
 		
 		List<Commodity> list=new ArrayList<>();
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="select * from commodity";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -48,16 +48,13 @@ public class CommodityDaoImpl implements CommodityDao{
 			}
 				
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		
 		return list;
 	}
 
 	@Override
-	public Commodity getCommodityById(String comid, Connection conn) {
+	public Commodity getCommodityById(String comid, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		
 		if(conn==null){
@@ -65,7 +62,7 @@ public class CommodityDaoImpl implements CommodityDao{
 		}
 		
 	
-		try {
+	
 			if(!conn.isClosed()){
 				String sql="select * from commodity where comid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -91,22 +88,19 @@ public class CommodityDaoImpl implements CommodityDao{
 			}
 				return commodity;
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return null;
 	}
 	
 	@Override
-	public boolean insertCommodity(Commodity commodity, Connection conn) {
+	public boolean insertCommodity(Commodity commodity, Connection conn)throws Exception {
 		
 		if(conn==null){
 			return false;
 		}
 		
 	
-		try {
+	
 			if(!conn.isClosed()){
 				String sql = "insert into commodity values(?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -129,20 +123,17 @@ public class CommodityDaoImpl implements CommodityDao{
 			}
 			
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+	
 		return false;
 	}
 	
 	@Override
-	public boolean deleteCommodityByid(String comid, Connection conn) {
+	public boolean deleteCommodityByid(String comid, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+
 			if(!conn.isClosed()){
 				String sql = "delete from commodity where comid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -153,22 +144,19 @@ public class CommodityDaoImpl implements CommodityDao{
 			}
 			
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean modifyCommodity(Commodity commodity, Connection conn) {
+	public boolean modifyCommodity(Commodity commodity, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
 		
 	
-		try {
+	
 			if(!conn.isClosed()){
 				String sql = "update commodity set comname=?,compic=?,comdetails=?,"
 						+"comprice=?,comclass=?,color=?,pai=?,size=?,test4=? where comid=?";
@@ -194,10 +182,7 @@ public class CommodityDaoImpl implements CommodityDao{
 			}
 			
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+	
 		return false;
 	}
 

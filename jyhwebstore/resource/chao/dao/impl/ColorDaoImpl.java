@@ -128,7 +128,7 @@ public class ColorDaoImpl implements ColorDao{
 		}
 		try {
 			if(!conn.isClosed()){
-				String sql="update color set comid=?,color1=?,color2=?,color3=?,color4=?,color5=? where comid=?";
+				String sql="update color set color1=?,color2=?,color3=?,color4=?,color5=? where comid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				
 				int rs=ps.executeUpdate();

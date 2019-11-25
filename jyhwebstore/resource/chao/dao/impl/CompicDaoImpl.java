@@ -14,7 +14,7 @@ import chao.dao.CompicDao;
 public class CompicDaoImpl implements CompicDao{
 
 	@Override
-	public List<Compic> getAllCompic(Connection conn) {
+	public List<Compic> getAllCompic(Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn == null)
 		{
@@ -22,7 +22,7 @@ public class CompicDaoImpl implements CompicDao{
 		}
 		
 		List<Compic> list=new ArrayList<>();
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="select * from compic";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -39,16 +39,13 @@ public class CompicDaoImpl implements CompicDao{
 			}
 				
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		
 		return list;
 		
 	}
 	@Override
-	public Compic getCompicById(String comid, Connection conn) {
+	public Compic getCompicById(String comid, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn == null)
 		{
@@ -56,7 +53,7 @@ public class CompicDaoImpl implements CompicDao{
 		}
 		
 		List<Compic> list=new ArrayList<>();
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="select * from compic where comid=?";
 				
@@ -75,20 +72,17 @@ public class CompicDaoImpl implements CompicDao{
 			}
 				
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+	
 		return null;
 	}
 
 	@Override
-	public boolean insertCompic(Compic compic, Connection conn) {
+	public boolean insertCompic(Compic compic, Connection conn)throws Exception {
 		if(conn == null)
 		{
 			return false;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 				String sql = "insert into compic values(?,?,?,?,?,?)";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -106,22 +100,19 @@ public class CompicDaoImpl implements CompicDao{
 			}
 			 
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		
 		
 		return false;
 	}
 
 	@Override
-	public boolean deleteCompicByid(String aid, Connection conn) {
+	public boolean deleteCompicByid(String aid, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+
 			if(!conn.isClosed()){
 				String sql="delete from compic where comid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -132,20 +123,17 @@ public class CompicDaoImpl implements CompicDao{
 				}
 			}
 			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean modifyCompic(Compic compic, Connection conn) {
+	public boolean modifyCompic(Compic compic, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="update compic set picurl1=?,picurl2=?,"
 						+ "picurl3=?,picurl4=?,picurl5=? where comid=?";
@@ -162,10 +150,7 @@ public class CompicDaoImpl implements CompicDao{
 				}
 			}
 			
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 

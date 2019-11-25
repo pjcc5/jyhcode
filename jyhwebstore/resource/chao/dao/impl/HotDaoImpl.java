@@ -14,12 +14,12 @@ import chao.dao.HotDao;
 public class HotDaoImpl implements HotDao{
 
 	@Override
-	public List<Hot> getAllHot(Connection conn) {
+	public List<Hot> getAllHot(Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return null;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="select * from hot";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -38,20 +38,17 @@ public class HotDaoImpl implements HotDao{
 				}
 				return list;
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return null;
 	}
 
 	@Override
-	public Hot getHotById(int hotcom, Connection conn) {
+	public Hot getHotById(int hotcom, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return null;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="select * from hot where hotcom=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -71,21 +68,18 @@ public class HotDaoImpl implements HotDao{
 				}
 			
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		
 		return null;
 	}
 
 	@Override
-	public boolean insertHot(Hot hot, Connection conn) {
+	public boolean insertHot(Hot hot, Connection conn) throws Exception{
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="insert into hot values(?,?,?,?,?,?,?)";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -102,20 +96,17 @@ public class HotDaoImpl implements HotDao{
 			    }
 			    
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean deleteHotByid(int aid, Connection conn) {
+	public boolean deleteHotByid(int aid, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 			String sql="delete from hot where hotcom=?";
 			PreparedStatement ps=conn.prepareStatement(sql);
@@ -127,20 +118,17 @@ public class HotDaoImpl implements HotDao{
 			    }
 			    
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+	
 		return false;
 	}
 
 	@Override
-	public boolean modifyHot(Hot hot, Connection conn) {
+	public boolean modifyHot(Hot hot, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="update hot set hotcomid=?,hotdatestart=?,hotdatend=?,test1=?,test2=?,test3=? where hotcom=?";
 			 PreparedStatement ps=conn.prepareStatement(sql);
@@ -156,10 +144,7 @@ public class HotDaoImpl implements HotDao{
 				 return true;
 			 }
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 

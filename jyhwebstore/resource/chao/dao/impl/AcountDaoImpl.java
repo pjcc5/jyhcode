@@ -16,14 +16,14 @@ import chao.dao.AcountDao;
 public class AcountDaoImpl implements AcountDao{
 
 	@Override
-	public List<Acount> getAllAcount(Connection conn)  {
+	public List<Acount> getAllAcount(Connection conn) throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return null;
 		}
 		
 		List<Acount> list=new ArrayList<>();
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="select * from acount";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -41,22 +41,19 @@ public class AcountDaoImpl implements AcountDao{
 			}
 				
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		
 		return list;
 	}
 
 	@Override
-	public Acount getAcountById(String aid, Connection conn) {
+	public Acount getAcountById(String aid, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return null;
 		}
 		Acount acount=new Acount();
-		try {
+	
 			if(!conn.isClosed()){
 				String sql="select * from acount where aid=?";
 			
@@ -75,19 +72,17 @@ public class AcountDaoImpl implements AcountDao{
 			}
 				
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		return acount;
 	}
 
 	@Override
-	public boolean insertAcount(Acount acount, Connection conn) {
+	public boolean insertAcount(Acount acount, Connection conn)throws Exception {
 		if(conn==null){
 			return false;
 		}
 		
-		try {
+		
 			if(!conn.isClosed()){
 				UUID.randomUUID().toString();
 				String sql="insert into  acount values(?,?,?,?,?,?,?)";
@@ -105,20 +100,18 @@ public class AcountDaoImpl implements AcountDao{
 				}
 				
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		
 		return false;
 	}
 
 	@Override
-	public boolean deleteAcountByid(String aid, Connection conn) {
+	public boolean deleteAcountByid(String aid, Connection conn)throws Exception {
 		String sql="delete from acount where aid=?";
 		if(conn==null){
 			return false;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, aid);
@@ -127,19 +120,17 @@ public class AcountDaoImpl implements AcountDao{
 				return true;
 			}	
 			}
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		
 		return false;
 	}
 
 	@Override
-	public boolean modifyAcount(Acount acount, Connection conn) {
+	public boolean modifyAcount(Acount acount, Connection conn) throws Exception{
 		if(conn==null){
 			return false;
 		}
-		try {
+
 			String sql="update acount set aname=?,apass=?,isadm=?,aphone=?,amail=?,addr=? where aid=? ";
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ps.setString(1, acount.getAname());
@@ -154,9 +145,6 @@ public class AcountDaoImpl implements AcountDao{
 				return true;
 			}
 			
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
 		
 		
 		return false;
