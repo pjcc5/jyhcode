@@ -107,6 +107,22 @@ public class Test {
 		//测试单个的查询12
 //		Acount ac =  acountdao.getAcountById("12", conn);
 //		System.out.println(ac);
+		//测试commoditydao的implement中的方法
+		Connection conn = DbHelp2.getConnection();
+		CommodityDao cd = new CommodityDaoImpl();
+		//插入ok
+//		Commodity comm = new Commodity();
+//		comm.setComname("华为note10plus");
+//		comm.setComclass(2);
+//		comm.setComdetails("2222");
+//		comm.setComid("123");
+//		comm.setComprice(59000.2);
+//		comm.setCompic("图片");
+//	    boolean f=cd.insertCommodity(comm, conn);
+//	    System.out.println(f);
+	    //修改
+		List<Commodity>list = cd.getAllCommodity(conn);
+		System.out.println(list);
 	}
 
 }
