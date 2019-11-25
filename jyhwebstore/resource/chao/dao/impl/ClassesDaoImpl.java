@@ -28,7 +28,7 @@ public class ClassesDaoImpl implements ClassesDao{
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()){
 			Classes classes=new Classes();
-			classes.setClassid(rs.getInt("calssid"));
+			classes.setClassid(rs.getInt("classid"));
 			classes.setSize(rs.getString("size"));
 			classes.setSeason(rs.getInt("season"));
 			classes.setColor(rs.getString("color"));
@@ -46,21 +46,46 @@ public class ClassesDaoImpl implements ClassesDao{
 		} catch (Exception e) {
 			// TODO: handle exception
 			e.printStackTrace();
-		}finally{
-			try {
-				conn.close();
-			} catch (SQLException e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
 		}
+		
 		
 		return list;
 	}
 	@Override
-	public Classes getClassesById(String aid, Connection conn) {
+	public Classes getClassesById(int aid, Connection conn) {
+		if(conn==null){
+			return null;
+		}
 		
-		System.out.println(11);
+		
+		try {
+			if(!conn.isClosed()){
+				String sql="select * from classes where classid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setInt(1, aid);
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()){
+			Classes classes=new Classes();
+			classes.setClassid(rs.getInt("classid"));
+			classes.setSize(rs.getString("size"));
+			classes.setSeason(rs.getInt("season"));
+			classes.setColor(rs.getString("color"));
+			classes.setBrand(rs.getString("brand"));
+			classes.setClasses(rs.getString("classes"));
+			classes.setTest1(rs.getString("test1"));
+			classes.setTest2(rs.getString("test2"));
+			classes.setTest3(rs.getString("test3"));
+			classes.setTest4(rs.getString("test4"));
+			classes.setTest5(rs.getString("test5"));
+		     return classes;
+			}
+				
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
+		
 			return null;
 	
 		
@@ -69,19 +94,91 @@ public class ClassesDaoImpl implements ClassesDao{
 
 	@Override
 	public boolean insertClasses(Classes classes, Connection conn) {
-		
+		if(conn==null){
+			return false;
+		}
+		try {
+			if(!conn.isClosed()){
+				String sql="insert into classes values(?,?,?,?,?,?,?,?,?,?,?)";
+			   PreparedStatement ps=conn.prepareStatement(sql);
+			   ps.setInt(1, classes.getClassid());
+			   ps.setString(2, classes.getSize());
+			   ps.setInt(3, classes.getSeason());
+			   ps.setString(4, classes.getColor());
+			   ps.setString(5, classes.getBrand());
+			   ps.setString(6, classes.getClasses());
+			   ps.setString(7, classes.getTest1());
+			   ps.setString(8, classes.getTest2());
+			   ps.setString(9, classes.getTest3());
+			   ps.setString(10, classes.getTest4());
+			   ps.setString(11, classes.getTest5());
+			   int rs=ps.executeUpdate();
+			   if(rs>0){
+				   return true;
+			   }
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		return false;
 	}
 
 	@Override
-	public boolean deleteClassesByid(String aid, Connection conn) {
+	public boolean deleteClassesByid(int aid, Connection conn) {
 		// TODO Auto-generated method stub
+		if(conn==null){
+			return false;
+		}
+		try {
+			if(!conn.isClosed()){
+				String sql="delete from classes where classid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setInt(1, aid);
+				int rs=ps.executeUpdate();
+				if(rs>0){
+					return true;
+				}
+		
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+			
+		}
 		return false;
 	}
 
 	@Override
 	public boolean modifyClasses(Classes classes, Connection conn) {
 		// TODO Auto-generated method stub
+		if(conn==null){
+			return false;
+		}
+		try {
+			if(!conn.isClosed()){
+				String sql="update classes set size=?,season=?,color=?,brand=?,classes=?,test1=?,test2=?,test3=?,test4=?,test5=? where classid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setString(1, classes.getSize());
+				ps.setInt(2, classes.getSeason());
+				ps.setString(3, classes.getColor());
+				ps.setString(4, classes.getBrand());
+				ps.setString(5, classes.getClasses());
+				ps.setString(6, classes.getTest1());
+				ps.setString(7, classes.getTest2());
+				ps.setString(8, classes.getTest3());
+				ps.setString(9, classes.getTest4());
+				ps.setString(10, classes.getTest5());
+				ps.setInt(11, classes.getClassid());
+				int rs=ps.executeUpdate();
+				if(rs>0){
+					return true;
+				}
+			}
+		} catch (Exception e) {
+			// TODO: handle exception
+			e.printStackTrace();
+		}
 		return false;
 	}
 
