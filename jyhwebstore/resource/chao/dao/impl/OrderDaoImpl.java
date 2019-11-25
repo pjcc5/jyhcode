@@ -15,14 +15,14 @@ import chao.dao.OrderDao;
 public class OrderDaoImpl implements OrderDao{
 
 	@Override
-	public List<Orderform> getAllOrder(Connection conn)throws Exception 
+	public List<Orderform> getAllOrderform(Connection conn)throws Exception 
 	{	
 		if(conn==null)
 		{
 			return null;
 			
 		}
-		try {
+		
 		List<Orderform> list=new ArrayList<Orderform>();
 		
 			if(!conn.isClosed())
@@ -54,13 +54,14 @@ public class OrderDaoImpl implements OrderDao{
 					list.add(order);
 				}
 				
-				return list;
+				
 			}
+			return list;
 		
 	}
 
 	@Override
-	public Orderform getOrderById(int aid, Connection conn) {
+	public Orderform getOrderformById(int aid, Connection conn)throws Exception {
 		if(conn == null)
 		{
 			return null;
@@ -99,7 +100,7 @@ public class OrderDaoImpl implements OrderDao{
 	}
 
 	@Override
-	public boolean insertOrder(Orderform order, Connection conn) {
+	public boolean insertOrderform(Orderform order, Connection conn)throws Exception {
 		if(conn == null)
 		{
 			return false;
@@ -140,7 +141,7 @@ public class OrderDaoImpl implements OrderDao{
 	}
 
 	@Override
-	public boolean deleteOrderByid(int aid, Connection conn)throws Exception {
+	public boolean deleteOrderformByid(int aid, Connection conn)throws Exception {
 		if(conn==null){
 			return false;
 		}
@@ -159,34 +160,34 @@ public class OrderDaoImpl implements OrderDao{
 	}
 
 	@Override
-	public boolean modifyOrder(Orderform order, Connection conn)throws Exception  {
+	public boolean modifyOrderform(Orderform order, Connection conn)throws Exception  {
 		if(conn == null)
 		{
 			return false;
 		}
 		
 		if(!conn.isClosed()){
-				String sql = "update orderform set aid=?,comid=?,comname=?,orderadd=?,ordername=?,"
+				String sql = "update orderform set comid=?,comname=?,orderadd=?,ordername=?,"
 						+ "orderphone=?,orderprice=?,orderdate=?,orderstatement=?,orderpay=?,orderreturn=?,"
-						+ "orderid=?,ordercompany=?,test1=?,test2=?,test3=?,test4=?";
+						+ "orderid=?,ordercompany=?,test1=?,test2=?,test3=?,test4=? where aid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setInt(1, order.getAid());
-				ps.setString(2, order.getComid());
-				ps.setString(3, order.getComname());
-				ps.setString(4, order.getOrderadd());
-				ps.setString(5, order.getOrdername());
-				ps.setString(6, order.getOrderphone());
-				ps.setDouble(7, order.getOrderprice());
-				ps.setTimestamp(8, new Timestamp(order.getOrderdate().getTime()));
-				ps.setInt(9, order.getOrderstatement());
-				ps.setInt(10, order.getOrderpay());
-				ps.setInt(11, order.getOrderreturn());
-				ps.setString(12, order.getOrderid());
-				ps.setString(13, order.getOrdercompany());
-				ps.setString(14, order.getTest1());
-				ps.setString(15, order.getTest2());
-				ps.setString(16, order.getTest3());
-				ps.setString(17, order.getTest4());
+				ps.setInt(17, order.getAid());
+				ps.setString(1, order.getComid());
+				ps.setString(2, order.getComname());
+				ps.setString(3, order.getOrderadd());
+				ps.setString(4, order.getOrdername());
+				ps.setString(5, order.getOrderphone());
+				ps.setDouble(6, order.getOrderprice());
+				ps.setTimestamp(7, new Timestamp(order.getOrderdate().getTime()));
+				ps.setInt(8, order.getOrderstatement());
+				ps.setInt(9, order.getOrderpay());
+				ps.setInt(10, order.getOrderreturn());
+				ps.setString(11, order.getOrderid());
+				ps.setString(12, order.getOrdercompany());
+				ps.setString(13, order.getTest1());
+				ps.setString(14, order.getTest2());
+				ps.setString(15, order.getTest3());
+				ps.setString(16, order.getTest4());
 			int rs=ps.executeUpdate();
 			if(rs>0){
 				return true;
