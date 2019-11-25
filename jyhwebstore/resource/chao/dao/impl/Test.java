@@ -2,6 +2,7 @@ package chao.dao.impl;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.util.List;
 import java.util.UUID;
 
 import org.jsoup.Jsoup;
@@ -10,10 +11,12 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.w3c.dom.stylesheets.DocumentStyle;
 
+import chao.dao.AcountDao;
 import chao.dao.CommodityDao;
 import chao.dao.CompicDao;
 import chao.dao.DetailsDao;
 import db.DbHelp2;
+import pojo.Acount;
 import pojo.Commodity;
 import pojo.Compic;
 import pojo.Details;
@@ -59,23 +62,51 @@ public class Test {
 //		System.out.println(cd.insertCompic(com, conn));
 		
 		
-		String url = "https://item.yhd.com/57268990549.html";
-		try {
-			
-			Document doc = Jsoup.connect(url).ignoreContentType(true).get();
-			Elements  docs = doc.select("script");
-			for (Element element : docs) {
-				System.out.println(element);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		
-		
-		
-		
-		
+//		String url = "https://item.yhd.com/57268990549.html";
+//		try {
+//			
+//			Document doc = Jsoup.connect(url).ignoreContentType(true).get();
+//			Elements  docs = doc.select("script");
+//			for (Element element : docs) {
+//				System.out.println(element);
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+		//测试AcountDao的实现类AcountDaoImpl中的方法
+//		AcountDao acountdao = new AcountDaoImpl();
+//		Connection conn = DbHelp2.getConnection();
+		//测试插入ok
+//		Acount acount = new Acount();
+//		acount.setAmail("1329016283@qq.com");
+//		acount.setAname("老猫");
+//		acount.setAid("12");
+//		acount.setApass("123456");
+//		acount.setAphone("15074909568");
+//		acount.setAddr("湖南长沙");
+//		acount.setIsadm(2);
+//		acountdao.insertAcount(acount,conn);
+		//测试查询ok
+//		List<Acount>list =  acountdao.getAllAcount(conn);
+//		System.out.println(list);
+		//测试修改ok
+//		Acount acount = new Acount();
+//		acount.setAid("12");
+//		acount.setAmail("1329016283@qq.com");
+//		acount.setAname("猫大大");
+//		acount.setApass("123456");
+//		acount.setAphone("15074909568");
+//		acount.setAddr("湖南长沙");
+//		acount.setIsadm(5);
+//		boolean flag = acountdao.modifyAcount(acount, conn);
+//		System.out.println(flag);
+		//测试删除ok
+//		boolean f =acountdao.deleteAcountByid("12", conn);
+//		System.out.println(f);
+		//测试单个的查询12
+//		Acount ac =  acountdao.getAcountById("12", conn);
+//		System.out.println(ac);
 	}
 
 }
