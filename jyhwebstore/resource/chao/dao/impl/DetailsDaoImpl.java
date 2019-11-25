@@ -36,11 +36,12 @@ public class DetailsDaoImpl implements DetailsDao{
 			details.setDetailsprice(rs.getDouble("detailsprice"));
 			details.setDetailssale(rs.getInt("detailssal"));
 			details.setDetailsstock(rs.getInt("detailsstock"));
-			details.setTest1(rs.getString("test1"));
-			details.setTest1(rs.getString("test2"));
-			details.setTest1(rs.getString("test3"));
-			details.setTest1(rs.getString("test4"));
-			details.setTest1(rs.getString("test5"));
+			details.setColor(rs.getString("color"));
+			details.setSize(rs.getString("size"));
+			details.setPai(rs.getString("pai"));
+			details.setTest4(rs.getString("test4"));
+			details.setTest5(rs.getString("test5"));
+			details.setTest6(rs.getString("test6"));
 			list.add(details);
 			}
 				
@@ -75,11 +76,12 @@ public class DetailsDaoImpl implements DetailsDao{
 			details.setDetailsprice(rs.getDouble("detailsprice"));
 			details.setDetailssale(rs.getInt("detailssale"));
 			details.setDetailsstock(rs.getInt("detailsstock"));
-			details.setTest1(rs.getString("test1"));
-			details.setTest1(rs.getString("test2"));
-			details.setTest1(rs.getString("test3"));
-			details.setTest1(rs.getString("test4"));
-			details.setTest1(rs.getString("test5"));
+			details.setColor(rs.getString("color"));
+			details.setSize(rs.getString("size"));
+			details.setPai(rs.getString("pai"));
+			details.setTest4(rs.getString("test4"));
+			details.setTest5(rs.getString("test5"));
+			details.setTest6(rs.getString("test6"));
 			return details;
 			}
 				
@@ -109,9 +111,9 @@ public class DetailsDaoImpl implements DetailsDao{
 				ps.setString(4, details.getDetailsdrawing());
 				ps.setInt(5, details.getDetailsdot());
 				ps.setInt(6, details.getDetailssale());
-				ps.setString(7, details.getTest1());
-				ps.setString(8, details.getTest2());
-				ps.setString(9, details.getTest3());
+				ps.setString(7, details.getColor());
+				ps.setString(8, details.getSize());
+				ps.setString(9, details.getPai());
 				ps.setString(10, details.getTest4());
 				ps.setString(11, details.getTest5());
 				ps.setString(12, details.getTest6());
@@ -167,9 +169,9 @@ public class DetailsDaoImpl implements DetailsDao{
 		   ps.setString(3, details.getDetailsdrawing());
 		   ps.setInt(4, details.getDetailsdot());
 		   ps.setInt(5, details.getDetailssale());
-		   ps.setString(6, details.getTest1());
-		   ps.setString(7, details.getTest2());
-		   ps.setString(8, details.getTest3());
+		   ps.setString(6, details.getColor());
+		   ps.setString(7, details.getSize());
+		   ps.setString(8, details.getPai());
 		   ps.setString(9, details.getTest4());
 		   ps.setString(10, details.getTest5());
 		   ps.setString(11, details.getTest6());
@@ -180,7 +182,6 @@ public class DetailsDaoImpl implements DetailsDao{
 			  return true;
 		  }
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return false;

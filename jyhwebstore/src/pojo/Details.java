@@ -10,9 +10,9 @@ public class Details  implements Serializable{
 	private java.lang.String detailsdrawing;//detailsdrawing
 	private java.lang.Integer detailsdot;//detailsdot
 	private java.lang.Integer detailssale;//detailssale
-	private java.lang.String test1;//test1
-	private java.lang.String test2;//test2
-	private java.lang.String test3;//test3
+	private java.lang.String color;//color
+	private java.lang.String size;//size
+	private java.lang.String pai;//
 	private java.lang.String test4;//test4
 	private java.lang.String test5;//test5
 	private java.lang.String test6;//test6
@@ -52,23 +52,24 @@ public class Details  implements Serializable{
 	public void setDetailssale(java.lang.Integer detailssale){
 		this.detailssale	= detailssale;
 	}
-	public java.lang.String getTest1(){
-		return this.test1;
+
+	public java.lang.String getColor() {
+		return color;
 	}
-	public void setTest1(java.lang.String test1){
-		this.test1	= test1;
+	public void setColor(java.lang.String color) {
+		this.color = color;
 	}
-	public java.lang.String getTest2(){
-		return this.test2;
+	public java.lang.String getSize() {
+		return size;
 	}
-	public void setTest2(java.lang.String test2){
-		this.test2	= test2;
+	public void setSize(java.lang.String size) {
+		this.size = size;
 	}
-	public java.lang.String getTest3(){
-		return this.test3;
+	public java.lang.String getPai() {
+		return pai;
 	}
-	public void setTest3(java.lang.String test3){
-		this.test3	= test3;
+	public void setPai(java.lang.String pai) {
+		this.pai = pai;
 	}
 	public java.lang.String getTest4(){
 		return this.test4;
@@ -93,10 +94,11 @@ public class Details  implements Serializable{
 		return "Details [detailsid=" + detailsid + ", detailsstock="
 				+ detailsstock + ", detailsprice=" + detailsprice
 				+ ", detailsdrawing=" + detailsdrawing + ", detailsdot="
-				+ detailsdot + ", detailssale=" + detailssale + ", test1="
-				+ test1 + ", test2=" + test2 + ", test3=" + test3 + ", test4="
+				+ detailsdot + ", detailssale=" + detailssale + ", color="
+				+ color + ", size=" + size + ", pai=" + pai + ", test4="
 				+ test4 + ", test5=" + test5 + ", test6=" + test6 + "]";
 	}
+	
 	
 	
 	
