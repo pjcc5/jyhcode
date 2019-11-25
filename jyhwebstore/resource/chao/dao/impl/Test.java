@@ -113,16 +113,53 @@ public class Test {
 		//插入ok
 //		Commodity comm = new Commodity();
 //		comm.setComname("华为note10plus");
-//		comm.setComclass(2);
-//		comm.setComdetails("2222");
+//		comm.setComclass("2");
+//		comm.setComdetails(2222);
 //		comm.setComid("123");
 //		comm.setComprice(59000.2);
 //		comm.setCompic("图片");
 //	    boolean f=cd.insertCommodity(comm, conn);
 //	    System.out.println(f);
-	    //修改
-		List<Commodity>list = cd.getAllCommodity(conn);
-		System.out.println(list);
+		//查询ok
+//		List<Commodity>list = cd.getAllCommodity(conn);
+//		System.out.println(list);
+		//修改ok
+//		Commodity comm = new Commodity();
+//		comm.setComname("华为note10plus");
+//		comm.setCompic("图片");
+//		comm.setComdetails(2222);
+//		comm.setComprice(59000.2);
+//		comm.setComclass("2");
+//		comm.setColor("炫酷黑");
+//		comm.setPai("华为");
+//		comm.setSize("286GB");
+//		comm.setComid("123");
+//		boolean f = cd.modifyCommodity(comm, conn);
+//		System.out.println(f);
+		//删除ok
+//		boolean f = cd.deleteCommodityByid("123", conn);
+//		System.out.println(f);
+		//查询单个ok
+//		Commodity co = cd.getCommodityById("123", conn);
+//		System.out.println(co);
+//		
+		
+//		String url = "https://item.yhd.com/57268990549.html";
+//		try {
+//			
+//			Document doc = Jsoup.connect(url).ignoreContentType(true).get();
+//			Elements  docs = doc.select("script");
+//			for (Element element : docs) {
+//				System.out.println(element);
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
+		
+		
+		
+//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 	}
 
 }

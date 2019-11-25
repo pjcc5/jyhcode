@@ -137,14 +137,14 @@ public class Pack2 {
 				comm.setComid(comid);
 				comm.setComname(productname);
 				comm.setCompic(finalgoodsimgs.get(0));
-				comm.setComdetails(comid);
+				comm.setComdetails(index);
 				comm.setComprice(Double.parseDouble(arr2.get(i)));
-				comm.setComclass(10);
+				comm.setComclass("手机");
 //				
 //				
 				//插入商品详情表
 				Details dt =new Details();
-				dt.setDetailsid(comid);
+				dt.setDetailsid(index);
 				dt.setDetailsstock(200);//库存
 				dt.setDetailsprice(Double.parseDouble(arr2.get(i)));//单价
 				dt.setDetailsdrawing(finalgoodsimgs.get(0));//详细图
