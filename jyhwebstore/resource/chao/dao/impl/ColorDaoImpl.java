@@ -42,7 +42,7 @@ public class ColorDaoImpl implements ColorDao{
 	}
 
 	@Override
-	public Color getColorById(int comid, Connection conn) {
+	public Color getColorById(String comid, Connection conn) {
 		if(conn==null){
 			return null;
 		}
@@ -51,7 +51,7 @@ public class ColorDaoImpl implements ColorDao{
 				String sql="select * from color where comid=?";
 				
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setInt(1, comid);
+				ps.setString(1, comid);
 				ResultSet rs=ps.executeQuery();
 				
 				if(rs.next()){
@@ -101,14 +101,14 @@ public class ColorDaoImpl implements ColorDao{
 	}
 
 	@Override
-	public boolean deleteColorByid(int comid, Connection conn) {
+	public boolean deleteColorByid(String comid, Connection conn) {
 		if(conn==null){
 			return false;
 		}
 		try {
 			String sql="delete from color where comid=?";
 			PreparedStatement ps=conn.prepareStatement(sql);
-			ps.setInt(1, comid);
+			ps.setString(1, comid);
 			 int rs=ps.executeUpdate();
 			 if(rs > 0){
 				 return true;
@@ -128,9 +128,15 @@ public class ColorDaoImpl implements ColorDao{
 		}
 		try {
 			if(!conn.isClosed()){
-				String sql="update color set comid=?,color1=?,color2=?,color3=?,color4=?,color5=? where comid=?";
+				String sql="update color set color1=?,color2=?,color3=?,color4=?,color5=? where comid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
-				
+				ps.setString(1,color.getColor1());
+				ps.setString(2,color.getColor2());
+				ps.setString(3,color.getColor3());
+				ps.setString(4,color.getColor4());
+				ps.setString(5,color.getColor5());
+				ps.setString(6, color.getComid());
+
 				int rs=ps.executeUpdate();
 				if(rs > 0){
 					return true;

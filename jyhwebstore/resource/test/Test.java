@@ -6,11 +6,14 @@ import java.util.List;
 
 import javax.xml.soap.Detail;
 
+import chao.dao.ColorDao;
 import chao.dao.DetailsDao;
 import chao.dao.HotDao;
+import chao.dao.impl.ColorDaoImpl;
 import chao.dao.impl.DetailsDaoImpl;
 import chao.dao.impl.HotDaoImpl;
 import db.DbHelp2;
+import pojo.Color;
 import pojo.Details;
 import pojo.Hot;
 
@@ -29,9 +32,9 @@ public class Test {
 //		hot.setTest3(null);
 //		boolean f =hd.modifyHot(hot, conn);
 //		System.out.println(f);
-		Connection conn = DbHelp2.getConnection();
-		Details details = new Details();
-		DetailsDao dd = new DetailsDaoImpl();
+//		Connection conn = DbHelp2.getConnection();
+//		Details details = new Details();
+//		DetailsDao dd = new DetailsDaoImpl();
 //		details.setColor("灰白45");
 //		details.setDetailsdot(10000);
 //		details.setDetailsdrawing("string");
@@ -53,5 +56,17 @@ public class Test {
 //		boolean f = dd.modifyDetails(details, conn);
 //		System.out.println(f);
 //		dd.deleteDetailsByid(2, conn);
+		Color color = new Color();
+		ColorDao cd = new ColorDaoImpl();
+		Connection conn = DbHelp2.getConnection();
+		color.setComid("uuid");
+		color.setColor1("11111");
+		color.setColor2("11111");
+		color.setColor3("11111");
+		color.setColor4("11111");
+		color.setColor5("22241");
+//		boolean f=cd.insertColor(color, conn);
+		boolean f = cd.modifyColor(color, conn);
+		System.out.println(f);
 	}
 }
