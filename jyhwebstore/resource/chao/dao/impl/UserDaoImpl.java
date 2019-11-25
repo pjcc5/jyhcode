@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class UserDaoImpl implements UserDao{
 					user.setUid(rs.getInt("uid"));
 					user.setUname(rs.getString("uname"));
 					user.setPic(rs.getString("pic"));
-					user.setBirth(rs.getDate("birth"));
+					user.setBirth(rs.getTimestamp("birth"));
 					user.setSex(rs.getString("sex"));
 					user.setUphone(rs.getString("uphone"));
 					user.setMail(rs.getString("mail"));
@@ -64,7 +65,7 @@ public class UserDaoImpl implements UserDao{
 					user.setUid(rs.getInt("uid"));
 					user.setUname(rs.getString("uname"));
 					user.setPic(rs.getString("pic"));
-					user.setBirth(rs.getDate("birth"));
+					user.setBirth(rs.getTimestamp("birth"));
 					user.setSex(rs.getString("sex"));
 					user.setUphone(rs.getString("uphone"));
 					user.setMail(rs.getString("mail"));
@@ -93,7 +94,7 @@ public class UserDaoImpl implements UserDao{
 				ps.setInt(1, user.getUid());
 				ps.setString(2, user.getUname());
 				ps.setString(3, user.getPic());
-				ps.setDate(4, new Date(user.getBirth().getTime()));
+				ps.setTimestamp(4, new Timestamp(user.getBirth().getTime()));
 				ps.setString(5, user.getSex());
 				ps.setString(6,user.getUphone());
 				ps.setString(7, user.getMail());
@@ -145,7 +146,7 @@ public class UserDaoImpl implements UserDao{
 				PreparedStatement ps=conn.prepareStatement(sql);
 			   ps.setString(1, user.getUname());
 				ps.setString(2, user.getPic());
-				ps.setDate(3, new Date(user.getBirth().getTime()));
+				ps.setTimestamp(3, new Timestamp(user.getBirth().getTime()));
 				ps.setString(4, user.getSex());
 				ps.setString(5, user.getUphone());
 				ps.setString(6, user.getMail());

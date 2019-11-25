@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
+import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -29,7 +30,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 					shopping.setShopid(rs.getInt("shopid"));
 					shopping.setComid(rs.getString("comid"));
 					shopping.setCount(rs.getInt("count"));
-					shopping.setDate(rs.getDate("date"));
+					shopping.setDate(rs.getTimestamp("date"));
 					shopping.setTest1(rs.getString("test1"));
 					shopping.setTest2(rs.getString("test2"));
 					shopping.setTest3(rs.getString("test3"));
@@ -64,7 +65,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 					shopping.setShopid(rs.getInt("shopid"));
 					shopping.setComid(rs.getString("comid"));
 					shopping.setCount(rs.getInt("count"));
-					shopping.setDate(rs.getDate("date"));
+					shopping.setDate(rs.getTimestamp("date"));
 					shopping.setTest1(rs.getString("test1"));
 					shopping.setTest2(rs.getString("test2"));
 					shopping.setTest3(rs.getString("test3"));
@@ -93,7 +94,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 				ps.setInt(1, shoping.getShopid());
 				ps.setString(2, shoping.getComid());
 				ps.setInt(3, shoping.getCount());
-				ps.setDate(4, new Date(shoping.getDate().getTime()));
+				ps.setTimestamp(4, new Timestamp(shoping.getDate().getTime()));
 			    ps.setString(5, shoping.getTest1());
 			    ps.setString(6, shoping.getTest2());
 			    ps.setString(7, shoping.getTest3());
@@ -144,7 +145,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, shoping.getComid());
 				ps.setInt(2, shoping.getCount());
-				ps.setDate(3, new Date(shoping.getDate().getTime()));
+				ps.setTimestamp(3, new Timestamp(shoping.getDate().getTime()));
 				ps.setString(4, shoping.getTest1());
 				ps.setString(5, shoping.getTest2());
 				ps.setString(6, shoping.getTest3());
