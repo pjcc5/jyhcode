@@ -43,7 +43,6 @@ public class Pack2 {
 					array.add("https://item.yhd.com/"+element.select("div").attr("comproid")+".html");
 					String price = element.select("div[class=itemBox]").get(0).select(".proPrice").get(0).select(".num").get(0).attr("yhdprice");
 					array2.add(price);
-					
 				}
 				
 			} catch (IOException e) {
