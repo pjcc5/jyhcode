@@ -1,5 +1,5 @@
 正在测试表
-彭俊超:Shopmiddle
+彭俊超:order
 毛彦戈:hot
 谭显攀:
 
@@ -12,7 +12,11 @@ Classes表===>Ok彭俊超
 User表===》ok谭显攀
 shopping===>ok谭显攀
 compic表===>OK彭俊超
+<<<<<<< HEAD
 details------->ok
+=======
+shopmiddle表===>Ok彭俊超
+>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 
 
 
