@@ -76,13 +76,13 @@ public class Test {
 //		}
 //		
 		
+		Connection conn =DbHelp2.getConnection();
 	/*
 	 *	测试calsses表OK
 	 */
 	//测试classes表的前插入方法Ok
-		ClassesDao cd =new ClassesDaoImpl();
+//		ClassesDao cd =new ClassesDaoImpl();
 //		Classes c = new Classes();
-		Connection conn =DbHelp2.getConnection();
 //		c.setClassid(1);
 //		c.setSize("大");
 //		c.setSeason(10);
@@ -123,6 +123,52 @@ public class Test {
 //		c.setTest4("测试4");
 //		boolean result = cd.modifyClasses(c, conn);
 //		System.out.println(result);
+		
+		
+		/**
+		 * 测试compic表OK
+		 * 
+		 */
+		//测试compic表的插入一条OK
+//		Compic c =new Compic();
+//		CompicDao cd =new CompicDaoImpl();
+//		c.setComid("Id1");
+//		c.setPicurl1("url1");
+//		c.setPicurl2("url2");
+//		c.setPicurl3("url3");
+//		c.setPicurl4("url4");
+//		c.setPicurl5("url5");
+//		boolean result = cd.insertCompic(c, conn);
+//		System.out.println(result);
+		
+		//测试compic表的拿到所有OK
+//		List<Compic> list = new ArrayList<Compic>();
+//		list = cd.getAllCompic(conn);
+//		for (Compic compic : list) {
+//			System.out.println(compic);
+//		}
+		
+		//测试compic表的根据主键拿一个OK
+//		Compic c1 = cd.getCompicById("Id1", conn);
+//		System.out.println(c1);
+		
+		//测试compic表的修改一条数据OK
+//		Compic c1 =new Compic();
+//		c1.setComid("Id1");
+//		c1.setPicurl1("url2");
+//		c1.setPicurl2("url3");
+//		c1.setPicurl3("url4");
+//		c1.setPicurl4("url5");
+//		c1.setPicurl5("url6");
+//		boolean result = cd.modifyCompic(c1, conn);
+//		System.out.println(result);
+		
+		
+		//测试compic表的删除一条数据OK
+//		boolean result = cd.deleteCompicByid("Id1", conn);
+//		System.out.println(result);
+		
+		
 	}
 
 }
