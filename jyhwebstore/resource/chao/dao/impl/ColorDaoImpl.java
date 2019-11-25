@@ -6,65 +6,62 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import pojo.Size;
-import chao.dao.SizeDao;
+import pojo.Color;
+import chao.dao.ColorDao;
 
-public class SizeDaoImpl implements SizeDao{
+public class ColorDaoImpl implements ColorDao{
 
 	@Override
-	public List<Size> getAllSize(Connection conn) {
+	public List<Color> getAllcolor(Connection conn) {
 		if(conn == null)
 		{
 			return null;
 		}
 		try {
 			if(!conn.isClosed()){
-				String sql="select * from size";
+				String sql="select * from Color";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ResultSet rs=ps.executeQuery();
-				List<Size> list=new ArrayList<Size>();
+				List<Color> list=new ArrayList<Color>();
 				while(rs.next()){
-					Size s = new Size();
+					Color s = new Color();
 					s.setComid(rs.getString("comid"));
-					s.setSize1(rs.getString("size1"));
-					s.setSize2(rs.getString("size2"));
-					s.setSize3(rs.getString("size3"));
-					s.setSize4(rs.getString("size4"));
-					s.setSize5(rs.getString("size5"));
+					s.setColor1(rs.getString("color1"));
+					s.setColor2(rs.getString("color2"));
+					s.setColor3(rs.getString("color3"));
+					s.setColor4(rs.getString("color4"));
+					s.setColor5(rs.getString("color5"));
 				   list.add(s);//将s插入到集合中
 				}
-				return list;//返回所有的size
+				return list;//返回所有的color
 			}
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
-		
-		
-		
 		return null;
 	}
 
 	@Override
-	public Size getSizeById(int comid, Connection conn) {
+	public Color getColorById(int comid, Connection conn) {
 		if(conn==null){
 			return null;
 		}
 		try {
 			if(!conn.isClosed()){
-				String sql="select * from size where comid=?";
+				String sql="select * from color where comid=?";
 				
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setInt(1, comid);
 				ResultSet rs=ps.executeQuery();
 				
 				if(rs.next()){
-					Size s = new Size();
+					Color s = new Color();
 					s.setComid(rs.getString("comid"));
-					s.setSize1(rs.getString("size1"));
-					s.setSize2(rs.getString("size2"));
-					s.setSize3(rs.getString("size3"));
-					s.setSize4(rs.getString("size4"));
-					s.setSize5(rs.getString("size5"));
+					s.setColor1(rs.getString("color1"));
+					s.setColor2(rs.getString("color2"));
+					s.setColor3(rs.getString("color3"));
+					s.setColor4(rs.getString("color4"));
+					s.setColor5(rs.getString("color5"));
 					return s;
 				}
 			
@@ -76,20 +73,20 @@ public class SizeDaoImpl implements SizeDao{
 	}
 
 	@Override
-	public boolean insertSize(Size size, Connection conn) {
+	public boolean insertColor(Color color, Connection conn) {
 		if(conn==null){
 			return false;
 		}
 		try {
 			if(!conn.isClosed()){
-				String sql="insert into size values(?,?,?,?,?,?) ";
+				String sql="insert into color values(?,?,?,?,?,?) ";
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setString(1,size.getComid());
-				ps.setString(2,size.getSize1());
-				ps.setString(3,size.getSize2());
-				ps.setString(4,size.getSize3());
-				ps.setString(5,size.getSize4());
-				ps.setString(6,size.getSize5());
+				ps.setString(1,color.getComid());
+				ps.setString(2,color.getColor1());
+				ps.setString(3,color.getColor2());
+				ps.setString(4,color.getColor3());
+				ps.setString(5,color.getColor4());
+				ps.setString(6,color.getColor5());
 				
 			    int rs=ps.executeUpdate();
 			    if(rs > 0){
@@ -104,12 +101,12 @@ public class SizeDaoImpl implements SizeDao{
 	}
 
 	@Override
-	public boolean deleteSizetByid(int comid, Connection conn) {
+	public boolean deleteColorByid(int comid, Connection conn) {
 		if(conn==null){
 			return false;
 		}
 		try {
-			String sql="delete from size where comid=?";
+			String sql="delete from color where comid=?";
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ps.setInt(1, comid);
 			 int rs=ps.executeUpdate();
@@ -121,16 +118,17 @@ public class SizeDaoImpl implements SizeDao{
 			
 		}
 		return false;
+		
 	}
 
 	@Override
-	public boolean modifySize(Size size, Connection conn) {
+	public boolean modifyColor(Color color, Connection conn) {
 		if(conn==null){
 			return false;
 		}
 		try {
 			if(!conn.isClosed()){
-				String sql="update size set comid=?,size1=?,size2=?,size3=?,size4=?,size5=? where comid=?";
+				String sql="update color set comid=?,color1=?,color2=?,color3=?,color4=?,color5=? where comid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				
 				int rs=ps.executeUpdate();
@@ -139,11 +137,9 @@ public class SizeDaoImpl implements SizeDao{
 				}
 			}
 		} catch (Exception e) {
-			// TODO: handle exception
 			e.printStackTrace();
 		}
 		return false;
 	}
 
-	
 }
