@@ -56,17 +56,21 @@ public class Test {
 //		boolean f = dd.modifyDetails(details, conn);
 //		System.out.println(f);
 //		dd.deleteDetailsByid(2, conn);
-		Color color = new Color();
-		ColorDao cd = new ColorDaoImpl();
-		Connection conn = DbHelp2.getConnection();
-		color.setComid("uuid");
-		color.setColor1("11111");
-		color.setColor2("11111");
-		color.setColor3("11111");
-		color.setColor4("11111");
-		color.setColor5("22241");
+//		Color color = new Color();
+//		ColorDao cd = new ColorDaoImpl();
+//		Connection conn = DbHelp2.getConnection();
+//		color.setComid("uuid");
+//		color.setColor1("11111");
+//		color.setColor2("11111");
+//		color.setColor3("11111");
+//		color.setColor4("11111");
+//		color.setColor5("22241");
 //		boolean f=cd.insertColor(color, conn);
-		boolean f = cd.modifyColor(color, conn);
-		System.out.println(f);
+//		boolean f = cd.modifyColor(color, conn);
+//		System.out.println(f);
+//		Color col = cd.getColorById("uuid", conn);
+//		System.out.println(col);
+//		boolean f = cd.deleteColorByid("uuid", conn);
+//		System.out.println(f);
 	}
 }

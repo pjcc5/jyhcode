@@ -13,9 +13,19 @@ User表===》ok谭显攀
 shopping===>ok谭显攀
 compic表===>OK彭俊超
 <<<<<<< HEAD
+<<<<<<< HEAD
 details------->ok
 =======
+=======
+
+size===>ok谭显攀   
+
+>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 shopmiddle表===>Ok彭俊超
+<<<<<<< HEAD
+>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
+=======
+
 >>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 
 

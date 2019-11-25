@@ -130,9 +130,15 @@ public class SizeDaoImpl implements SizeDao{
 		}
 		try {
 			if(!conn.isClosed()){
-				String sql="update size set comid=?,size1=?,size2=?,size3=?,size4=?,size5=? where comid=?";
+				String sql="update size set size1=?,size2=?,size3=?,size4=?,size5=? where comid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				
+				ps.setString(1, size.getSize1());
+				ps.setString(2, size.getSize2());
+				ps.setString(3, size.getSize3());
+				ps.setString(4, size.getSize4());
+				ps.setString(5, size.getSize5());
+				ps.setString(6, size.getComid());
 				int rs=ps.executeUpdate();
 				if(rs > 0){
 					return true;

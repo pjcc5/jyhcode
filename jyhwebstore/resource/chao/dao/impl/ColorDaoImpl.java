@@ -31,7 +31,7 @@ public class ColorDaoImpl implements ColorDao{
 					s.setColor3(rs.getString("color3"));
 					s.setColor4(rs.getString("color4"));
 					s.setColor5(rs.getString("color5"));
-				   list.add(s);//将s插入到集合中
+				     list.add(s);//将s插入到集合中
 				}
 				return list;//返回所有的color
 			}
