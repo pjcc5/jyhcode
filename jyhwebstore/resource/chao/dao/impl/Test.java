@@ -2,6 +2,7 @@ package chao.dao.impl;
 
 import java.io.IOException;
 import java.sql.Connection;
+import java.sql.Date;
 //<<<<<<< HEAD
 //=======
 import java.util.ArrayList;
@@ -15,6 +16,11 @@ import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 import org.w3c.dom.stylesheets.DocumentStyle;
 
+
+
+
+
+
 //<<<<<<< HEAD
 import chao.dao.AcountDao;
 //=======
@@ -23,6 +29,8 @@ import chao.dao.ClassesDao;
 import chao.dao.CommodityDao;
 import chao.dao.CompicDao;
 import chao.dao.DetailsDao;
+import chao.dao.HotDao;
+import chao.dao.ShoppingDao;
 import db.DbHelp2;
 //<<<<<<< HEAD
 import pojo.Acount;
@@ -32,6 +40,8 @@ import pojo.Classes;
 import pojo.Commodity;
 import pojo.Compic;
 import pojo.Details;
+import pojo.Hot;
+import pojo.Shopping;
 
 public class Test {
 
@@ -120,8 +130,8 @@ public class Test {
 //		Acount ac =  acountdao.getAcountById("12", conn);
 //		System.out.println(ac);
 		//测试commoditydao的implement中的方法
-		Connection conn = DbHelp2.getConnection();
-		CommodityDao cd = new CommodityDaoImpl();
+//		Connection conn = DbHelp2.getConnection();
+//		CommodityDao cd = new CommodityDaoImpl();
 		//插入ok
 //		Commodity comm = new Commodity();
 //		comm.setComname("华为note10plus");
@@ -173,9 +183,9 @@ public class Test {
 	 *	测试calsses表OK
 	 */
 	//测试classes表的前插入方法Ok
-		ClassesDao cd =new ClassesDaoImpl();
+//		ClassesDao cd =new ClassesDaoImpl();
 //		Classes c = new Classes();
-		connection conn =DbHelp2.getConnection();
+//		connection conn =DbHelp2.getConnection();
 //		c.setClassid(1);
 //		c.setSize("大");
 //		c.setSeason(10);
@@ -200,7 +210,7 @@ public class Test {
 		
 //<<<<<<< HEAD
 //>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
-=======
+//=======
 		//测试classes表的删除一个方法Ok
 //		boolean result =cd.deleteClassesByid(1, conn);
 //		System.out.println(result);
@@ -220,6 +230,25 @@ public class Test {
 //		boolean result = cd.modifyClasses(c, conn);
 //		System.out.println(result);
 //>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
+				//测试hot表
+//				HotDao hd = new HotDaoImpl();
+//				Connection  conn = DbHelp2.getConnection();
+//				Hot hot = new Hot();
+//				java.util.Date date = new java.util.Date();
+//				
+//				hot.setHotcom(1);
+//				hot.setHotcomid("123");
+//				hot.setHotdatestart(date);
+//				hot.setHotdatend(date);
+//			boolean f =	hd.insertHot(hot, conn);
+//			System.out.println(f);
+		
+//		java.util.Date date = new java.util.Date();
+//		
+//		System.out.println(date.getTime());
+//		java.util.Date dates = new java.util.Date(1574671301296l);
+//		System.out.println(dates.toLocaleString());
+		
 	}
 
 }

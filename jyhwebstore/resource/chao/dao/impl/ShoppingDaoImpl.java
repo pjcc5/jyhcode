@@ -140,7 +140,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 		}
 		try {
 			if(!conn.isClosed()){
-				String sql="update shopping set comid=?,count=?,date=?,test1=?,test2=?,test3=?,test4=? where shopid=?";
+				String sql="update shopping set comid=?,count=?,datees=?,test1=?,test2=?,test3=?,test4=? where shopid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, shoping.getComid());
 				ps.setInt(2, shoping.getCount());
