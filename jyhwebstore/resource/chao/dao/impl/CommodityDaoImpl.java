@@ -171,7 +171,7 @@ public class CommodityDaoImpl implements CommodityDao{
 		try {
 			if(!conn.isClosed()){
 				String sql = "update commodity set comname=?,compic=?,comdetails=?,"
-						+"comprice=?,comclass=?,test1=?,test2=?,test3=?,test4=? where comid=?";
+						+"comprice=?,comclass=?,color=?,pai=?,size=?,test4=? where comid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
 
 //			
