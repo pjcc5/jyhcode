@@ -139,7 +139,7 @@ public class Pack2 {
 				comm.setCompic(finalgoodsimgs.get(0));
 				comm.setComdetails(comid);
 				comm.setComprice(Double.parseDouble(arr2.get(i)));
-				comm.setComclass(10);
+				comm.setComclass("手机");
 //				
 //				
 				//插入商品详情表

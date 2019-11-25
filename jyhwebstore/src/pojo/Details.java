@@ -10,9 +10,11 @@ public class Details  implements Serializable{
 	private java.lang.String detailsdrawing;//detailsdrawing
 	private java.lang.Integer detailsdot;//detailsdot
 	private java.lang.Integer detailssale;//detailssale
+
 	private java.lang.String color;//test1
 	private java.lang.String size;//test2
 	private java.lang.String pai;//test3
+
 	private java.lang.String test4;//test4
 	private java.lang.String test5;//test5
 	private java.lang.String test6;//test6
@@ -52,6 +54,7 @@ public class Details  implements Serializable{
 	public void setDetailssale(java.lang.Integer detailssale) {
 		this.detailssale = detailssale;
 	}
+
 	public java.lang.String getColor() {
 		return color;
 	}

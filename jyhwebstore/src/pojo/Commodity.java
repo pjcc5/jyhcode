@@ -9,9 +9,12 @@ public class Commodity  implements Serializable{
 	private java.lang.Integer comdetails;//comdetails
 	private java.lang.Double comprice;//comprice
 	private java.lang.String comclass;//comclass
+
 	private java.lang.String color;//test1
 	private java.lang.String pai;//test2
 	private java.lang.String size;//test3
+
+	
 	private java.lang.String test4;//test4
 	public java.lang.String getComid() {
 		return comid;
@@ -43,6 +46,7 @@ public class Commodity  implements Serializable{
 	public void setComprice(java.lang.Double comprice) {
 		this.comprice = comprice;
 	}
+
 	public java.lang.String getComclass() {
 		return comclass;
 	}

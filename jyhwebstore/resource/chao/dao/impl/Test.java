@@ -58,21 +58,19 @@ public class Test {
 //		CompicDao cd =new CompicDaoImpl();
 //		System.out.println(cd.insertCompic(com, conn));
 		
-		
-		String url = "https://item.yhd.com/57268990549.html";
-		try {
-			
-			Document doc = Jsoup.connect(url).ignoreContentType(true).get();
-			Elements  docs = doc.select("script");
-			for (Element element : docs) {
-				System.out.println(element);
-			}
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-		
-		
-		
+//		
+//		String url = "https://item.yhd.com/57268990549.html";
+//		try {
+//			
+//			Document doc = Jsoup.connect(url).ignoreContentType(true).get();
+//			Elements  docs = doc.select("script");
+//			for (Element element : docs) {
+//				System.out.println(element);
+//			}
+//		} catch (IOException e) {
+//			e.printStackTrace();
+//		}
+//		
 		
 		
 		
