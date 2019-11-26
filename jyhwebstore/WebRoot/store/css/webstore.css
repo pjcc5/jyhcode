@@ -4,10 +4,8 @@ li{list-style:none;}
 a{text-decoration:none; color: #666;}
 body{
 	overflow-x: hidden;
-	background: url(../img/bodybg.jpg);
 	background-attachment: fixed;
 	background-size: contain;
-	
 }
 .top-lan{
 	/* float: left; */

@@ -1,4 +1,5 @@
 <%@page import="db.DbHelp"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <html>
 <head>
@@ -171,8 +172,25 @@
 				<div class="goods">
 					<img src="img/Logo.png" alt="">
 				</div> -->
+		<c:forEach items="${goods}" var="good" >
+					<div class="goods">
+					<img src="${good.detailsdrawing}" alt="">
+					<p class="goodsname">${json.data[i].goods_name}</p>
+					<p>${json.data[i].goods_desc}</p>
+					<p>${json.data[i].price}</p>
+					<p><span class="glyphicon  glyphicon-star"></span>${json.data[i].star_number}</p>
+					<a href='product.html?goods_id=${json.data[i].goods_id}' class="content_a">
+						<div class="cover">
+							<p class="goodsdecoration">${json.data[i].goods_desc}</p>
+							<p class="price">只要${json.data[i].price}元</p>
+						</div>
+					</a>
+					<button type="button" class="btn btn-danger addincart"><span class="
+							glyphicon glyphicon-download-alt"></span>　加入购物车</button>
+						</div>
+					
+		</c:forEach>
 				
-			</div>
 			
 		</section>
 		<section>

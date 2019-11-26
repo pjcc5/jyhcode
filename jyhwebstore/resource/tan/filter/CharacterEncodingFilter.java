@@ -24,7 +24,7 @@ public class CharacterEncodingFilter implements Filter{
 	@Override
 	public void doFilter(ServletRequest arg0, ServletResponse arg1,
 			FilterChain arg2) throws IOException, ServletException {
-		System.out.println("进入过滤器");
+		System.out.println("进入字符转码过滤器");
 		//强转成HTTP协议
 		HttpServletRequest request = (HttpServletRequest)arg0;
 		HttpServletResponse response = (HttpServletResponse)arg1;
