@@ -1,8 +1,7 @@
 正在测试表
-彭俊超:order
-毛彦戈:hot
+彭俊超:
+毛彦戈:
 谭显攀:
-
 
 
 Acount表===>ok老毛
@@ -12,21 +11,7 @@ Classes表===>Ok彭俊超
 User表===》ok谭显攀
 shopping===>ok谭显攀
 compic表===>OK彭俊超
-<<<<<<< HEAD
-<<<<<<< HEAD
 details------->ok
-=======
-=======
-
 size===>ok谭显攀   
-
->>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 shopmiddle表===>Ok彭俊超
-<<<<<<< HEAD
->>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
-=======
-
->>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
-
-
-
+order表===>Ok彭俊超

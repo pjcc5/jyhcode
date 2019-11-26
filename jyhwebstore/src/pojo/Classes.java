@@ -4,7 +4,7 @@ import java.io.Serializable;
 
 
 public class Classes  implements Serializable{
-	private java.lang.Integer classid;//classid
+	private java.lang.String classid;//classid
 	private java.lang.String size;//size
 	private java.lang.Integer season;//season
 	private java.lang.String color;//color
@@ -15,12 +15,12 @@ public class Classes  implements Serializable{
 	private java.lang.String test3;//test3
 	private java.lang.String test4;//test4
 	private java.lang.String test5;//test5
-	public java.lang.Integer getClassid(){
-		
-		return this.classid;
+	
+	public java.lang.String getClassid() {
+		return classid;
 	}
-	public void setClassid(java.lang.Integer classid){
-		this.classid	= classid;
+	public void setClassid(java.lang.String classid) {
+		this.classid = classid;
 	}
 	public java.lang.String getSize(){
 		return this.size;

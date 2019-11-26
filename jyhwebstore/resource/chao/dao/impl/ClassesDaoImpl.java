@@ -15,20 +15,20 @@ import db.DbHelp2;
 public class ClassesDaoImpl implements ClassesDao{
   
 	@Override
-	public List<Classes> getAllClasses(Connection conn) {
+	public List<Classes> getAllClasses(Connection conn)throws Exception {
 		if(conn==null){
 			return null;
 		}
 		
 		List<Classes> list=new ArrayList<>();
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="select * from classes";
 				PreparedStatement ps=conn.prepareStatement(sql);
 			ResultSet rs=ps.executeQuery();
 			while(rs.next()){
 			Classes classes=new Classes();
-			classes.setClassid(rs.getInt("classid"));
+			classes.setClassid(rs.getString("classid"));
 			classes.setSize(rs.getString("size"));
 			classes.setSeason(rs.getInt("season"));
 			classes.setColor(rs.getString("color"));
@@ -43,20 +43,17 @@ public class ClassesDaoImpl implements ClassesDao{
 			}
 				
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		
 		
 		return list;
 	}
 	@Override
-	public Classes getClassesById(int aid, Connection conn) {
+	public Classes getClassesById(int aid, Connection conn)throws Exception {
 		if(conn==null){
 			return null;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="select * from classes where classid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -64,7 +61,7 @@ public class ClassesDaoImpl implements ClassesDao{
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()){
 			Classes classes=new Classes();
-			classes.setClassid(rs.getInt("classid"));
+			classes.setClassid(rs.getString("classid"));
 			classes.setSize(rs.getString("size"));
 			classes.setSeason(rs.getInt("season"));
 			classes.setColor(rs.getString("color"));
@@ -79,10 +76,7 @@ public class ClassesDaoImpl implements ClassesDao{
 			}
 				
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		
 			return null;
 	
@@ -91,15 +85,15 @@ public class ClassesDaoImpl implements ClassesDao{
 	}
 
 	@Override
-	public boolean insertClasses(Classes classes, Connection conn) {
+	public boolean insertClasses(Classes classes, Connection conn)throws Exception {
 		if(conn==null){
 			return false;
 		}
-		try {
+
 			if(!conn.isClosed()){
 				String sql="insert into classes values(?,?,?,?,?,?,?,?,?,?,?)";
 			   PreparedStatement ps=conn.prepareStatement(sql);
-			   ps.setInt(1, classes.getClassid());
+			   ps.setString(1, classes.getClassid());
 			   ps.setString(2, classes.getSize());
 			   ps.setInt(3, classes.getSeason());
 			   ps.setString(4, classes.getColor());
@@ -115,20 +109,17 @@ public class ClassesDaoImpl implements ClassesDao{
 				   return true;
 			   }
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean deleteClassesByid(int aid, Connection conn) {
+	public boolean deleteClassesByid(int aid, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="delete from classes where classid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -139,21 +130,17 @@ public class ClassesDaoImpl implements ClassesDao{
 				}
 		
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			
-		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean modifyClasses(Classes classes, Connection conn) {
+	public boolean modifyClasses(Classes classes, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+	
 			if(!conn.isClosed()){
 				String sql="update classes set size=?,season=?,color=?,brand=?,classes=?,test1=?,test2=?,test3=?,test4=?,test5=? where classid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -167,16 +154,13 @@ public class ClassesDaoImpl implements ClassesDao{
 				ps.setString(8, classes.getTest3());
 				ps.setString(9, classes.getTest4());
 				ps.setString(10, classes.getTest5());
-				ps.setInt(11, classes.getClassid());
+				ps.setString(11, classes.getClassid());
 				int rs=ps.executeUpdate();
 				if(rs>0){
 					return true;
 				}
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 

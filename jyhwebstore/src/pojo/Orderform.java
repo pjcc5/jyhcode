@@ -3,7 +3,7 @@ package pojo;
 import java.io.Serializable;
 import java.util.Date;
 
-public class Order implements Serializable{
+public class Orderform implements Serializable{
 	
 	private int aid;
 	private String comid;

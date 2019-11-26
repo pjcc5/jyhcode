@@ -14,7 +14,7 @@ import pojo.Commodity;
 import pojo.Compic;
 import pojo.Details;
 import pojo.Hot;
-import pojo.Order;
+import pojo.Orderform;
 import pojo.Shopmiddle;
 import pojo.Shopping;
 import pojo.Size;
@@ -49,7 +49,7 @@ private void mian() {
 	// TODO Auto-generated method stub
 
 }
-public static void main(String[] args) {
+public static void main(String[] args) throws Exception {
 	Connection conn= DbHelp2.getConnection();
 //   UserDao user=new chao.dao.impl.UserDaoImpl();
 //   User user1=new User();
@@ -96,6 +96,27 @@ public static void main(String[] args) {
 //System.out.println(dao.deleteShopmiddleByid("12", conn));
 
 
+//Orderform order=new Orderform();
+//order.setAid(2);
+//order.setComid("2");
+//order.setComname("3");
+//order.setOrderadd("4");
+//order.setOrdercompany("5");
+//order.setOrderdate(new Date());
+//order.setOrderid("8");
+//order.setOrdername("9");
+//order.setOrderpay(10);
+//order.setOrderphone("11");
+//order.setOrderprice(12.0);
+//order.setOrderreturn(13);
+//order.setOrderstatement(14);
+//order.setTest1("15");
+//order.setTest2("16");
+//order.setTest3("17");
+//order.setTest4("18");
+//OrderDao dao=new OrderDaoImpl();
+//System.out.println(dao.getAllOrder(conn));
+
 //Order order=new Order();
 //order.setAid(5);
 //order.setComid("2");
@@ -132,19 +153,20 @@ public static void main(String[] args) {
 	
 	
 	
-SizeDao dao=new SizeDaoImpl();
+//SizeDao dao=new SizeDaoImpl();
 //System.out.println(dao.getAllSize(conn));
 //System.out.println(dao.getSizeById(1, conn));
 //System.out.println(dao.deleteSizetByid(1, conn));
-Size size=new Size();
-size.setComid("4");
-size.setSize1("11");
-size.setSize2("22");
-size.setSize3("33");
-size.setSize4("44");
-size.setSize5("55");
-System.out.println(dao.modifySize(size, conn));
-	
+//Size size=new Size();
+//size.setComid("4");
+//size.setSize1("11");
+//size.setSize2("22");
+//size.setSize3("33");
+//size.setSize4("44");
+//size.setSize5("55");
+//
+//System.out.println(dao.modifySize(size, conn));
+//	
 
 	
 	

@@ -1,16 +1,18 @@
 package chao.dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
+import pojo.Details;
 import pojo.Orderform;
-import chao.dao.OrderDao;
+import chao.dao.OrderformDao;
 
-public class OrderDaoImpl implements OrderDao{
+public class OrderformDaoImpl implements OrderformDao{
 
 	@Override
 	public List<Orderform> getAllOrderform(Connection conn)throws Exception 
@@ -97,12 +99,14 @@ public class OrderDaoImpl implements OrderDao{
 		return null;
 	}
 
+	@Override
 	public boolean insertOrderform(Orderform order, Connection conn)throws Exception {
 		if(conn == null)
 		{
 			return false;
 		}
 		
+	
 			
 			if(!conn.isClosed()){
 				String sql = "insert into orderform values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";

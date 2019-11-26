@@ -15,7 +15,7 @@ import db.DbHelp2;
 public class DetailsDaoImpl implements DetailsDao{
 
 	@Override
-	public List<Details> getAllDetails(Connection conn) {
+	public List<Details> getAllDetails(Connection conn) throws Exception{
 
 		if(conn == null)
 		{
@@ -23,7 +23,7 @@ public class DetailsDaoImpl implements DetailsDao{
 		}
 		
 		List<Details> list=new ArrayList<>();
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="select * from details";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -46,23 +46,20 @@ public class DetailsDaoImpl implements DetailsDao{
 			}
 				
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		
 		return list;
 	}
 
 	@Override
-	public Details getDetailsById(int detailsid, Connection conn) {
+	public Details getDetailsById(int detailsid, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn == null)
 		{
 			return null;
 		}
 		
-		try {
+	
 			if(!conn.isClosed()){
 				String sql="select * from details where detailsid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -86,21 +83,18 @@ public class DetailsDaoImpl implements DetailsDao{
 			}
 				
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return null;
 	}
 
 	@Override
-	public boolean insertDetails(Details details, Connection conn) {
+	public boolean insertDetails(Details details, Connection conn) throws Exception{
 		if(conn == null)
 		{
 			return false;
 		}
 		
-		try {
+	
 			System.out.println("连接状态:"+conn.isClosed());
 			if(!conn.isClosed()){
 				String sql = "insert into details values(?,?,?,?,?,?,?,?,?,?,?,?)";
@@ -123,22 +117,19 @@ public class DetailsDaoImpl implements DetailsDao{
 			}
 			 
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		
 		
 		return false;
 	}
 
 	@Override
-	public boolean deleteDetailsByid(int aid, Connection conn) {
+	public boolean deleteDetailsByid(int aid, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="delete from details where detailsid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -148,19 +139,17 @@ public class DetailsDaoImpl implements DetailsDao{
 					return true;
 				}
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean modifyDetails(Details details, Connection conn) {
+	public boolean modifyDetails(Details details, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+		
 			String sql="update details set detailsstock=?,detailsprice=?,detailsdrawing=?,"
 					+ "detailsdot=?,detailssale=?,color=?,size=?,pai=?,test4=?,test5=?,test6=? where detailsid=?";
 		   PreparedStatement ps=conn.prepareStatement(sql);
@@ -181,9 +170,7 @@ public class DetailsDaoImpl implements DetailsDao{
 		  if(rs>0){
 			  return true;
 		  }
-		} catch (Exception e) {
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 

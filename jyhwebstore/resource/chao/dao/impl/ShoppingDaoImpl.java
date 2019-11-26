@@ -14,12 +14,12 @@ import chao.dao.ShoppingDao;
 public class ShoppingDaoImpl implements ShoppingDao{
 
 	@Override
-	public List<Shopping> getAllAcount(Connection conn) {
+	public List<Shopping> getAllAcount(Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return null;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="select * from shopping";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -39,20 +39,17 @@ public class ShoppingDaoImpl implements ShoppingDao{
 				}
 				return list;
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return null;
 	}
 
 	@Override
-	public Shopping getShopingById(int aid, Connection conn) {
+	public Shopping getShopingById(int aid, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return null;
 		}
-		try {
+		
 			if(!conn.isClosed()){
 				String sql="select * from shopping where shopid=?";
 				
@@ -74,20 +71,17 @@ public class ShoppingDaoImpl implements ShoppingDao{
 				}
 			
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+	
 		return null;
 	}
 
 	@Override
-	public boolean insertShoping(Shopping shoping, Connection conn) {
+	public boolean insertShoping(Shopping shoping, Connection conn) throws Exception{
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+
 			if(!conn.isClosed()){
 				String sql="insert into shopping values(?,?,?,?,?,?,?,?) ";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -104,20 +98,17 @@ public class ShoppingDaoImpl implements ShoppingDao{
 			    	return true;
 			    }
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean deleteShopingtByid(int aid, Connection conn) {
+	public boolean deleteShopingtByid(int aid, Connection conn) throws Exception{
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+
 			String sql="delete from shopping where shopid=?";
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ps.setInt(1, aid);
@@ -125,21 +116,17 @@ public class ShoppingDaoImpl implements ShoppingDao{
 			 if(rs>0){
 				 return true;
 			 }
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-			
-		}
+		
 		return false;
 	}
 
 	@Override
-	public boolean modifyShoping(Shopping shoping, Connection conn) {
+	public boolean modifyShoping(Shopping shoping, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
-		try {
+	
 			if(!conn.isClosed()){
 				String sql="update shopping set comid=?,count=?,datees=?,test1=?,test2=?,test3=?,test4=? where shopid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -156,10 +143,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 					return true;
 				}
 			}
-		} catch (Exception e) {
-			// TODO: handle exception
-			e.printStackTrace();
-		}
+		
 		return false;
 	}
 
