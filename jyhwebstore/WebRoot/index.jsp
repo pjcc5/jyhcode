@@ -1,12 +1,11 @@
 <%@page import="db.DbHelp"%>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
 <html>
 <head>
 	<link rel="shortcut icon" type="image/x-icon" href="/jyhwebstore/store/img/task.png" />
-		<meta name="viewport" content="width=device-width,initial-scale=1"/>
-		<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/bootstrap.css"/>
-		<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/webstore.css"/>
+	<meta name="viewport" content="width=device-width,initial-scale=1"/>
+	<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/bootstrap.css"/>
+	<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/webstore.css"/>
 </head>
 	<body>
 		<!-- 顶部导航栏 -->
@@ -27,7 +26,7 @@
 					
 					<div class="col-md-5 col-md-offset-2 links-right   text-right">
 						<span id="goodnight">晚上好,请</span>
-						<a href="login.html" id="log">登录</a>
+						<a href="/jyhwebstore/store/html/login.jsp" id="log">登录</a>
 						<span class="quit-father"></span>
 						<i><a href="regist.html">注册</a></i>
 						
@@ -62,7 +61,7 @@
 				</div>
 				
 				<div class="search-right">
-					<input type="text" class="search-input" id="searchIn1">
+					<input type="text" class="search-input" id="searchIn1" placeholder="搜索商品">
 					<button type="button" class="search-btn" id="searchBtn1"><span class="glyphicon glyphicon-search"></span></button>
 					<div>
 						<a href="cart.html" class="cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
@@ -104,7 +103,7 @@
 					<a href=""><img src="/jyhwebstore/store/img/Logo.png" class="nav-logo-img"></a>
 				</div>
 				<div class="nav-search">
-					<input type="text" class="search-input" id="searchIn2">
+					<input type="text" class="search-input" id="searchIn2" placeholder="搜索商品">
 					<button type="button" class="nav-search-btn" id="searchBtn2" ><span class="glyphicon glyphicon-search"></span></button>
 					<a href="cart.html" class="cart nav-cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
 						
