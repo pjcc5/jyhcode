@@ -39,7 +39,7 @@ public class DetailsDaoImpl implements DetailsDao{
 			details.setColor(rs.getString("color"));
 			details.setSize(rs.getString("size"));
 			details.setPai(rs.getString("pai"));
-			details.setTest4(rs.getString("test4"));
+			details.setComid(rs.getString("comid"));
 			details.setTest5(rs.getString("test5"));
 			details.setTest6(rs.getString("test6"));
 			list.add(details);
@@ -76,7 +76,7 @@ public class DetailsDaoImpl implements DetailsDao{
 			details.setColor(rs.getString("color"));
 			details.setSize(rs.getString("size"));
 			details.setPai(rs.getString("pai"));
-			details.setTest4(rs.getString("test4"));
+			details.setComid(rs.getString("comid"));
 			details.setTest5(rs.getString("test5"));
 			details.setTest6(rs.getString("test6"));
 			return details;
@@ -108,7 +108,7 @@ public class DetailsDaoImpl implements DetailsDao{
 				ps.setString(7, details.getColor());
 				ps.setString(8, details.getSize());
 				ps.setString(9, details.getPai());
-				ps.setString(10, details.getTest4());
+				ps.setString(10, details.getComid());
 				ps.setString(11, details.getTest5());
 				ps.setString(12, details.getTest6());
 			int rs=ps.executeUpdate();
@@ -161,7 +161,7 @@ public class DetailsDaoImpl implements DetailsDao{
 		   ps.setString(6, details.getColor());
 		   ps.setString(7, details.getSize());
 		   ps.setString(8, details.getPai());
-		   ps.setString(9, details.getTest4());
+		   ps.setString(9, details.getComid());
 		   ps.setString(10, details.getTest5());
 		   ps.setString(11, details.getTest6());
 		   ps.setInt(12, details.getDetailsid());

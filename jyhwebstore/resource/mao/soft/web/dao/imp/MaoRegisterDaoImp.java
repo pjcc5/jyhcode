@@ -3,14 +3,10 @@ package mao.soft.web.dao.imp;
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.util.List;
 
-
-
-
-import pojo.Acount;
 import mao.soft.web.dao.MaoRegisterDao;
+import pojo.Acount;
 
 public class MaoRegisterDaoImp implements MaoRegisterDao{
 

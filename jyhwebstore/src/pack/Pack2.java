@@ -227,6 +227,7 @@ public class Pack2 {
 				dt.setColor(productcolor);
 				dt.setSize(productsize);
 				dt.setPai(productbrand);
+				dt.setComid(comid);
 				
 				
 				//插入图片连接表

@@ -30,7 +30,7 @@ public class PjcDetailsDaoImpl extends DetailsDaoImpl implements PjcDetailsDao {
 			de.setColor(rs.getString("color"));
 			de.setSize(rs.getString("size"));
 			de.setPai(rs.getString("pai"));
-			de.setTest4(rs.getString("test4"));
+			de.setComid(rs.getString("comid"));
 			de.setTest5(rs.getString("test5"));
 			de.setTest6(rs.getString("test6"));
 			list.add(de);
