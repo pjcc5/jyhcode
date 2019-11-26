@@ -181,8 +181,8 @@
 					<p><span class="glyphicon  glyphicon-star"></span>${json.data[i].star_number}</p>
 					<a href='product.html?goods_id=${json.data[i].goods_id}' class="content_a">
 						<div class="cover">
-							<p class="goodsdecoration">${json.data[i].goods_desc}</p>
-							<p class="price">只要${json.data[i].price}元</p>
+							<p class="goodsdecoration"></p>
+							<p class="price">只要${good.detailsprice}元</p>
 						</div>
 					</a>
 					<button type="button" class="btn btn-danger addincart"><span class="

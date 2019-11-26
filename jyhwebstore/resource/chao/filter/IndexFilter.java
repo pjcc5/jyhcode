@@ -1,6 +1,8 @@
 package chao.filter;
 
 import java.io.IOException;
+import java.sql.Connection;
+import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.Filter;
@@ -14,8 +16,12 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
+import pojo.Commodity;
 import pojo.Details;
 import chao.service.IndexInitService;
+import dao.CommodityDao;
+import dao.impl.CommodityDaoImpl;
+import db.DbHelp2;
 
 public class IndexFilter implements Filter{
 
@@ -33,7 +39,11 @@ public class IndexFilter implements Filter{
 		//接下来写Service层的查询50条记录的方法
 		IndexInitService iis =new IndexInitService();
 		List<Details> details =  iis.getIndexProducts();
+		List<Commodity> comms =new ArrayList<Commodity>();
+		CommodityDao cmd =new CommodityDaoImpl();
+		Connection conn =DbHelp2.getConnection(); 
 		for (Details details2 : details) {
+			comms.add(cmd.getCommodityById(details2.getDetailsid(),conn));
 			details2.setDetailsdrawing(details2.getDetailsdrawing().replace("50x50", "220x220"));
 		}
 		//将查到的数据存入到session中
