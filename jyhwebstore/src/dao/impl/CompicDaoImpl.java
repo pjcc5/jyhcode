@@ -1,4 +1,4 @@
-package chao.dao.impl;
+package dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import pojo.Commodity;
 import pojo.Compic;
-import chao.dao.CompicDao;
+import dao.CompicDao;
 
 public class CompicDaoImpl implements CompicDao{
 

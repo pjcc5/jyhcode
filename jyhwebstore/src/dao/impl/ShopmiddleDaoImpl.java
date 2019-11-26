@@ -1,4 +1,4 @@
-package chao.dao.impl;
+package dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pojo.Shopmiddle;
-import chao.dao.ShopmiddleDao;
+import dao.ShopmiddleDao;
 
 public class ShopmiddleDaoImpl implements ShopmiddleDao{
 

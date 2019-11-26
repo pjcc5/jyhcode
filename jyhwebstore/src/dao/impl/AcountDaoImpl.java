@@ -1,4 +1,4 @@
-package chao.dao.impl;
+package dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -11,7 +11,7 @@ import java.util.UUID;
 import javax.servlet.jsp.jstl.sql.Result;
 
 import pojo.Acount;
-import chao.dao.AcountDao;
+import dao.AcountDao;
 
 public class AcountDaoImpl implements AcountDao{
 

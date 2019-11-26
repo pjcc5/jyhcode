@@ -1,4 +1,4 @@
-package chao.dao.impl;
+package dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pojo.Orderform;
-import chao.dao.OrderDao;
+import dao.OrderDao;
 
 public class OrderDaoImpl implements OrderDao{
 

@@ -252,9 +252,12 @@ header{
 }
 
 .nav-search-btn{
-	position: absolute;
-	top: 19px;
-	right: 285px;
+	float: left;
+    margin-left: -40px;
+    margin-top: 10px;
+	//position: absolute;
+	//top: 19px;
+	//right: 285px;
 	background: none;
 	border: none;
 	outline: none;
