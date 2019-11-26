@@ -84,7 +84,6 @@ public class AcountDaoImpl implements AcountDao{
 		
 		
 			if(!conn.isClosed()){
-				UUID.randomUUID().toString();
 				String sql="insert into  acount values(?,?,?,?,?,?,?)";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, acount.getAid());

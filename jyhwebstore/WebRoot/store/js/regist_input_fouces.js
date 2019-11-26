@@ -185,44 +185,7 @@ $('.regist-YHXY').click(function() {
 // 验证正则表达式
 $('#regists').click(function() {
 	if (flagname && flagph && flagpas && flagnextpas) {
-		var userName = $("#useinput").val();
-		var userPassword = $('#password').val();
-		(function() {
-			//发起请求
-			$.post('http://www.wjian.top/shop/api_user.php', {
-				status: 'register',
-				username: userName,
-				password: userPassword,
-			}, function(result) {
-				var obj = JSON.parse(result);
-				console.log(obj);
-				//验证
-				if (obj.code == 0) {
-					$('#success').slideDown().children('#success-container').children('#success-container-success').slideDown(350).siblings().hide();
-					$('#success').children('#success-btn').children('#success-btn-1').show().siblings().hide();
-					$('#success-btn-1').click(function(){
-						var usernames = $('input:eq(0)').val();
-						var passwords = $('input:eq(3)').val();
-						var str = encodeURI(passwords);
-						location.href=`login.html?a=${usernames}&b=${passwords}`;
-					});
-				}
-				else if (obj.code == 2001) {
-					$('#success').slideDown().children('#success-container').children('#success-container-exist').show().siblings().hide();
-					$('#success').children('#success-btn').children('#success-btn-2').show().siblings().hide();
-				}
-				else 
-				{
-					console.log(obj.message);
-					alert(obj.message);
-					return;
-				}
-
-			});
-		})();
-	} else {
-		$('#success').slideDown().children('#success-container').children('#success-container-failed').show().siblings().hide();
-		$('#success').children('#success-btn').children('#success-btn-3').show().siblings().hide();
+		location.href="register";
 	}
 });
 
@@ -237,6 +200,42 @@ $('#success-btn-3').click(function () {
 	$("#success").slideUp(350);
 })
 
-function tizozhuan(){
-	
-};
+//var userName = $("#useinput").val();
+//		var userPassword = $('#password').val();
+//		var userphone = $('#yz_phone')
+//		(function() {
+//			//发起请求
+//			$.post('register', {
+//				status: 'register',
+//				username: userName,
+//				password: userPassword,
+//			}, function(result) {
+//				var obj = JSON.parse(result);
+//				console.log(obj);
+//				//验证
+//				if (obj.code == 0) {
+//					$('#success').slideDown().children('#success-container').children('#success-container-success').slideDown(350).siblings().hide();
+//					$('#success').children('#success-btn').children('#success-btn-1').show().siblings().hide();
+//					$('#success-btn-1').click(function(){
+//						var usernames = $('input:eq(0)').val();
+//						var passwords = $('input:eq(3)').val();
+//						var str = encodeURI(passwords);
+//						location.href=`login.html?a=${usernames}&b=${passwords}`;
+//					});
+//				}
+//				else if (obj.code == 2001) {
+//					$('#success').slideDown().children('#success-container').children('#success-container-exist').show().siblings().hide();
+//					$('#success').children('#success-btn').children('#success-btn-2').show().siblings().hide();
+//				}
+//				else 
+//				{
+//					console.log(obj.message);
+//					alert(obj.message);
+//					return;
+//				}
+//
+//			});
+//		})();
+//	} else {
+//		$('#success').slideDown().children('#success-container').children('#success-container-failed').show().siblings().hide();
+//		$('#success').children('#success-btn').children('#success-btn-3').show().siblings().hide();

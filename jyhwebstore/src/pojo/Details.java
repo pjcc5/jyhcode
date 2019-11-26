@@ -15,7 +15,7 @@ public class Details  implements Serializable{
 	private java.lang.String size;//test2
 	private java.lang.String pai;//test3
 
-	private java.lang.String test4;//test4
+	private java.lang.String comid;//test4
 	private java.lang.String test5;//test5
 	private java.lang.String test6;//test6
 	public java.lang.Integer getDetailsid() {
@@ -73,11 +73,11 @@ public class Details  implements Serializable{
 	public void setPai(java.lang.String pai) {
 		this.pai = pai;
 	}
-	public java.lang.String getTest4() {
-		return test4;
+	public java.lang.String getComid() {
+		return comid;
 	}
-	public void setTest4(java.lang.String test4) {
-		this.test4 = test4;
+	public void setComid(java.lang.String comid) {
+		this.comid = comid;
 	}
 	public java.lang.String getTest5() {
 		return test5;
@@ -97,8 +97,8 @@ public class Details  implements Serializable{
 				+ detailsstock + ", detailsprice=" + detailsprice
 				+ ", detailsdrawing=" + detailsdrawing + ", detailsdot="
 				+ detailsdot + ", detailssale=" + detailssale + ", color="
-				+ color + ", size=" + size + ", pai=" + pai + ", test4="
-				+ test4 + ", test5=" + test5 + ", test6=" + test6 + "]";
+				+ color + ", size=" + size + ", pai=" + pai + ", comid="
+				+ comid + ", test5=" + test5 + ", test6=" + test6 + "]";
 	}
 	
 	
