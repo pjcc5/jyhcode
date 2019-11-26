@@ -123,6 +123,9 @@ li {
 	border: 4px solid gray;
 	display: none;
 }
+.containers{
+	height: 50px;
+}
 
 .success-container {
 	margin-top: 45px;
