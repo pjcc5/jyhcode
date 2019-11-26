@@ -1,4 +1,4 @@
-package chao.dao.impl;
+package dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -9,7 +9,7 @@ import java.util.List;
 
 import pojo.Acount;
 import pojo.Classes;
-import chao.dao.ClassesDao;
+import dao.ClassesDao;
 import db.DbHelp2;
 
 public class ClassesDaoImpl implements ClassesDao{

@@ -93,5 +93,26 @@
   	<filter-name>loginfilter</filter-name>
   	<url-pattern>/store/html/operation/*</url-pattern>
   	</filter-mapping>
+<<<<<<< HEAD
   
+=======
+  	
+  	<!-- 主页的过滤器 -->
+  	<filter>
+  	<filter-name>Indexfilter</filter-name>
+  	<filter-class>chao.filter.IndexFilter</filter-class>
+  	</filter>
+	<filter-mapping>
+  	<filter-name>Indexfilter</filter-name>
+  	<url-pattern>/index.jsp</url-pattern>
+  	</filter-mapping>
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+  	
+>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 </web-app>

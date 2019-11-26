@@ -1,4 +1,4 @@
-package chao.dao.impl;
+package dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -6,8 +6,9 @@ import java.sql.ResultSet;
 import java.sql.SQLException;
 
 import pojo.Commodity;
-import chao.dao.CommodityDao;
+import dao.CommodityDao;
 import db.DbHelp2;
+
 //github.com/pjcc5/jyhcode.git
 import java.util.ArrayList;
 import java.util.List;

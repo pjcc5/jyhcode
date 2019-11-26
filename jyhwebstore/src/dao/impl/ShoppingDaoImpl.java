@@ -1,4 +1,4 @@
-package chao.dao.impl;
+package dao.impl;
 
 import java.sql.Connection;
 import java.sql.Date;
@@ -9,7 +9,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pojo.Shopping;
-import chao.dao.ShoppingDao;
+import dao.ShoppingDao;
 
 public class ShoppingDaoImpl implements ShoppingDao{
 

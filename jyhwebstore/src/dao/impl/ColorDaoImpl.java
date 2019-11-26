@@ -1,4 +1,4 @@
-package chao.dao.impl;
+package dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
@@ -7,7 +7,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 import pojo.Color;
-import chao.dao.ColorDao;
+import dao.ColorDao;
 
 public class ColorDaoImpl implements ColorDao{
 

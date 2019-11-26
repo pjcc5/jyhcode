@@ -1,4 +1,4 @@
-package chao.dao.impl;
+package dao.impl;
 
 import java.io.IOException;
 import java.sql.Connection;
@@ -21,17 +21,19 @@ import org.w3c.dom.stylesheets.DocumentStyle;
 
 
 
-import chao.dao.AcountDao;
+
+
 //=======
-import chao.dao.ClassesDao;
 //>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
-import chao.dao.CommodityDao;
-import chao.dao.CompicDao;
-import chao.dao.DetailsDao;
-import chao.dao.HotDao;
-import chao.dao.OrderDao;
-import chao.dao.ShopmiddleDao;
-import chao.dao.ShoppingDao;
+import dao.AcountDao;
+import dao.ClassesDao;
+import dao.CommodityDao;
+import dao.CompicDao;
+import dao.DetailsDao;
+import dao.HotDao;
+import dao.OrderDao;
+import dao.ShopmiddleDao;
+import dao.ShoppingDao;
 import db.DbHelp2;
 //<<<<<<< HEAD
 import pojo.Acount;
@@ -209,8 +211,14 @@ public class Test {
 //		}
 		
 		//测试classes表的拿到一个方法Ok
-//		Classes clas =cd.getClassesById(1, conn);
-//		System.out.println(clas);
+//		Classes clas;
+//		try {
+//			clas = cd.getClassesById(1, conn);
+//			System.out.println(clas);
+//		} catch (Exception e) {
+//			// TODO Auto-generated catch block
+//			e.printStackTrace();
+//		}
 		
 		//测试classes表的删除一个方法Ok
 //		boolean result =cd.deleteClassesByid(1, conn);

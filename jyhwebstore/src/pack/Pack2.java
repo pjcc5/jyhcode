@@ -15,24 +15,24 @@ import org.jsoup.nodes.Document;
 import org.jsoup.nodes.Element;
 import org.jsoup.select.Elements;
 
-import chao.dao.ClassesDao;
-import chao.dao.ColorDao;
-import chao.dao.CommodityDao;
-import chao.dao.CompicDao;
-import chao.dao.DetailsDao;
-import chao.dao.SizeDao;
-import chao.dao.impl.ClassesDaoImpl;
-import chao.dao.impl.ColorDaoImpl;
-import chao.dao.impl.CommodityDaoImpl;
-import chao.dao.impl.CompicDaoImpl;
-import chao.dao.impl.DetailsDaoImpl;
-import chao.dao.impl.SizeDaoImpl;
 import pojo.Classes;
 import pojo.Color;
 import pojo.Commodity;
 import pojo.Compic;
 import pojo.Details;
 import pojo.Size;
+import dao.ClassesDao;
+import dao.ColorDao;
+import dao.CommodityDao;
+import dao.CompicDao;
+import dao.DetailsDao;
+import dao.SizeDao;
+import dao.impl.ClassesDaoImpl;
+import dao.impl.ColorDaoImpl;
+import dao.impl.CommodityDaoImpl;
+import dao.impl.CompicDaoImpl;
+import dao.impl.DetailsDaoImpl;
+import dao.impl.SizeDaoImpl;
 import db.DbHelp2;
 
 public class Pack2 {

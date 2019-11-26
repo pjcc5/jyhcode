@@ -1,174 +1,154 @@
 package dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-import pojo.Acount;
-import pojo.Classes;
-import pojo.Commodity;
-import pojo.Compic;
-import pojo.Details;
-import pojo.Hot;
-import pojo.Orderform;
-import pojo.Shopmiddle;
-import pojo.Shopping;
-import pojo.Size;
 import pojo.User;
-import util.DateFromat;
-import chao.dao.AcountDao;
-import chao.dao.ClassesDao;
-import chao.dao.CommodityDao;
-import chao.dao.CompicDao;
-import chao.dao.DetailsDao;
-import chao.dao.HotDao;
-import chao.dao.OrderDao;
-import chao.dao.ShopmiddleDao;
-import chao.dao.ShoppingDao;
-import chao.dao.SizeDao;
-import chao.dao.UserDao;
-import chao.dao.impl.AcountDaoImpl;
-import chao.dao.impl.ClassesDaoImpl;
-import chao.dao.impl.CommodityDaoImpl;
-import chao.dao.impl.CompicDaoImpl;
-import chao.dao.impl.DetailsDaoImpl;
-import chao.dao.impl.HotDaoImpl;
-import chao.dao.impl.OrderDaoImpl;
-import chao.dao.impl.ShopmiddleDaoImpl;
-import chao.dao.impl.ShoppingDaoImpl;
-import chao.dao.impl.SizeDaoImpl;
-import db.DbHelp;
-import db.DbHelp2;
+import dao.UserDao;
 
-public class UserDaoImpl {
-private void mian() {
-	// TODO Auto-generated method stub
+public class UserDaoImpl implements UserDao{
 
-}
-public static void main(String[] args) throws Exception {
-	Connection conn= DbHelp2.getConnection();
-//   UserDao user=new chao.dao.impl.UserDaoImpl();
-//   User user1=new User();
-//   user1.setBirth(new Date());
-//   user1.setMail("1");
-//   user1.setPic("1");
-//   user1.setSetadd("1");
-//   user1.setSex("1");
-//   user1.setUid(2);
-//   user1.setUname("1");
-//   user1.setUphone("1");
-   
-//   System.out.println(user.getAllUser(conn));
-//   System.out.println(user.getUserById(2, conn));
-//   System.out.println(user.deleteUserByid(2, conn));
-//   System.out.println(user.insertUser(user1, conn));
-//	System.out.println(user.modifyUser(user1, conn));
+	@Override
+	public List<User> getAllUser(Connection conn)throws Exception {
+		// TODO Auto-generated method stub
+		if(conn==null){
+			return null;
+		}
+
+			if(!conn.isClosed()){
+				String sql="select * from user";
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ResultSet rs=ps.executeQuery();
+				List<User> list=new ArrayList<>();
+				while(rs.next()){
+					User user=new User();
+					user.setUid(rs.getInt("uid"));
+					user.setUname(rs.getString("uname"));
+					user.setPic(rs.getString("pic"));
+					user.setBirth(rs.getTimestamp("birth"));
+					user.setSex(rs.getString("sex"));
+					user.setUphone(rs.getString("uphone"));
+					user.setMail(rs.getString("mail"));
+					user.setSetadd(rs.getString("setadd"));
+					list.add(user);
+					
+				}
+				return list;
+			}
+		
+		return null;
+	}
+
+	@Override
+	public User getUserById(int uid, Connection conn)throws Exception {
+		// TODO Auto-generated method stub
+		if(conn==null){
+			return null;
+		}
 	
+			if(!conn.isClosed()){
+				String sql="select * from user where uid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setInt(1, uid);
+				ResultSet rs=ps.executeQuery();
+				
+				if(rs.next()){
+					User user=new User();
+					user.setUid(rs.getInt("uid"));
+					user.setUname(rs.getString("uname"));
+					user.setPic(rs.getString("pic"));
+					user.setBirth(rs.getTimestamp("birth"));
+					user.setSex(rs.getString("sex"));
+					user.setUphone(rs.getString("uphone"));
+					user.setMail(rs.getString("mail"));
+					user.setSetadd(rs.getString("setadd"));
+					return user;
+					
+				}
+			}
+		
+		
+		return null;
+	}
+
+	@Override
+	public boolean insertUser(User user, Connection conn)throws Exception {
+		// TODO Auto-generated method stub
+		if(conn==null){
+			return false;
+		}
 	
-//	Shopping shop=new Shopping();
-//	ShoppingDao shopping=new ShoppingDaoImpl();
-//	shop.setComid("1");
-//	shop.setCount(2);
-//	shop.setDate(new Date());
-//	shop.setShopid(1);
-//	shop.setTest1("1");
-//	shop.setTest3("1");
-//	shop.setTest2("1");
-//	shop.setTest4("2");
-//	System.out.println(shopping.getAllAcount(conn));
-//	System.out.println(shopping.getShopingById(2, conn));
-//	System.out.println(shopping.insertShoping(shop, conn));
-//	System.out.println(shopping.modifyShoping(shop, conn));
-//    System.out.println(shopping.deleteShopingtByid(2, conn));
+			if(!conn.isClosed()){
+				String sql="insert into user values(?,?,?,?,?,?,?,?) ";
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setInt(1, user.getUid());
+				ps.setString(2, user.getUname());
+				ps.setString(3, user.getPic());
+				ps.setTimestamp(4, new Timestamp(user.getBirth().getTime()));
+				ps.setString(5, user.getSex());
+				ps.setString(6,user.getUphone());
+				ps.setString(7, user.getMail());
+				ps.setString(8, user.getSetadd());
+			    int rs=ps.executeUpdate();
+			    if(rs>0){
+			    	return true;
+			    }
+			}
+		
+		return false;
+	}
 
-//Shopmiddle shop=new Shopmiddle();
-//ShopmiddleDao dao=new ShopmiddleDaoImpl();
-//System.out.println(dao.getAllShopmiddle(conn));
-//System.out.println(dao.getSById("12", conn));
-//shop.setAis("12");
-//shop.setShopid(6);
-//System.out.println(dao.insertShopmiddle(shop, conn));
-//System.out.println(dao.modifyShopmiddle(shop, conn));
-//System.out.println(dao.deleteShopmiddleByid("12", conn));
-
-
-//Orderform order=new Orderform();
-//order.setAid(2);
-//order.setComid("2");
-//order.setComname("3");
-//order.setOrderadd("4");
-//order.setOrdercompany("5");
-//order.setOrderdate(new Date());
-//order.setOrderid("8");
-//order.setOrdername("9");
-//order.setOrderpay(10);
-//order.setOrderphone("11");
-//order.setOrderprice(12.0);
-//order.setOrderreturn(13);
-//order.setOrderstatement(14);
-//order.setTest1("15");
-//order.setTest2("16");
-//order.setTest3("17");
-//order.setTest4("18");
-//OrderDao dao=new OrderDaoImpl();
-//System.out.println(dao.getAllOrder(conn));
-
-//Order order=new Order();
-//order.setAid(5);
-//order.setComid("2");
-//order.setComname("3");
-//order.setOrderadd("4");
-//order.setOrdercompany("5");
-//order.setOrderdate(new Date());
-//order.setOrderid("8");
-//order.setOrdername("9");
-//order.setOrderpay(10);
-//order.setOrderphone("11");
-//order.setOrderprice(12.0);
-//order.setOrderreturn(13);
-//order.setOrderstatement(14);
-//order.setTest1("15");
-//order.setTest2("16");
-//order.setTest3("17");
-//order.setTest4("18");
-//OrderDao dao=new OrderDaoImpl();
-//System.out.println(dao.getAllOrder(conn));
-//
-//System.out.println(dao.deleteOrderByid(2, conn));
-//System.out.println(dao.modifyOrder(order, conn));
-//System.out.println(dao.insertOrder(order, conn));
-//Timestamp t=new Timestamp(new Date().getTime());
-//Date date=t;
-//DateFromat df=new DateFromat();
-//
-//System.out.println(df.DateFormat(t));
-
-
-//DetailsDao dao=new DetailsDaoImpl();
-//System.out.println(dao.getAllDetails(conn));
+	@Override
+	public boolean deleteUserByid(int uid, Connection conn) throws Exception {
+		// TODO Auto-generated method stub
+		if(conn==null){
+			return false;
+		}
 	
+			String sql="delete from user where uid=?";
+			if(!conn.isClosed()){
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setInt(1, uid);
+			int rs=	ps.executeUpdate();
+			if(rs>0){
+				return true;
+			}
+			}
 	
-	
-//SizeDao dao=new SizeDaoImpl();
-//System.out.println(dao.getAllSize(conn));
-//System.out.println(dao.getSizeById(1, conn));
-//System.out.println(dao.deleteSizetByid(1, conn));
-//Size size=new Size();
-//size.setComid("4");
-//size.setSize1("11");
-//size.setSize2("22");
-//size.setSize3("33");
-//size.setSize4("44");
-//size.setSize5("55");
-//
-//System.out.println(dao.modifySize(size, conn));
-//	
+		return false;
+	}
 
+	@Override
+	public boolean modifyUser(User user, Connection conn)throws Exception {
+		// TODO Auto-generated method stub
+		if(conn==null){
+			return false;
+		}
 	
-	
-}
+			if(!conn.isClosed()){
+				String sql="update user set uname=?,pic=?,birth=?,sex=?,uphone=?,mail=?,setadd=? where uid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+			   ps.setString(1, user.getUname());
+				ps.setString(2, user.getPic());
+				ps.setTimestamp(3, new Timestamp(user.getBirth().getTime()));
+				ps.setString(4, user.getSex());
+				ps.setString(5, user.getUphone());
+				ps.setString(6, user.getMail());
+				ps.setString(7, user.getSetadd());
+				ps.setInt(8, user.getUid());
+				int rs= ps.executeUpdate();
+				if(rs>0){
+					return true;
+				}
+			}
+			
+		
+		return false;
+	}
+
 }
