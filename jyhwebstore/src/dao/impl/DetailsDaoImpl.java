@@ -93,30 +93,28 @@ public class DetailsDaoImpl implements DetailsDao{
 		{
 			return false;
 		}
-		
-	
-			System.out.println("连接状态:"+conn.isClosed());
-			if(!conn.isClosed()){
-				String sql = "insert into details values(?,?,?,?,?,?,?,?,?,?,?,?)";
-				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setInt(1, details.getDetailsid());
-				ps.setInt(2, details.getDetailsstock());
-				ps.setDouble(3, details.getDetailsprice());
-				ps.setString(4, details.getDetailsdrawing());
-				ps.setInt(5, details.getDetailsdot());
-				ps.setInt(6, details.getDetailssale());
-				ps.setString(7, details.getColor());
-				ps.setString(8, details.getSize());
-				ps.setString(9, details.getPai());
-				ps.setString(10, details.getComid());
-				ps.setString(11, details.getTest5());
-				ps.setString(12, details.getTest6());
-			int rs=ps.executeUpdate();
-			if(rs>0){
-				return true;
-			}
-			 
-			}
+		System.out.println("连接状态:"+conn.isClosed());
+		if(!conn.isClosed()){
+			String sql = "insert into details values(?,?,?,?,?,?,?,?,?,?,?,?)";
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setInt(1, details.getDetailsid());
+			ps.setInt(2, details.getDetailsstock());
+			ps.setDouble(3, details.getDetailsprice());
+			ps.setString(4, details.getDetailsdrawing());
+			ps.setInt(5, details.getDetailsdot());
+			ps.setInt(6, details.getDetailssale());
+			ps.setString(7, details.getColor());
+			ps.setString(8, details.getSize());
+			ps.setString(9, details.getPai());
+			ps.setString(10, details.getComid());
+			ps.setString(11, details.getTest5());
+			ps.setString(12, details.getTest6());
+		int rs=ps.executeUpdate();
+		if(rs>0){
+			return true;
+		}
+		 
+		}
 		
 		
 		

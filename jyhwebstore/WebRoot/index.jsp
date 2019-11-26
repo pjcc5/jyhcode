@@ -172,17 +172,17 @@
 				<div class="goods">
 					<img src="img/Logo.png" alt="">
 				</div> -->
-		<c:forEach items="${goods}" var="good" >
+		<c:forEach items="${igds}" var="igd" >
 					<div class="goods">
-					<img src="${good.detailsdrawing}" alt="">
-					<p class="goodsname">${json.data[i].goods_name}</p>
-					<p>${json.data[i].goods_desc}</p>
-					<p>${json.data[i].price}</p>
-					<p><span class="glyphicon  glyphicon-star"></span>${json.data[i].star_number}</p>
+					<img src="${igd.compic}" alt="">
+					<p class="goodsname">${igd.comname}</p>
+					<p>${igd.pai}</p>
+					<p>${igd.comprice}</p>
+					<p><span class="glyphicon  glyphicon-star"></span>${igd.detailsdot}</p>
 					<a href='product.html?goods_id=${json.data[i].goods_id}' class="content_a">
 						<div class="cover">
-							<p class="goodsdecoration"></p>
-							<p class="price">只要${good.detailsprice}元</p>
+							<p class="goodsdecoration">${igd.comname}</p>
+							<p class="price">只要${igd.comprice}元</p>
 						</div>
 					</a>
 					<button type="button" class="btn btn-danger addincart"><span class="

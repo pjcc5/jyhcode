@@ -19,10 +19,15 @@ public class PjCommodityDaoImpl extends CommodityDaoImpl implements PjcCommodity
 		Connection conn =DbHelp2.getConnection();
 		CommodityDao commd = new CommodityDaoImpl();
 		for (Details details : details50) {
-			comms.add(commd.getCommodityById(details.getDetailsid(), conn));
+			try {
+				comms.add(commd.getCommodityById(details.getComid(), conn));
+			} catch (Exception e) {
+				e.printStackTrace();
+			}
+			
 			
 		}
-		return null;
+		return comms;
 	}
 	
 
