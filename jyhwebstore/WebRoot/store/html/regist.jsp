@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<!-- 用户输入用户名 -->
 						<div class="regist-li-div1">
 							<span>用户名</span>
-							<input type="text" class="form-control" maxlength="20" placeholder="UserName" id="useinput" />
+							<input type="text" class="form-control" maxlength="20" placeholder="UserName" id="useinput" name="rname"/>
 							<div class="">
 								3-20字符，可由英文、数字或者符号来组成
 							</div>
@@ -65,7 +65,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li>
 						<div class="regist-li-div2">
 							<span>手机号</span>
-							<input type="text" maxlength="11" class="form-control" placeholder="Cell-phone number" />
+							<input type="text" id="phone" maxlength="11" class="form-control" placeholder="Cell-phone number" name="rphone"/>
 							<div class="">
 								请填写正确的手机号码，以便接收订单通知，找回密码等
 							</div>
@@ -80,14 +80,14 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<!-- 验证码 -->
 					<li class="regist-YZM">
 						<span>验证码</span>
-						<input type="text" class="form-control" placeholder="identifying code" />
+						<input type="text" class="form-control" placeholder="identifying code" name="valdation"/>
 					<img src="image" style="float: right;margin-right: 550px; width: 130px;height: 43px; margin-top: -60px;" onclick="flush(this)">
 					</li>
 					<!-- 密码 -->
 					<li>
 						<div class="regist-li-div3">
 							<span>密码</span>
-							<input type="password" maxlength="20" class="form-control" placeholder="Password" id="password" />
+							<input type="password" maxlength="20" class="form-control" placeholder="Password" id="password" name="rpass"/>
 							<div>
 								密码应为6-20个字符,不包含空格符号<br>必须包含数字,字母或字符至少两种
 							</div>
@@ -141,7 +141,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div id="success-btn" class="success-btn">
 				<button id="success-btn-1" type="button" style="color: blue; margin-bottom: -50px;"> <a href="#">确定</a> </button>
 				<button id="success-btn-2" type="button" style="color: red;margin-bottom: -80px;">确定</button>
-				<button type="button" id="success-btn-3" style="margin-bottom: -80px;">确定</button>
+				<button type="button" id="success-btn-3" style="margin-bottom: -80px;" onclick="tiaozhuan()">确定</button>
 			</div>
 		</div>
 	</body>
