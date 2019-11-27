@@ -16,10 +16,7 @@
 				<a href="">
 				<span class="glyphicon glyphicon-home"></span>
 				聚优汇首页</a>
-				<a class="" href="">
-					<span class="glyphicon glyphicon-map-marker"></span>
-					送货地址：   长沙市
-				</a>
+				
 				</div>
 				
 				
