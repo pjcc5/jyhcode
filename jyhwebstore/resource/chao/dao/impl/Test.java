@@ -1,41 +1,6 @@
 package chao.dao.impl;
 
-import java.io.IOException;
-import java.sql.Connection;
-import java.sql.Date;
-//<<<<<<< HEAD
-//=======
-import java.util.ArrayList;
-//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
-import java.util.List;
-import java.util.UUID;
 
-import org.jsoup.Jsoup;
-import org.jsoup.nodes.Document;
-import org.jsoup.nodes.Element;
-import org.jsoup.select.Elements;
-import org.w3c.dom.stylesheets.DocumentStyle;
-
-
-
-
-
-
-
-
-import db.DbHelp2;
-import pojo.Acount;
-//=======
-import pojo.Classes;
-//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
-import pojo.Commodity;
-import pojo.Compic;
-import pojo.Details;
-import pojo.Orderform;
-import pojo.Hot;
-import pojo.Shopmiddle;
-import pojo.Shopping;
-import util.DateFromat;
 public class Test {
 
 	public static void main(String[] args) {
@@ -48,7 +13,7 @@ public class Test {
 //		comm.setComdetails("aaa");
 //		comm.setComprice(1998.00d);
 //		comm.setComclass(10);
-		Connection conn = DbHelp2.getConnection();
+		//Connection conn = DbHelp2.getConnection();
 //		CommodityDao cd =new CommodityDaoImpl();
 //		System.out.println(cd.insertCommodity(comm, conn));
 		//测试商品详情OK

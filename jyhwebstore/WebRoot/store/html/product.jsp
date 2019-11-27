@@ -1,33 +1,24 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 
-<!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
     
-    <title>My JSP 'peroduct.jsp' starting page</title>
-    
+    <title>商品详情</title>
+    <link rel="shortcut icon" type="image/x-icon" href="/jyhwebstore/store/img/task.png" />
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
-<link rel="stylesheet" href="css/product.css" />
-		<link rel="stylesheet" href="css/bootstrap.min.css">
+<link rel="stylesheet" href="/jyhwebstore/store/css/product.css" />
+		<link rel="stylesheet" href="/jyhwebstore/store/css/bootstrap.min.css">
   </head>
   
   <body>
    <nav class="navbar navbar-default">
 			<div class="container ">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="index.html">
+					<a class="navbar-brand" href="/jyhwebstore/index.jsp">
 						<span class="glyphicon glyphicon-home "></span>
 						聚优汇首页
 					</a>
@@ -38,8 +29,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class=" navbar-right" id="myNav">
 					<ul class="nav navbar-nav">
 
-						<li class=""><a href="login.html?">登录</a></li>
-						<li><a href="regist.html">注册</a></li>
+						<li class=""><a href="/jyhwebstore/store/login.jsp?">登录</a></li>
+						<li><a href="/jyhwebstore/store/regist.jsp">注册</a></li>
 						<li><a href="cart.html"><span class="glyphicon glyphicon-list-alt"></span> 我的订单</a></li>
 
 					</ul>
@@ -51,8 +42,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		<section>
 			<div class="header-bp">
 				<div class="logo">
-					<a href="index.html" class="hd-logo"><img src="img/Logo.png" /></a>
-					<a href="index.html" class="hd-slogan"><img src="img/slogan.png" /></a>
+					<a href="/jyhwebstore/index.html" class="hd-logo"><img src="/jyhwebstore/store/img/Logo.png" /></a>
+					<a href="/jyhwebstore/index.html" class="hd-slogan"><img src="/jyhwebstore/store/img/slogan.png" /></a>
 				</div>
 
 				<div class="header-right">
@@ -155,7 +146,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<ul>
 					<p>购买了此商品的用户还买了</p>
 					<li>
-						<img src="img/task.png" alt="">
+						<img src="/jyhwebstore/store/img/task.png" alt="">
 						<p>商品名称</p>
 						<p>商品价格</p>
 						<button type="button">查看详情</button>
@@ -165,15 +156,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</ul>
 			</div>
 			<div class="center">
-				<img src="img/c1.jpg" alt="">
-				<img src="img/c2.jpg" alt="">
-				<img src="img/c3.jpg" alt="">
-				<img src="img/c4.jpg" alt="">
-				<img src="img/c5.jpg" alt="">
-				<img src="img/c6.jpg" alt="">
-				<img src="img/c7.jpg" alt="">
-				<img src="img/c8.jpg" alt="">
-				<img src="img/c9.jpg" alt="">
+				<img src="/jyhwebstore/store/img/c1.jpg" alt="">
+				<img src="/jyhwebstore/store/img/c2.jpg" alt="">
+				<img src="/jyhwebstore/store/img/c3.jpg" alt="">
+				<img src="/jyhwebstore/store/img/c4.jpg" alt="">
+				<img src="/jyhwebstore/store/img/c5.jpg" alt="">
+				<img src="/jyhwebstore/store/img/c6.jpg" alt="">
+				<img src="/jyhwebstore/store/img/c7.jpg" alt="">
+				<img src="/jyhwebstore/store/img/c8.jpg" alt="">
+				<img src="/jyhwebstore/store/img/c9.jpg" alt="">
 			</div>
 			
 		</div>
@@ -183,22 +174,22 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="footer">
 				<div class="footer-top">
 					<div class="icon">
-						<img src="img/icon1.png" class="icons">
+						<img src="/jyhwebstore/store/img/icon1.png" class="icons">
 						<h3 class="content">正品保障</h3>
 						<p class="sub-content">正品行货 放心选购</p>
 					</div>
 					<div class="icon">
-						<img src="img/icon2.png" class="icons">
+						<img src="/jyhwebstore/store/img/icon2.png" class="icons">
 						<h3 class="content">满99包邮</h3>
 						<p class="sub-content">满99元 免运费</p>
 					</div>
 					<div class="icon">
-						<img src="img/icon3.png" class="icons">
+						<img src="/jyhwebstore/store/img/icon3.png" class="icons">
 						<h3 class="content">售后无忧</h3>
 						<p class="sub-content">7天无理由退货</p>
 					</div>
 					<div class="icon">
-						<img src="img/icon4.png" class="icons">
+						<img src="/jyhwebstore/store/img/icon4.png" class="icons">
 						<h3 class="content">准时送达</h3>
 						<p class="sub-content">收货时间由你做主</p>
 					</div>
@@ -250,7 +241,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<div class="QR-codes">
 						<p class="contact"><span class="glyphicon glyphicon-phone-alt"></span>联系我们</p>
-						<img src="img/QR-code.png" alt="">
+						<img src="/jyhwebstore/store/img/QR-code.png" alt="">
 					</div>
 				</div>
 			</div>
@@ -276,6 +267,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </body>
 </html>
 
-<script src="js/jquery.min.js"></script>
-<script src="js/bootstrap.min.js"></script>
-<script src="js/product.js"></script>
+<script src="/jyhwebstore/store/js/jquery.min.js"></script>
+<script src="/jyhwebstore/store/js/bootstrap.min.js"></script>
+<script src="/jyhwebstore/store/js/product.js"></script>

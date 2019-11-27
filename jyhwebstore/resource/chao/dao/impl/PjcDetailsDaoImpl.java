@@ -6,36 +6,30 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import pojo.Details;
 import chao.dao.PjcDetailsDao;
 import dao.impl.DetailsDaoImpl;
+import dto.IndexGoodsDto;
 
 public class PjcDetailsDaoImpl extends DetailsDaoImpl implements PjcDetailsDao {
-
+	//查询50条dto组合给首页
 	@Override
-	public List<Details> getfifdetailorderydot(int page,Connection conn) throws Exception{
-		List<Details> list = new ArrayList<Details>();
-		String sql = "select * FROM details ORDER BY  detailsdot desc LIMIT ?,?";
+	public List<IndexGoodsDto> getfifdetailorderydot(int page,Connection conn) throws Exception{
+		List<IndexGoodsDto> list = new ArrayList<IndexGoodsDto>();
+		String sql = "select commodity.comid,commodity.comname,detailsid,detailsstock,detailsprice,detailsdrawing,detailsdot,details.pai FROM details INNER JOIN commodity ON details.comid = commodity.comid ORDER BY  detailsdot desc LIMIT ?,?";
 		PreparedStatement ps = conn.prepareStatement(sql);
 		ps.setInt(1, (page-1)*50);
 		ps.setInt(2, page*50);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next())
 		{
-			Details de =new Details();
-			de.setDetailsid(rs.getInt("detailsid"));
-			de.setDetailsstock(rs.getInt("detailsstock"));
-			de.setDetailsprice(rs.getDouble("detailsprice"));
-			de.setDetailsdrawing(rs.getString("detailsdrawing"));
-			de.setDetailsdot(rs.getInt("detailsdot"));
-			de.setDetailssale(rs.getInt("detailssale"));
-			de.setColor(rs.getString("color"));
-			de.setSize(rs.getString("size"));
-			de.setPai(rs.getString("pai"));
-			de.setComid(rs.getString("comid"));
-			de.setTest5(rs.getString("test5"));
-			de.setTest6(rs.getString("test6"));
-			list.add(de);
+			IndexGoodsDto igd =new IndexGoodsDto();
+			igd.setComid(rs.getString("comid"));
+			igd.setComname(rs.getString("comname"));
+			igd.setCompic(rs.getString("detailsdrawing"));
+			igd.setComprice(rs.getDouble("detailsprice"));
+			igd.setDetailsdot(rs.getInt("detailsdot"));
+			igd.setPai(rs.getString("pai"));
+			list.add(igd);
 		}
 		
 		return list;

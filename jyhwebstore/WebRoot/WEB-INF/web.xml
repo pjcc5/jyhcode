@@ -30,6 +30,7 @@
     	<param-value>log4j.properties</param-value>
     </init-param>
     <load-on-startup>1</load-on-startup>   <!-- 设置加载顺序 -->
+    
   </servlet>
   <servlet-mapping>
     <servlet-name>Log4jInitServlet</servlet-name>
@@ -69,19 +70,17 @@
     <servlet-class>chao.servlet.LoadGoods</servlet-class>
   </servlet>
 
-	<!-- 登录的servlet -->
-	<servlet-mapping>
-	<servlet-name>LoginServlet</servlet-name>
-	<url-pattern>/store/html/login</url-pattern>
-	</servlet-mapping>
-	
 	 <!-- 加载更多的商品servlet -->
 	  <servlet-mapping>
 	    <servlet-name>LoadGoods</servlet-name>
 	    <url-pattern>/load</url-pattern>
 	  </servlet-mapping>
 
-
+	<!-- 登录的servlet -->
+	<servlet-mapping>
+	<servlet-name>LoginServlet</servlet-name>
+	<url-pattern>/store/html/login</url-pattern>
+	</servlet-mapping>
 <!-- 字符转码 -->
 	  <filter>
   	<filter-name>character</filter-name>
