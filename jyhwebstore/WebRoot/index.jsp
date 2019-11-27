@@ -13,7 +13,7 @@
 		<section class="top-lan">
 			<div class="row">
 				<div class="col-md-10 col-md-offset-1 col-sm-6 col-xs-12 links text-left">
-					<div class="col-md-2">
+					<div class="col-md-2" id="location">
 						<span class="glyphicon glyphicon-map-marker posi"></span>
 						<i class="icon iconfont"></i>
 						<span>送货地址:</span>
@@ -62,7 +62,7 @@
 				</div>
 				
 				<div class="search-right">
-					<input type="text" class="search-input" id="searchIn1" placeholder="搜索商品">
+					<input type="text" class="search-input" id="searchIn1" placeholder="搜索手机">
 					<button type="button" class="search-btn" id="searchBtn1"><span class="glyphicon glyphicon-search"></span></button>
 					<div>
 						<a href="cart.html" class="cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
@@ -104,7 +104,7 @@
 					<a href=""><img src="/jyhwebstore/store/img/Logo.png" class="nav-logo-img"></a>
 				</div>
 				<div class="nav-search">
-					<input type="text" class="search-input" id="searchIn2" placeholder="搜索商品">
+					<input type="text" class="search-input" id="searchIn2" placeholder="搜索手机">
 					<button type="button" class="nav-search-btn" id="searchBtn2" ><span class="glyphicon glyphicon-search"></span></button>
 					<a href="cart.html" class="cart nav-cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
 						
@@ -152,12 +152,12 @@
 		</div>
 		
 		
-		<!-- 首页商品 -->
+		<!-- 首页手机 -->
 		<section>
 			<div class="goods-top">
 				<!-- <div class="goods">
 					<img src="img/Logo.png" alt="">
-					<p>商品名</p>
+					<p>手机名</p>
 					<p>描述</p>
 					<p>价格</p>
 					<p>点赞数</p>
@@ -176,8 +176,8 @@
 					<div class="goods">
 					<img src="${igd.compic}" alt="">
 					<p class="goodsname">${igd.comname}</p>
-					<p>${igd.pai}</p>
-					<p>${igd.comprice}</p>
+					<p class="pai">${igd.pai}</p>
+					<p class="comprice">${igd.comprice}</p>
 					<p><span class="glyphicon  glyphicon-star"></span>${igd.detailsdot}</p>
 					<a href='/jyhwebstore/store/html/product.jsp?' class="content_a">
 						<div class="cover">
@@ -257,7 +257,7 @@
 								<ul>
 									<li><a href="">配送服务</a></li>
 									<li><a href="">配送进度查询</a></li>
-									<li><a href="">商品验货与签收</a></li>
+									<li><a href="">手机验货与签收</a></li>
 								</ul>
 							</div>
 							<div class="details">
@@ -307,6 +307,7 @@
 <script src="/jyhwebstore/store/js/jquery.singlePageNav.min.js"></script>
 <script src="/jyhwebstore/store/js/webstore.js"></script>
 <script>
+
 	var page;
 	function loadmore(obj)
 	{	
@@ -314,7 +315,7 @@
 		$(".loadmore").attr("page",page);
 		$.get({
 			type:"post",
-			url:"load",
+			url:"/jyhwebstore/load",
 			data:{"page":page},
 			success:function(result){
 				var json = JSON.parse(result);
@@ -330,9 +331,9 @@
 							<img src=\"`+compic+`
 							" alt="">
 							<p class="goodsname">`+comname+`</p>
-							<p>`+pai+`
+							<p class="pai">`+pai+`
 							</p>
-							<p>`+comprice+`</p>
+							<p class="comprice">`+comprice+`</p>
 							<p><span class="glyphicon  glyphicon-star"></span>`+detailsdot+`
 							</p>
 							<a href='/jyhwebstore/store/html/product.jsp?' class="content_a">
