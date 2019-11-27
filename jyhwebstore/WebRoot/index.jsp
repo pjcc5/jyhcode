@@ -37,6 +37,7 @@
 						<c:if test="${not empty acount}">
 							<a href="/jyhwebstore/store/html/information.jsp?path=index" id="log">
 							${acount.aname }
+							<a href="javascript:out()" id="out">退出</a>
 						</a>
 						</c:if>
 						
