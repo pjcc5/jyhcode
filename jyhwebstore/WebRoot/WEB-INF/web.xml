@@ -99,6 +99,7 @@
   	<url-pattern>/*</url-pattern>
   	</filter-mapping>
   	
+  	<!-- 单态登录过滤器与放恶意登录 -->
   	<filter>
   	<filter-name>loginfilter</filter-name>
   	<filter-class>tan.filter.OnlineFilter</filter-class>

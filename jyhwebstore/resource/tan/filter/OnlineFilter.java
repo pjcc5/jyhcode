@@ -11,6 +11,7 @@ import javax.servlet.ServletResponse;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import pojo.Acount;
 import tan.PersonInfo;
 
 public class OnlineFilter implements Filter{
@@ -29,7 +30,7 @@ public class OnlineFilter implements Filter{
 		//强转成HTTP协议
 		HttpServletRequest request = (HttpServletRequest)arg0;
 		HttpServletResponse response = (HttpServletResponse)arg1;
-		PersonInfo person= (PersonInfo) request.getSession().getAttribute("personInfo");
+		Acount person= (Acount) request.getSession().getAttribute("acount");
 		System.out.println(person);
 		if(person==null){
 			response.sendRedirect("/jyhwebstore/store/html/login.jsp");
