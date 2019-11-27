@@ -205,7 +205,7 @@ $('#regists').click(function() {
 		var userPassword = $('#password').val();
 		var phone = $('#phone').val();
 		var vald = $("#valdation").val();
-		console.log(userName+userPassword+phone);
+		console.log(userName+":"+userPassword+":"+phone);
 		//发起请求
 		$.get({
 			type:"post",
@@ -213,6 +213,7 @@ $('#regists').click(function() {
 			data:{"rname":userName,"rpass":userPassword,"rphone":phone,"valdation":vald},
 			success:function(result){
 				var json = JSON.parse(result);
+				alert(json.flag);
 				console.log(json.flag);
 				if(json.flag==true)
 				{
@@ -224,6 +225,10 @@ $('#regists').click(function() {
 					$('#success').slideDown().children('#success-container').children('#success-container-exist').show().siblings().hide();
 					$('#success').children('#success-btn').children('#success-btn-2').show().siblings().hide();
 				}
+				if(json.error==false)
+					{
+						
+					}
 			}
 		});
 	}else
@@ -282,8 +287,10 @@ $('#success-btn-2').click(function() {
 //输入有误的时候
 $('#success-btn-3').click(function() {
 	$("#success").slideUp(350);
+	localtion.href="regist.jsp?id="+new Date().getTime();
 })
 
-function tizozhuan() {
-
-};
+//$("#success-btn-3")
+//function tizozhuan(obj) {
+//		obj.src = "regist.jsp?id="+new Date().getTime();
+//};
