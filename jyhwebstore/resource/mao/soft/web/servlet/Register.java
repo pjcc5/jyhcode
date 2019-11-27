@@ -1,6 +1,7 @@
 package mao.soft.web.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 
 import javax.json.Json;
@@ -9,6 +10,8 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSON;
+import net.sf.json.JSONObject;
 import db.DbHelp;
 import mao.soft.web.dao.MaoRegisterDao;
 import mao.soft.web.dao.imp.MaoRegisterDaoImp;
@@ -43,8 +46,9 @@ public class Register extends HttpServlet {
 		
 		Connection conn = DbHelp.getConnection();
 		MaoRegisterDao registerD = new MaoRegisterDaoImp();
-		boolean f = false;
+		boolean f = true;
 		try {
+			System.out.println(f);
 			f =registerD.selectPhoneIsExist(aphone, conn);
 			
 		} catch (Exception e1) {
@@ -53,13 +57,28 @@ public class Register extends HttpServlet {
 		}
 		
 		RegisterService register = new RegisterService();
-		if( !clintCode.equalsIgnoreCase(serverCode) || f==false)
+		System.out.println();
+		if(f==true||!clintCode.equalsIgnoreCase(serverCode))
 		{
 			//返回一个false
-			
+			String flag = "{flag:"+"false"+"}";
+			JSONObject fl = JSONObject.fromObject(flag);
+			PrintWriter out = response.getWriter();
+			out.print(fl.toString());
 		}
 		else {
 //			返回一个true
+			String flag = "{flag:"+"true"+"}";
+			JSONObject flg = JSONObject.fromObject(flag);
+			PrintWriter out = response.getWriter();
+			out.print(flg.toString());
+			RegisterService rs = new RegisterService();
+			try {
+				rs.register(aname, apassword, aphone);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		}
 	}
 	public void init() throws ServletException {

@@ -1,14 +1,14 @@
-package mao.soft.web.dao.imp;
+package tan.dao.impl;
 
 import java.sql.Connection;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
-import mao.soft.web.dao.MaoRegisterDao;
 import pojo.Acount;
+import tan.dao.loginDao;
 
-public class MaoRegisterDaoImp implements MaoRegisterDao{
+public class loginDaoImpl implements loginDao{
 
 	@Override
 	public List<Acount> getAllAcount(Connection conn) throws Exception {
@@ -44,23 +44,31 @@ public class MaoRegisterDaoImp implements MaoRegisterDao{
 	}
 
 	@Override
-	public boolean selectPhoneIsExist(String phone, Connection conn) throws Exception {
-		if (conn == null || conn.isClosed()) {
-			return false;
-		}else
-		{
-			String sql="select * from acount where aphone=?";
-			PreparedStatement ps =  conn.prepareStatement(sql);
-			ps.setString(1, phone);
-			ResultSet rs = ps.executeQuery();
-			if (rs.next()) {
-				System.out.println("好的查询成功了");
-				return true;
-			} else {
-				System.out.println("暂时没得该账号");
-				return false;
+	public Acount loginSelect(String name, String pass,Connection conn)throws Exception {
+		// TODO Auto-generated method stub
+		if(conn==null){
+			return null;
+		}
+		if(!conn.isClosed()){
+			String sql="select * from acount where aname=? and apass=?";
+			
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setString(1, name);
+			ps.setString(2, pass);
+			ResultSet rs=ps.executeQuery();
+			if(rs.next()){
+				Acount acount=new Acount();
+				acount.setAddr(rs.getString("addr"));
+				acount.setAid(rs.getString("aid"));
+				acount.setAmail(rs.getString("amail"));
+				acount.setAname(rs.getString("aname"));
+				acount.setApass(rs.getString("apass"));
+				acount.setAphone(rs.getString("aphone"));
+				return acount;
 			}
 		}
+		
+		return null;
 	}
 
 }

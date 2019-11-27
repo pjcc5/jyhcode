@@ -80,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<!-- 验证码 -->
 					<li class="regist-YZM">
 						<span>验证码</span>
-						<input type="text" class="form-control" placeholder="identifying code" name="valdation"/>
+						<input type="text" class="form-control" placeholder="identifying code" id="valdation"/>
 					<img src="image" style="float: right;margin-right: 550px; width: 130px;height: 43px; margin-top: -60px;" onclick="flush(this)">
 					</li>
 					<!-- 密码 -->
@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 					<!-- 注册 -->
 					<li>
-						<input type="button" id="regists" value="注册" class=" regist-btn btn btn-danger" onclick="comeba(this)"/>
+						<input type="button" id="regists" value="注册" class=" regist-btn btn btn-danger"/>
 					</li>
 				</ul>
 			</div>
@@ -135,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span id="success-container-success" style="margin-left: -40px;">
 					恭喜老板注册成功！请点击确定，跳转登录界面
 				</span>
-				<span id="success-container-exist" style="float: left; margin-left: -50px;margin-top: 20px;background: url(/jyhwebstore/store/img/bg1.jpg);">老板您注册失败了哟！您输入的用户名已存在</span>
+				<span id="success-container-exist" style="float: left; margin-left: -50px;margin-top: 20px;background: url(/jyhwebstore/store/img/bg1.jpg);">抱歉，手机号已经被注册！</span>
 				<span id="success-container-failed" style="float: left; margin-left: -55px;">老板您注册失败了哟！请检查您的输入是否正确！</span>
 			</div>
 			<div id="success-btn" class="success-btn">

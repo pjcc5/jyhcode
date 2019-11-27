@@ -43,7 +43,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Register</servlet-name>
-    <url-pattern>/register</url-pattern>
+    <url-pattern>/Register</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>
@@ -53,21 +53,36 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- 单态监听 -->
    <listener>
 		<listener-class>tan.LoginSessionListener</listener-class>
 	</listener>
 	
-	
+	<!-- 登录servlet-->
 	<servlet>
 	<servlet-name>LoginServlet</servlet-name>
 	<servlet-class>tan.servlet.LoginServlet</servlet-class>
 	</servlet>
+  <servlet>
+    <servlet-name>LoadGoods</servlet-name>
+    <servlet-class>chao.servlet.LoadGoods</servlet-class>
+  </servlet>
 
+	<!-- 登录的servlet -->
 	<servlet-mapping>
 	<servlet-name>LoginServlet</servlet-name>
 	<url-pattern>/store/html/login</url-pattern>
 	</servlet-mapping>
+	
+	 <!-- 加载更多的商品servlet -->
+	  <servlet-mapping>
+	    <servlet-name>LoadGoods</servlet-name>
+	    <url-pattern>/load</url-pattern>
+	  </servlet-mapping>
 
+
+<!-- 字符转码 -->
 	  <filter>
   	<filter-name>character</filter-name>
   	<filter-class>tan.filter.CharacterEncodingFilter</filter-class>
@@ -93,6 +108,7 @@
   	<filter-name>loginfilter</filter-name>
   	<url-pattern>/store/html/operation/*</url-pattern>
   	</filter-mapping>
+  
   	
   	<!-- 主页的过滤器 -->
   	<filter>
@@ -111,5 +127,4 @@
   	
   	
   	
->>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 </web-app>

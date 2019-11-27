@@ -21,7 +21,7 @@ public class IndexInitService {
 			Connection conn = DbHelp.getConnection();
 			try {
 				PjcDetailsDao pdd = new PjcDetailsDaoImpl();
-				list = pdd.getfifdetailorderydot(conn);
+				list = pdd.getfifdetailorderydot(1,conn);
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally{

@@ -12,7 +12,7 @@ var flagpas = false;
 var flagnextpas = false;
 
 
- 
+
 console.log(flagname);
 console.log(flagnextpas);
 
@@ -70,10 +70,13 @@ $('input:eq(0)').blur(function() {
 		} else {
 			$('.regist-li-div1 div:eq(1)').slideDown(200);
 		}
+
+		if (number.length < 3) {
+			flagname = false;
+		}
 	}
-	
-	
-	if (flagname==true) {
+
+	if (flagname == true) {
 		$('#imgdiv1').fadeIn();
 	}
 });
@@ -84,15 +87,22 @@ $('input:eq(1)').blur(function() {
 	if (reg.test(number)) {
 		flagph = true;
 	} else {
+		if (number.length < 11) {
+			flagph = false;
+		}
 		$('.regist-li-div2 div:eq(1)').show(200);
 	}
-	$('span:eq(1)').fadeOut(200);
-	$('.regist-li-div2 div:eq(0)').slideUp(200);
-	
-	
-	if (flagph==true) {
+
+	if (flagph == true) {
 		$('#imgdiv2').fadeIn();
 	}
+
+	$('span:eq(1)').fadeOut(200);
+	$('.regist-li-div2 div:eq(0)').slideUp(200);
+
+
+
+
 });
 // 验证码
 $('input:eq(2)').blur(function() {
@@ -109,31 +119,36 @@ $('input:eq(3)').blur(function() {
 		$('.regist-li-div3 div:eq(1)').hide(200);
 		flagpas = true;
 	} else {
-		if (number.length < 4 && number.length > 0) {
+		if (number.length < 6) {
 			$('.regist-li-div3 div:eq(1)').slideDown(200);
+			$('#imgdiv3').hide();
+			flagpas = false;
 		}
 		if (number.length == 0) {
 			$('.regist-li-div3 div:eq(1)').hide();
 			$('.regist-li-div3 div:eq(2)').slideDown(200);
+			flagpas = false;
 		} else {
 			$('.regist-li-div3 div:eq(1)').slideDown(200);
 		}
+
 	}
 	var nextpass = $('input:eq(4)').val();
 	if (nextpass != number) {
 		$('.regist-li-div4 div:eq(1)').slideDown(200);
-		flagnextpas=false;
+		flagnextpas = false;
 		$('#imgdiv3').hide();
 		$('#imgdiv4').hide();
 	}
-	if (nextpass == number) {
+	if (nextpass == number && nextpass!=0 && number!=0) {
 		$('.regist-li-div4 div:eq(1)').hide();
-		flagnextpas=true;
+		flagnextpas = true;
+		$('#imgdiv4').fadeIn();
 	}
-	
-	if (flagpas==true) {
-			$('#imgdiv3').fadeIn();
-		}
+
+	if (flagpas == true) {
+		$('#imgdiv3').fadeIn();
+	}
 });
 // 确认密码
 $('input:eq(4)').blur(function() {
@@ -148,25 +163,27 @@ $('input:eq(4)').blur(function() {
 		$('.regist-li-div3 div:eq(2)').slideDown(200);
 	}
 	//判断两次密码是否相同
-	if (number != fistpassword) {
+	if (number != fistpassword && number.length != 0) {
 		$('.regist-li-div4 div:eq(0)').hide();
 		$('.regist-li-div4 div:eq(1)').slideDown(200);
-		flagnextpas=false;
-		
+		flagnextpas = false;
+
 		$('#imgdiv4').hide();
 	}
 	if (number.length == 0) {
 		$('.regist-li-div4 div:eq(0)').slideDown(200);
+		$('#imgdiv4').hide();
+		flagnextpas = false;
 	}
 	if (number == fistpassword && number.length != 0) {
 		$('.regist-li-div4 div:eq(0)').hide();
 		flagnextpas = true;
 	}
-	
-	if (flagpas==true && flagnextpas==true) {
+
+	if (flagpas == true && flagnextpas == true) {
 		$('#imgdiv4').fadeIn();
 	}
-	
+
 });
 
 // 按钮禁用和启动
@@ -182,49 +199,45 @@ $('.regist-YHXY').click(function() {
 });
 
 // 验证正则表达式
-
-
-if(flagname && flagph && flagpas && flagnextpas)
-{
-	var useinput = $("#useinput").val();
-	var phone = $("#phone").val();
-	var pass = &("#password").val();
-	function comeba(obj)
-	{
-		$.post({
+$('#regists').click(function() {
+	if (flagname && flagph && flagpas && flagnextpas) {
+		var userName = $("#useinput").val();
+		var userPassword = $('#password').val();
+		var phone = $('#phone').val();
+		var vald = $("#valdation").val();
+		console.log(userName+userPassword+phone);
+		//发起请求
+		$.get({
 			type:"post",
 			url:"Register",
-			data:{"uname":useinput,"aphone":phone,"apass":pass},
+			data:{"rname":userName,"rpass":userPassword,"rphone":phone,"valdation":vald},
 			success:function(result){
-				
+				var json = JSON.parse(result);
+				console.log(json.flag);
+				if(json.flag==true)
+				{
+					$('#success').slideDown().children('#success-container').children('#success-container-success').slideDown(350).siblings().hide();
+					$('#success').children('#success-btn').children('#success-btn-1').show().siblings().hide();
+				}
+				else if(json.flag==false)
+				{
+					$('#success').slideDown().children('#success-container').children('#success-container-exist').show().siblings().hide();
+					$('#success').children('#success-btn').children('#success-btn-2').show().siblings().hide();
+				}
 			}
-		})
-	}
-	
-
-}
-
-
-
-
-
-//用户名存在的情况
-$('#success-btn-2').click(function () {
-	$("#success").slideUp(350);
-	$('input:eq(0)').focus();
-})
-
-//输入有误的时候
-$('#success-btn-3').click(function () {
-	$("#success").slideUp(350);
-})
-
-//var userName = $("#useinput").val();
-//		var userPassword = $('#password').val();
-//		var userphone = $('#yz_phone')
+		});
+	}else
+		{
+		$('#success').slideDown().children('#success-container').children('#success-container-failed').show().siblings().hide();
+		$('#success').children('#success-btn').children('#success-btn-3').show().siblings().hide();
+		}
+});
+//					var usernames = $('input:eq(0)').val();
+//					var passwords = $('input:eq(3)').val();
+//					var str = encodeURI(passwords);
 //		(function() {
 //			//发起请求
-//			$.post('register', {
+//			$.post('http://www.wjian.top/shop/api_user.php', {
 //				status: 'register',
 //				username: userName,
 //				password: userPassword,
@@ -233,21 +246,20 @@ $('#success-btn-3').click(function () {
 //				console.log(obj);
 //				//验证
 //				if (obj.code == 0) {
-//					$('#success').slideDown().children('#success-container').children('#success-container-success').slideDown(350).siblings().hide();
+//					$('#success').slideDown().children('#success-container').children('#success-container-success').slideDown(350)
+//						.siblings().hide();
 //					$('#success').children('#success-btn').children('#success-btn-1').show().siblings().hide();
-//					$('#success-btn-1').click(function(){
+//					$('#success-btn-1').click(function() {
 //						var usernames = $('input:eq(0)').val();
 //						var passwords = $('input:eq(3)').val();
 //						var str = encodeURI(passwords);
-//						location.href=`login.html?a=${usernames}&b=${passwords}`;
+//						location.href = `login.html?a=${usernames}&b=${passwords}`;
 //					});
-//				}
-//				else if (obj.code == 2001) {
-//					$('#success').slideDown().children('#success-container').children('#success-container-exist').show().siblings().hide();
+//				} else if (obj.code == 2001) {
+//					$('#success').slideDown().children('#success-container').children('#success-container-exist').show().siblings()
+//						.hide();
 //					$('#success').children('#success-btn').children('#success-btn-2').show().siblings().hide();
-//				}
-//				else 
-//				{
+//				} else {
 //					console.log(obj.message);
 //					alert(obj.message);
 //					return;
@@ -258,3 +270,20 @@ $('#success-btn-3').click(function () {
 //	} else {
 //		$('#success').slideDown().children('#success-container').children('#success-container-failed').show().siblings().hide();
 //		$('#success').children('#success-btn').children('#success-btn-3').show().siblings().hide();
+//	}
+//	}
+//});
+//用户名存在的情况
+$('#success-btn-2').click(function() {
+	$("#success").slideUp(350);
+	$('input:eq(0)').focus();
+})
+
+//输入有误的时候
+$('#success-btn-3').click(function() {
+	$("#success").slideUp(350);
+})
+
+function tizozhuan() {
+
+};
