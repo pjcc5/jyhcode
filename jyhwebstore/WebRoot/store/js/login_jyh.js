@@ -6,13 +6,17 @@ function login(){
 	var uname= $('#loginUsername').val();
 	var upass=$('#loginPassword').val();
 	var acount={"uname":uname,"upass":upass};
-	console.losg(location.search);
+	var path;
+	path=getUrlVal('path');
+	if(path==null){
+		path="index"
+	}
 //	getUrlVal(1);
-	if(uname==null||uname==""||uname.length<3){
+	if(uname==null||uname==""||uname.length<3||uname.indexOf(" ")!=-1){
 		alert("账号输入格式错误");
 		return;
 	}else{
-		if(upass==null||upass==""||upass.length<3)
+		if(upass==null||upass==""||upass.length<6||upass.indexOf(" ")!=-1)
 			{
 			alert("密码输入格式错误");
 			return;
@@ -27,7 +31,7 @@ function login(){
 						var show=$("#show").html("登录成功").fadeIn(500);
 						$("#show").fadeOut(2500);
 						setTimeout(function(){
-							location.href="/jyhwebstore/index.jsp";
+							location.href="/jyhwebstore/"+path+".jsp";
 						}, 3000);
 //						
 					}else{

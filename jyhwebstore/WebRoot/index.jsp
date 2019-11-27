@@ -27,7 +27,21 @@
 					
 					<div class="col-md-5 col-md-offset-2 links-right   text-right">
 						<span id="goodnight">晚上好,请</span>
-						<a href="/jyhwebstore/store/html/login.jsp" id="log">登录</a>
+
+						
+						<c:if test="${empty acount}">
+						<a href="/jyhwebstore/store/html/login.jsp?path=index" id="log">
+							登录
+						</a>
+						</c:if>
+						<c:if test="${not empty acount}">
+							<a href="/jyhwebstore/store/html/information.jsp?path=index" id="log">
+							${acount.aname }
+						</a>
+						</c:if>
+						
+						
+
 						<span class="quit-father"></span>
 						<i><a href="regist.html">注册</a></i>
 						
