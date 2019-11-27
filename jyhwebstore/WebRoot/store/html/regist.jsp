@@ -125,7 +125,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</li>
 					<!-- 注册 -->
 					<li>
-						<input type="button" id="regists" value="注册" class=" regist-btn btn btn-danger" />
+						<input type="button" id="regists" value="注册" class=" regist-btn btn btn-danger" onclick="comeba(this)"/>
 					</li>
 				</ul>
 			</div>

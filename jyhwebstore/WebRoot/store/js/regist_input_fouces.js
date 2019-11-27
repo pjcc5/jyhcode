@@ -118,7 +118,6 @@ $('input:eq(3)').blur(function() {
 		} else {
 			$('.regist-li-div3 div:eq(1)').slideDown(200);
 		}
-		
 	}
 	var nextpass = $('input:eq(4)').val();
 	if (nextpass != number) {
@@ -183,11 +182,31 @@ $('.regist-YHXY').click(function() {
 });
 
 // 验证正则表达式
-$('#regists').click(function() {
-	if (flagname && flagph && flagpas && flagnextpas) {
-		location.href="register";
+
+
+if(flagname && flagph && flagpas && flagnextpas)
+{
+	var useinput = $("#useinput").val();
+	var phone = $("#phone").val();
+	var pass = &("#password").val();
+	function comeba(obj)
+	{
+		$.post({
+			type:"post",
+			url:"Register",
+			data:{"uname":useinput,"aphone":phone,"apass":pass},
+			success:function(result){
+				
+			}
+		})
 	}
-});
+	
+
+}
+
+
+
+
 
 //用户名存在的情况
 $('#success-btn-2').click(function () {

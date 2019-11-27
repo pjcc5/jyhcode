@@ -3,6 +3,7 @@ package mao.soft.web.servlet;
 import java.io.IOException;
 import java.sql.Connection;
 
+import javax.json.Json;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
@@ -45,22 +46,20 @@ public class Register extends HttpServlet {
 		boolean f = false;
 		try {
 			f =registerD.selectPhoneIsExist(aphone, conn);
+			
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
 			e1.printStackTrace();
 		}
 		
-		
 		RegisterService register = new RegisterService();
-		if( clintCode.equalsIgnoreCase(serverCode) && f==true)
+		if( !clintCode.equalsIgnoreCase(serverCode) || f==false)
 		{
-			try {
-				register.register(aname, apassword, aphone);
-				
-			} catch (Exception e) {
-				e.printStackTrace();
-			}
+			//返回一个false
 			
+		}
+		else {
+//			返回一个true
 		}
 	}
 	public void init() throws ServletException {

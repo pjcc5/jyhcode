@@ -93,9 +93,6 @@
   	<filter-name>loginfilter</filter-name>
   	<url-pattern>/store/html/operation/*</url-pattern>
   	</filter-mapping>
-<<<<<<< HEAD
-  
-=======
   	
   	<!-- 主页的过滤器 -->
   	<filter>
