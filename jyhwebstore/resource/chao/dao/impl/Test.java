@@ -29,7 +29,7 @@ import chao.dao.CommodityDao;
 import chao.dao.CompicDao;
 import chao.dao.DetailsDao;
 import chao.dao.HotDao;
-import chao.dao.OrderDao;
+import chao.dao.OrderformDao;
 import chao.dao.ShopmiddleDao;
 import chao.dao.ShoppingDao;
 import db.DbHelp2;
@@ -329,7 +329,7 @@ public class Test {
 		 */
 		//测试order表插入一条数据OK
 		Orderform o =new Orderform();
-		OrderDao od = new OrderDaoImpl();
+		OrderformDao od = new OrderformDaoImpl();
 //		o.setAid(1);
 //		o.setComid("comid");
 //		o.setComname("华为");

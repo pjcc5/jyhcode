@@ -3,9 +3,10 @@ $('#login-div2-div1').slideDown(1000);
 $('#logo').fadeIn(2000);
 
 function login(){
+	if()
 	var frm = document.getElementById("myform");
 	frm.method="post";
-	frm.action="login";
+	frm.action="/jyhwebstore/store/html/login";
 	frm.submit();
 }
 
