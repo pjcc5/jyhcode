@@ -12,27 +12,41 @@ function login(){
 	var uname= $('#loginUsername').val();
 	var upass=$('#loginPassword').val();
 	var acount={"uname":uname,"upass":upass};
-	$.ajax({
-		type:"post",
-		url:"/jyhwebstore/store/html/login",
-		data:{"msg":JSON.stringify(acount)},
-		success:function(result){
-		var re = JSON.parse(result);
-		if(re!=null){
-			var show=$("#show").html("登录成功").fadeIn(500);
-			$("#show").fadeOut(2500);
-			setTimeout(function(){
-				location.href="/jyhwebstore/store/html/operation/show.jsp";
-			}, 3000);
-//			
-		}else{
-			alert("账号密码不正确，请重新输入");
-		}
-		
-		}
-		
-		
-	})
+	if(uname==null||uname==""||uname.length<3){
+		alert("账号输入格式错误");
+		return;
+	}else{
+		if(upass==null||upass==""||upass.length<3)
+			{
+			alert("密码输入格式错误");
+			return;
+			}else{
+				$.ajax({
+					type:"post",
+					url:"/jyhwebstore/store/html/login",
+					data:{"msg":JSON.stringify(acount)},
+					success:function(result){
+					var re = JSON.parse(result);
+					if(re!=null){
+						var show=$("#show").html("登录成功").fadeIn(500);
+						$("#show").fadeOut(2500);
+						setTimeout(function(){
+							location.href="/jyhwebstore/store/html/operation/show.jsp";
+						}, 3000);
+//						
+					}else{
+						alert("账号或密码不正确，请重新输入");
+					}
+					
+					}
+					
+					
+				})
+			}
+	}
+	
+	
+	
 	
 }
 
