@@ -29,7 +29,7 @@
 						<span id="goodnight">晚上好,请</span>
 						
 						<c:if test="${empty acount}">
-						<a href="/jyhwebstore/store/html/login.jsp?path=index" id="log">
+						<a href="/jyhwebstore/store/html/login.jsp?path=jyhwebstore/store/html/index.jsp" id="log">
 							登录
 						</a>
 						</c:if>
