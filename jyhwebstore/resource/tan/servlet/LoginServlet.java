@@ -46,6 +46,7 @@ public class LoginServlet extends HttpServlet{
 		
 		loginService loginservice=new loginService();
 		Acount acount=loginservice.login(uname, upass, conn);
+		System.out.println(acount);
 		JSONObject returnObject=null;
 		if(acount!=null){
 	acount.setAddr(request.getRemoteAddr());

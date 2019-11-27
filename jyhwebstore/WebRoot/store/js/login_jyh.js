@@ -6,6 +6,8 @@ function login(){
 	var uname= $('#loginUsername').val();
 	var upass=$('#loginPassword').val();
 	var acount={"uname":uname,"upass":upass};
+	console.losg(location.search);
+//	getUrlVal(1);
 	if(uname==null||uname==""||uname.length<3){
 		alert("账号输入格式错误");
 		return;
@@ -25,7 +27,7 @@ function login(){
 						var show=$("#show").html("登录成功").fadeIn(500);
 						$("#show").fadeOut(2500);
 						setTimeout(function(){
-							location.href="/jyhwebstore/store/html/operation/show.jsp";
+							location.href="/jyhwebstore/index.jsp";
 						}, 3000);
 //						
 					}else{
@@ -89,11 +91,11 @@ function login(){
 //	$("#loginPassword").val(password);
 //});
 //
-//function getUrlVal(property){
-//  //地址栏
-//  var urlStr = window.location.search.substring(1);
-//  var re = new RegExp('(^|&)'+ property +'=([^&]*)(&|$)');
-//  var result = urlStr.match(re);
-//  if(result == null){return null};
-//  return result[2];
-//};
+function getUrlVal(property){
+  //地址栏
+  var urlStr = window.location.search.substring(1);
+  var re = new RegExp('(^|&)'+ property +'=([^&]*)(&|$)');
+  var result = urlStr.match(re);
+  if(result == null){return null};
+  return result[2];
+};

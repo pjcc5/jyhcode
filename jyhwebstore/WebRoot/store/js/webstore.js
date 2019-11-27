@@ -10,14 +10,7 @@
   // 浮动导航栏
   $(function(){
 	  //显示当前位置
-	  if(document.getElementById("location"))
-	    {
-		  if (navigator.geolocation){
-			    navigator.geolocation.getCurrentPosition(showPosition,showError);
-			  }else{
-				 
-			  }
-		 }
+	
 	  
 	  
 	  
