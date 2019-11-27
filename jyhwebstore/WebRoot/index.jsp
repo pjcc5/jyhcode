@@ -187,6 +187,9 @@
 					</a>
 					<button type="button" class="btn btn-danger addincart"><span class="
 							glyphicon glyphicon-download-alt"></span>　加入购物车</button>
+					<button type="button" class="btn btn-danger addincart"><span class="
+							glyphicon glyphicon-usd"></span>　立即购买</button>
+							
 						</div>
 					
 		</c:forEach>
@@ -195,7 +198,7 @@
 		</section>
 		<section>
 			<div class="more">
-				<button type="button" class="btn btn-success loadmore">加载更多...</button>
+				<button type="button" class="btn btn-success loadmore" page="1" onclick="loadmore(this)">加载更多...</button>
 			</div>
 		</section>
 		
@@ -303,3 +306,56 @@
 <script src="/jyhwebstore/store/js/bootstrap.js"></script>
 <script src="/jyhwebstore/store/js/jquery.singlePageNav.min.js"></script>
 <script src="/jyhwebstore/store/js/webstore.js"></script>
+<script>
+	var page;
+	function loadmore(obj)
+	{	
+		var page =parseInt($(obj).attr("page"))+1;
+		$(".loadmore").attr("page",page);
+		$.get({
+			type:"post",
+			url:"load",
+			data:{"page":page},
+			success:function(result){
+				var json = JSON.parse(result);
+				for(var i =0;i<json.length;i++)
+				{	
+					var compic =json[i].compic;
+					var comname=json[i].comname;
+					var pai =json[i].pai;
+					var comprice =json[i].comprice;
+					var detailsdot =json[i].detailsdot;
+					var str=`
+							<div class="goods">
+							<img src=\"`+compic+`
+							" alt="">
+							<p class="goodsname">`+comname+`</p>
+							<p>`+pai+`
+							</p>
+							<p>`+comprice+`</p>
+							<p><span class="glyphicon  glyphicon-star"></span>`+detailsdot+`
+							</p>
+							<a href='product.html?goods_id=${json.data[i].goods_id}' class="content_a">
+								<div class="cover">
+									<p class="goodsdecoration">`+comname+`
+									</p>
+									<p class="price">只要`+comprice+`
+									元</p>
+								</div>
+							</a>
+							<button type="button" class="btn btn-danger addincart"><span class="
+									glyphicon glyphicon-download-alt"></span>　加入购物车</button>
+							<button type="button" class="btn btn-danger addincart"><span class="
+									glyphicon glyphicon-usd"></span>　立即购买</button>
+									
+								</div>
+							
+					`;
+					$(".goods-top").append(str);
+					
+				}
+			}
+		})
+	}
+
+</script>

@@ -13,10 +13,12 @@ import dao.impl.DetailsDaoImpl;
 public class PjcDetailsDaoImpl extends DetailsDaoImpl implements PjcDetailsDao {
 
 	@Override
-	public List<Details> getfifdetailorderydot(Connection conn) throws Exception{
+	public List<Details> getfifdetailorderydot(int page,Connection conn) throws Exception{
 		List<Details> list = new ArrayList<Details>();
-		String sql = "select * FROM details ORDER BY  detailsdot desc LIMIT 0,50";
+		String sql = "select * FROM details ORDER BY  detailsdot desc LIMIT ?,?";
 		PreparedStatement ps = conn.prepareStatement(sql);
+		ps.setInt(1, (page-1)*50);
+		ps.setInt(2, page*50);
 		ResultSet rs = ps.executeQuery();
 		while(rs.next())
 		{

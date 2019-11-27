@@ -7,5 +7,5 @@ import pojo.Details;
 import dao.DetailsDao;
 
 public interface PjcDetailsDao extends DetailsDao {
-	public List<Details> getfifdetailorderydot(Connection conn) throws Exception;
+	public List<Details> getfifdetailorderydot(int page,Connection conn) throws Exception;
 }

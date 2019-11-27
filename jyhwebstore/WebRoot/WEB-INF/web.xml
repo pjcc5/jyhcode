@@ -62,11 +62,22 @@
 	<servlet-name>LoginServlet</servlet-name>
 	<servlet-class>tan.servlet.LoginServlet</servlet-class>
 	</servlet>
+  <servlet>
+    <servlet-name>LoadGoods</servlet-name>
+    <servlet-class>chao.servlet.LoadGoods</servlet-class>
+  </servlet>
 
+	<!-- 登录的servlet -->
 	<servlet-mapping>
 	<servlet-name>LoginServlet</servlet-name>
 	<url-pattern>/store/html/login</url-pattern>
 	</servlet-mapping>
+	
+	 <!-- 加载更多的商品servlet -->
+	  <servlet-mapping>
+	    <servlet-name>LoadGoods</servlet-name>
+	    <url-pattern>/load</url-pattern>
+	  </servlet-mapping>
 
 	  <filter>
   	<filter-name>character</filter-name>
