@@ -140,7 +140,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div id="success-btn" class="success-btn">
 				<button id="success-btn-1" type="button" style="color: blue; margin-bottom: -50px;"> <a href="#">确定</a> </button>
 				<button id="success-btn-2" type="button" style="color: red;margin-bottom: -80px;">确定</button>
-				<button type="button" id="success-btn-3" style="margin-bottom: -80px;" onclick="tiaozhuan()">确定</button>
+				<button type="button" id="success-btn-3" style="margin-bottom: -80px;" >确定</button>
 			</div>
 		</div>
 	</body>

@@ -56,8 +56,6 @@ public class Register extends HttpServlet {
 			e1.printStackTrace();
 		}
 		
-		RegisterService register = new RegisterService();
-		System.out.println();
 		if(f==true||!clintCode.equalsIgnoreCase(serverCode))
 		{
 			//返回一个false
@@ -65,16 +63,30 @@ public class Register extends HttpServlet {
 			JSONObject fl = JSONObject.fromObject(flag);
 			PrintWriter out = response.getWriter();
 			out.print(fl.toString());
+//			System.out.println("A错误");
 		}
 		else {
-//			返回一个true
-			String flag = "{flag:"+"true"+"}";
-			JSONObject flg = JSONObject.fromObject(flag);
-			PrintWriter out = response.getWriter();
-			out.print(flg.toString());
+				//返回一个true
 			RegisterService rs = new RegisterService();
 			try {
-				rs.register(aname, apassword, aphone);
+				boolean flags = rs.register(aname, apassword, aphone);
+				System.out.println("/jyhwebstore/resource/mao/soft/web/servlet/Register.java:==========="+flags);
+				if(flags)
+				{
+					String flag = "{flag:"+"true"+"}";
+					JSONObject flg = JSONObject.fromObject(flag);
+					PrintWriter out = response.getWriter();
+					out.print(flg.toString());
+//					System.out.println("成功！");
+				}
+				else
+				{
+					String fl = "{error:"+"false"+"}";
+					JSONObject fls = JSONObject.fromObject(fl);
+					PrintWriter out = response.getWriter();
+					out.print(fls.toString());
+//					System.out.println("错误！");
+				}
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();

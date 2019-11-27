@@ -1,7 +1,7 @@
 package dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
+import java.util.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -84,16 +84,16 @@ public class UserDaoImpl implements UserDao{
 		}
 	
 			if(!conn.isClosed()){
-				String sql="insert into user values(?,?,?,?,?,?,?,?) ";
+				String sql="insert into user(uname,pic,birth,sex,uphone,mail,setadd) values(?,?,?,?,?,?,?) ";
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setInt(1, user.getUid());
-				ps.setString(2, user.getUname());
-				ps.setString(3, user.getPic());
-				ps.setTimestamp(4, new Timestamp(user.getBirth().getTime()));
-				ps.setString(5, user.getSex());
-				ps.setString(6,user.getUphone());
-				ps.setString(7, user.getMail());
-				ps.setString(8, user.getSetadd());
+//				ps.setInt(1, user.getUid());
+				ps.setString(1, user.getUname());
+				ps.setString(2, user.getPic());
+				ps.setTimestamp(3, new Timestamp(new Date().getTime()));
+				ps.setString(4, user.getSex());
+				ps.setString(5,user.getUphone());
+				ps.setString(6, user.getMail());
+				ps.setString(7, user.getSetadd());
 			    int rs=ps.executeUpdate();
 			    if(rs>0){
 			    	return true;

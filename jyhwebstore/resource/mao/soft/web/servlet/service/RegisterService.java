@@ -1,19 +1,22 @@
 package mao.soft.web.servlet.service;
 
 import java.sql.Connection;
+import java.util.Date;
 import java.util.UUID;
 
+import mao.soft.web.service.RegisterSer;
 import pojo.Acount;
-import chao.dao.impl.AcountDaoImpl;
-import dao.AcountDao;
+import pojo.User;
 import db.DbHelp;
 
 public class RegisterService {
-	public void register(String registerName,String password,String phone) throws Exception
+	public boolean register(String registerName,String password,String phone) throws Exception
 	{
+		
 			Connection conn = DbHelp.getConnection();
-			//插入用户
+			RegisterSer rs = new RegisterSer();
 			Acount acount = new Acount();
+			//插入acount
 			String uuid =UUID.randomUUID().toString();
 			acount.setAid(uuid);
 			acount.setAname(registerName);
@@ -22,9 +25,18 @@ public class RegisterService {
 			acount.setAddr(null);
 			acount.setAmail(null);
 			acount.setIsadm(2);
-			AcountDao acountDao = new AcountDaoImpl();
-			acountDao.insertAcount(acount, conn);
-		
+			//插入user
+			User user = new User();
+			user.setMail("");
+			user.setPic("");
+			user.getBirth();
+			user.setSetadd("");
+			user.setUname(registerName);
+			user.setUphone(phone);
+			user.setSex("");
+			//调插入方法
+			boolean blog = rs.register(conn,acount, user);
+			return blog;
 	}
 //	public static void main(String[] args) throws Exception {
 //		RegisterService r= new RegisterService();
