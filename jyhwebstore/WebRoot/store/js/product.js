@@ -8,7 +8,6 @@ var goodsId = getUrlVal('goods_id');
     var obj = JSON.parse(result);
     // console.log(obj)
     var goods = obj.data[0];
-	$('.product-name').html(`${obj.data[0].goods_name}`);
     var str = `
      <p class="name">${goods.goods_name}</p>
 			<p class="price"><span>价格</span><span class="price-m">￥${goods.price}</span></p>
@@ -96,7 +95,7 @@ function getUrlVal(property){
   return result[2];
 };
 
-var page =parseInt(Math.random()*50);
+var page =1;
 var pagesize=43;
 function goodsList(){
 		$.get('http://www.wjian.top/shop/api_goods.php',{
@@ -120,39 +119,12 @@ function goodsList(){
 					<img src="${json.data[i].goods_thumb}" class="photo" alt="">
 					<p>${json.data[i].goods_name}</p>
 					<p>${json.data[i].price}</p>
-					<a href="product.html?goods_id=${json.data[i].goods_id}" target="_blank">查看详情</a>
+					<a href="product.html?goods_id=${json.data[i].goods_id}">查看详情</a>
 				</li>
 				`;
 				$('.floatle ul').append(str);
 			}
-			
 		})
 	}
-	
 goodsList(page,pagesize);
 
-//搜索
-$('.search-btn').click(function(){
-		// console.log("点击了搜索");
-		var searchText = $('.search-input').val();
-		var text =encodeURI(searchText);
-		// alert(text);
-		window.location.href=`search.html?content=${text}`;
-	});
-	
-	
-	$(function(){
-		 var username = localStorage.getItem('username');
-		 // alert(username);
-		 if(username)
-		 {
-				//存在就切换文字
-				$('#myNav ul').prepend('<li><a href="javascript:;">欢迎您:</a></li>');
-				$('.login_title').html(`${username}<span>　　</span>`).css("color",'red');
-				$('#myNav ul').append(`<li><a href='javascript:;' target="_blank" class='quit'>退出</a></li>`);
-		}
-		$('.quit').click(function(){
-			localStorage.removeItem('username');
-			location.reload();
-		}); 
-		})
