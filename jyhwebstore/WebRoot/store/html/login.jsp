@@ -81,32 +81,48 @@
 <script src="/jyhwebstore/store/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 <script src="/jyhwebstore/store/js/login_jyh.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
+ 
+ 
+
 	$("#loginUsername").focus(function(){
+	$("#div1").html("请输入用户名");
 		$("#div1").fadeIn();
 	})
 	$("#loginPassword").focus(function(){
+	$("#div2").html("请输入密码");
 		$("#div2").fadeIn();
 	})
-	$("#loginUsername").blur(function(){
+	
+	
+	$("#loginUsername").keyup(function(){
 		var number = $("#loginUsername").val();
-		if (number.length>3) {
-			$("#div1").fadeOut();
+		if (number.length>=3) {
+		if(number.indexOf(" ")==-1){
+		$("#div1").html("用户名格式正确");
+		}else{
+		$("#div1").html("用户名不能有空格");
 		}
+		
+		}else{
+		    $("#div1").html("用户名应不小于3位");
+		}
+		
 	})
-	$("#loginPassword").blur(function(){
+	
+	
+	$("#loginPassword").keyup(function(){
 		var number = $("#loginPassword").val();
-		if (number.length>6) {
-			$("#div2").fadeOut();
-		} else{
-			
+		if (number.length>=6) {
+		
+			if(number.indexOf(" ")==-1){
+		$("#div2").html("密码格式正确");
+		}else{
+		$("#div2").html("密码不能有空格");
 		}
+		} else{
+			$("#div2").html("长度不能小于6位");
+		}
+		
+		
 	})
-	
-	
-	
-	
-	
-	
-
-	
 </script>

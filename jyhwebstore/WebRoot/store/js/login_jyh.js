@@ -3,41 +3,50 @@ $('#login-div2-div1').slideDown(1000);
 $('#logo').fadeIn(2000);
 
 function login(){
-	if()
-	var frm = document.getElementById("myform");
-	frm.method="post";
-	frm.action="/jyhwebstore/store/html/login";
-	frm.submit();
-}
-
-//	var frm = document.getElementById("myform");
-//	frm.method="post";
-//	frm.action="/jyhwebstore/store/html/login";
-//	frm.submit();
 	var uname= $('#loginUsername').val();
 	var upass=$('#loginPassword').val();
 	var acount={"uname":uname,"upass":upass};
-	$.ajax({
-		type:"post",
-		url:"/jyhwebstore/store/html/login",
-		data:{"msg":JSON.stringify(acount)},
-		success:function(result){
-		var re = JSON.parse(result);
-		if(re!=null){
-			var show=$("#show").html("登录成功").fadeIn(500);
-			$("#show").fadeOut(2500);
-			setTimeout(function(){
-				location.href="/jyhwebstore/store/html/operation/show.jsp";
-			}, 3000);
-//			
-		}else{
-			alert("账号密码不正确，请重新输入");
-		}
-		
-		}
-		
-		
-	})
+	var path;
+	path=getUrlVal('path');
+	if(path==null){
+		path="index"
+	}
+//	getUrlVal(1);
+	if(uname==null||uname==""||uname.length<3||uname.indexOf(" ")!=-1){
+		alert("账号输入格式错误");
+		return;
+	}else{
+		if(upass==null||upass==""||upass.length<6||upass.indexOf(" ")!=-1)
+			{
+			alert("密码输入格式错误");
+			return;
+			}else{
+				$.ajax({
+					type:"post",
+					url:"/jyhwebstore/store/html/login",
+					data:{"msg":JSON.stringify(acount)},
+					success:function(result){
+					var re = JSON.parse(result);
+					if(re!=null){
+						var show=$("#show").html("登录成功").fadeIn(500);
+						$("#show").fadeOut(2500);
+						setTimeout(function(){
+							location.href="/jyhwebstore/"+path+".jsp";
+						}, 3000);
+//						
+					}else{
+						alert("账号或密码不正确，请重新输入");
+					}
+					
+					}
+					
+					
+				})
+			}
+	}
+	
+	
+	
 	
 }
 
@@ -86,11 +95,11 @@ function login(){
 //	$("#loginPassword").val(password);
 //});
 //
-//function getUrlVal(property){
-//  //地址栏
-//  var urlStr = window.location.search.substring(1);
-//  var re = new RegExp('(^|&)'+ property +'=([^&]*)(&|$)');
-//  var result = urlStr.match(re);
-//  if(result == null){return null};
-//  return result[2];
-//};
+function getUrlVal(property){
+  //地址栏
+  var urlStr = window.location.search.substring(1);
+  var re = new RegExp('(^|&)'+ property +'=([^&]*)(&|$)');
+  var result = urlStr.match(re);
+  if(result == null){return null};
+  return result[2];
+};

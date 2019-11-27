@@ -29,7 +29,7 @@
 				<div class=" navbar-right" id="myNav">
 					<ul class="nav navbar-nav">
 
-						<li class=""><a href="/jyhwebstore/store/login.jsp?">登录</a></li>
+						<li class=""><a href="/jyhwebstore/store/html/login.jsp?path=store/html/product">登录</a></li>
 						<li><a href="/jyhwebstore/store/regist.jsp">注册</a></li>
 						<li><a href="cart.html"><span class="glyphicon glyphicon-list-alt"></span> 我的订单</a></li>
 

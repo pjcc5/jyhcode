@@ -7,7 +7,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
     
     <title>My JSP 'information.jsp' starting page</title>
     
@@ -35,7 +34,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				
 				<div class="right">
-					<a href="">
+					<a href="/jyhwebstore/store/html/order.jsp">
 						<span class="glyphicon glyphicon-list-alt"></span>
 						我的订单</a>
 					
@@ -88,9 +87,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					
 					<p>
 						<span class="glyphicon glyphicon-list-alt"></span>  我的交易
-				
+						
 				</p>
-				<a href="">聚优汇订单</a>
+				<a href="/jyhwebstore/store/html/order.jsp">聚优汇订单</a>
 				<a href="">我的预约</a>
 				<a href="">常购清单</a>
 				</div>
