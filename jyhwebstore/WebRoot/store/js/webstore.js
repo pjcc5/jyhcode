@@ -9,6 +9,20 @@
   // $('.banner').
   // 浮动导航栏
   $(function(){
+	  //显示当前位置
+	  if(document.getElementById("location"))
+	    {
+		  if (navigator.geolocation){
+			    navigator.geolocation.getCurrentPosition(showPosition,showError);
+			  }else{
+				 
+			  }
+		 }
+	  
+	  
+	  
+	  
+	  
   	$(window).scroll(function(){
   		var toTop=$(window).scrollTop();
   		if(toTop>=50){

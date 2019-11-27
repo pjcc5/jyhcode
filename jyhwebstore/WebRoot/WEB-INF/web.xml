@@ -44,7 +44,7 @@
   </servlet>
   <servlet-mapping>
     <servlet-name>Register</servlet-name>
-    <url-pattern>/register</url-pattern>
+    <url-pattern>/Register</url-pattern>
   </servlet-mapping>
   <welcome-file-list>
     <welcome-file>index.html</welcome-file>

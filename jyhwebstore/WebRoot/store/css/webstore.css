@@ -303,6 +303,10 @@ header{
 	height: 40px;
 	overflow: hidden;
 }
+.goods .pai{
+	font-size:20px;
+	color:red;
+}
 .goodsname{
 	color: red;
 	font-weight: bold;
@@ -421,6 +425,7 @@ header{
 	border-radius: 7%;
 	/* display: none; */
 }
+
 .goods:hover .content_a .cover {
 	background: rgba(0,0,0,0.6);
 	color:rgba(255,255,255,1);
@@ -483,5 +488,10 @@ header{
 	left: 0px;
 	z-index: 1000;
 
+}
+
+/*商品鼠标移入的字体	*/
+.goodsdecoration{
+	margin-top:-30%;
 }
 

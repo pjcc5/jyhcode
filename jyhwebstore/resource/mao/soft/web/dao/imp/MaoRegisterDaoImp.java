@@ -49,8 +49,9 @@ public class MaoRegisterDaoImp implements MaoRegisterDao{
 			return false;
 		}else
 		{
-			String sql="select * from acount where phone=?";
+			String sql="select * from acount where aphone=?";
 			PreparedStatement ps =  conn.prepareStatement(sql);
+			ps.setString(1, phone);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				System.out.println("好的查询成功了");
