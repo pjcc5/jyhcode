@@ -11,13 +11,11 @@ import javax.servlet.FilterConfig;
 import javax.servlet.ServletException;
 import javax.servlet.ServletRequest;
 import javax.servlet.ServletResponse;
-import javax.servlet.http.Cookie;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import javax.servlet.http.HttpSession;
 
 import pojo.Commodity;
-import pojo.Details;
 import chao.service.IndexInitService;
 import dao.CommodityDao;
 import dao.impl.CommodityDaoImpl;
@@ -34,17 +32,19 @@ public class IndexFilter implements Filter{
 	public void doFilter(ServletRequest arg0, ServletResponse arg1,
 			FilterChain arg2) throws IOException, ServletException {
 		HttpServletRequest request = (HttpServletRequest) arg0;
+		@SuppressWarnings("unused")
 		HttpServletResponse response = (HttpServletResponse) arg1;
 		
 		//进入主页就要去数据库查询热门商品以及前50条数据
 		//接下来写Service层的查询50条记录的方法
 		IndexInitService iis =new IndexInitService();
-		List<Details> details =  iis.getIndexProducts();
+		List<IndexGoodsDto> details =  iis.getIndexProducts();
+		@SuppressWarnings("unused")
 		List<Commodity> comms =new ArrayList<Commodity>();
 		List<IndexGoodsDto> dtos =new ArrayList<IndexGoodsDto>();
 		CommodityDao cmd =new CommodityDaoImpl();
 		Connection conn =DbHelp2.getConnection(); 
-		for (Details details2 : details) {
+		for (IndexGoodsDto details2 : details) {
 			try {
 				Commodity comm = cmd.getCommodityById(details2.getComid(),conn);
 				IndexGoodsDto igd =new IndexGoodsDto();

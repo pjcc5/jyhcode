@@ -8,8 +8,31 @@
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
 		<link rel="stylesheet" type="text/css" href="../miancss/base.css"/>
 		<link rel="shortcut icon" type="image/x-icon" href="../img/task.png" />
+		<style>
+		#show{
+		width:200px;
+		height: 84px;
+		position: fixed;
+		background:orange;
+		text-align:center;
+		line-height:84px;
+		left: 50%;
+		top: 50%;
+		margin-left: -100px;
+		margin-top: -42px;
+		border-radius:8px;
+		opacity:0.6;
+		z-index:999;
+		display: none;
+		font-size: 20px;
+		font-weight: bold;
+		}
+		</style>
 	</head>
 	<body class="bodystyle" style="text-align: ;">
+	<div id="show"" >
+	登录成功
+	</div>
 		<nav class="nav navbar-default nva-height">
 			<!-- 内容 -->
 			<div class="container">
@@ -53,9 +76,10 @@
 		</div>
 	</body>
 </html>
-<script src="../js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
-<script src="../js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="../js/login_jyh.js" type="text/javascript" charset="utf-8"></script>
+
+<script src="/jyhwebstore/store/js/jquery-3.4.1.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="/jyhwebstore/store/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
+<script src="/jyhwebstore/store/js/login_jyh.js" type="text/javascript" charset="utf-8"></script>
 <script type="text/javascript">
 	$("#loginUsername").focus(function(){
 		$("#div1").fadeIn();

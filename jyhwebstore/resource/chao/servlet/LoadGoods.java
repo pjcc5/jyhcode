@@ -2,8 +2,6 @@ package chao.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
-import java.io.Writer;
-import java.util.ArrayList;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -12,14 +10,15 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
-import chao.dao.PjcCommodityDao;
-import chao.dao.PjcDetailsDao;
-import chao.dao.impl.PjCommodityDaoImpl;
-import chao.dao.impl.PjcDetailsDaoImpl;
 import chao.service.LoadMoreGoodsService;
 import dto.IndexGoodsDto;
 
 public class LoadGoods extends HttpServlet {
+
+	/**
+	 * 
+	 */
+	private static final long serialVersionUID = -7709873489312228138L;
 
 	/**
 	 * Constructor of the object.

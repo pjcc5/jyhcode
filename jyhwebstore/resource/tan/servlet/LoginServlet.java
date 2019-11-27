@@ -1,6 +1,7 @@
 package tan.servlet;
 
 import java.io.IOException;
+import java.io.PrintWriter;
 import java.sql.Connection;
 import java.util.Date;
 
@@ -9,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import net.sf.json.JSONObject;
 import pojo.Acount;
 import service.loginService;
 import tan.PersonInfo;
@@ -28,26 +30,29 @@ public class LoginServlet extends HttpServlet{
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		System.out.println("进入登录servlet");
-		String uname=request.getParameter("uname");
-		String upass=request.getParameter("upass");
+		String msg = request.getParameter("msg");
+		System.out.println(msg);
+		JSONObject object = JSONObject.fromObject(msg);
+		 PrintWriter out= response.getWriter();
 		
-		Connection conn=db.DbHelp2.getConnection();
+//		
+//		
+		String uname=object.getString("uname");
+		
+		
+		String upass=object.getString("upass");
+//		
+		Connection conn=db.DbHelp.getConnection();
+		
 		loginService loginservice=new loginService();
 		Acount acount=loginservice.login(uname, upass, conn);
+		JSONObject returnObject=null;
 		if(acount!=null){
-			
-	PersonInfo person=	new PersonInfo();
-	person.setAccount(request.getParameter("uname"));
-	person.setLoginDate(new Date());
-	person.setIp(request.getRemoteAddr());
-	
+	acount.setAddr(request.getRemoteAddr());
 	request.getSession().setAttribute("acount", acount);
-	request.getSession().setAttribute("personInfo", person);
-	request.getRequestDispatcher("/store/html/operation/show.jsp").forward(request, response);	
-
-	}else{
-		response.sendRedirect("/jyhwebstore/store/html/login.jsp");
+	returnObject =  JSONObject.fromObject(acount);
 	}
+		out.print(returnObject);
 	}
       
 }

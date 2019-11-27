@@ -24,8 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   
   <body>
   <%=request.getParameter("uname") %>
-  <br/>
-  <%=request.getParameter("upass") %>
+ 
   <a href="/jyhwebstore/store/html/operation/test.jsp">test</a>
   </body>
 </html>

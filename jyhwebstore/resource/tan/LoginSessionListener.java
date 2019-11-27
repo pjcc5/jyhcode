@@ -7,6 +7,8 @@ import javax.servlet.http.HttpSession;
 import javax.servlet.http.HttpSessionAttributeListener;
 import javax.servlet.http.HttpSessionBindingEvent;
 
+import pojo.Acount;
+
 
 
 public class LoginSessionListener implements HttpSessionAttributeListener{
@@ -19,30 +21,29 @@ public class LoginSessionListener implements HttpSessionAttributeListener{
 
 		public void attributeAdded(HttpSessionBindingEvent event) {
 			
-			
-			System.out.println("add");
+			System.out.println("进入单态登录过滤器");
 			String name = event.getName();
 			
 			
 
 
-			if (name.equals("personInfo")) {
+			if (name.equals("acount")) {
 
-				PersonInfo personInfo = (PersonInfo) event.getValue();
+				Acount personInfo = (Acount) event.getValue();
 
-				if (map.get(personInfo.getAccount()) != null) {
+				if (map.get(personInfo.getAname()) != null) {
 
 					
-					HttpSession session = map.get(personInfo.getAccount());
-					PersonInfo oldPersonInfo = (PersonInfo) session.getAttribute("personInfo");
-					System.out.println("帐号" + oldPersonInfo.getAccount() + "在" + oldPersonInfo.getIp() + "已经登录，该登录将被迫下线。");
-					session.removeAttribute("personInfo");
+					HttpSession session = map.get(personInfo.getAname());
+					Acount oldPersonInfo = (Acount) session.getAttribute("acount");
+					System.out.println("帐号" + oldPersonInfo.getAname() + "在" + oldPersonInfo.getAddr() + "已经登录，该登录将被迫下线。");
+					session.removeAttribute("acount");
 					session.setAttribute("msg", "您的帐号已经在其他机器上登录，您被迫下线。");
 				}
 
 				
-				map.put(personInfo.getAccount(), event.getSession());
-				System.out.println("帐号" + personInfo.getAccount() + "在" + personInfo.getIp() + "登录。");
+				map.put(personInfo.getAname(), event.getSession());
+				System.out.println("帐号" + personInfo.getAname() + "在" + personInfo.getAddr() + "登录。");
 				System.out.println(map.size());
 			}
 			
@@ -52,13 +53,12 @@ public class LoginSessionListener implements HttpSessionAttributeListener{
 
 			String name = event.getName();
 
-			// ע��
-			if (name.equals("personInfo")) {
+		
+			if (name.equals("acount")) {
 				
-				PersonInfo personInfo = (PersonInfo) event.getValue();
-				map.remove(personInfo.getAccount());
-				System.out.println("帐号" + personInfo.getAccount() + "注销。");
-				
+				Acount personInfo = (Acount) event.getValue();
+				map.remove(personInfo.getAname());
+				System.out.println("帐号" + personInfo.getAname() + "注销。");
 			}
 		}
 
@@ -67,24 +67,24 @@ public class LoginSessionListener implements HttpSessionAttributeListener{
 			String name = event.getName();
 
 			
-			if (name.equals("personInfo")) {
+			if (name.equals("acount")) {
 
 				
-				PersonInfo oldPersonInfo = (PersonInfo) event.getValue();
-				map.remove(oldPersonInfo.getAccount());
+				Acount oldPersonInfo = (Acount) event.getValue();
+				map.remove(oldPersonInfo.getAname());
 
 			
-				PersonInfo personInfo = (PersonInfo) event.getSession().getAttribute("personInfo");
+				Acount personInfo = (Acount) event.getSession().getAttribute("acount");
 
 			
-				if (map.get(personInfo.getAccount()) != null) {
+				if (map.get(personInfo.getAname()) != null) {
 					
-					HttpSession session = map.get(personInfo.getAccount());
+					HttpSession session = map.get(personInfo.getAname());
 					session.removeAttribute("personInfo");
 					session.setAttribute("msg", "您的帐号已经在其他机器上登录，您被迫下线。");
 
 				}
-				map.put(personInfo.getAccount(), event.getSession());
+				map.put(personInfo.getAname(), event.getSession());
 			}
 
 		}
