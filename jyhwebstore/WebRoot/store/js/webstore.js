@@ -10,14 +10,14 @@
   // 浮动导航栏
   $(function(){
 	  //显示当前位置
-	  if(document.getElementById("location"))
-	    {
-		  if (navigator.geolocation){
-			    navigator.geolocation.getCurrentPosition(showPosition,showError);
-			  }else{
-				 
-			  }
-		 }
+//	  if(document.getElementById("location"))
+//	    {
+//		  if (navigator.geolocation){
+//			    navigator.geolocation.getCurrentPosition(showPosition,showError);
+//			  }else{
+//				 
+//			  }
+//		 }
 	  
 	  
 	  
@@ -188,6 +188,23 @@ $('.banner').mouseleave(function(){
 });
 
 
+//点击退出
+function out(){
+	
+		$.get({
+			type:"get",
+			url:"/jyhwebstore/quit",
+			data:"quit="+1,
+			success:function(result){
+				alert(result);
+				if(result == "OK")
+				{
+					location.reload();
+				}
+			}
+		
+		});
+}
 
 //一开始就获取用户名通过localStorage
  $(function(){
@@ -205,3 +222,4 @@ $('.banner').mouseleave(function(){
 		location.reload();
 	}); 
 	})
+	
