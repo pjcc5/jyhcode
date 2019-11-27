@@ -4,18 +4,35 @@ $('#logo').fadeIn(2000);
 
 
 function login(){
-	if()
-	var frm = document.getElementById("myform");
-	frm.method="post";
-	frm.action="/jyhwebstore/store/html/login";
-	frm.submit();
+
+//	var frm = document.getElementById("myform");
+//	frm.method="post";
+//	frm.action="/jyhwebstore/store/html/login";
+//	frm.submit();
+	var uname= $('#loginUsername').val();
+	var upass=$('#loginPassword').val();
+	var acount={"uname":uname,"upass":upass};
 	$.ajax({
 		type:"post",
 		url:"/jyhwebstore/store/html/login",
+		data:{"msg":JSON.stringify(acount)},
+		success:function(result){
+		var re = JSON.parse(result);
+		if(re!=null){
+			alert("登录成功");
+			location.href="/jyhwebstore/store/html/information.jsp";
+		}else{
+			alert("登录失败");
+		}
+		
+		}
+		
 		
 	})
 	
 }
+
+
 
 //$("#loginBtn").click(function () {
 //	var loginUsername = $('#loginUsername').val();

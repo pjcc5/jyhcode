@@ -8,8 +8,27 @@
 		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
 		<link rel="stylesheet" type="text/css" href="../miancss/base.css"/>
 		<link rel="shortcut icon" type="image/x-icon" href="../img/task.png" />
+		<style>
+		#show{
+		width:200px;
+		height: 84px;
+		position: fixed;
+		background:#9e9e9e;
+		text-align:center;
+		line-height:84px;
+		left: 50%;
+		top: 50%;
+		margin-left: -100px;
+		margin-top: -42px;
+		border-radius:8px;
+		opacity:0.6;
+		}
+		</style>
 	</head>
 	<body class="bodystyle" style="text-align: ;">
+	<div id="show"" >
+	登录成功
+	</div>
 		<nav class="nav navbar-default nva-height">
 			<!-- 内容 -->
 			<div class="container">
