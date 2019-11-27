@@ -19,10 +19,14 @@ function login(){
 		success:function(result){
 		var re = JSON.parse(result);
 		if(re!=null){
-			alert("登录成功");
-			location.href="/jyhwebstore/store/html/information.jsp";
+			var show=$("#show").html("登录成功").fadeIn(500);
+			$("#show").fadeOut(2500);
+			setTimeout(function(){
+				location.href="/jyhwebstore/store/html/operation/show.jsp";
+			}, 3000);
+//			
 		}else{
-			alert("登录失败");
+			alert("账号密码不正确，请重新输入");
 		}
 		
 		}

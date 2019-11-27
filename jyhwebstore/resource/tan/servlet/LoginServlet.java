@@ -33,10 +33,6 @@ public class LoginServlet extends HttpServlet{
 		String msg = request.getParameter("msg");
 		System.out.println(msg);
 		JSONObject object = JSONObject.fromObject(msg);
-		
-		
-		
-		
 		 PrintWriter out= response.getWriter();
 		
 //		

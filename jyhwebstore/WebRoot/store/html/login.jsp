@@ -13,7 +13,7 @@
 		width:200px;
 		height: 84px;
 		position: fixed;
-		background:#9e9e9e;
+		background:orange;
 		text-align:center;
 		line-height:84px;
 		left: 50%;
@@ -22,6 +22,10 @@
 		margin-top: -42px;
 		border-radius:8px;
 		opacity:0.6;
+		z-index:999;
+		display: none;
+		font-size: 20px;
+		font-weight: bold;
 		}
 		</style>
 	</head>
