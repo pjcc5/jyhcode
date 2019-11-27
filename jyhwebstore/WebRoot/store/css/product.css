@@ -355,7 +355,10 @@
 		  							color: white;
 		  							border-bottom-right-radius: 25px;
 		  							border-top-right-radius: 24px;
+		  							padding-top: 8px
 		  						}
+		  						
+		  						
 		  				
 		  					
 		  input::-webkit-outer-spin-button,            input::-webkit-inner-spin-button{ 
