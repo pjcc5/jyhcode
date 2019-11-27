@@ -1,56 +1,154 @@
 package dao.impl;
 
 import java.sql.Connection;
+import java.sql.Date;
+import java.sql.PreparedStatement;
+import java.sql.ResultSet;
 import java.sql.Timestamp;
-import java.text.DateFormat;
-import java.text.SimpleDateFormat;
-import java.util.Date;
+import java.util.ArrayList;
 import java.util.List;
-import java.util.UUID;
 
-import pojo.Acount;
-import pojo.Classes;
-import pojo.Commodity;
-import pojo.Compic;
-import pojo.Details;
-import pojo.Hot;
-import pojo.Orderform;
-import pojo.Shopmiddle;
-import pojo.Shopping;
-import pojo.Size;
 import pojo.User;
-import util.DateFromat;
-import chao.dao.AcountDao;
-import chao.dao.ClassesDao;
-import chao.dao.CommodityDao;
-import chao.dao.CompicDao;
-import chao.dao.DetailsDao;
-import chao.dao.HotDao;
-import chao.dao.OrderformDao;
-import chao.dao.ShopmiddleDao;
-import chao.dao.ShoppingDao;
-import chao.dao.SizeDao;
-import chao.dao.UserDao;
-import chao.dao.impl.AcountDaoImpl;
-import chao.dao.impl.ClassesDaoImpl;
-import chao.dao.impl.CommodityDaoImpl;
-import chao.dao.impl.CompicDaoImpl;
-import chao.dao.impl.DetailsDaoImpl;
-import chao.dao.impl.HotDaoImpl;
-import chao.dao.impl.OrderformDaoImpl;
-import chao.dao.impl.ShopmiddleDaoImpl;
-import chao.dao.impl.ShoppingDaoImpl;
-import chao.dao.impl.SizeDaoImpl;
-import db.DbHelp;
-import db.DbHelp2;
+import dao.UserDao;
 
-public class UserDaoImpl {
-private void mian() {
-	// TODO Auto-generated method stub
+public class UserDaoImpl implements UserDao{
 
-}
-public static void main(String[] args) throws Exception {
-	Connection conn= DbHelp2.getConnection();
+	@Override
+	public List<User> getAllUser(Connection conn)throws Exception {
+		// TODO Auto-generated method stub
+		if(conn==null){
+			return null;
+		}
 
-}
+			if(!conn.isClosed()){
+				String sql="select * from user";
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ResultSet rs=ps.executeQuery();
+				List<User> list=new ArrayList<>();
+				while(rs.next()){
+					User user=new User();
+					user.setUid(rs.getInt("uid"));
+					user.setUname(rs.getString("uname"));
+					user.setPic(rs.getString("pic"));
+					user.setBirth(rs.getTimestamp("birth"));
+					user.setSex(rs.getString("sex"));
+					user.setUphone(rs.getString("uphone"));
+					user.setMail(rs.getString("mail"));
+					user.setSetadd(rs.getString("setadd"));
+					list.add(user);
+					
+				}
+				return list;
+			}
+		
+		return null;
+	}
+
+	@Override
+	public User getUserById(int uid, Connection conn)throws Exception {
+		// TODO Auto-generated method stub
+		if(conn==null){
+			return null;
+		}
+	
+			if(!conn.isClosed()){
+				String sql="select * from user where uid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setInt(1, uid);
+				ResultSet rs=ps.executeQuery();
+				
+				if(rs.next()){
+					User user=new User();
+					user.setUid(rs.getInt("uid"));
+					user.setUname(rs.getString("uname"));
+					user.setPic(rs.getString("pic"));
+					user.setBirth(rs.getTimestamp("birth"));
+					user.setSex(rs.getString("sex"));
+					user.setUphone(rs.getString("uphone"));
+					user.setMail(rs.getString("mail"));
+					user.setSetadd(rs.getString("setadd"));
+					return user;
+					
+				}
+			}
+		
+		
+		return null;
+	}
+
+	@Override
+	public boolean insertUser(User user, Connection conn)throws Exception {
+		// TODO Auto-generated method stub
+		if(conn==null){
+			return false;
+		}
+	
+			if(!conn.isClosed()){
+				String sql="insert into user values(?,?,?,?,?,?,?,?) ";
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setInt(1, user.getUid());
+				ps.setString(2, user.getUname());
+				ps.setString(3, user.getPic());
+				ps.setTimestamp(4, new Timestamp(user.getBirth().getTime()));
+				ps.setString(5, user.getSex());
+				ps.setString(6,user.getUphone());
+				ps.setString(7, user.getMail());
+				ps.setString(8, user.getSetadd());
+			    int rs=ps.executeUpdate();
+			    if(rs>0){
+			    	return true;
+			    }
+			}
+		
+		return false;
+	}
+
+	@Override
+	public boolean deleteUserByid(int uid, Connection conn) throws Exception {
+		// TODO Auto-generated method stub
+		if(conn==null){
+			return false;
+		}
+	
+			String sql="delete from user where uid=?";
+			if(!conn.isClosed()){
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setInt(1, uid);
+			int rs=	ps.executeUpdate();
+			if(rs>0){
+				return true;
+			}
+			}
+	
+		return false;
+	}
+
+	@Override
+	public boolean modifyUser(User user, Connection conn)throws Exception {
+		// TODO Auto-generated method stub
+		if(conn==null){
+			return false;
+		}
+	
+			if(!conn.isClosed()){
+				String sql="update user set uname=?,pic=?,birth=?,sex=?,uphone=?,mail=?,setadd=? where uid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+			   ps.setString(1, user.getUname());
+				ps.setString(2, user.getPic());
+				ps.setTimestamp(3, new Timestamp(user.getBirth().getTime()));
+				ps.setString(4, user.getSex());
+				ps.setString(5, user.getUphone());
+				ps.setString(6, user.getMail());
+				ps.setString(7, user.getSetadd());
+				ps.setInt(8, user.getUid());
+				int rs= ps.executeUpdate();
+				if(rs>0){
+					return true;
+				}
+			}
+			
+		
+		return false;
+	}
+
 }

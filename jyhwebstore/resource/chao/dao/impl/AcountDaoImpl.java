@@ -10,8 +10,9 @@ import java.util.UUID;
 
 import javax.servlet.jsp.jstl.sql.Result;
 
+import dao.AcountDao;
 import pojo.Acount;
-import chao.dao.AcountDao;
+
 
 public class AcountDaoImpl implements AcountDao{
 
@@ -84,7 +85,6 @@ public class AcountDaoImpl implements AcountDao{
 		
 		
 			if(!conn.isClosed()){
-				UUID.randomUUID().toString();
 				String sql="insert into  acount values(?,?,?,?,?,?,?)";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, acount.getAid());

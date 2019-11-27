@@ -1,0 +1,490 @@
+section{
+	width: 1200px;
+	margin: 0 auto;
+}
+
+
+
+.footer{
+	width: 100%;
+	/* height: 100px; */
+	float: left;
+	margin-left: 80px;
+	margin-top: 20px;
+	border-bottom: 1px solid #ebebeb;
+	/* border-top: 2px solid #5E5E5E; */
+}
+.footer-top{
+	
+}
+.icon{
+	width: 24%;
+	float: left;
+}
+.icons{
+	/* width: ; */
+	float:left;
+	padding-top: 12px;
+	padding-right: 10px;
+}
+.list-bottom{
+	margin-top: 120px;
+}
+.content-1{
+	font-size: 16px;
+    font-weight: bold;
+	color: #333;
+}
+.sub-content{
+	color: #999;
+}
+.sundry{
+	margin-top: 50px;
+}
+.details{
+	overflow: hidden;
+	width: 20%;
+	float: left;
+	padding: 10px;
+	border-top: 1px solid #ebebeb;
+	}
+.details ul{
+	width: 100%;
+	
+}
+.details ul li:first-child {
+	margin-bottom: 10px;
+}
+.details ul li:first-child a{
+	font-size: 14px;
+	font-weight: bold;
+	
+	/* color: red; */
+}
+.details li{
+	
+	display: inline-block;
+	width: 100%;
+	padding: 2px;
+}
+.QR-codes{
+	float: left;
+}
+.QR-codes img{
+	width: 100px;
+	position: fixed;
+	bottom: 120px;
+	right: 20px;
+}
+.contact{
+	display: block;
+	border: 2px solid white;
+	background: #ff7f62;
+	width: 100px;
+	position: fixed;
+	bottom: 230px;
+	right: 20px;
+}
+.statment{
+	text-align: center;
+	/*float: left;*/
+}
+.statment p a{
+	margin: 5px;
+}
+
+
+
+#top{
+	width: 80px;
+	height: 80px;
+	text-align: center;
+	line-height:80px ;
+	background: gainsboro;
+	position: fixed;
+	bottom: 30px;
+	right: 30px;
+	display: none;
+	border-radius: 50%;
+	cursor: pointer;
+}
+
+
+*{margin: 0px;padding: 0px;}
+		.navbar-default .navbar-text{
+			margin-right: 0px;
+			color: orangered;
+		}
+		.navbar-default .navbar-nav .active>a{
+			color:orangered ;
+			background: none;
+		}
+	
+		.navbar{
+			margin-bottom: 0px;
+		}
+     .nav .login>a{
+			padding-left: 5px;
+		}
+		li{list-style: none;}
+		
+		
+		.list-header{
+			width:1200px;
+			height: 40px;
+			margin: 0 auto;
+			border: solid 1px gainsboro;
+		}
+		.list-header li{
+			display: inline-block;
+			width: 140px
+			;
+			line-height: 40px;
+			color: gray;
+			
+		}
+		.list-header .selectall{
+			margin-left:50px;
+			cursor: pointer;
+		
+		}
+		
+		.list-header .desc{
+			width: 400px;
+		}
+		.list-header .selectall input{
+			
+			margin-right: 10px;
+			height: 18px;
+			width: 18px;
+		}
+		
+		
+		
+		input{
+			margin-right: 10px;
+			height: 18px;
+			width: 18px;
+			
+		}
+		
+		.goods{
+			width: 1200px;
+			height: 320px;
+			border: solid 1px gainsboro;
+			margin: 0px auto 0px;
+			margin-top: 20px;
+			
+			
+		}
+		
+	
+		
+		.goods-top{
+			width: 100%;
+			height: 60px;
+			border-bottom:solid 1px gainsboro ;
+			
+		}
+		.goods-top p{
+			float: left;
+			font-size: 16px;
+			line-height: 60px;
+			padding-left: 10px;
+			
+		}
+		
+		.goods-top input{
+			margin-left: 50px;
+			margin-top: 20px;
+			float: left;
+		}
+		
+		
+		.goods-mid{
+			width: 100%;
+			height: 170px;
+			padding-top: 20px;
+			padding-bottom: 20px;
+		}
+		
+		.goods-bottom{
+			width: 100%;
+			height: 70px;
+			border-top: solid 1px gainsboro;
+		}
+		.amount{
+			width: 200px;
+			/*height: 50px;*/
+			line-height: 70px;
+			padding-left: 20px;
+			padding-right: 25px;
+			float: right;
+		}
+		
+		.content{
+			width: 1200px;
+			padding-bottom: 30px;
+			margin: 0 auto;
+			background: url(images/bg.png) ;
+			position: relative;
+		}
+		.cart-header{
+			height: 80px;
+			margin: 0px auto;
+			width: 1200px;
+			padding-top: 30px;
+			margin-bottom: 30px;
+			
+		}
+		
+		.cart-header img{
+			width: 60px;
+			height: 50px;
+			float: left;
+			padding-top: 10px;
+			margin-right:10px ;
+		}
+		.cart-header p{
+			float: left;
+			font-size: 16px;
+		}
+		.cart-header a>p{
+			width: 80px;
+			height: 50px;
+			padding-top: 10px;
+			
+			font-size: 24px;
+		}
+		
+		.address{
+			width: 300px;
+			height: 34px;
+			padding-top: 16px;
+			margin-left: 16px;
+			float: left;
+			
+		}
+		
+		.address div{
+			cursor: pointer;
+			height: 30px;
+			border: solid 1px gainsboro;
+			margin-left: 6px;
+			border-radius: 6px;
+			float: left;
+			font-size: 16px;
+		}
+		
+		.address div span{
+			padding-left: 6px;
+		}
+		
+		.sear{
+		     width: 300px;
+			padding-top: 10px;
+			float: right;
+		}
+		
+		
+		.nav-pay{
+			width: 100%;
+			height: 60px;
+			background: ghostwhite;
+			
+			
+		}
+		
+		.pay-topr{
+			position: relative;
+			left: 0;
+			top: 0;
+		}
+		
+		.pay-bottom{
+			position: fixed;
+			left: 0;
+			bottom: 0;
+		}
+		
+		.pay-top{
+			position: fixed;
+			left: 0;
+			top: 0;
+		}
+		
+		
+		
+		.pay{
+			width: 1200px;
+			height: 60px;
+		    background: ghostwhite;
+			margin: 0 auto;
+		}
+		
+		  
+		  .pays-left{
+		  	float: left;
+		  	height: 60px;
+		  }
+		  
+		  .pays-left input{
+		  	margin-top: 20px;
+		  	float: left;
+		  	margin-left:50px ;
+		  	margin-right: 16px;
+		  }
+		  
+		  .pays-left span{
+		  	margin-right: 10px;
+		    font-size: 16px;
+		  	margin-top: 20px;
+		  	float: left;
+		  }
+		  
+		  .pay-right{
+		  	float: right;
+		  	height: 60px;
+		  }
+		 
+		  
+		  .pay-right span{
+		  	margin-right: 10px;
+		    font-size: 16px;
+		  	margin-top: 20px;
+		  	float: left;
+		  }
+		  
+		  .pay-right div{
+		  	
+		  	width: 120px;
+		  	background: orangered;
+		  	color: white;
+		  	float: left;
+		  	text-align: center;
+		  	line-height:60px ;
+		  	font-size: 16px;
+		  	cursor: pointer;
+		  }
+		  
+		  .select{
+		  	cursor: pointer;
+		  }
+		  .all{
+		  	padding-right: 20px;
+		  }
+		  
+		  .del-all{
+		  	margin-left: 30px;
+		  	cursor: pointer;
+		  }
+		  
+		  .nav-pay:after{
+			content: '';display: block;clear: both;
+		}
+		  
+		  .goods-mid>div{
+		  	float: left;
+		  	width: 140px;
+		  	height: 130px;
+		  	text-align: center;
+		  	
+		  	font-size: 16px;
+		  	
+		  	
+		  	
+		  }
+		  .goods-mid .desc input{
+		  	float: left;
+		  	margin-top: 56px;
+		  	margin-right: 15px;
+		  }
+		  .goods-mid .desc{
+		  	text-align: left;
+		  	width: 500px;
+		  	margin-left: 50px;
+		  	
+		  }
+		  
+		  .goods-mid .desc img{
+		  	width: 130px;
+		  	height: 130px;
+		  	border-radius: 10px;
+		  	float: left;
+		  }
+		  .goods-mid .desc p{
+		  	width: 310px;
+		  	height: 130px;
+		  	/*line-height: 70px;*/
+		  	padding-top: 26px;
+		  	padding-bottom: 40px;
+		  	margin-bottom: 0px;
+		  	margin-left: 15px;
+		  	/*border: solid 1px;*/
+		  	float: left;
+		  	overflow: hidden;
+		  }
+		  .goods-price{
+		  	padding-top:20px ;
+		  	padding-left: 10px;
+		  }
+		  
+		  .count{
+		  	padding-top: 20px;
+		  	padding-left: 22px;
+		  	
+		  }
+		  .count div{
+		  	float: left;
+		  	/*font-size: 24px;*/
+		  	width: 30px;
+		  	height: 22px;
+		  	line-height: 22px;
+		  	border: solid 1px gainsboro;
+		  	background: gainsboro;
+		  	cursor: pointer;
+		  }
+		  
+		   .count div:hover{
+		   	color: orangered;
+		   }
+		  .count input{
+		  	width: 40px;
+		  	height: 22px;
+		  	float: left;
+		  	margin-right: 0px;
+		  	text-align: center;
+		  }
+		  
+		  .subtotal{
+		  	padding-top: 20px;
+		  	padding-left: 20px;
+		  }
+		  
+		 .goods-mid .op{
+		  	padding-top: 20px;
+		  	padding-left: 60px;
+		  }
+		  
+		   .goods-mid .op>div{
+		  	float: left;
+            margin-right: 6px;
+		  	cursor: pointer;
+		  	
+		  }
+		   .goods-mid .op>div:hover{
+		   	color: orangered;
+		   }
+		   body{
+		   	background: url(images/bg.png);
+		   }
+		   
+		   
+		 .pay-right  .total{
+		   	color: orangered;
+		   	font-size: 24px;
+		   	line-height: 26px;
+		   }
+		   
+		   
+		   input::-webkit-outer-spin-button,            input::-webkit-inner-spin-button{                -webkit-appearance: none !important;            }

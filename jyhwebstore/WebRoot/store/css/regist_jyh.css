@@ -68,7 +68,7 @@ li {
 
 .regist-li-div {}
 
-/* ç”¨æˆ·å */
+/* ÓÃ»§Ãû */
 .regist-li-div1 div {
 	float: right;
 	margin-right: 330px;
@@ -79,7 +79,7 @@ li {
 	display: none;
 }
 
-/* æ‰‹æœºå· */
+/* ÊÖ»úºÅ */
 .regist-li-div2 div {
 	float: right;
 	margin-right: 280px;
@@ -90,7 +90,7 @@ li {
 	display: none;
 }
 
-/* å¯†ç  */
+/* ÃÜÂë */
 .regist-li-div3 div {
 	float: right;
 	margin-right: 330px;
@@ -101,7 +101,7 @@ li {
 	display: none;
 }
 
-/* ç¡®è®¤å¯†ç  */
+/* È·ÈÏÃÜÂë */
 .regist-li-div4 div {
 	float: right;
 	margin-right: 449px;
@@ -122,6 +122,9 @@ li {
 	height: 200px;
 	border: 4px solid gray;
 	display: none;
+}
+.containers{
+	height: 50px;
 }
 
 .success-container {

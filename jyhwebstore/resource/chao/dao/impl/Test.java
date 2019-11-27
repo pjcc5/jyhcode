@@ -298,7 +298,7 @@ public class Test {
 		 *测试shoppingmiddle 
 		 */
 		//测试shoppingmiddle表的插入一条OK
-		ShopmiddleDao smd =new ShopmiddleDaoImpl();
+//		ShopmiddleDao smd =new ShopmiddleDaoImpl();
 //		Shopmiddle sm =new Shopmiddle();
 //		sm.setAis("sid");
 //		sm.setShopid(1);
@@ -328,8 +328,8 @@ public class Test {
 		 * 测试order表
 		 */
 		//测试order表插入一条数据OK
-		Orderform o =new Orderform();
-		OrderformDao od = new OrderformDaoImpl();
+//		Orderform o =new Orderform();
+//		OrderformDao od = new OrderformDaoImpl();
 //		o.setAid(1);
 //		o.setComid("comid");
 //		o.setComname("华为");

@@ -6,12 +6,12 @@ import java.util.List;
 
 import javax.xml.soap.Detail;
 
-import chao.dao.ColorDao;
-import chao.dao.DetailsDao;
-import chao.dao.HotDao;
-import chao.dao.impl.ColorDaoImpl;
-import chao.dao.impl.DetailsDaoImpl;
-import chao.dao.impl.HotDaoImpl;
+import dao.ColorDao;
+import dao.DetailsDao;
+import dao.HotDao;
+import dao.impl.ColorDaoImpl;
+import dao.impl.DetailsDaoImpl;
+import dao.impl.HotDaoImpl;
 import db.DbHelp2;
 import pojo.Color;
 import pojo.Details;
