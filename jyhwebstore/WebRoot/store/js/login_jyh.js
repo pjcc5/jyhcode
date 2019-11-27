@@ -2,6 +2,16 @@ $('#login-div2-div1').slideDown(1000);
 
 $('#logo').fadeIn(2000);
 
+<<<<<<< HEAD
+function login(){
+	if()
+	var frm = document.getElementById("myform");
+	frm.method="post";
+	frm.action="/jyhwebstore/store/html/login";
+	frm.submit();
+}
+=======
+>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
 
 
 

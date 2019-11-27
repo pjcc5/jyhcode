@@ -53,11 +53,13 @@
     <welcome-file>default.htm</welcome-file>
     <welcome-file>default.jsp</welcome-file>
   </welcome-file-list>
+  
+  <!-- 单态监听 -->
    <listener>
 		<listener-class>tan.LoginSessionListener</listener-class>
 	</listener>
 	
-	
+	<!-- 登录servlet-->
 	<servlet>
 	<servlet-name>LoginServlet</servlet-name>
 	<servlet-class>tan.servlet.LoginServlet</servlet-class>
@@ -79,6 +81,8 @@
 	    <url-pattern>/load</url-pattern>
 	  </servlet-mapping>
 
+
+<!-- 字符转码 -->
 	  <filter>
   	<filter-name>character</filter-name>
   	<filter-class>tan.filter.CharacterEncodingFilter</filter-class>
