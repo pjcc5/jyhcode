@@ -7,7 +7,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
 	<head>
 		<meta charset="utf-8">
-	    <base href="<%=basePath%>">
 		<link rel="shortcut icon" type="image/x-icon" href="/jyhwebstore/store/img/task.png" />
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
 		<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/bootstrap.css" />
@@ -18,7 +17,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	</head> 
 	<script type="text/javascript">
 	 function flush(obj) {
-			obj.src = "image?id="+new Date().getTime();
+			obj.src = "/jyhwebstore/image?id="+new Date().getTime();
 		}
 	</script>
 	<body class="bodystyle" style="background: url(/jyhwebstore/store/img/bgc.jpg);">
@@ -81,7 +80,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<li class="regist-YZM">
 						<span>验证码</span>
 						<input type="text" class="form-control" placeholder="identifying code" id="valdation"/>
-					<img src="image" style="float: right;margin-right: 550px; width: 130px;height: 43px; margin-top: -60px;" onclick="flush(this)">
+					<img src="/jyhwebstore/image" style="float: right;margin-right: 550px; width: 130px;height: 43px; margin-top: -60px;" onclick="flush(this)">
 					</li>
 					<!-- 密码 -->
 					<li>

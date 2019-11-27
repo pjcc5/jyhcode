@@ -209,7 +209,7 @@ $('#regists').click(function() {
 		//发起请求
 		$.get({
 			type:"post",
-			url:"Register",
+			url:"/jyhwebstore/Register",
 			data:{"rname":userName,"rpass":userPassword,"rphone":phone,"valdation":vald},
 			success:function(result){
 				var json = JSON.parse(result);
