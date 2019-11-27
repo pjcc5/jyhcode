@@ -36,7 +36,6 @@ public class PjcDetailsDaoImpl extends DetailsDaoImpl implements PjcDetailsDao {
 			de.setTest5(rs.getString("test5"));
 			de.setTest6(rs.getString("test6"));
 			list.add(de);
-			
 		}
 		
 		return list;

@@ -179,7 +179,7 @@
 					<p>${igd.pai}</p>
 					<p>${igd.comprice}</p>
 					<p><span class="glyphicon  glyphicon-star"></span>${igd.detailsdot}</p>
-					<a href='product.html?goods_id=${json.data[i].goods_id}' class="content_a">
+					<a href='/jyhwebstore/store/html/product.jsp?' class="content_a">
 						<div class="cover">
 							<p class="goodsdecoration">${igd.comname}</p>
 							<p class="price">只要${igd.comprice}元</p>
@@ -335,7 +335,7 @@
 							<p>`+comprice+`</p>
 							<p><span class="glyphicon  glyphicon-star"></span>`+detailsdot+`
 							</p>
-							<a href='product.html?goods_id=${json.data[i].goods_id}' class="content_a">
+							<a href='/jyhwebstore/store/html/product.jsp?' class="content_a">
 								<div class="cover">
 									<p class="goodsdecoration">`+comname+`
 									</p>
