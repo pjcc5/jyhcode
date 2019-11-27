@@ -21,19 +21,9 @@ import org.w3c.dom.stylesheets.DocumentStyle;
 
 
 
-import chao.dao.AcountDao;
-//=======
-import chao.dao.ClassesDao;
-//>>>>>>> branch 'master' of https://github.com/pjcc5/jyhcode.git
-import chao.dao.CommodityDao;
-import chao.dao.CompicDao;
-import chao.dao.DetailsDao;
-import chao.dao.HotDao;
-import chao.dao.OrderformDao;
-import chao.dao.ShopmiddleDao;
-import chao.dao.ShoppingDao;
+
+
 import db.DbHelp2;
-//<<<<<<< HEAD
 import pojo.Acount;
 //=======
 import pojo.Classes;
