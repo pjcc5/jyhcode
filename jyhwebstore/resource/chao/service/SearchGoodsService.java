@@ -41,6 +41,8 @@ public class SearchGoodsService {
 			 
 		} catch (Exception e) {
 			e.printStackTrace();
+		}finally{
+			DbHelp.closeConnection(conn);
 		}
 		return maxpage;
 		

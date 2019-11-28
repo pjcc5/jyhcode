@@ -49,15 +49,12 @@ public class SearchGoodsServlet extends HttpServlet {
 		List<IndexGoodsDto>  list = new ArrayList<IndexGoodsDto>();
 		list = SearchGoodsService.getSearch(content, page);
 		PrintWriter out = response.getWriter();
-		for (IndexGoodsDto indexGoodsDto : list) {
-			System.out.println(indexGoodsDto.getComname());
-		}
 		
 		//转化成json格式传给前端
 		JSONArray ja = JSONArray.fromObject(list);
 		out.print(ja.toString());
 		//写入完毕
-		
+		out.close();
 		
 //		SearchGoodsService.getSearch(content, page);
 		

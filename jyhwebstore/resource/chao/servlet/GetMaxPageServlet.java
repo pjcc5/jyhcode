@@ -39,6 +39,7 @@ public class GetMaxPageServlet extends HttpServlet {
 		int maxpage = SearchGoodsService.getMaxpage(content);
 		PrintWriter out = response.getWriter();
 		out.print(maxpage);
+		out.close();
 				
 	}
 

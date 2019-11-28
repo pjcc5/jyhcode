@@ -173,7 +173,7 @@
 			<div class="more" style="margin-left: 45%;">
 			<button type="button" class="btn btn-primary first"  onclick="gofirstpage(this)" id="1">首页</button>
 			<button type="button" class="btn btn-success prev"  onclick="prevpage(this)"><span class="glyphicon glyphicon-chevron-left"></span></button>
-			<input type="number" max="100" min="1" value="1" />
+			<input type="number" max="100" min="1" value="1" id="pagenum"/>
 			<button type="button" class="btn btn-success next"  onclick="nextpage(this)"><span class="glyphicon glyphicon-chevron-right"></span></button>
 			<button type="button" class="btn btn-danger last"  onclick="golastpage(this)" id="">尾页</button>
 			
@@ -375,8 +375,36 @@ function getUrlVal(property){
 	
 	//首页函数
 	function gofirstpage(obj){
-		
+		$("#pagenum").val(1);
+		searchgoods(1);
 	}
 	
+	//上一页函数
+	function prevpage(obj){
+		var page = $("#pagenum").val()-1;
+		if(page <= 1)
+		{
+			page=1;
+		}
+		$("#pagenum").val(page);
+		searchgoods(page);
+	}
+	//下一页函数
+	function nextpage(obj){
+		var page = parseInt($("#pagenum").val())+1;
+		var maxpage = $(".last").attr("id");
+		if(page >maxpage)
+		{
+			page = maxpage;
+		}
+		$("#pagenum").val(page);
+		searchgoods(page);
+	}
+	//尾页函数
+	function golastpage(obj){
+		var lastpage = parseInt($(obj).attr("id"));
+		$("#pagenum").val(lastpage);
+		searchgoods(lastpage);
+	}
 	
 </script>
