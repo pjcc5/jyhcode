@@ -267,6 +267,6 @@
   </body>
 </html>
 
-<script src="/jyhwebstore/store/js/jquery.min.js"></script>
+<script src="/jyhwebstore/store/js/jquery-1.8.3.min.js"></script>
 <script src="/jyhwebstore/store/js/bootstrap.min.js"></script>
 <script src="/jyhwebstore/store/js/product.js"></script>

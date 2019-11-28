@@ -2,6 +2,8 @@ $('#login-div2-div1').slideDown(1000);
 
 $('#logo').fadeIn(2000);
 
+
+
 function login(){
 	var uname= $('#loginUsername').val();
 	var upass=$('#loginPassword').val();

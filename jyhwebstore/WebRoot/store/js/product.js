@@ -1,13 +1,6 @@
 (function(){
-var goodsId = getUrlVal('goods_id');
-  //发起请求
-  // alert(goodsId);
-  $.get('http://www.wjian.top/shop/api_goods.php', {
-    goods_id : goodsId,
-  }, function(result){
-    var obj = JSON.parse(result);
-    // console.log(obj)
-    var goods = obj.data[0];
+
+  
     var str = `
      <p class="name">${goods.goods_name}</p>
 			<p class="price"><span>价格</span><span class="price-m">￥${goods.price}</span></p>
