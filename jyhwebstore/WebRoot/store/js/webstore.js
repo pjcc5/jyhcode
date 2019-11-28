@@ -8,7 +8,13 @@
   // 自动翻页
   // $('.banner').
   // 浮动导航栏
+	  
+	  
+	  
+	  
+	  
   $(function(){  
+	  currenttime();
   	$(window).scroll(function(){
   		var toTop=$(window).scrollTop();
   		if(toTop>=50){
@@ -28,7 +34,17 @@
   	$('#top').click(function(){
   			// $(document).scrollTop(0);
   			// $('#top').fadeOut(1000);
-  			$('body,html').animate({'scrollTop':0},500);
+  		var toTop=$(window).scrollTop();
+  		if(toTop<=10000)
+  			{
+  			var time =parseInt($(".loadmore").attr("page"))+1;
+  			$('body,html').animate({'scrollTop':0},1000*time);
+  			
+  			}else
+			{
+  				scrollTo(300,0);
+			}
+  			
   		});
   })
   
@@ -120,15 +136,15 @@
 		var searchText = $('.search-input').val();
 		var text =encodeURI(searchText);
 		// alert(text);
-		window.location.href=`search.html?content=${text}`;
+		window.location.href=`/jyhwebstore/store/html/search.jsp?content=${text}`;
 	});
-	//回车登录
+	//回车搜索
 	$('#searchIn1').keydown(function(event){
 		if(event.keyCode ==13)
-		{
+		{	
 			var searchText = $('#searchIn1').val();
 			var text =encodeURI(searchText);
-			window.location.href=`search.html?content=${text}`;
+			window.location.href=`/jyhwebstore/store/html/search.jsp?content=${text}`;
 		}
 		
 	});
@@ -137,7 +153,7 @@
 		{
 			var searchText = $('#searchIn2').val();
 			var text =encodeURI(searchText);
-			window.location.href=`search.html?content=${text}`;
+			window.location.href=`/jyhwebstore/store/html/search.jsp?content=${text}`;
 		}
 		
 	});
@@ -209,3 +225,37 @@ function out(){
 	}); 
 	})
 	
+	//去登录页面
+	function gologin(obj){
+		var	path = location.pathname;
+	 	location.href = "/jyhwebstore/store/html/login.jsp?path="+path;
+ 	}
+ 	//去产品详情页
+ 	function goproduct(obj)
+ 	{
+ 		var goods =$(obj).parent();
+ 		var input = goods.find("input");
+ 		//组织字符串访问详情页
+ 		location.href="/jyhwebstore/store/html/product.jsp?comid="+input.attr("id");
+ 		
+ 	}
+	
+ 	function currenttime(){
+ 		var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth()+1;
+		var day = date.getDate();
+		var week = date.getDay();
+		week="星期"+"日一二三四五六".charAt(week);
+		var hour = date.getHours();
+		var minute = date.getMinutes();
+		var second = date.getSeconds();
+		var temp=[month,day,hour,minute,second];
+		for (var i in temp) {
+		     temp[i]=temp[i]<10?"0"+temp[i]:temp[i];
+		      }
+		var currentTime = year +"-"+ temp[0] +"-"+ temp[1] +" "+ temp[2] +":"+ temp[3] +":"+ temp[4] +" "+week;
+		document.getElementById("current").innerHTML =currentTime;
+		setInterval("currenttime()",1000);
+
+ 		}
