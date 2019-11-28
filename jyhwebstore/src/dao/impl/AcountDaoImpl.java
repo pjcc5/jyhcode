@@ -41,8 +41,6 @@ public class AcountDaoImpl implements AcountDao{
 			}
 				
 			}
-		
-		
 		return list;
 	}
 
@@ -85,7 +83,7 @@ public class AcountDaoImpl implements AcountDao{
 		
 			if(!conn.isClosed()){
 				UUID.randomUUID().toString();
-				String sql="insert into  acount values(?,?,?,?,?,?,?)";
+				String sql="insert into  acount(aid,aname,apass,isadm,aphone,amail,addr) values(?,?,?,?,?,?,?)";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, acount.getAid());
 				ps.setString(2,acount.getAname() );
@@ -98,10 +96,7 @@ public class AcountDaoImpl implements AcountDao{
 				if(rs>0){
 					return true;
 				}
-				
 			}
-		
-		
 		return false;
 	}
 
@@ -111,7 +106,6 @@ public class AcountDaoImpl implements AcountDao{
 		if(conn==null){
 			return false;
 		}
-		
 			if(!conn.isClosed()){
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, aid);
@@ -120,8 +114,6 @@ public class AcountDaoImpl implements AcountDao{
 				return true;
 			}	
 			}
-		
-		
 		return false;
 	}
 
@@ -130,23 +122,18 @@ public class AcountDaoImpl implements AcountDao{
 		if(conn==null){
 			return false;
 		}
-
-			String sql="update acount set aname=?,apass=?,isadm=?,aphone=?,amail=?,addr=? where aid=? ";
+			String sql="update acount set aname=?,apass=?,aphone=?,amail=?,addr=? where aid=? ";
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ps.setString(1, acount.getAname());
 			ps.setString(2, acount.getApass());
-			ps.setInt(3, acount.getIsadm());
-			ps.setString(4, acount.getAphone());
-			ps.setString(5, acount.getAmail());
-			ps.setString(6,acount.getAddr());
-			ps.setString(7, acount.getAid());
+			ps.setString(3, acount.getAphone());
+			ps.setString(4, acount.getAmail());
+			ps.setString(5,acount.getAddr());
+			ps.setString(6, acount.getAid());
 			int i=	ps.executeUpdate();
 			if(i>0){
 				return true;
 			}
-			
-		
-		
 		return false;
 	}
 

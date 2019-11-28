@@ -135,7 +135,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span id="success-container-success" style="margin-left: -40px;">
 					恭喜老板注册成功！请点击确定，跳转登录界面
 				</span>
-				<span id="success-container-exist" style="float: left; margin-left: -50px;margin-top: 20px;background: url(/jyhwebstore/store/img/bg1.jpg);">抱歉，手机号已经被注册！</span>
+				<span id="success-container-exist" style="float: left; margin-left: -50px;margin-top: 20px;background: url(/jyhwebstore/store/img/bg1.jpg);">抱歉，手机号或者用户名已被占用！</span>
 				<span id="success-container-failed" style="float: left; margin-left: -55px;">老板您注册失败了哟！请检查您的输入是否正确！</span>
 				<span id="success-container-error" style="float: left; margin-left: -55px;">系统未知错误！</span>
 			</div>

@@ -9,7 +9,11 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import org.apache.log4j.Logger;
-
+/**
+ * log4j的测试
+ * @author 毛彦戈
+ *
+ */
 public class Log4JTestServlet extends HttpServlet {
 
 	private static final long serialVersionUID = 1L;

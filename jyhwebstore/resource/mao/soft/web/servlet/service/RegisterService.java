@@ -37,6 +37,7 @@ public class RegisterService {
 			user.setUname(registerName);
 			user.setUphone(phone);
 			user.setSex("");
+			user.setAid(uuid);
 			//调插入方法
 			boolean blog = rs.register(conn,acount, user);
 			return blog;

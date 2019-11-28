@@ -10,6 +10,7 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import mao.soft.web.encryption.Encryption;
 import net.sf.json.JSONObject;
 import pojo.Acount;
 import service.loginService;
@@ -34,16 +35,18 @@ public class LoginServlet extends HttpServlet{
 		System.out.println(msg);
 		JSONObject object = JSONObject.fromObject(msg);
 		 PrintWriter out= response.getWriter();
-		
-//		
-//		
 		String uname=object.getString("uname");
-		
-		
 		String upass=object.getString("upass");
-//		
+		//将密码加密传到service层
+		Encryption key = new Encryption();
+		try {
+			upass=key.getKey(upass);
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		//================
 		Connection conn=db.DbHelp.getConnection();
-		
 		loginService loginservice=new loginService();
 		Acount acount=loginservice.login(uname, upass, conn);
 		System.out.println(acount);

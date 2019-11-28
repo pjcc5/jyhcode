@@ -1,7 +1,11 @@
 package mao.soft.web.encryption;
 
 import java.security.MessageDigest;
-
+/**
+ * 加密
+ * @author 毛彦戈
+ *
+ */
 public class Encryption {
 	public String getKey(String password) throws Exception
 	{

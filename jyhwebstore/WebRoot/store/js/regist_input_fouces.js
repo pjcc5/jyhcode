@@ -235,22 +235,22 @@ $('#regists').click(function() {
 
 //用户名存在的情况
 $('#success-btn-2').click(function() {
+	location.href="regist.jsp?id="+new Date().getTime();
 	$("#success").slideUp(350);
 	$('input:eq(0)').focus();
 })
 
 //输入有误的时候
 $('#success-btn-3').click(function() {
-	$("#success").slideUp(350);
 	location.href="regist.jsp?id="+new Date().getTime();
+	$("#success").slideUp(350);
 })
 
 //注册成功
 $('#success-btn-1').click(function(){
 	var userNames = $("#useinput").val();
 	window.open("success/registersuccess.jsp?id="+userNames);
-	window.close();
-//	location.href="regist.jsp";
+	location.href="regist.jsp";
 })
 //未知错误
 $("#success-btn-4").click(function(){
