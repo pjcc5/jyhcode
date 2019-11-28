@@ -136,11 +136,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</span>
 				<span id="success-container-exist" style="float: left; margin-left: -50px;margin-top: 20px;background: url(/jyhwebstore/store/img/bg1.jpg);">抱歉，手机号已经被注册！</span>
 				<span id="success-container-failed" style="float: left; margin-left: -55px;">老板您注册失败了哟！请检查您的输入是否正确！</span>
+				<span id="success-container-error" style="float: left; margin-left: -55px;">系统未知错误！</span>
 			</div>
 			<div id="success-btn" class="success-btn">
-				<button id="success-btn-1" type="button" style="color: blue; margin-bottom: -50px;"> <a href="#">确定</a> </button>
+				<button id="success-btn-1" type="button" style="color: blue; margin-bottom: -50px;"> 确定</button>
 				<button id="success-btn-2" type="button" style="color: red;margin-bottom: -80px;">确定</button>
 				<button type="button" id="success-btn-3" style="margin-bottom: -80px;" >确定</button>
+				<button type="button" id="success-btn-4" style="margin-bottom: -80px;" >确定</button>
 			</div>
 		</div>
 	</body>

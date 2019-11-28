@@ -213,8 +213,6 @@ $('#regists').click(function() {
 			data:{"rname":userName,"rpass":userPassword,"rphone":phone,"valdation":vald},
 			success:function(result){
 				var json = JSON.parse(result);
-				alert(json.flag);
-				console.log(json.flag);
 				if(json.flag==true)
 				{
 					$('#success').slideDown().children('#success-container').children('#success-container-success').slideDown(350).siblings().hide();
@@ -226,9 +224,10 @@ $('#regists').click(function() {
 					$('#success').children('#success-btn').children('#success-btn-2').show().siblings().hide();
 				}
 				if(json.error==false)
-					{
-						
-					}
+				{
+					$('#success').slideDown().children('#success-container').children('#success-container-error').show().siblings().hide();
+					$('#success').children('#success-btn').children('#success-btn-4').show().siblings().hide();
+				}
 			}
 		});
 	}else
@@ -237,47 +236,7 @@ $('#regists').click(function() {
 		$('#success').children('#success-btn').children('#success-btn-3').show().siblings().hide();
 		}
 });
-//					var usernames = $('input:eq(0)').val();
-//					var passwords = $('input:eq(3)').val();
-//					var str = encodeURI(passwords);
-//		(function() {
-//			//发起请求
-//			$.post('http://www.wjian.top/shop/api_user.php', {
-//				status: 'register',
-//				username: userName,
-//				password: userPassword,
-//			}, function(result) {
-//				var obj = JSON.parse(result);
-//				console.log(obj);
-//				//验证
-//				if (obj.code == 0) {
-//					$('#success').slideDown().children('#success-container').children('#success-container-success').slideDown(350)
-//						.siblings().hide();
-//					$('#success').children('#success-btn').children('#success-btn-1').show().siblings().hide();
-//					$('#success-btn-1').click(function() {
-//						var usernames = $('input:eq(0)').val();
-//						var passwords = $('input:eq(3)').val();
-//						var str = encodeURI(passwords);
-//						location.href = `login.html?a=${usernames}&b=${passwords}`;
-//					});
-//				} else if (obj.code == 2001) {
-//					$('#success').slideDown().children('#success-container').children('#success-container-exist').show().siblings()
-//						.hide();
-//					$('#success').children('#success-btn').children('#success-btn-2').show().siblings().hide();
-//				} else {
-//					console.log(obj.message);
-//					alert(obj.message);
-//					return;
-//				}
-//
-//			});
-//		})();
-//	} else {
-//		$('#success').slideDown().children('#success-container').children('#success-container-failed').show().siblings().hide();
-//		$('#success').children('#success-btn').children('#success-btn-3').show().siblings().hide();
-//	}
-//	}
-//});
+
 //用户名存在的情况
 $('#success-btn-2').click(function() {
 	$("#success").slideUp(350);
@@ -287,10 +246,15 @@ $('#success-btn-2').click(function() {
 //输入有误的时候
 $('#success-btn-3').click(function() {
 	$("#success").slideUp(350);
-	localtion.href="regist.jsp?id="+new Date().getTime();
+	location.href="regist.jsp?id=#";
 })
 
-//$("#success-btn-3")
-//function tizozhuan(obj) {
-//		obj.src = "regist.jsp?id="+new Date().getTime();
-//};
+//注册成功
+$('#success-btn-1').click(function(){
+	var userNames = $("#useinput").val();
+	location.href="login.jsp?id="+userNames;
+})
+//未知错误
+$("#success-btn-4").click(function(){
+	location.href="regist.jsp?id="+new Date().getTime();
+})

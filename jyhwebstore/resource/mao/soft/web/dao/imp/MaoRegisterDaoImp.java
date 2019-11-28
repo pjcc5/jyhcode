@@ -54,6 +54,7 @@ public class MaoRegisterDaoImp implements MaoRegisterDao{
 			ps.setString(1, phone);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
+				
 				System.out.println("好的查询成功了");
 				return true;
 			} else {
