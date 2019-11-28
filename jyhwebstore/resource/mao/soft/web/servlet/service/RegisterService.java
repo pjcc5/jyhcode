@@ -4,6 +4,7 @@ import java.sql.Connection;
 import java.util.Date;
 import java.util.UUID;
 
+import mao.soft.web.encryption.Encryption;
 import mao.soft.web.service.RegisterSer;
 import pojo.Acount;
 import pojo.User;
@@ -16,6 +17,8 @@ public class RegisterService {
 			Connection conn = DbHelp.getConnection();
 			RegisterSer rs = new RegisterSer();
 			Acount acount = new Acount();
+			Encryption keys = new Encryption();
+			password = keys.getKey(password);
 			//插入acount
 			String uuid =UUID.randomUUID().toString();
 			acount.setAid(uuid);
