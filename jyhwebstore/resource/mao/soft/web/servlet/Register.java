@@ -77,6 +77,8 @@ public class Register extends HttpServlet {
 					JSONObject flg = JSONObject.fromObject(flag);
 					PrintWriter out = response.getWriter();
 					out.print(flg.toString());
+					
+					
 //					System.out.println("成功！");
 				}
 				else

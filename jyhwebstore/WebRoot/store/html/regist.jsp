@@ -77,6 +77,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</li>
 					<!-- 验证码 -->
+					<lable style=" font-weight:bold; font-size: 10px;color: red;line-height: 1px;float: right;margin-right: 430px; margin-top:30px">看不清点击图片换一张</lable>
 					<li class="regist-YZM">
 						<span>验证码</span>
 						<input type="text" class="form-control" placeholder="identifying code" id="valdation"/>
