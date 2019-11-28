@@ -10,7 +10,7 @@ function login(){
 	path=getUrlVal('path');
 	console.log(path);
 	if(path==null){
-		path="index.jsp";
+		path="/jyhwebstore/index.jsp";
 	}
 //	getUrlVal(1);
 	if(uname==null||uname==""||uname.length<3||uname.indexOf(" ")!=-1){
@@ -32,7 +32,7 @@ function login(){
 						var show=$("#show").html("登录成功").fadeIn(500);
 						$("#show").fadeOut(2500);
 						setTimeout(function(){
-							location.href="/jyhwebstore/"+path;
+							location.href=path;
 						}, 3000);
 //						
 					}else{

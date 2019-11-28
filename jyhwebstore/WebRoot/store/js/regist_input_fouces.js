@@ -258,3 +258,9 @@ $('#success-btn-1').click(function(){
 $("#success-btn-4").click(function(){
 	location.href="regist.jsp?id="+new Date().getTime();
 })
+
+//去登录页面
+function gologin(obj){
+	var	path = location.pathname;
+ 	location.href = "/jyhwebstore/store/html/login.jsp?path="+path;
+}

@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -31,7 +32,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<img src="/jyhwebstore/store/img/Logo.jpg" class="nav-height-img">
 					</a>
 				</div>
-				<a href="login.jsp" class="navbar-btn navbar-right  btn-xs nav-height-a">请登录</a>
+				<c:if test="${empty acount}">
+						<a href="javascript:gologin(this)" id="log">
+							登录
+						</a>
+						</c:if>
+						<c:if test="${not empty acount}">
+							<a href="/jyhwebstore/store/html/operation/information.jsp?path=index.jsp" id="log">
+							${acount.aname}
+							<a href="javascript:out()" id="out">退出</a>
+						</a>
+						</c:if>
+						
+						
+				<a href="javascript:gologin(this)" class="navbar-btn navbar-right  btn-xs nav-height-a">请登录</a>
 				<p class="navbar-text hidden-sm hidden-xs navbar-right">您好，欢迎光临聚优汇！</p>
 			</div>
 		</nav>
@@ -150,3 +164,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="/jyhwebstore/store/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="/jyhwebstore/store/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 <script src="/jyhwebstore/store/js/regist_input_fouces.js" type="text/javascript" charset="utf-8"></script>
+

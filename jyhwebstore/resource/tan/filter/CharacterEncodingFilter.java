@@ -84,4 +84,10 @@ public class CharacterEncodingFilter implements Filter{
 			return "我不想做夜猫子";
 		}
 	}
+	
+//	//获取当前时间的方法
+//	public String getCurrent(){
+//		Date date = new Date();
+//		return 
+//	}
 }

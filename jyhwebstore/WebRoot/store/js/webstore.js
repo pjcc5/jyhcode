@@ -14,6 +14,7 @@
 	  
 	  
   $(function(){  
+	  currenttime();
   	$(window).scroll(function(){
   		var toTop=$(window).scrollTop();
   		if(toTop>=50){
@@ -229,3 +230,22 @@ function out(){
  		
  	}
 	
+ 	function currenttime(){
+ 		var date = new Date();
+        var year = date.getFullYear();
+        var month = date.getMonth()+1;
+		var day = date.getDate();
+		var week = date.getDay();
+		week="星期"+"日一二三四五六".charAt(week);
+		var hour = date.getHours();
+		var minute = date.getMinutes();
+		var second = date.getSeconds();
+		var temp=[month,day,hour,minute,second];
+		for (var i in temp) {
+		     temp[i]=temp[i]<10?"0"+temp[i]:temp[i];
+		      }
+		var currentTime = year +"-"+ temp[0] +"-"+ temp[1] +" "+ temp[2] +":"+ temp[3] +":"+ temp[4] +" "+week;
+		document.getElementById("current").innerHTML ="　　　　"+currentTime;
+		setInterval("currenttime()",1000);
+
+ 		}

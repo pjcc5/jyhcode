@@ -23,6 +23,7 @@
 					<div class="col-md-3  text-left links ">
 						<span class="glyphicon glyphicon-volume-up posi"></span>
 						<a href="">防范金融诈骗提示</a>
+						<span id="current"></span>
 					</div>
 					
 					<div class="col-md-5 col-md-offset-2 links-right   text-right">
