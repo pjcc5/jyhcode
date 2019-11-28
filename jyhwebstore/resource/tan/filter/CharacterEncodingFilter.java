@@ -1,6 +1,7 @@
 package tan.filter;
 
 import java.io.IOException;
+import java.util.Date;
 import java.util.Iterator;
 import java.util.Map;
 
@@ -43,6 +44,7 @@ public class CharacterEncodingFilter implements Filter{
 			}
 		}
 		response.setCharacterEncoding(newEncoding);
+		request.getSession().setAttribute("time", getTimelo());
 		//放行
 		arg2.doFilter(request, response);
 		System.out.println("放行完毕");
@@ -52,5 +54,34 @@ public class CharacterEncodingFilter implements Filter{
 	public void init(FilterConfig arg0) throws ServletException {
 		oldEncoding = arg0.getInitParameter("oldEncoding");
 		newEncoding = arg0.getInitParameter("newEncoding");
+	}
+	
+	/*
+	 * 根据时间判断上午下午中午
+	 */
+	public String getTimelo(){
+		Date date = new Date();
+		int hour = date.getHours();
+		if(hour>=5 && hour<8)
+		{
+			return "早上好";
+		}else if(hour >=8 && hour < 12)
+		{
+			return "上午好";
+		}else if(hour >= 12 && hour <14)
+		{
+			return "中午好,要注意午休呦(＾Ｕ＾)ノ~ＹＯ";
+		}else if(hour >= 14 && hour <17)
+		{
+			return "下午好";
+		}else if(hour >= 17 && hour < 19)
+		{
+			return "傍晚好";
+		}else if(hour >= 19 && hour < 23)
+		{
+			return "晚上好";
+		}else{
+			return "我不想做夜猫子";
+		}
 	}
 }

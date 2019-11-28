@@ -214,3 +214,18 @@ function out(){
 	}); 
 	})
 	
+	//去登录页面
+	function gologin(obj){
+		var	path = location.pathname;
+	 	location.href = "/jyhwebstore/store/html/login.jsp?path="+path;
+ 	}
+ 	//去产品详情页
+ 	function goproduct(obj)
+ 	{
+ 		var goods =$(obj).parent();
+ 		var input = goods.find("input");
+ 		//组织字符串访问详情页
+ 		location.href="/jyhwebstore/store/html/product.jsp?comid="+input.attr("id");
+ 		
+ 	}
+	

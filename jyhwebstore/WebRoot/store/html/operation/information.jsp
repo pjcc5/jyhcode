@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -37,9 +38,17 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a href="/jyhwebstore/store/html/order.jsp">
 						<span class="glyphicon glyphicon-list-alt"></span>
 						我的订单</a>
-					
-					<a href="">注册</a>
-					<a href="">登录</a>
+					<c:if test="${empty acount}">
+						<a href="/jyhwebstore/store/html/login.jsp?path=index.jsp" id="log">
+							登录
+						</a>
+					</c:if>
+						<c:if test="${not empty acount}">
+							<a href="/jyhwebstore/store/html/information.jsp?path=index.jsp" id="log">
+							${acount.aname }
+							<a href="javascript:out()" id="out">退出</a>
+						</a>
+						</c:if>
 					
 				</div>
 			</div>
@@ -287,3 +296,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 		</section>
   </body>
 </html>
+<script src="/jyhwebstore/store/js/jquery.min.js"></script>
+<script src="/jyhwebstore/store/js/bootstrap.js"></script>
+<script src="/jyhwebstore/store/js/jquery.singlePageNav.min.js"></script>
+<script src="/jyhwebstore/store/js/webstore.js"></script>

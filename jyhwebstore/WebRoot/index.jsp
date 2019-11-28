@@ -26,16 +26,24 @@
 					</div>
 					
 					<div class="col-md-5 col-md-offset-2 links-right   text-right">
-						<span id="goodnight">晚上好,请</span>
+						<span id="goodnight">
+							<c:if test="${empty time}">
+								你好
+							</c:if>
+							<c:if test="${not empty time}">
+								${time}
+							</c:if>
+							
+						</span>
 
 						
 						<c:if test="${empty acount}">
-						<a href="/jyhwebstore/store/html/login.jsp?path=index.jsp" id="log">
+						<a href="javascript:gologin(this)" id="log">
 							登录
 						</a>
 						</c:if>
 						<c:if test="${not empty acount}">
-							<a href="/jyhwebstore/store/html/information.jsp?path=index.jsp" id="log">
+							<a href="/jyhwebstore/store/html/operation/information.jsp?path=index.jsp" id="log">
 							${acount.aname }
 							<a href="javascript:out()" id="out">退出</a>
 						</a>
@@ -44,7 +52,7 @@
 						
 
 						<span class="quit-father"></span>
-						<i><a href="regist.html">注册</a></i>
+						<i><a href="/jyhwebstore/store/html/regist.jsp">注册</a></i>
 						
 						
 							<a href="">
@@ -53,7 +61,7 @@
 							</a>
 							
 						
-							<a href="">
+							<a href="/jyhwebstore/store/html/operation/order.jsp?path=index.jsp">
 								<span class="glyphicon glyphicon-list-alt"></span>
 								我的订单
 							</a>
@@ -194,12 +202,13 @@
 					<p class="pai">${igd.pai}</p>
 					<p class="comprice">${igd.comprice}</p>
 					<p><span class="glyphicon  glyphicon-star"></span>${igd.detailsdot}</p>
-					<a href='/jyhwebstore/store/html/product.jsp?' class="content_a">
+					<a href='javascript:;' class="content_a" onclick="goproduct(this)">
 						<div class="cover">
 							<p class="goodsdecoration">${igd.comname}</p>
 							<p class="price">只要${igd.comprice}元</p>
 						</div>
 					</a>
+					<input type="hidden" value="`+comid+`" id="${igd.comid}" />
 					<button type="button" class="btn btn-danger addincart"><span class="
 							glyphicon glyphicon-download-alt"></span>　加入购物车</button>
 					<button type="button" class="btn btn-danger addincart"><span class="
@@ -341,6 +350,7 @@
 					var pai =json[i].pai;
 					var comprice =json[i].comprice;
 					var detailsdot =json[i].detailsdot;
+					var comid = json[i].comid;
 					var str=`
 							<div class="goods">
 							<img src=\"`+compic+`
@@ -351,7 +361,7 @@
 							<p class="comprice">`+comprice+`</p>
 							<p><span class="glyphicon  glyphicon-star"></span>`+detailsdot+`
 							</p>
-							<a href='/jyhwebstore/store/html/product.jsp?' class="content_a">
+							<a href='javascript:;' class="content_a" onclick="goproduct(this)">
 								<div class="cover">
 									<p class="goodsdecoration">`+comname+`
 									</p>
@@ -359,6 +369,7 @@
 									元</p>
 								</div>
 							</a>
+							<input type="hidden" value="`+comid+`" id="comid" />
 							<button type="button" class="btn btn-danger addincart"><span class="
 									glyphicon glyphicon-download-alt"></span>　加入购物车</button>
 							<button type="button" class="btn btn-danger addincart"><span class="
