@@ -4,34 +4,30 @@
 
 <html>
 <head>
+	<title>商品搜索:</title>
 	<link rel="shortcut icon" type="image/x-icon" href="/jyhwebstore/store/img/task.png" />
 	<meta name="viewport" content="width=device-width,initial-scale=1"/>
 	<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/bootstrap.css"/>
 	<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/webstore.css"/>
 </head>
 	<body>
-	<a href="#top"/>
 		<!-- 顶部导航栏 -->
 		<section class="top-lan">
 			<div class="row">
-				<div class="col-md-11 col-md-offset-1 col-sm-6 col-xs-12 links text-left">
+				<div class="col-md-10 col-md-offset-1 col-sm-6 col-xs-12 links text-left">
 					<div class="col-md-2" id="location">
 						<span class="glyphicon glyphicon-map-marker posi"></span>
 						<i class="icon iconfont"></i>
 						<span>送货地址:</span>
 						<em>长沙</em>
 						</div>
-					<div class="col-md-2  text-left links ">
+					<div class="col-md-3  text-left links ">
 						<span class="glyphicon glyphicon-volume-up posi"></span>
 						<a href="">防范金融诈骗提示</a>
-						
+						<span id="current"></span>
 					</div>
 					
-					<div class="col-md-2	 text-left links ">
-					<span id="current" style="color:black;font-weight:bold; font-size:16px;"></span>
-					</div>
-					
-					<div class="col-md-6  links-right   text-right">
+					<div class="col-md-5 col-md-offset-2 links-right   text-right">
 						<span id="goodnight">
 							<c:if test="${empty time}">
 								你好
@@ -86,7 +82,7 @@
 		<section>
 			<header>
 				<div class="logo">
-					<a href=""><img src="/jyhwebstore/store/img/Logo.png" class="logo-img"></a>
+					<a href="/jyhwebstore/index.jsp"><img src="/jyhwebstore/store/img/Logo.png" class="logo-img"></a>
 					<a><img src="/jyhwebstore/store/img/slogan.png" class="slogan" alt=""></a>
 				</div>
 				
@@ -107,24 +103,6 @@
 						<li><a href="">牛奶整箱</a></li>
 					</ul>
 				</div>
-				<!-- 顶部导航栏 -->
-				<div class="nav">
-					<div class="all-items">
-						<span class="all-item-icon"><span class="glyphicon glyphicon-list" ></span></span>
-						全部类目
-						<span class="hover-forward"><span class="glyphicon glyphicon-chevron-down"></span></span>
-						
-						<div class="floatitem"></div>
-						<div class="allclassify">sss</div>
-					</div>
-					<ul class="nav-list">
-						
-						<!-- <li><a href="">金币签到</a></li>
-						<li><a href="">充值</a></li>
-						 <li><a href="">领券中心</a></li> -->
-					</ul>
-					
-				</div>
 				
 			</header>
 			<!-- 浮动导航栏 -->
@@ -139,41 +117,7 @@
 						
 			</div>
 		</section>
-		<!-- 轮播图 -->
-		<section>
-			<div class="banner">
-				    
-				    <ul>
-				      <li>
-				        <a href="#">
-				          <img src="/jyhwebstore/store/img/fish.jpg"/>
-				        </a>
-				      </li>
-				      <li>
-			          <a href="#">
-			            <img src="/jyhwebstore/store/img/pets.jpg"/>
-			          </a>
-			        </li>
-			        <li>
-			          <a href="#">
-			            <img src="/jyhwebstore/store/img/oil.jpg"/>
-			          </a>
-			        </li>
-			        <li>
-			          <a href="#">
-			            <img src="/jyhwebstore/store/img/rabish.jpg"/>
-			          </a>
-			        </li>
-				    </ul>
-				    <div class="number">
-				      <span class="current">蒲烧鳗鱼</span>
-				      <span>萌宠大作战</span>
-				      <span>粮油品类接</span>
-				      <span>垃圾分类</span>
-				    </div>
-				  </div>
-
-		</section>
+		
 		
 		<!-- 回到顶部 -->
 		<div id="top">
@@ -183,6 +127,7 @@
 		
 		<!-- 首页手机 -->
 		<section>
+		
 			<div class="goods-top">
 				<!-- <div class="goods">
 					<img src="img/Logo.png" alt="">
@@ -201,7 +146,7 @@
 				<div class="goods">
 					<img src="img/Logo.png" alt="">
 				</div> -->
-		<c:forEach items="${igds}" var="igd" >
+					
 					<div class="goods">
 					<img src="${igd.compic}" alt="">
 					<p class="goodsname">${igd.comname}</p>
@@ -221,21 +166,21 @@
 							glyphicon glyphicon-usd"></span>　立即购买</button>
 							
 						</div>
-					
-		</c:forEach>
-				
-			
+						
 		</section>
+		<div id="none" style="display:none;width:600px;heigth:300px;background:red;font-size:50px;font-weight:bold;position:fixed;top:15%;left:35%;">抱歉,没有找到任何结果!</div>
 		<section>
-			<div class="more">
-				<button type="button" class="btn btn-success loadmore" page="1" onclick="loadmore(this)">加载更多...</button>
+			<div class="more" style="margin-left: 45%;">
+			<button type="button" class="btn btn-primary first"  onclick="gofirstpage(this)" id="1">首页</button>
+			<button type="button" class="btn btn-success prev"  onclick="prevpage(this)"><span class="glyphicon glyphicon-chevron-left"></span></button>
+			<input type="number" max="100" min="1" value="1" />
+			<button type="button" class="btn btn-success next"  onclick="nextpage(this)"><span class="glyphicon glyphicon-chevron-right"></span></button>
+			<button type="button" class="btn btn-danger last"  onclick="golastpage(this)" id="">尾页</button>
+			
 			</div>
 		</section>
 		
 		
-		<!-- <section>
-			<div class="insert">ss</div>
-		</section> -->
 		<!-- 底部 -->
 		<section>
 			<div class="footer">
@@ -337,20 +282,37 @@
 <script src="/jyhwebstore/store/js/jquery.singlePageNav.min.js"></script>
 <script src="/jyhwebstore/store/js/webstore.js"></script>
 <script>
+//获取地址栏信息
+function getUrlVal(property){
+	  //地址栏
+	  var urlStr = window.location.search.substring(1);
+	  var re = new RegExp('(^|&)'+ property +'=([^&]*)(&|$)');
+	  var result = urlStr.match(re);
+	  if(result == null){return null};
+	  return result[2];
+	};
 
-	var page;
-	function loadmore(obj)
+
+
+	function searchgoods(page)
 	{	
-		var page =parseInt($(obj).attr("page"))+1;
-		$(".loadmore").attr("page",page);
+		
 		$.get({
-			type:"post",
-			url:"/jyhwebstore/load",
-			data:{"page":page},
+			type:"get",
+			url:"/jyhwebstore/search",
+			data:"page="+page+"&content="+getUrlVal("content"),
 			success:function(result){
+				getMaxpage();
+				$(".goods-top").empty();
 				var json = JSON.parse(result);
-				for(var i =0;i<json.length;i++)
-				{	
+				if(json.length == 0)
+				{
+					$("#none").slideDown(500);
+				}
+					
+				
+				for(var i=0;i < json.length ;i++)
+					{
 					var compic =json[i].compic;
 					var comname=json[i].comname;
 					var pai =json[i].pai;
@@ -386,10 +348,35 @@
 					`;
 					$(".goods-top").append(str);
 					
-					
-				}
-			}
-		})
+					}
+			},
+		});
+		
+		
+		
+		
 	}
-
+	//获得最大页数
+	function getMaxpage(){
+		$.get({
+			type:"get",
+			url:"/jyhwebstore/getmax",
+			data:"content="+getUrlVal("content"),
+			success:function(result){
+				//设置尾页id为最大页数
+				$(".last").attr("id",result);
+			}
+		});
+		
+	}
+	$(function(){
+		searchgoods(1);
+	})
+	
+	//首页函数
+	function gofirstpage(obj){
+		
+	}
+	
+	
 </script>

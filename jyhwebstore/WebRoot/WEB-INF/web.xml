@@ -73,6 +73,16 @@
     <servlet-name>QuitServlet</servlet-name>
     <servlet-class>chao.servlet.QuitServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>SearchGoodsServlet</servlet-name>
+    <servlet-class>chao.servlet.SearchGoodsServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>GetMaxPageServlet</servlet-name>
+    <servlet-class>chao.servlet.GetMaxPageServlet</servlet-class>
+  </servlet>
+
+
 
 
 	 <!-- 加载更多的商品servlet -->
@@ -91,6 +101,21 @@
     <servlet-name>QuitServlet</servlet-name>
     <url-pattern>/quit</url-pattern>
   </servlet-mapping>
+  
+  
+  
+  <!-- 搜索商品-->
+  <servlet-mapping>
+    <servlet-name>SearchGoodsServlet</servlet-name>
+    <url-pattern>/search</url-pattern>
+  </servlet-mapping>
+  
+  <!-- 获取最大页数-->
+  <servlet-mapping>
+    <servlet-name>GetMaxPageServlet</servlet-name>
+    <url-pattern>/getmax</url-pattern>
+  </servlet-mapping>
+  
 <!-- 字符转码 -->
 	  <filter>
   	<filter-name>character</filter-name>
