@@ -145,31 +145,31 @@
 				    
 				    <ul>
 				      <li>
-				        <a href="#">
-				          <img src="/jyhwebstore/store/img/fish.jpg"/>
+				        <a href="/jyhwebstore/store/html/search.jsp?content=iPhone XS">
+				          <img src="/jyhwebstore/store/img/iphoneXS.jpg" style="width:1920px;height:400px"/>
 				        </a>
 				      </li>
 				      <li>
-			          <a href="#">
-			            <img src="/jyhwebstore/store/img/pets.jpg"/>
+			          <a href="/jyhwebstore/store/html/search.jsp?content=oppo">
+			            <img src="/jyhwebstore/store/img/Oppo.jpg" style="width:1920px;height:400px"/>
 			          </a>
 			        </li>
 			        <li>
-			          <a href="#">
-			            <img src="/jyhwebstore/store/img/oil.jpg"/>
+			          <a href="/jyhwebstore/store/html/search.jsp?content=华为p30">
+			            <img src="/jyhwebstore/store/img/华为p30.jpg"style="width:1920px;height:400px"/>
 			          </a>
 			        </li>
 			        <li>
-			          <a href="#">
-			            <img src="/jyhwebstore/store/img/rabish.jpg"/>
+			          <a href="/jyhwebstore/store/html/search.jsp?content=三星">
+			            <img src="/jyhwebstore/store/img/三星A90.jpg" style="width:1820px;height:400px"/>
 			          </a>
 			        </li>
 				    </ul>
 				    <div class="number">
-				      <span class="current">蒲烧鳗鱼</span>
-				      <span>萌宠大作战</span>
-				      <span>粮油品类接</span>
-				      <span>垃圾分类</span>
+				      <span class="current">iphoneXS</span>
+				      <span>oppo</span>
+				      <span>华为p30</span>
+				      <span>三星A90</span>
 				    </div>
 				  </div>
 
