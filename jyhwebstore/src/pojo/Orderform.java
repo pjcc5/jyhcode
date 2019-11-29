@@ -5,7 +5,7 @@ import java.util.Date;
 
 public class Orderform implements Serializable{
 	
-	private int aid;
+	private String aid;
 	private String comid;
 	private String comname;
 	private String orderadd;
@@ -22,10 +22,10 @@ public class Orderform implements Serializable{
 	private String test2;
 	private String test3;
 	private String test4;
-	public int getAid() {
+	public String getAid() {
 		return aid;
 	}
-	public void setAid(int aid) {
+	public void setAid(String aid) {
 		this.aid = aid;
 	}
 	public String getComid() {
