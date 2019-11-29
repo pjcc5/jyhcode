@@ -26,11 +26,9 @@
 						<a href="">防范金融诈骗提示</a>
 						
 					</div>
-					
 					<div class="col-md-2	 text-left links ">
 					<span id="current" style="color:black;font-weight:bold; font-size:16px;"></span>
 					</div>
-					
 					<div class="col-md-6  links-right   text-right">
 						<span id="goodnight">
 							<c:if test="${empty time}">
@@ -39,10 +37,7 @@
 							<c:if test="${not empty time}">
 								${time}
 							</c:if>
-							
 						</span>
-
-						
 						<c:if test="${empty acount}">
 						<a href="javascript:gologin(this)" id="log">
 							登录
@@ -54,34 +49,20 @@
 							<a href="javascript:out()" id="out">退出</a>
 						</a>
 						</c:if>
-						
-						
-
 						<span class="quit-father"></span>
 						<i><a href="/jyhwebstore/store/html/regist.jsp">注册</a></i>
-						
-						
 							<a href="">
 								<span class="glyphicon glyphicon-user" ></span>
 								会员俱乐部
 							</a>
-							
-						
 							<a href="/jyhwebstore/store/html/operation/order.jsp?path=index.jsp">
 								<span class="glyphicon glyphicon-list-alt"></span>
 								我的订单
 							</a>
-							
 					</div>
-					
-					
 				</div>
-				
-				
 			</div>
 		</section>
-	
-		
 		<!-- 含有搜索框的头部框 -->
 		<section>
 			<header>

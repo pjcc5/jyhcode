@@ -1,9 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -39,7 +35,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</c:if>
 						<c:if test="${not empty acount}">
 							<a href="javascript:out()"  class="navbar-btn navbar-right  btn-xs nav-height-a" id="out">退出</a>
-
 							<a href="/jyhwebstore/store/html/operation/information.jsp?path=index.jsp" class="navbar-btn navbar-right  btn-xs nav-height-a"  id="log">
 								${acount.aname}
 							</a>
