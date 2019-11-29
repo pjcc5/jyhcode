@@ -7,11 +7,14 @@ import java.util.UUID;
 import mao.soft.web.encryption.Encryption;
 import mao.soft.web.service.RegisterSer;
 import pojo.Acount;
+import pojo.AddTab;
 import pojo.Shopmiddle;
 import pojo.Shopping;
 import pojo.User;
+import dao.AddTabDao;
 import dao.ShopmiddleDao;
 import dao.ShoppingDao;
+import dao.impl.AddTabDaoImp;
 import dao.impl.ShopmiddleDaoImpl;
 import dao.impl.ShoppingDaoImpl;
 import db.DbHelp;
@@ -63,6 +66,12 @@ public class RegisterService {
 			shopmiddle.setShopid(shopid);
 			ShopmiddleDao shopmdao = new ShopmiddleDaoImpl();
 			shopmdao.insertShopmiddle(shopmiddle, conn);
+			//给地址表一个用户的id用来关联
+			AddTab addtab = new AddTab();
+			addtab.setAid(uuid);
+			addtab.setAdd1("");
+			AddTabDao adddao = new AddTabDaoImp();
+			adddao.insertAdd(conn, addtab);
 			//调插入方法
 			boolean blog = rs.register(conn,acount, user);
 			return blog;
