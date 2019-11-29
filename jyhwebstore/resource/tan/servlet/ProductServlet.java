@@ -49,18 +49,18 @@ public class ProductServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		 PrintWriter out= response.getWriter();
-		String msg = request.getParameter("comid");
-		System.out.println(msg);
+		String msg = request.getParameter("msg");
+		System.out.println("msg="+msg);
 		ProductDetail dao=new ProductDetail();
 		ProductInformation detail=null;
 		Connection conn=DbHelp.getConnection();
 		try {
-			detail=dao.getProduct("675a1f61-c631-4434-a18a-770a43fb0d00", conn);
+			detail=dao.getProduct(msg, conn);
+			DbHelp.closeConnection(conn);
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
-		System.out.println(detail);
 		JSONObject object = JSONObject.fromObject(detail);
 		
 		 System.out.println("进入productservlet"+object);

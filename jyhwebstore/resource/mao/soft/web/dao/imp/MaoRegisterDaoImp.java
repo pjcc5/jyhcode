@@ -7,6 +7,7 @@ import java.util.List;
 
 import mao.soft.web.dao.MaoRegisterDao;
 import pojo.Acount;
+import pojo.User;
 
 public class MaoRegisterDaoImp implements MaoRegisterDao{
 
@@ -44,14 +45,16 @@ public class MaoRegisterDaoImp implements MaoRegisterDao{
 	}
 
 	@Override
-	public boolean selectPhoneIsExist(String phone, Connection conn) throws Exception {
+	public boolean selectPhoneIsExist(String phone, String name, Connection conn)
+			throws Exception {
 		if (conn == null || conn.isClosed()) {
 			return false;
 		}else
 		{
-			String sql="select * from acount where aphone=?";
+			String sql="select * from acount where aphone=? or aname=?";
 			PreparedStatement ps =  conn.prepareStatement(sql);
 			ps.setString(1, phone);
+			ps.setString(2, name);
 			ResultSet rs = ps.executeQuery();
 			if (rs.next()) {
 				System.out.println("好的查询成功了");

@@ -41,7 +41,9 @@ public class Register extends HttpServlet {
 		String aname = request.getParameter("rname");
 		String aphone = request.getParameter("rphone");
 		String apassword = request.getParameter("rpass");
+		//用户输入的验证码
 		String clintCode = request.getParameter("valdation");
+		//服务器端生成的验证码
 		String serverCode = request.getSession().getAttribute("code").toString();
 		
 		Connection conn = DbHelp.getConnection();
@@ -49,7 +51,8 @@ public class Register extends HttpServlet {
 		boolean f = true;
 		try {
 			System.out.println(f);
-			f =registerD.selectPhoneIsExist(aphone, conn);
+			//根据手机号查用=用户是否存在
+			f =registerD.selectPhoneIsExist(aphone,aname, conn);
 			
 		} catch (Exception e1) {
 			// TODO Auto-generated catch block
@@ -77,6 +80,8 @@ public class Register extends HttpServlet {
 					JSONObject flg = JSONObject.fromObject(flag);
 					PrintWriter out = response.getWriter();
 					out.print(flg.toString());
+					
+					
 //					System.out.println("成功！");
 				}
 				else

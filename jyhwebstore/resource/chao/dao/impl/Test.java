@@ -1,5 +1,11 @@
 package chao.dao.impl;
 
+import java.sql.Connection;
+
+import chao.dao.SearchGoodsDao;
+import db.DbHelp;
+import db.DbHelp2;
+
 
 public class Test {
 
@@ -323,7 +329,16 @@ public class Test {
 //		boolean  result = od.deleteOrderByid(1, conn);
 //		System.out.println(result);
 		
+//			Connection conn = DbHelp2.getConnection();
+//			try {
+//				SearchGoodsDao sgd = new SearchGoodsDaoImpl();
+//				System.out.println(sgd.getMaxPage("华为", conn));
+//			} catch (Exception e) {
+//				e.printStackTrace();
+//			}
+//			
+//	}
 		
-	}
 
+}
 }

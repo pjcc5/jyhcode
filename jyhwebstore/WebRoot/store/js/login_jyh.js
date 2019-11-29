@@ -10,6 +10,7 @@ function login(){
 	var acount={"uname":uname,"upass":upass};
 	var path;
 	path=getUrlVal('path');
+	console.log(path);
 	if(path==null){
 		path="/jyhwebstore/index.jsp";
 	}

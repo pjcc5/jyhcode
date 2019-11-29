@@ -6,11 +6,12 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
+import chao.dao.impl.DetailsDaoImpl;
 import pojo.Details;
 import tan.dao.ExDetailDao;
 import tan.dto.ProductInformation;
 
-public class ExDetailsByComidImpl implements ExDetailDao{
+public class ExDetailsByComidImpl extends DetailsDaoImpl implements ExDetailDao{
 
 	@Override
 	public ProductInformation getDetailsByComid(String comid, Connection conn)
@@ -79,37 +80,6 @@ public class ExDetailsByComidImpl implements ExDetailDao{
 		return null;
 	}
 
-	@Override
-	public List<Details> getAllDetails(Connection conn) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Details getDetailsById(int detailsid, Connection conn)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean insertDetails(Details details, Connection conn)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean deleteDetailsByid(int aid, Connection conn) throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean modifyDetails(Details details, Connection conn)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 }

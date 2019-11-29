@@ -2,13 +2,15 @@
 
 
 var pic=new Array();
+var comid= getUrlVal('comid');
+console.log(comid);
 
 (function(){
 	
   $.ajax({
 	  type:"POST",
 	  url:"/jyhwebstore/product",
-	  data:{},
+	  data:{'msg':comid},
 	  dataType:"json",
 	  success:function(result){
 		console.log(result);
@@ -65,12 +67,15 @@ var pic=new Array();
 	    for(var i=0;i<result.picurl.length;i++){
 	    	var url;
 	    	if(i==0){
-	    	url="<li class=select  onclick=\"imgchange(this)\"><img src=\""+result.picurl[i]+"\"/></li>"
+	    	url="<li class=select  onmouseenter=\"imgchange(this)\"><img src=\""+result.picurl[i]+"\"/></li>"
 	    	}else{
-	    		url="<li   onclick=\"imgchange(this)\"><img src=\""+result.picurl[i]+"\"/></li>"
+	    		url="<li   onmouseenter=\"imgchange(this)\"><img src=\""+result.picurl[i]+"\"/></li>"
 	    	}
 	    	pic[i]=result.picurl[i];
+	    	
+	    	var photo="<img src=\""+result.picurl[i].replace(/50x50/g,"800x800")+"\"/>";
 	    	$('.clearfix ul').append(url);
+	    	$('.center').append(photo);
 	    }
 //	    var img=`<img src="${result.detailsdrawing}"/>`;
 	    $('.info').html(str);

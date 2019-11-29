@@ -16,6 +16,16 @@ public class User  implements Serializable{
 	private java.lang.String uphone;//uphone
 	private java.lang.String mail;//mail
 	private java.lang.String setadd;//setadd
+	private String aid;
+	public String getAid()
+	{
+		return this.aid;
+	}
+	public void setAid(String aid)
+	{
+		this.aid=aid;
+	}
+	
 	public java.lang.Integer getUid(){
 		return this.uid;
 	}
@@ -69,9 +79,7 @@ public class User  implements Serializable{
 	public String toString() {
 		return "User [uid=" + uid + ", uname=" + uname + ", pic=" + pic
 				+ ", birth=" + birth + ", sex=" + sex + ", uphone=" + uphone
-				+ ", mail=" + mail + ", setadd=" + setadd + "]";
+				+ ", mail=" + mail + ", setadd=" + setadd + ", aid=" + aid
+				+ "]";
 	}
-	
-	
-	
 }

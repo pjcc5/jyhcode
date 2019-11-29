@@ -5,9 +5,9 @@
 		<meta charset="utf-8">
 		<title>聚优汇登录</title>
 		<meta name="viewport" content="width=device-width, initial-scale=1" />
-		<link rel="stylesheet" type="text/css" href="../css/bootstrap.css"/>
-		<link rel="stylesheet" type="text/css" href="../miancss/base.css"/>
-		<link rel="shortcut icon" type="image/x-icon" href="../img/task.png" />
+		<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/bootstrap.css"/>
+		<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/miancss/base.css"/>
+		<link rel="shortcut icon" type="image/x-icon" href="/jyhwebstore/store/img/task.png" />
 		<style>
 		#show{
 		width:200px;
@@ -39,26 +39,25 @@
 				<!-- logo头部-->
 				<div class="navbar-header">
 					<!-- logo图标 -->
-					<a class="navbar-brand" href="">
-						<img src="../img/Logo.jpg" class="nav-height-img">
+					<a class="navbar-brand" href="/jyhwebstore/index.jsp">
+						<img src="/jyhwebstore/store/img/Logo.jpg" class="nav-height-img">
 					</a>
 				</div>
-				<a href="login.jsp" class="navbar-btn navbar-right  btn-xs nav-height-a" >请登录</a>
+				<a href="/jyhwebstore/store/html/login.jsp" class="navbar-btn navbar-right  btn-xs nav-height-a" >请登录</a>
 				<p class="navbar-text hidden-sm hidden-xs navbar-right" >您好，欢迎光临聚优汇！</p>
 			</div>
 		</nav>
 		<!-- login部分 -->
 		<div class="login login-style">
 			<div class="login-div" style="display: none;" id="logo">
-				<img src="../img/bodyp.png" class="login-div-img">
+				<img src="/jyhwebstore/store/img/bodyp.png" class="login-div-img">
 			</div>
 			<div class="login-div2">			
 				<div class="login-div2-div1" id="login-div2-div1" style="display: none;">
 					<label class="login-div2-div1-lable">聚优汇登录</label>
 					<a href="regist.jsp" class="login-div2-div1-regist">注册新账号</a>
 					<form id="myform">
-					<input type="text" class="form-control" placeholder="用户名" id="loginUsername"
-					name="uname"/>
+					<input type="text" class="form-control" placeholder="用户名" id="loginUsername"name="uname"/>
 					<input type="password" class="form-control" placeholder="密码" id="loginPassword" name="upass"/>
 					<input type="checkbox" class="login-div2-div1-checkedbox"style="margin-top: 20px;" value="记住密码" />
 					<p class="login-div2-div1-p">自动登录</p>
@@ -87,11 +86,11 @@
 	$("#loginUsername").focus(function(){
 	$("#div1").html("请输入用户名");
 		$("#div1").fadeIn();
-	})
+	});
 	$("#loginPassword").focus(function(){
 	$("#div2").html("请输入密码");
 		$("#div2").fadeIn();
-	})
+	});
 	
 	
 	$("#loginUsername").keyup(function(){
@@ -107,7 +106,7 @@
 		    $("#div1").html("用户名应不小于3位");
 		}
 		
-	})
+	});
 	
 	
 	$("#loginPassword").keyup(function(){
@@ -122,7 +121,5 @@
 		} else{
 			$("#div2").html("长度不能小于6位");
 		}
-		
-		
-	})
+	});
 </script>

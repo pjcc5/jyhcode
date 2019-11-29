@@ -21,10 +21,7 @@ public class IndexInitService {
 			} catch (Exception e) {
 				e.printStackTrace();
 			}finally{
-				if(!conn.isClosed())
-				{
-					conn.close();
-				}
+				DbHelp.closeConnection(conn);
 			}
 			return list;
 			

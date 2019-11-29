@@ -6,6 +6,7 @@ import java.util.List;
 
 import chao.dao.PjcDetailsDao;
 import chao.dao.impl.PjcDetailsDaoImpl;
+import db.DbHelp;
 import db.DbHelp2;
 import dto.IndexGoodsDto;
 
@@ -32,6 +33,8 @@ public class LoadMoreGoodsService {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			DbHelp.closeConnection(conn);
 		}
 		return dtos;
 	}

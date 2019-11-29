@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -31,7 +32,20 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<img src="/jyhwebstore/store/img/Logo.jpg" class="nav-height-img">
 					</a>
 				</div>
-				<a href="login.jsp" class="navbar-btn navbar-right  btn-xs nav-height-a">请登录</a>
+				<c:if test="${empty acount}">
+						<a href="javascript:gologin(this)" id="log">
+							登录
+						</a>
+						</c:if>
+						<c:if test="${not empty acount}">
+							<a href="/jyhwebstore/store/html/operation/information.jsp?path=index.jsp" id="log">
+							${acount.aname}
+							<a href="javascript:out()" id="out">退出</a>
+						</a>
+						</c:if>
+						
+						
+				<a href="javascript:gologin(this)" class="navbar-btn navbar-right  btn-xs nav-height-a">请登录</a>
 				<p class="navbar-text hidden-sm hidden-xs navbar-right">您好，欢迎光临聚优汇！</p>
 			</div>
 		</nav>
@@ -77,6 +91,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</li>
 					<!-- 验证码 -->
+					<lable style=" font-weight:bold; font-size: 10px;color: red;line-height: 1px;float: right;margin-right: 430px; margin-top:30px">看不清点击图片换一张</lable>
 					<li class="regist-YZM">
 						<span>验证码</span>
 						<input type="text" class="form-control" placeholder="identifying code" id="valdation"/>
@@ -134,13 +149,15 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span id="success-container-success" style="margin-left: -40px;">
 					恭喜老板注册成功！请点击确定，跳转登录界面
 				</span>
-				<span id="success-container-exist" style="float: left; margin-left: -50px;margin-top: 20px;background: url(/jyhwebstore/store/img/bg1.jpg);">抱歉，手机号已经被注册！</span>
+				<span id="success-container-exist" style="float: left; margin-left: -50px;margin-top: 20px;background: url(/jyhwebstore/store/img/bg1.jpg);">抱歉，手机号或者用户名已被占用！</span>
 				<span id="success-container-failed" style="float: left; margin-left: -55px;">老板您注册失败了哟！请检查您的输入是否正确！</span>
+				<span id="success-container-error" style="float: left; margin-left: -55px;">系统未知错误！</span>
 			</div>
 			<div id="success-btn" class="success-btn">
-				<button id="success-btn-1" type="button" style="color: blue; margin-bottom: -50px;"> <a href="#">确定</a> </button>
+				<button id="success-btn-1" type="button" style="color: blue; margin-bottom: -50px;"> 确定</button>
 				<button id="success-btn-2" type="button" style="color: red;margin-bottom: -80px;">确定</button>
 				<button type="button" id="success-btn-3" style="margin-bottom: -80px;" >确定</button>
+				<button type="button" id="success-btn-4" style="margin-bottom: -80px;" >确定</button>
 			</div>
 		</div>
 	</body>
@@ -148,3 +165,4 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="/jyhwebstore/store/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="/jyhwebstore/store/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 <script src="/jyhwebstore/store/js/regist_input_fouces.js" type="text/javascript" charset="utf-8"></script>
+

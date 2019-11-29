@@ -155,15 +155,7 @@
 				</ul>
 			</div>
 			<div class="center">
-				<img src="/jyhwebstore/store/img/c1.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c2.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c3.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c4.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c5.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c6.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c7.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c8.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c9.jpg" alt="">
+				
 			</div>
 			
 		</div>
