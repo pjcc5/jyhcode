@@ -35,7 +35,7 @@
 			<div class="header">
 			<div class="header-bp">
 				<div class="logo">
-					<a href="index.html" class="hd-logo"><img src="../img/Logo.png" /></a>
+					<a href="index.html" class="hd-logo"><img src="/jyhwebstore/store/img/Logo.png" /></a>
 					
 				</div>
 
@@ -148,7 +148,7 @@
 				<div class="order-list">
 					<div class="order-pro">
 						<a href="">
-						<img src="../img/bgctop.jpg"/></a>
+						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
 						<div class="order-title">
 							<p class="desc">商品描述</p>
 							<div class="buy-btn">再次购买</div>
@@ -185,7 +185,7 @@
 				<div class="order-list">
 					<div class="order-pro">
 						<a href="">
-						<img src="../img/bgctop.jpg"/></a>
+						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
 						<div class="order-title">
 							<p class="desc">商品描述</p>
 							<div class="buy-btn">再次购买</div>
@@ -257,7 +257,7 @@
 				<div class="order-list">
 					<div class="order-pro">
 						<a href="">
-						<img src="../img/bgctop.jpg"/></a>
+						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
 						<div class="order-title">
 							<p class="desc">商品描述</p>
 							<div class="buy-btn">再次购买</div>
@@ -293,7 +293,7 @@
 				<div class="order-list">
 					<div class="order-pro">
 						<a href="">
-						<img src="../img/bgctop.jpg"/></a>
+						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
 						<div class="order-title">
 							<p class="desc">商品描述</p>
 							<div class="buy-btn">再次购买</div>
@@ -353,22 +353,22 @@
 			<div class="footer">
 				<div class="footer-top">
 					<div class="icon">
-						<img src="../img/icon1.png" class="icons">
+						<img src="/jyhwebstore/store/img/icon1.png" class="icons">
 						<h3 class="content-1">正品保障</h3>
 						<p class="sub-content">正品行货 放心选购</p>
 					</div>
 					<div class="icon">
-						<img src="../img/icon2.png" class="icons">
+						<img src="/jyhwebstore/store/img/icon2.png" class="icons">
 						<h3 class="content-1">满99包邮</h3>
 						<p class="sub-content">满99元 免运费</p>
 					</div>
 					<div class="icon">
-						<img src="../img/icon3.png" class="icons">
+						<img src="/jyhwebstore/store/img/icon3.png" class="icons">
 						<h3 class="content-1">售后无忧</h3>
 						<p class="sub-content">7天无理由退货</p>
 					</div>
 					<div class="icon">
-						<img src="../img/icon4.png" class="icons">
+						<img src="/jyhwebstore/store/img/icon4.png" class="icons">
 						<h3 class="content-1">准时送达</h3>
 						<p class="sub-content">收货时间由你做主</p>
 					</div>
@@ -450,5 +450,5 @@
 	
   </body>
 </html>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/order.js"></script>
+<script src="/jyhwebstore/store/js/jquery.min.js"></script>
+<script src="/jyhwebstore/store/js/order.js"></script>

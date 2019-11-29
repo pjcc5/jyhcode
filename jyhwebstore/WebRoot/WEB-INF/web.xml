@@ -57,7 +57,7 @@
   
   <!-- 单态监听 -->
    <listener>
-		<listener-class>tan.LoginSessionListener</listener-class>
+		<listener-class>tan.listener.LoginSessionListener</listener-class>
 	</listener>
 	
 	<!-- 登录servlet-->
@@ -73,6 +73,11 @@
     <servlet-name>QuitServlet</servlet-name>
     <servlet-class>chao.servlet.QuitServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ProductServlet</servlet-name>
+    <servlet-class>tan.servlet.ProductServlet</servlet-class>
+  </servlet>
+
 
 
 	 <!-- 加载更多的商品servlet -->
@@ -90,6 +95,10 @@
   <servlet-mapping>
     <servlet-name>QuitServlet</servlet-name>
     <url-pattern>/quit</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ProductServlet</servlet-name>
+    <url-pattern>/product</url-pattern>
   </servlet-mapping>
 <!-- 字符转码 -->
 	  <filter>

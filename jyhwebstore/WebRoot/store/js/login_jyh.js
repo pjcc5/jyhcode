@@ -11,7 +11,7 @@ function login(){
 	var path;
 	path=getUrlVal('path');
 	if(path==null){
-		path="index"
+		path="/jyhwebstore/index.jsp";
 	}
 //	getUrlVal(1);
 	if(uname==null||uname==""||uname.length<3||uname.indexOf(" ")!=-1){
@@ -33,13 +33,12 @@ function login(){
 						var show=$("#show").html("登录成功").fadeIn(500);
 						$("#show").fadeOut(2500);
 						setTimeout(function(){
-							location.href="/jyhwebstore/"+path+".jsp";
+							location.href=path;
 						}, 3000);
 //						
 					}else{
 						alert("账号或密码不正确，请重新输入");
-					}
-					
+					}	
 					}
 					
 					

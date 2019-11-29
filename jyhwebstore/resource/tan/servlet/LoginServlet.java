@@ -13,7 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONObject;
 import pojo.Acount;
 import service.loginService;
-import tan.PersonInfo;
+
 import tan.dao.loginDao;
 import tan.dao.impl.loginDaoImpl;
 
@@ -46,7 +46,6 @@ public class LoginServlet extends HttpServlet{
 		
 		loginService loginservice=new loginService();
 		Acount acount=loginservice.login(uname, upass, conn);
-		System.out.println(acount);
 		JSONObject returnObject=null;
 		if(acount!=null){
 	acount.setAddr(request.getRemoteAddr());
