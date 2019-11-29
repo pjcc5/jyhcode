@@ -17,7 +17,7 @@
  <nav class="navbar navbar-default">
 			<div class="container ">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="index.html">
+					<a class="navbar-brand" href="/jyhwebstore/index.jsp">
 						<span class="glyphicon glyphicon-home "></span>
 						聚优汇首页
 					</a>
@@ -28,10 +28,10 @@
 				<div class=" navbar-right" id="myNav">
 					<ul class="nav navbar-nav">
 
-						<li class=""><a href="login.html?">登录</a></li>
-						<li><a href="regist.html">注册</a></li>
-						<li><a href="cart.html"><span class="glyphicon glyphicon-list-alt"></span> 我的订单</a></li>
-
+						<li class=""><a href="/jyhwebstore/store/html/login.jsp?">登录</a></li>
+						<li><a href="/jyhwebstore/store/html/regist.jsp">注册</a></li>
+						<li><a href="/jyhwebstore/store/html/cart.html"><span class="glyphicon glyphicon-list-alt"></span> 我的订单</a></li>
+						
 					</ul>
 				</div>
 			</div>
