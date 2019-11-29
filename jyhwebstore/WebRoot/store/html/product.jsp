@@ -144,12 +144,7 @@
 			<div class="floatle">
 				<ul>
 					<p>购买了此商品的用户还买了</p>
-					<li>
-						<img src="/jyhwebstore/store/img/task.png" alt="">
-						<p>商品名称</p>
-						<p>商品价格</p>
-						<button type="button">查看详情</button>
-					</li>
+					
 					
 					
 				</ul>

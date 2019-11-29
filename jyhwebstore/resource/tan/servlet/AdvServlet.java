@@ -3,21 +3,23 @@ package tan.servlet;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
+import java.util.List;
 
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import chao.dao.PjcDetailsDao;
+import chao.dao.impl.PjcDetailsDaoImpl;
+import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
-import db.DbHelp;
-import pojo.Details;
-import tan.dao.ExDetailDao;
-import tan.dao.impl.ExDetailsByComidImpl;
 import tan.dto.ProductInformation;
 import tan.servers.ProductDetail;
+import db.DbHelp;
+import dto.IndexGoodsDto;
 
-public class ProductServlet extends HttpServlet {
+public class AdvServlet extends HttpServlet {
 
 	/**
 	 * The doGet method of the servlet. <br>
@@ -31,8 +33,8 @@ public class ProductServlet extends HttpServlet {
 	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-
 		this.doPost(request, response);
+       
 	}
 
 	/**
@@ -49,18 +51,24 @@ public class ProductServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		 PrintWriter out= response.getWriter();
-		String msg = request.getParameter("msg");
-		System.out.println("msg="+msg);
-		ProductDetail dao=new ProductDetail();
-		ProductInformation detail=null;
-		Connection conn=DbHelp.getConnection();
-			detail=dao.getProduct(msg, conn);
-			DbHelp.closeConnection(conn);
-		JSONObject object = JSONObject.fromObject(detail);
+			String msg = request.getParameter("msg");
+			System.out.println("msg="+msg);
+			Connection conn=DbHelp.getConnection();
+			PjcDetailsDao dao=new PjcDetailsDaoImpl();
+			List<IndexGoodsDto> list;
+			try {
+				list = dao.getfifdetailorderydot(1, conn);
+				DbHelp.closeConnection(conn);
+				
+				JSONArray object = JSONArray.fromObject(list);
+				
+				 System.out.println("进入productservlet"+object);
+				 out.print(object.toString());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 		
-		 System.out.println("进入productservlet"+object);
-		 out.print(object.toString());
-	
 
 	}
 

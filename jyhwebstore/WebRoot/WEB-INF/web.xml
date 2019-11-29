@@ -86,6 +86,11 @@
     <servlet-name>GetMaxPageServlet</servlet-name>
     <servlet-class>chao.servlet.GetMaxPageServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AdvServlet</servlet-name>
+    <servlet-class>tan.servlet.AdvServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -126,6 +131,10 @@
   <servlet-mapping>
     <servlet-name>GetMaxPageServlet</servlet-name>
     <url-pattern>/getmax</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>AdvServlet</servlet-name>
+    <url-pattern>/advServlet</url-pattern>
   </servlet-mapping>
   
 

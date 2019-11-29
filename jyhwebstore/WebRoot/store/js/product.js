@@ -191,7 +191,7 @@ function imgchange(obj){
 })();
 
 
-$
+
 
 //获得地址栏参数值?  cat_id=55&name=xiaoming
 function getUrlVal(property){
@@ -205,6 +205,36 @@ function getUrlVal(property){
 
 var page =1;
 var pagesize=43;
+
+
+(function(){
+	
+	$.ajax({
+		  type:"POST",
+		  url:"/jyhwebstore/advServlet",
+		  data:{'msg':comid},
+		  dataType:"json",
+		  success:function(result){
+			 console.log(result[0].comname);
+			 var str1;
+			 var ur;
+				for(var i =0; i <10;i++ )
+				{
+					ur=result[i].compic.replace(/50x50/g,"100x100");
+					str1="<li><img src=\""+ur+"\"class=photo alt=\"\"><p>"+result[i].comname+"</p><p>￥"+result[i].comprice+"</p><a href=product.jsp?comid="+result[i].comid+">查看详情</a></li>"
+					;
+					console.log(str1);
+//					str1="<li><img src=\""+ur+"\" class=photo alt=""><p>"+result[i].comname+"</p>";
+					console.log(ur);
+//							"<p>￥"+result[i].comprice+"</p>"+
+//							"<a href=product.html?comid="+result[i].comid+">查看详情</a></li>";
+					$('.floatle ul').append(str1);
+		  }
+		  }
+	})
+	
+})();
+
 //function goodsList(){
 //		$.get('http://www.wjian.top/shop/api_goods.php',{
 //			page:page,
