@@ -98,13 +98,13 @@
 						
 					</div>
 					<ul class="search-list">
-						<li><a href="">桂格燕麦片</a></li>
-						<li><a href="">农夫山泉</a></li>
-						<li><a href="">电饭煲</a></li>
-						<li><a href="">咖啡</a></li>
-						<li><a href="">白糖</a></li>
-						<li><a href="">大米5kg</a></li>
-						<li><a href="">牛奶整箱</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=Apple">Apple</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=oppo">oppo</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=vivo">vivo</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=飞利浦">飞利浦</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=三星">三星</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=华为">华为</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=诺基亚">诺基亚</a></li>
 					</ul>
 				</div>
 				<!-- 顶部导航栏 -->
