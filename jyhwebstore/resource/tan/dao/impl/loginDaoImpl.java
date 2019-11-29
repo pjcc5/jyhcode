@@ -5,43 +5,13 @@ import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.util.List;
 
+import chao.dao.impl.AcountDaoImpl;
 import pojo.Acount;
 import tan.dao.loginDao;
 
-public class loginDaoImpl implements loginDao{
+public class loginDaoImpl extends AcountDaoImpl implements loginDao{
 
-	@Override
-	public List<Acount> getAllAcount(Connection conn) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public Acount getAcountById(String aid, Connection conn) throws Exception {
-		// TODO Auto-generated method stub
-		return null;
-	}
-
-	@Override
-	public boolean insertAcount(Acount acount, Connection conn)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean deleteAcountByid(String aid, Connection conn)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
-
-	@Override
-	public boolean modifyAcount(Acount acount, Connection conn)
-			throws Exception {
-		// TODO Auto-generated method stub
-		return false;
-	}
+	
 
 	@Override
 	public Acount loginSelect(String name, String pass,Connection conn)throws Exception {

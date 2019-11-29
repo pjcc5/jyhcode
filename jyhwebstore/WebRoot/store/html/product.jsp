@@ -1,5 +1,4 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
 <html>
   <head>
     
@@ -15,10 +14,10 @@
   </head>
   
   <body>
-   <nav class="navbar navbar-default">
+ <nav class="navbar navbar-default">
 			<div class="container ">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="/jyhwebstore/index.jsp">
+					<a class="navbar-brand" href="index.html">
 						<span class="glyphicon glyphicon-home "></span>
 						聚优汇首页
 					</a>
@@ -29,8 +28,8 @@
 				<div class=" navbar-right" id="myNav">
 					<ul class="nav navbar-nav">
 
-						<li class=""><a href="/jyhwebstore/store/html/login.jsp?path=store/html/product">登录</a></li>
-						<li><a href="/jyhwebstore/store/regist.jsp">注册</a></li>
+						<li class=""><a href="login.html?">登录</a></li>
+						<li><a href="regist.html">注册</a></li>
 						<li><a href="cart.html"><span class="glyphicon glyphicon-list-alt"></span> 我的订单</a></li>
 
 					</ul>
@@ -42,8 +41,8 @@
 		<section>
 			<div class="header-bp">
 				<div class="logo">
-					<a href="/jyhwebstore/index.html" class="hd-logo"><img src="/jyhwebstore/store/img/Logo.png" /></a>
-					<a href="/jyhwebstore/index.html" class="hd-slogan"><img src="/jyhwebstore/store/img/slogan.png" /></a>
+					<a href="index.html" class="hd-logo"><img src="/jyhwebstore/store/img/Logo.png" /></a>
+					<a href="index.html" class="hd-slogan"><img src="/jyhwebstore/store/img/slogan.png" /></a>
 				</div>
 
 				<div class="header-right">
@@ -82,7 +81,7 @@
 				<li><span class="glyphicon glyphicon-menu-right"></span></li>
 				<li><a href="javascript:;">商品</a></li>
 				<li><span class="glyphicon glyphicon-menu-right"></span></li>
-				<li><a href="javascript:;">希菲</a></li>
+				<li><a href="javascript:;">手机</a></li>
 
 			</ul>
 
@@ -95,14 +94,9 @@
 					<div class="slide"></div>
 				</div>
 				<div class="clearfix">
-					<div class="pre"><a href="javascript:"><span class="glyphicon glyphicon-menu-left"></span></a></div>
-					<div class="next"><a href="javascript:"><span class="glyphicon glyphicon-menu-right"></span></a></div>
+				
 					<ul>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
-						<li></li>
+						
 					</ul>
 				</div>
 			</div>
@@ -111,21 +105,24 @@
 				<div class="big"></div>
 				<div class="goods">
 					<div class="info">
-						<!--<p class="name">希菲 原肉整切10片1300g牛排套餐 西冷眼肉 手工微腌 生鲜儿童牛肉</p>
+					<!--  	<p class="name">希菲 原肉整切10片1300g牛排套餐 西冷眼肉 手工微腌 生鲜儿童牛肉</p>
 			<p class="price"><span>价格</span><span class="price-m">￥129</span></p>
-			<p class="desc"><span>描述</span><span class="desc-p">desc</span></p>
-			<div class="hot"><span>热度</span><span class="hot-p"><span class="glyphicon glyphicon-heart"></span>100</span>-->
+			<p class="desc"><span>销量</span><span class="desc-p">desc</span></p>
+			<div class="hot"><span>好评</span><span class="hot-p"><span class="glyphicon glyphicon-heart"></span>100</span>
 
-					</div>
+					</div>-->
 				</div>
-				<div class="send">
-					<p>送货至</p>
-					<p class="address"><span>上海</span>
-						<span>|</span>
-						<span>静安区</spam>
-							<span>|</span>
-							<span>城区</span>
-							<span class="glyphicon glyphicon-menu-right"></span></p>
+				<div id="choose">
+					<div id="choose-1">
+						<div class="dt">选择颜色</div>
+						
+					</div>
+					<div id="choose-2">
+						<div class="dt">选择版本</div>
+						
+				
+				</div>
+				</div>
 				</div>
 				<div class="cart">
 					<div class="amount">
@@ -134,8 +131,10 @@
 						<div class="reduce"><span class="glyphicon glyphicon-triangle-bottom"></span></div>
 					</div>
 
-					<a href="javascript:" class="cart-a">加入购物车</span></a>
+					<a href="javascript:" class="cart-a join">加入购物车</span></a>
+					<a href="javascrrpt:;" class="buy join">立即个购买<a/>
 				</div>
+				
 
 			</div>
 		</div>
@@ -156,15 +155,7 @@
 				</ul>
 			</div>
 			<div class="center">
-				<img src="/jyhwebstore/store/img/c1.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c2.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c3.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c4.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c5.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c6.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c7.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c8.jpg" alt="">
-				<img src="/jyhwebstore/store/img/c9.jpg" alt="">
+				
 			</div>
 			
 		</div>
@@ -263,10 +254,10 @@
 				<p>Copyright© 聚优汇网上超市 2007-2019，All Rights Reserved</p>
 			</div>
 		</section>
-   
+ 
   </body>
 </html>
 
-<script src="/jyhwebstore/store/js/jquery.min.js"></script>
+<script src="/jyhwebstore/store/js/jquery-3.4.1.js"></script>
 <script src="/jyhwebstore/store/js/bootstrap.min.js"></script>
 <script src="/jyhwebstore/store/js/product.js"></script>
