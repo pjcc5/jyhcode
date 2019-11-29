@@ -1,14 +1,12 @@
 package dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
 import java.util.ArrayList;
 import java.util.List;
 
-import pojo.Details;
 import pojo.Orderform;
 import dao.OrderformDao;
 
@@ -34,7 +32,7 @@ public class OrderformDaoImpl implements OrderformDao{
 				while(rs.next()){
 					
 					Orderform order =new Orderform();
-					order.setAid(rs.getInt("aid"));
+					order.setAid(rs.getString("aid"));
 					order.setComid(rs.getString("comid"));
 					order.setComname(rs.getString("comname"));
 					order.setOrderadd(rs.getString("orderadd"));
@@ -61,7 +59,7 @@ public class OrderformDaoImpl implements OrderformDao{
 	}
 
 	@Override
-	public Orderform getOrderformById(int aid, Connection conn)throws Exception {
+	public Orderform getOrderformById(String aid, Connection conn)throws Exception {
 		if(conn == null)
 		{
 			return null;
@@ -70,11 +68,11 @@ public class OrderformDaoImpl implements OrderformDao{
 			if(!conn.isClosed()){
 			String sql="select * from orderform where aid=?";
 			PreparedStatement ps=conn.prepareStatement(sql);
-			ps.setInt(1, aid);
+			ps.setString(1, aid);
 			ResultSet rs=ps.executeQuery();
 			if(rs.next()){
 			Orderform o =new Orderform();
-			o.setAid(rs.getInt("aid"));
+			o.setAid(rs.getString("aid"));
 			o.setComid(rs.getString("comid"));
 			o.setComname(rs.getString("comname"));
 			o.setOrderadd(rs.getString("orderadd"));
@@ -105,13 +103,10 @@ public class OrderformDaoImpl implements OrderformDao{
 		{
 			return false;
 		}
-		
-	
-			
 			if(!conn.isClosed()){
 				String sql = "insert into orderform values(?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?,?)";
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setInt(1, order.getAid());
+				ps.setString(1, order.getAid());
 				ps.setString(2, order.getComid());
 				ps.setString(3, order.getComname());
 				ps.setString(4, order.getOrderadd());
@@ -141,7 +136,7 @@ public class OrderformDaoImpl implements OrderformDao{
 	}
 
 	@Override
-	public boolean deleteOrderformByid(int aid, Connection conn)throws Exception {
+	public boolean deleteOrderformByid(String aid, Connection conn)throws Exception {
 		if(conn==null){
 			return false;
 		}
@@ -149,7 +144,7 @@ public class OrderformDaoImpl implements OrderformDao{
 			if(!conn.isClosed()){
 				String sql="delete from orderform where aid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setInt(1, aid);
+				ps.setString(1, aid);
 				int rs=ps.executeUpdate();
 				if(rs>0){
 					return true;
@@ -171,7 +166,7 @@ public class OrderformDaoImpl implements OrderformDao{
 						+ "orderphone=?,orderprice=?,orderdate=?,orderstatement=?,orderpay=?,orderreturn=?,"
 						+ "orderid=?,ordercompany=?,test1=?,test2=?,test3=?,test4=? where aid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setInt(17, order.getAid());
+				ps.setString(17, order.getAid());
 				ps.setString(1, order.getComid());
 				ps.setString(2, order.getComname());
 				ps.setString(3, order.getOrderadd());
