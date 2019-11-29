@@ -6,7 +6,7 @@ import java.util.Date;
 
 
 public class Shopping  implements Serializable{
-	private java.lang.Integer shopid;//aid
+	private java.lang.String shopid;//aid
 	private java.lang.String comid;//comid
 	private java.lang.Integer count;//count
 	private Date date;//date
@@ -15,10 +15,10 @@ public class Shopping  implements Serializable{
 	private java.lang.String test3;//test3
 	private java.lang.String test4;//test4
 	
-	public java.lang.Integer getShopid() {
+	public java.lang.String getShopid() {
 		return shopid;
 	}
-	public void setShopid(java.lang.Integer shopid) {
+	public void setShopid(java.lang.String shopid) {
 		this.shopid = shopid;
 	}
 	public java.lang.String getComid(){

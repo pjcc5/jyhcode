@@ -1,7 +1,6 @@
 package dao.impl;
 
 import java.sql.Connection;
-import java.sql.Date;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.Timestamp;
@@ -27,7 +26,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 				List<Shopping> list=new ArrayList<>();
 				while(rs.next()){
 					Shopping shopping=new Shopping();
-					shopping.setShopid(rs.getInt("shopid"));
+					shopping.setShopid(rs.getString("shopid"));
 					shopping.setComid(rs.getString("comid"));
 					shopping.setCount(rs.getInt("count"));
 					shopping.setDate(rs.getTimestamp("date"));
@@ -44,7 +43,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 	}
 
 	@Override
-	public Shopping getShopingById(int aid, Connection conn)throws Exception {
+	public Shopping getShopingById(String aid, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return null;
@@ -54,12 +53,12 @@ public class ShoppingDaoImpl implements ShoppingDao{
 				String sql="select * from shopping where shopid=?";
 				
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setInt(1, aid);
+				ps.setString(1, aid);
 				ResultSet rs=ps.executeQuery();
 				
 				if(rs.next()){
 					Shopping shopping=new Shopping();
-					shopping.setShopid(rs.getInt("shopid"));
+					shopping.setShopid(rs.getString("shopid"));
 					shopping.setComid(rs.getString("comid"));
 					shopping.setCount(rs.getInt("count"));
 					shopping.setDate(rs.getTimestamp("date"));
@@ -85,7 +84,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 			if(!conn.isClosed()){
 				String sql="insert into shopping values(?,?,?,?,?,?,?,?) ";
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setInt(1, shoping.getShopid());
+				ps.setString(1, shoping.getShopid());
 				ps.setString(2, shoping.getComid());
 				ps.setInt(3, shoping.getCount());
 				ps.setTimestamp(4, new Timestamp(shoping.getDate().getTime()));
@@ -103,7 +102,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 	}
 
 	@Override
-	public boolean deleteShopingtByid(int aid, Connection conn) throws Exception{
+	public boolean deleteShopingtByid(String aid, Connection conn) throws Exception{
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
@@ -111,7 +110,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 
 			String sql="delete from shopping where shopid=?";
 			PreparedStatement ps=conn.prepareStatement(sql);
-			ps.setInt(1, aid);
+			ps.setString(1, aid);
 			 int rs=ps.executeUpdate();
 			 if(rs>0){
 				 return true;
@@ -137,7 +136,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 				ps.setString(5, shoping.getTest2());
 				ps.setString(6, shoping.getTest3());
 				ps.setString(7, shoping.getTest4());
-				ps.setInt(8, shoping.getShopid());
+				ps.setString(8, shoping.getShopid());
 				int rs=ps.executeUpdate();
 				if(rs>0){
 					return true;

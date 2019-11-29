@@ -3,7 +3,6 @@ package dao;
 import java.sql.Connection;
 import java.util.List;
 
-import pojo.Acount;
 import pojo.Shopmiddle;
 
 public interface ShopmiddleDao {
