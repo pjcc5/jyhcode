@@ -25,8 +25,8 @@ public class ShopmiddleDaoImpl implements ShopmiddleDao{
 			List<Shopmiddle> list= new ArrayList<Shopmiddle>();
 			while(rs.next()){
 				Shopmiddle shopmiddle=new Shopmiddle();
-				shopmiddle.setAis(rs.getString("ais"));
-				shopmiddle.setShopid(rs.getInt("shopid"));
+				shopmiddle.setAid(rs.getString("aid"));
+				shopmiddle.setShopid(rs.getString("shopid"));
 				list.add(shopmiddle);
 			}
 			return list;
@@ -43,15 +43,15 @@ public class ShopmiddleDaoImpl implements ShopmiddleDao{
 		}
 	
 			if(!conn.isClosed()){
-			String sql="select * from shopmiddle where ais=?";
+			String sql="select * from shopmiddle where aid=?";
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ps.setString(1, aid);
 			ResultSet rs= ps.executeQuery();
 			
 			if(rs.next()){
 				Shopmiddle shopmiddle=new Shopmiddle();
-				shopmiddle.setAis(rs.getString("ais"));
-				shopmiddle.setShopid(rs.getInt("shopid"));
+				shopmiddle.setAid(rs.getString("aid"));
+				shopmiddle.setShopid(rs.getString("shopid"));
 				return shopmiddle;
 			}
 			
@@ -70,10 +70,10 @@ public class ShopmiddleDaoImpl implements ShopmiddleDao{
 			if(conn.isClosed()){
 				return false;
 			}
-			String sql="insert into shopmiddle values(?,?)";
+			String sql="insert into shopmiddle(aid,shopid) values(?,?)";
 			PreparedStatement ps=conn.prepareStatement(sql);
-			ps.setString(1, shopmiddle.getAis());
-			ps.setInt(2, shopmiddle.getShopid());
+			ps.setString(1, shopmiddle.getAid());
+			ps.setString(2, shopmiddle.getShopid());
 			int rs=ps.executeUpdate();
 			if(rs>0){
 				return true;
@@ -93,7 +93,7 @@ public class ShopmiddleDaoImpl implements ShopmiddleDao{
 			if(conn.isClosed()){
 				return false;
 			}
-			String sql="delete from shopmiddle where ais=?";
+			String sql="delete from shopmiddle where aid=?";
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ps.setString(1, aid);
 		
@@ -117,10 +117,10 @@ public class ShopmiddleDaoImpl implements ShopmiddleDao{
 			if(conn.isClosed()){
 				return false;
 			}
-			String sql="update shopmiddle set shopid=? where ais=?";
+			String sql="update shopmiddle set shopid=? where aid=?";
 			PreparedStatement ps=conn.prepareStatement(sql);
-			ps.setInt(1,shopmiddle.getShopid());
-		 ps.setString(2, shopmiddle.getAis());
+			ps.setString(1,shopmiddle.getShopid());
+		 ps.setString(2, shopmiddle.getAid());
 			int rs=ps.executeUpdate();
 			if(rs>0){
 				return true;
