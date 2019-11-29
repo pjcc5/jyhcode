@@ -17,19 +17,21 @@
 				<div class="col-md-11 col-md-offset-1 col-sm-6 col-xs-12 links text-left">
 					<div class="col-md-2" id="location">
 						<span class="glyphicon glyphicon-map-marker posi"></span>
-						<i class="icon iconfont"></i>
-						<span>送货地址:</span>
-						<em>长沙</em>
-						</div>
+							<i class="icon iconfont"></i>
+							<span>送货地址:</span>
+							<em>长沙</em>
+							</div>
 					<div class="col-md-2  text-left links ">
 						<span class="glyphicon glyphicon-volume-up posi"></span>
 						<a href="">防范金融诈骗提示</a>
 						
 					</div>
-					<div class="col-md-2	 text-left links ">
+					
+					<div class="col-md-3	 text-left links ">
 					<span id="current" style="color:black;font-weight:bold; font-size:16px;"></span>
 					</div>
-					<div class="col-md-6  links-right   text-right">
+					
+					<div class="col-md-5 links-right   text-right">
 						<span id="goodnight">
 							<c:if test="${empty time}">
 								你好
@@ -100,9 +102,6 @@
 					</div>
 					<ul class="nav-list">
 						
-						<!-- <li><a href="">金币签到</a></li>
-						<li><a href="">充值</a></li>
-						 <li><a href="">领券中心</a></li> -->
 					</ul>
 					
 				</div>

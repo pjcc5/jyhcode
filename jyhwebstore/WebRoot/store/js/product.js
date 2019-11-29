@@ -3,7 +3,6 @@
 
 var pic=new Array();
 var comid= getUrlVal('comid');
-console.log(comid);
 
 (function(){
 	
@@ -13,8 +12,7 @@ console.log(comid);
 	  data:{'msg':comid},
 	  dataType:"json",
 	  success:function(result){
-		console.log(result);
-		
+		  
 		  var str = `
 			<p class="name">${result.comname}</p>
 			<p class="price"><span>价格</span><span class="price-m">￥${result.comprice}</span></p>
@@ -24,10 +22,9 @@ console.log(comid);
 	    `;
 	    
 	    
-	  
+	    $(".goodsname").html(result.comname);
 	    for(var i=0;i<result.color.length;i++){
 	    	 var color;
-	    	  console.log(result.color[i]);
 	    	  if(i==0){
 	    	   color="<div class=dd><div class=\"item selected\" data-value="+result.color[i]+" title="+result.color[i]+" onclick=\"changeColor(this)\">"
 	+" <p><span class=\"glyphicon glyphicon-ok\"></span></p>"
@@ -156,7 +153,6 @@ function imgchange(obj){
         top : y,
       });
       
-      console.log(x,y);
       
         var bili = (1000 - $('.big').width()) / ($('.image').width() - $('.slide').outerWidth());
       // console.log(bili);
@@ -223,9 +219,7 @@ var pagesize=43;
 					ur=result[i].compic.replace(/50x50/g,"100x100");
 					str1="<li><img src=\""+ur+"\"class=photo alt=\"\"><p>"+result[i].comname+"</p><p>￥"+result[i].comprice+"</p><a href=product.jsp?comid="+result[i].comid+">查看详情</a></li>"
 					;
-					console.log(str1);
 //					str1="<li><img src=\""+ur+"\" class=photo alt=""><p>"+result[i].comname+"</p>";
-					console.log(ur);
 //							"<p>￥"+result[i].comprice+"</p>"+
 //							"<a href=product.html?comid="+result[i].comid+">查看详情</a></li>";
 					$('.floatle ul').append(str1);
@@ -266,3 +260,10 @@ var pagesize=43;
 //	}
 //goodsList(page,pagesize);
 
+//点击搜索按钮
+$("#searchBtn1").click(function(){
+	var searchText = $('#searchIn1').val();
+	var text =encodeURI(searchText);
+	// alert(text);
+	window.location.href=`/jyhwebstore/store/html/search.jsp?content=${text}`;
+});

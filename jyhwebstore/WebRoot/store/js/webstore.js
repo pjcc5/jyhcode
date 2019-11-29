@@ -221,7 +221,7 @@ function out(){
 	//去登录页面
 	function gologin(obj){
 		var	path = location.pathname;
-	 	location.href = "/jyhwebstore/store/html/login.jsp?path="+path;
+	 	location.href = "/jyhwebstore/store/html/login.jsp?path="+path+location.search;
  	}
  	//去产品详情页
  	function goproduct(obj)

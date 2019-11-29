@@ -337,7 +337,7 @@ function getUrlVal(property){
 									元</p>
 								</div>
 							</a>
-							<input type="hidden" value="`+comid+`" id="comid" />
+							<input type="hidden" id="`+comid+`" value="comid" />
 							<button type="button" class="btn btn-danger addincart"><span class="
 									glyphicon glyphicon-download-alt"></span>　加入购物车</button>
 							<button type="button" class="btn btn-danger addincart"><span class="
