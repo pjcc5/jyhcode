@@ -3,23 +3,23 @@ package pojo;
 import java.io.Serializable;
 
 public class Shopmiddle implements Serializable{
-	private String ais;
-	private int shopid;
-	public String getAis() {
-		return ais;
+	private String aid;
+	private String shopid;
+	public String getAid() {
+		return aid;
 	}
-	public void setAis(String ais) {
-		this.ais = ais;
+	public void setAid(String aid) {
+		this.aid = aid;
 	}
-	public int getShopid() {
+	public String getShopid() {
 		return shopid;
 	}
-	public void setShopid(int shopid) {
+	public void setShopid(String shopid) {
 		this.shopid = shopid;
 	}
 	@Override
 	public String toString() {
-		return "Shopmiddle [ais=" + ais + ", shopid=" + shopid + "]";
+		return "Shopmiddle [ais=" + aid + ", shopid=" + shopid + "]";
 	}
 	
 
