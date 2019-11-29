@@ -12,7 +12,7 @@ var comid= getUrlVal('comid');
 	  data:{'msg':comid},
 	  dataType:"json",
 	  success:function(result){
-		
+		  
 		  var str = `
 			<p class="name">${result.comname}</p>
 			<p class="price"><span>价格</span><span class="price-m">￥${result.comprice}</span></p>
@@ -22,7 +22,7 @@ var comid= getUrlVal('comid');
 	    `;
 	    
 	    
-	  
+	    $(".goodsname").html(result.comname);
 	    for(var i=0;i<result.color.length;i++){
 	    	 var color;
 	    	  if(i==0){
@@ -260,3 +260,10 @@ var pagesize=43;
 //	}
 //goodsList(page,pagesize);
 
+//点击搜索按钮
+$("#searchBtn1").click(function(){
+	var searchText = $('#searchIn1').val();
+	var text =encodeURI(searchText);
+	// alert(text);
+	window.location.href=`/jyhwebstore/store/html/search.jsp?content=${text}`;
+});

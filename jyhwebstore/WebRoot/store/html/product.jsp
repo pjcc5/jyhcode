@@ -70,15 +70,16 @@
 
 					<div class="search">
 						<div class="hd-search">
-							<input type="text" placeholder="请输入要搜索的内容" />
-							<a href="#" class="button"><span class="glyphicon glyphicon-search"></span>
-							</a>
+							<input type="text" placeholder="请输入要搜索的内容" id="searchIn1"/>
+							<button href="javascript:;" class="button" id="searchBtn1"><span class="glyphicon glyphicon-search"></span>
+							</button>
 						</div>
 						<ul>
-							<li><a href="">饮料</a></li>
-							<li><a href="">咖啡</a></li>
-							<li><a href="">黄油</a></li>
-							<li><a href="">湿巾</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=Apple">Apple</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=oppo">oppo</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=vivo">vivo</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=三星">三星</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=华为">华为</a></li>
 						</ul>
 					</div>
 				</div>
@@ -90,12 +91,11 @@
 
 		<div class="mod">
 			<ul>
-				<li><a href="index.html">首页</a></li>
-				<li><span class="glyphicon glyphicon-menu-right"></span></li>
-				<li><a href="javascript:;">商品</a></li>
+				<li><a href="/jyhwebstore/index.jsp">首页</a></li>
 				<li><span class="glyphicon glyphicon-menu-right"></span></li>
 				<li><a href="javascript:;">手机</a></li>
-
+				<li><span class="glyphicon glyphicon-menu-right"></span></li>
+				<li><span class="goodsname"></span></li>
 			</ul>
 
 		</div>

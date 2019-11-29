@@ -27,11 +27,11 @@
 						
 					</div>
 					
-					<div class="col-md-2	 text-left links ">
+					<div class="col-md-3	 text-left links ">
 					<span id="current" style="color:black;font-weight:bold; font-size:16px;"></span>
 					</div>
 					
-					<div class="col-md-6  links-right   text-right">
+					<div class="col-md-5 links-right   text-right">
 						<span id="goodnight">
 							<c:if test="${empty time}">
 								你好

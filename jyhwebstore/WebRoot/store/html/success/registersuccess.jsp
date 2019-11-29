@@ -36,7 +36,7 @@
   		if (errortime==4) {
 			clearInterval(timer);
 			var uname = getUrlVal('id');
-			location.href="/jyhwebstore/store/html/login.jsp?id="+uname;
+			location.href="/jyhwebstore/index.jsp?";
 		}
 	},1000);
 		

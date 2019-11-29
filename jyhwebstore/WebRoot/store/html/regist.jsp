@@ -46,7 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</c:if>
 						
 						
-				
+				<p id="current" style="line-height:80px;font-size:20px; display:inline-block; margin-left: 30%"></p>
 				<p class="navbar-text hidden-sm hidden-xs navbar-right">您好，欢迎光临聚优汇！</p>
 			</div>
 		</nav>
