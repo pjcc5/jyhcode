@@ -30,10 +30,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<a href="">
 				<span class="glyphicon glyphicon-home"></span>
 				聚优汇首页</a>
-				
 				</div>
-				
-				
+				<span id="current" style="display:inline-block;margin:0 auto;"></span>
 				<div class="right">
 					<a href="/jyhwebstore/store/html/order.jsp">
 						<span class="glyphicon glyphicon-list-alt"></span>
@@ -44,7 +42,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</a>
 					</c:if>
 						<c:if test="${not empty acount}">
-							<a href="/jyhwebstore/store/html/information.jsp?path=index.jsp" id="log">
+							<a href="/jyhwebstore/store/html/operation/information.jsp?path=index.jsp" id="log">
 							${acount.aname }
 							<a href="javascript:out()" id="out">退出</a>
 						</a>
@@ -57,7 +55,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="header">
 			<div class="header-bp">
 				<div class="logo">
-					<a href="index.html" class="hd-logo"><img src="/jyhwebstore/store/img/Logo.png" /></a>
+					<a href="/jyhwebstore/index.jsp" class="hd-logo"><img src="/jyhwebstore/store/img/Logo.png" /></a>
 					
 				</div>
 

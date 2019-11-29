@@ -2,19 +2,12 @@
   $('.number span').mouseover(bannergo);
   function bannergo(i){
   	  n=$(this).index();
-  	  $('.banner>ul>li').eq(n).fadeIn(500).siblings().fadeOut(500);
-  	  $('.number span').eq(n).addClass('current').siblings().removeClass('current');
+  	  $('.banner>ul>li').eq(n).stop().fadeIn(500).siblings().fadeOut(500);
+  	  $('.number span').eq(n).stop().addClass('current').siblings().removeClass('current');
 	  }
-  // 自动翻页
-  // $('.banner').
-  // 浮动导航栏
-	  
-	  
-	  
-	  
 	  
   $(function(){  
-	  currenttime();
+	setInterval("currenttime()",1000);
   	$(window).scroll(function(){
   		var toTop=$(window).scrollTop();
   		if(toTop>=50){
@@ -186,7 +179,7 @@ $('.banner').mouseover(function(){
 $('.banner').mouseleave(function(){
 	
 	console.log(n);
-		timer = setInterval(next,2000);
+	timer = setInterval(next,2000);
 });
 
 
@@ -256,6 +249,6 @@ function out(){
 		      }
 		var currentTime = year +"-"+ temp[0] +"-"+ temp[1] +" "+ temp[2] +":"+ temp[3] +":"+ temp[4] +" "+week;
 		document.getElementById("current").innerHTML =currentTime;
-		setInterval("currenttime()",1000);
+		
 
  		}

@@ -98,13 +98,13 @@
 						
 					</div>
 					<ul class="search-list">
-						<li><a href="">桂格燕麦片</a></li>
-						<li><a href="">农夫山泉</a></li>
-						<li><a href="">电饭煲</a></li>
-						<li><a href="">咖啡</a></li>
-						<li><a href="">白糖</a></li>
-						<li><a href="">大米5kg</a></li>
-						<li><a href="">牛奶整箱</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=Apple">Apple</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=oppo">oppo</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=vivo">vivo</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=飞利浦">飞利浦</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=三星">三星</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=华为">华为</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=诺基亚">诺基亚</a></li>
 					</ul>
 				</div>
 				<!-- 顶部导航栏 -->
@@ -145,31 +145,31 @@
 				    
 				    <ul>
 				      <li>
-				        <a href="#">
-				          <img src="/jyhwebstore/store/img/fish.jpg"/>
+				        <a href="/jyhwebstore/store/html/search.jsp?content=iPhone XS">
+				          <img src="/jyhwebstore/store/img/iphoneXS.jpg" style="width:1920px;height:400px"/>
 				        </a>
 				      </li>
 				      <li>
-			          <a href="#">
-			            <img src="/jyhwebstore/store/img/pets.jpg"/>
+			          <a href="/jyhwebstore/store/html/search.jsp?content=oppo">
+			            <img src="/jyhwebstore/store/img/Oppo.jpg" style="width:1920px;height:400px"/>
 			          </a>
 			        </li>
 			        <li>
-			          <a href="#">
-			            <img src="/jyhwebstore/store/img/oil.jpg"/>
+			          <a href="/jyhwebstore/store/html/search.jsp?content=华为p30">
+			            <img src="/jyhwebstore/store/img/华为p30.jpg"style="width:1920px;height:400px"/>
 			          </a>
 			        </li>
 			        <li>
-			          <a href="#">
-			            <img src="/jyhwebstore/store/img/rabish.jpg"/>
+			          <a href="/jyhwebstore/store/html/search.jsp?content=三星">
+			            <img src="/jyhwebstore/store/img/三星A90.jpg" style="width:1820px;height:400px"/>
 			          </a>
 			        </li>
 				    </ul>
 				    <div class="number">
-				      <span class="current">蒲烧鳗鱼</span>
-				      <span>萌宠大作战</span>
-				      <span>粮油品类接</span>
-				      <span>垃圾分类</span>
+				      <span class="current">iphoneXS</span>
+				      <span>oppo</span>
+				      <span>华为p30</span>
+				      <span>三星A90</span>
 				    </div>
 				  </div>
 
