@@ -23,7 +23,7 @@ public class RegisterSer {
 			conn.setAutoCommit(false);//设置不能自动提交
 			f = acd.insertAcount(acount, conn);
 			f2 = ud.insertUser(user, conn);
-			conn.commit();
+			conn.commit();//手动提交
 //			System.out.println(" RegisterSer===conn========"+conn);
 //			System.out.println("RegisterSer====f======="+f);
 //			System.out.println(" RegisterSer===f2=========="+f2);

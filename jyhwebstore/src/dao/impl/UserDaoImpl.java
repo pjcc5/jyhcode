@@ -19,7 +19,6 @@ public class UserDaoImpl implements UserDao{
 		if(conn==null){
 			return null;
 		}
-
 			if(!conn.isClosed()){
 				String sql="select * from user";
 				PreparedStatement ps=conn.prepareStatement(sql);
@@ -35,6 +34,7 @@ public class UserDaoImpl implements UserDao{
 					user.setUphone(rs.getString("uphone"));
 					user.setMail(rs.getString("mail"));
 					user.setSetadd(rs.getString("setadd"));
+					user.setAid(rs.getString("aids"));
 					list.add(user);
 					
 				}
@@ -45,16 +45,15 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public User getUserById(int uid, Connection conn)throws Exception {
+	public User getUserById(String aids, Connection conn)throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return null;
 		}
-	
 			if(!conn.isClosed()){
-				String sql="select * from user where uid=?";
+				String sql="select * from user where aids=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
-			ps.setInt(1, uid);
+				ps.setString(1, aids);
 				ResultSet rs=ps.executeQuery();
 				
 				if(rs.next()){
@@ -67,6 +66,7 @@ public class UserDaoImpl implements UserDao{
 					user.setUphone(rs.getString("uphone"));
 					user.setMail(rs.getString("mail"));
 					user.setSetadd(rs.getString("setadd"));
+					user.setAid(rs.getString("aids"));
 					return user;
 					
 				}
@@ -84,7 +84,7 @@ public class UserDaoImpl implements UserDao{
 		}
 	
 			if(!conn.isClosed()){
-				String sql="insert into user(uname,pic,birth,sex,uphone,mail,setadd) values(?,?,?,?,?,?,?) ";
+				String sql="insert into user(uname,pic,birth,sex,uphone,mail,setadd,aids) values(?,?,?,?,?,?,?,?) ";
 				PreparedStatement ps=conn.prepareStatement(sql);
 //				ps.setInt(1, user.getUid());
 				ps.setString(1, user.getUname());
@@ -94,6 +94,7 @@ public class UserDaoImpl implements UserDao{
 				ps.setString(5,user.getUphone());
 				ps.setString(6, user.getMail());
 				ps.setString(7, user.getSetadd());
+				ps.setString(8, user.getAid());
 			    int rs=ps.executeUpdate();
 			    if(rs>0){
 			    	return true;
@@ -104,16 +105,16 @@ public class UserDaoImpl implements UserDao{
 	}
 
 	@Override
-	public boolean deleteUserByid(int uid, Connection conn) throws Exception {
+	public boolean deleteUserByid(String aids, Connection conn) throws Exception {
 		// TODO Auto-generated method stub
 		if(conn==null){
 			return false;
 		}
 	
-			String sql="delete from user where uid=?";
+			String sql="delete from user where aids=?";
 			if(!conn.isClosed()){
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setInt(1, uid);
+				ps.setString(1, aids);
 			int rs=	ps.executeUpdate();
 			if(rs>0){
 				return true;
@@ -131,7 +132,7 @@ public class UserDaoImpl implements UserDao{
 		}
 	
 			if(!conn.isClosed()){
-				String sql="update user set uname=?,pic=?,birth=?,sex=?,uphone=?,mail=?,setadd=? where uid=?";
+				String sql="update user set uname=?,pic=?,birth=?,sex=?,uphone=?,mail=?,setadd=? where aids=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
 			   ps.setString(1, user.getUname());
 				ps.setString(2, user.getPic());
@@ -140,14 +141,12 @@ public class UserDaoImpl implements UserDao{
 				ps.setString(5, user.getUphone());
 				ps.setString(6, user.getMail());
 				ps.setString(7, user.getSetadd());
-				ps.setInt(8, user.getUid());
+				ps.setString(8, user.getAid());
 				int rs= ps.executeUpdate();
 				if(rs>0){
 					return true;
 				}
 			}
-			
-		
 		return false;
 	}
 

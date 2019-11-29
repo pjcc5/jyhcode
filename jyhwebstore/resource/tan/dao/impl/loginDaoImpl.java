@@ -67,7 +67,6 @@ public class loginDaoImpl implements loginDao{
 				return acount;
 			}
 		}
-		
 		return null;
 	}
 

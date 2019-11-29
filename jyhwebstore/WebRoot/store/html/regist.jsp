@@ -92,6 +92,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</div>
 					</li>
 					<!-- 验证码 -->
+					<lable style=" font-weight:bold; font-size: 10px;color: red;line-height: 1px;float: right;margin-right: 430px; margin-top:30px">看不清点击图片换一张</lable>
 					<li class="regist-YZM">
 						<span>验证码</span>
 						<input type="text" class="form-control" placeholder="identifying code" id="valdation"/>
@@ -149,7 +150,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<span id="success-container-success" style="margin-left: -40px;">
 					恭喜老板注册成功！请点击确定，跳转登录界面
 				</span>
-				<span id="success-container-exist" style="float: left; margin-left: -50px;margin-top: 20px;background: url(/jyhwebstore/store/img/bg1.jpg);">抱歉，手机号已经被注册！</span>
+				<span id="success-container-exist" style="float: left; margin-left: -50px;margin-top: 20px;background: url(/jyhwebstore/store/img/bg1.jpg);">抱歉，手机号或者用户名已被占用！</span>
 				<span id="success-container-failed" style="float: left; margin-left: -55px;">老板您注册失败了哟！请检查您的输入是否正确！</span>
 				<span id="success-container-error" style="float: left; margin-left: -55px;">系统未知错误！</span>
 			</div>

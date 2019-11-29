@@ -57,8 +57,7 @@
 					<label class="login-div2-div1-lable">聚优汇登录</label>
 					<a href="regist.jsp" class="login-div2-div1-regist">注册新账号</a>
 					<form id="myform">
-					<input type="text" class="form-control" placeholder="用户名" id="loginUsername"
-					name="uname"/>
+					<input type="text" class="form-control" placeholder="用户名" id="loginUsername"name="uname"/>
 					<input type="password" class="form-control" placeholder="密码" id="loginPassword" name="upass"/>
 					<input type="checkbox" class="login-div2-div1-checkedbox"style="margin-top: 20px;" value="记住密码" />
 					<p class="login-div2-div1-p">自动登录</p>
@@ -87,11 +86,11 @@
 	$("#loginUsername").focus(function(){
 	$("#div1").html("请输入用户名");
 		$("#div1").fadeIn();
-	})
+	});
 	$("#loginPassword").focus(function(){
 	$("#div2").html("请输入密码");
 		$("#div2").fadeIn();
-	})
+	});
 	
 	
 	$("#loginUsername").keyup(function(){
@@ -107,7 +106,7 @@
 		    $("#div1").html("用户名应不小于3位");
 		}
 		
-	})
+	});
 	
 	
 	$("#loginPassword").keyup(function(){
@@ -122,7 +121,5 @@
 		} else{
 			$("#div2").html("长度不能小于6位");
 		}
-		
-		
-	})
+	});
 </script>

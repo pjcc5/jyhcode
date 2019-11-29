@@ -10,12 +10,6 @@ var flagph = false;
 // var flagyzm=false;
 var flagpas = false;
 var flagnextpas = false;
-
-
-
-console.log(flagname);
-console.log(flagnextpas);
-
 // 用户名
 $('input:eq(0)').focus(function() {
 	$('span:eq(0)').fadeIn(250);
@@ -190,7 +184,8 @@ $('input:eq(4)').blur(function() {
 $("#regists").attr("disabled", "false");
 
 $('.regist-YHXY').click(function() {
-
+	
+//	alert($("#check").Boolean);
 	if ($("#check").prop('checked') == true) {
 		$("#regists").removeAttr("disabled");
 	} else {
@@ -217,6 +212,7 @@ $('#regists').click(function() {
 				{
 					$('#success').slideDown().children('#success-container').children('#success-container-success').slideDown(350).siblings().hide();
 					$('#success').children('#success-btn').children('#success-btn-1').show().siblings().hide();
+					
 				}
 				else if(json.flag==false)
 				{
@@ -239,20 +235,22 @@ $('#regists').click(function() {
 
 //用户名存在的情况
 $('#success-btn-2').click(function() {
+	location.href="regist.jsp?id="+new Date().getTime();
 	$("#success").slideUp(350);
 	$('input:eq(0)').focus();
 })
 
 //输入有误的时候
 $('#success-btn-3').click(function() {
+	location.href="regist.jsp?id="+new Date().getTime();
 	$("#success").slideUp(350);
-	location.href="regist.jsp?id=#";
 })
 
 //注册成功
 $('#success-btn-1').click(function(){
 	var userNames = $("#useinput").val();
-	location.href="login.jsp?id="+userNames;
+	window.open("success/registersuccess.jsp?id="+userNames);
+	location.href="regist.jsp";
 })
 //未知错误
 $("#success-btn-4").click(function(){

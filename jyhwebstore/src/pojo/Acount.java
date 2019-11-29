@@ -11,6 +11,7 @@ public class Acount  implements Serializable{
 	private java.lang.String aphone;//aphone
 	private java.lang.String amail;//amail
 	private java.lang.String addr;//addr
+	
 	public java.lang.String getAid(){
 		return this.aid;
 	}
@@ -57,8 +58,6 @@ public class Acount  implements Serializable{
 	public String toString() {
 		return "Acount [aid=" + aid + ", aname=" + aname + ", apass=" + apass
 				+ ", isadm=" + isadm + ", aphone=" + aphone + ", amail="
-				+ amail + ", addr=" + addr + "]";
+				+ amail + ", addr=" + addr + ", uuids=" + "]";
 	}
-	
-	
 }
