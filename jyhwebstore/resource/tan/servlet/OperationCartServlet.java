@@ -127,7 +127,7 @@ this.doPost(request, response);
 	}else{
 		
 		JSONObject object=JSONObject.fromObject(detail);
-		System.out.println(object);
+		int num=object.getInt("num");
 		
 		String comname=(String) object.get("comname");
 		int comprice=object.getInt("comprice");
@@ -147,7 +147,7 @@ this.doPost(request, response);
 	  cart.setColor(color);
 	  cart.setComname(comname);
 	  cart.setComprice(comprice);
-	  cart.setCount(1);
+	  cart.setCount(num);
 	  cart.setDate(new Date());
 	 
 	  cart.setSize(size);

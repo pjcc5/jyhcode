@@ -30,7 +30,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <nav class="navbar navbar-default">
 		<div class="container ">
 			<div class="navbar-header">
-				<a class="navbar-brand" href="index.html">
+				<a class="navbar-brand" href="/jyhwebstore/index.jsp">
 					<span class="glyphicon glyphicon-home "></span>
 					聚优汇首页
 				</a>

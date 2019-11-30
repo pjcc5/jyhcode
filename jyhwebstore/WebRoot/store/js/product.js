@@ -177,12 +177,15 @@ function imgchange(obj){
   	sum++;
   	if(sum>10){sum=10};
   	$('.number').val(sum);
+  	
+  	detail.num=sum;
   });
   
   $('.reduce').click(function(){
   	sum--;
   	if(sum<=0){sum=1};
   	$('.number').val(sum);
+	detail.num=sum;
   })
   
   $('.number').keyup(function(){
@@ -246,6 +249,8 @@ function addcart(){
 			  }
 		})
 			  })();
+	
+	
 }
 
 function gocart(obj){
