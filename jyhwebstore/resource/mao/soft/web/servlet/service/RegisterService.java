@@ -76,8 +76,4 @@ public class RegisterService {
 			boolean blog = rs.register(conn,acount, user);
 			return blog;
 	}
-//	public static void main(String[] args) throws Exception {
-//		RegisterService r= new RegisterService();
-//		r.register(null, null, null);
-//	}
 }
