@@ -44,7 +44,14 @@ public class CharacterEncodingFilter implements Filter{
 			}
 		}
 		response.setCharacterEncoding(newEncoding);
-		request.getSession().setAttribute("time", getTimelo());
+		System.out.println("acount="+request.getSession().getAttribute("acount"));
+		//取得是否有时间参数
+		request.getSession().removeAttribute("time");
+		if(request.getSession().getAttribute("acount")!=null)
+		{	
+			//如果没有登陆过就不显示上午好
+			request.getSession().setAttribute("time", getTimelo());
+		}
 		//放行
 		arg2.doFilter(request, response);
 		System.out.println("放行完毕");
