@@ -157,3 +157,7 @@ li {
 	background: url(../img/spanbg.jpg);
 	/* margin-left: -40px; */
 }
+body>img{
+	animation:haha1 2s linear infinite;
+}
+@-webkit-keyframes haha1{ from{transform:rotate(0)} to{transform:rotate(180deg)} 

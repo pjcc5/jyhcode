@@ -5,17 +5,11 @@
   	  $('.banner>ul>li').eq(n).stop().fadeIn(500).siblings().fadeOut(500);
   	  $('.number span').eq(n).stop().addClass('current').siblings().removeClass('current');
 	  }
-  var arr=new Array();
-	arr[0]="/jyhwebstore/store/img/雪花1.png";
-	arr[1]="/jyhwebstore/store/img/雪花2.png";
-	arr[2]="/jyhwebstore/store/img/雪花3.png";
-	arr[3]="/jyhwebstore/store/img/雪花4.png";
+
 	var i =0;
   $(function(){  
 	setInterval("currenttime()",1000);
-	setInterval(function(){
-		  new SnowFlower();
-		}, 400);
+	
   	$(window).scroll(function(){
   		var toTop=$(window).scrollTop();
   		if(toTop>=50){
@@ -43,7 +37,7 @@
   			
   			}else
 			{
-  				scrollTo(300,0);
+  				scrollTo(300,1000);
 			}
   			
   		});
@@ -262,62 +256,5 @@ function out(){
  		}
  	
  	
- 	function SnowFlower(){
- 		
- 		this.oflower=null;
- 		this.windowH = document.documentElement.clientHeight;
- 		this.windowW = document.documentElement.clientWidth;
- 		this.top = -100;
- 		this.left=parseInt(Math.random() * (this.windowW-500));
- 		this.timer =null;
- 		this.step=10;
- 		this.init = function(){
- 		      //创建元素添加到页面
- 		      this.oflower = document.createElement('img');
- 		     
- 		      this.oflower.className = 'flower';
- 		      //设置左右随机位置
- 		     this.oflower.style.position="fixed";
- 		      this.oflower.style.left = this.left + 'px';
-// 		      this.oflower.style.top = this.top+"px";
- 		     this.oflower.style.top = this.top+"px";
- 		    this.oflower.style.width = 70+"px";
- 		   this.oflower.style.height = 70+"px";
- 		     this.oflower.src = arr[Math.floor(Math.random()*4)];
- 		     $(this.oflower).animate({top:this.windowH+'px',left:this.left+2000+"px"},8000);
- 		     var that = this;
- 		    $(this.oflower).mouseenter(function(){
- 		    	
- 		    	setTimeout(function(){
- 		    		that.die();
- 		    	},100);
- 		    });
- 		      //添加到页面
- 		      document.body.appendChild(this.oflower);
- 		    };
- 		    
- 		    this.go = function(){
- 		    	var that = this;
- 		    	
- 		    	this.timer = setInterval(function(){
- 		    		$(that).animate({top:that.windowH+'px'},8000);
-// 		    		that.top += that.step;
- 		    		if(that.top > 1000)
- 		    			{
- 		    				that.die();
- 		    			}
-// 		           that.oflower.style.top = that.top + 'px';
- 		    	},600)
- 		    }
- 		    
- 		    this.die = function(){
- 		    	clearInterval(this.timer);
- 		    	document.body.removeChild(this.oflower);
- 		    }
- 		   //调用初始化方法
- 		    this.init();
- 		    //调用行走方法
- 		    this.go();
- 	}
- 	
+ 
  	
