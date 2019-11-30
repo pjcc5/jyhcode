@@ -1,58 +1,60 @@
- function goodsList(page, callback){
-    var page = page ? page : 1;
-    //页面打开就可以看到商品
-    $.get('http://www.wjian.top/shop/api_goods.php',{
-      'pagesize':6,
-      'page':page,
-    }, function(result){
-      var result = JSON.parse(result);
-      //验证
-      if(result.code != 0){
-        console.log('数据请求失败');
-        return;
-      };
-      //调用
-      callback(result);
-    }); 
-  };
-  var num=0
-  goodsList(1, function(result){
-    var goodsList = result.data;
-    console.log(goodsList)
-    //得到数据了之后，在这里操作数据
-    //组装DOM结构
+var msg={};
+(function(){
+	$.ajax({
+		  type:"POST",
+		  url:"/jyhwebstore/cartservlet",
+		  data:{},
+		  dataType:"json",
+		  success:function(result){
+			 
+			  callback(result);
+
+		  }
+	})
+		  })();
+
+
+
+ function callback(result){
+	 if(result.length>0){
+	msg.shopid=result[0].shopid;
+	
+    var goodsList = result;
+    
     for(var i = 0; i < goodsList.length; i++){
-    	var desc=goodsList[i].goods_desc;
+    	
       //拿到每一项  goodsList[i].goodsName
+    	
+    	var price=goodsList[i].comprice*goodsList[i].count;
+    	var pic=goodsList[i].compic.replace(/50x50/g,"130x130");
+    	console.log(pic);
       var str = `
-      <div class="goods">
+      <div class="goods" data='${goodsList[i].uuid}'>
 			<div class="goods-top">
 				<input  type="checkbox" class='select-d'/>
-				<p>${goodsList[i].goods_name}</p>
+				<p>${goodsList[i].comname}</p>
 			</div>
 			<div class="goods-mid">
-				
 					<div class="desc">
-						
-						
 						<a href="" class="goods-desc" title="商品信息" >
-						<img src="${goodsList[i].goods_thumb}"/>
-						<p>${goodsList[i].goods_desc}</p></a>
+						<img src="${pic}"/></a>
+						<div>
+						<p>颜色: ${goodsList[i].color}</p>
+						<p>版本: ${goodsList[i].size}</p>
+						</div>
 					
 					</div>
 					<div class="goods-price">
-						<span>${goodsList[i].price}</span></div>
+						<span>${goodsList[i].comprice}</span></div>
 						
 					<div class="count">
 						<div class="add">+</div>
-						<input type="number" value="1" class='number'/>
+						<input type="number" value="${goodsList[i].count}" class='number' data='${goodsList[i].uuid}'/>
 						<div class="reduce">
 							&minus;</div>
-							
-					
 					</div>
 					
-					<div class="subtotal">${goodsList[i].price}</div>
+					<div class="subtotal">${price}</div>
 					<div class="op">
 						
 						<div><span class="glyphicon glyphicon-heart"></span></div>
@@ -60,17 +62,15 @@
 					</div>
 				
 			</div>
-			
-			
-			
 			<div class="goods-bottom">
-				<div class="amount">商品总价:￥${goodsList[i].price}</div>
+				<div class="amount">商品总价:￥${price}</div>
 			</div>
 		</div>
       
       `;
       //把每次组装好的添加进table
       $('.content').append(str);
+    }
     };
  
  
@@ -116,8 +116,11 @@ var  windowH=$(window).height();
       
      
     clickAll();
-  });
-  
+    
+    
+   
+    };
+ 
 function clickAll(){
 	
 	$('.main').click(function(event){
@@ -126,11 +129,31 @@ function clickAll(){
 		if(event.target.className=='reduce'){
 			  var spanDom = event.target.previousElementSibling;
 			  var spanDomVal=parseInt(spanDom.value);
-			  console.log(spanDomVal);
+			 
 			  spanDomVal--;
 			  if(spanDomVal < 1){spanDomVal = 1};
 			  if(spanDomVal > 200){spanDomVal = 200};
 			  spanDom.value=spanDomVal;
+			  
+			  var data=spanDom.getAttribute('data');
+			  msg.data=data;
+			  msg.num=spanDomVal;
+			  
+			  
+			  (function(){
+					$.ajax({
+						  type:"POST",
+						  url:"/jyhwebstore/operationcartservlet",
+						  data:{"msg":JSON.stringify(msg)},
+						  dataType:"json",
+						  success:function(result){
+							 console.log(result);
+
+						  }
+					})
+						  })();
+			 
+			  
 			  subtotal(event.target,spanDomVal);
 		     sumAll();
 		     var num=0;
@@ -140,17 +163,37 @@ function clickAll(){
 	                  num+=parseInt($(this).val());
 	                   $('.all').html('(共'+num+'件)');
                        });
+		     
 		    
 		}
 		
 		 if(event.target.className == 'add'){
 		 	var spanDom = event.target.nextElementSibling;
 		 	 var spanDomVal=parseInt(spanDom.value);
+		 	 
+		 	 
 		 	 spanDomVal++;
 		 	  if(spanDomVal > 200){spanDomVal = 200};
 		 	  if(spanDomVal < 1){spanDomVal = 1};
 		 	  spanDom.value=spanDomVal;
 		 	  subtotal(event.target,spanDomVal);
+		 	 var data=spanDom.getAttribute('data');
+			  msg.data=data;
+			  msg.num=spanDomVal;
+			  
+			  
+			  (function(){
+					$.ajax({
+						  type:"POST",
+						  url:"/jyhwebstore/operationcartservlet",
+						  data:{"msg":JSON.stringify(msg)},
+						  dataType:"json",
+						  success:function(result){
+							 console.log(result);
+
+						  }
+					})
+						  })();
 		     sumAll();
 		      var num=0;
 		                 $('.number').each(function(){
@@ -159,20 +202,12 @@ function clickAll(){
 	                  num+=parseInt($(this).val());
 	                   $('.all').html('(共'+num+'件)');
                        });
-		     
-		    
 		 }
 		 
 		 if(event.target.className =='number'){
-		 	
-     
 		 var spanDom=event.target;
 		
-		 spanDom.onkeyup=function(){
-		 	
-
-		 	
-		 			 	
+		 spanDom.onkeyup=function(){	 	
 		 	if(parseInt(spanDom.value)>200){
 			 
 			   spanDom.value=200;
@@ -184,6 +219,23 @@ function clickAll(){
 			   spanDom.value=1;
 			   
 			};
+			
+			  msg.data=dataspanDom.getAttribute('data');
+			  msg.num=spanDom.val;
+			  
+			  
+			  (function(){
+					$.ajax({
+						  type:"POST",
+						  url:"/jyhwebstore/operationcartservlet",
+						  data:{"msg":JSON.stringify(msg)},
+						  dataType:"json",
+						  success:function(result){
+							 console.log(result);
+
+						  }
+					})
+						  })();
 //			
 			subtotal(event.target,spanDom.value);
 		    sumAll();
@@ -249,13 +301,32 @@ function clickAll(){
     };
     
     if(event.target.className =="glyphicon glyphicon-trash"){
-    	
+    
     	
       //要做商品减的业务
       console.log('点击了删除');
+    
       //找到tr删除自己
       var tab = event.target.parentNode.parentNode.parentNode.parentNode.parentNode;
     var tr = event.target.parentNode.parentNode.parentNode.parentNode;
+    
+    var data=tr.getAttribute('data');
+	  msg.data=data;
+	  msg.num=-1;
+	  
+	  (function(){
+			$.ajax({
+				  type:"POST",
+				  url:"/jyhwebstore/operationcartservlet",
+				  data:{"msg":JSON.stringify(msg)},
+				  dataType:"json",
+				  success:function(result){
+					 console.log(result);
+
+				  }
+			})
+				  })();
+	  
         tab.removeChild(tr);
       //$(event.target).html('哈另一个')
       //调用总价
@@ -329,6 +400,9 @@ $(window).scroll(function(){
 		}
 				
   	})
+  	
+  	
+  
 
 
 $(function(){
@@ -345,18 +419,3 @@ $('.quit').click(function(){
 		localStorage.removeItem('username');
 		location.reload();
 	}); 
-	
-	
-	
-	$(function(){
-		 var username = localStorage.getItem('username');
-		 // alert(username);
-		 if(username)
-		 {
-				//存在就切换文字
-				$('#myNav ul').prepend('<li><a href="javascript:;">欢迎您:</a></li>');
-				$('.login_title').html(`${username}<span>　　</span>`).css("color",'red');
-				// $('#myNav ul').append(`<li><a href='javascript:;' target="_blank" class='quit'>退出</a></li>`);
-		}
-		
-		})
