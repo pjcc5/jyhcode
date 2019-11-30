@@ -77,7 +77,7 @@
 					<input type="text" class="search-input" id="searchIn1" placeholder="搜索手机">
 					<button type="button" class="search-btn" id="searchBtn1"><span class="glyphicon glyphicon-search"></span></button>
 					<div>
-						<a href="cart.html" class="cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
+						<a href="/jyhwebstore/store/html/cart.jsp" class="cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
 						
 					</div>
 					<ul class="search-list">
@@ -115,7 +115,7 @@
 				<div class="nav-search">
 					<input type="text" class="search-input" id="searchIn2" placeholder="搜索手机">
 					<button type="button" class="nav-search-btn" id="searchBtn2" ><span class="glyphicon glyphicon-search"></span></button>
-					<a href="cart.html" class="cart nav-cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
+					<a href="/jyhwebstore/store/html/cart.jsp" class="cart nav-cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
 						
 			</div>
 		</section>
@@ -196,9 +196,9 @@
 					</a>
 					<input type="hidden" value="`+comid+`" id="${igd.comid}" />
 					<button type="button" class="btn btn-danger addincart"><span class="
-							glyphicon glyphicon-download-alt"></span>　加入购物车</button>
+							glyphicon glyphicon-download-alt" onclick="addtocart(this)></span>　加入购物车</button>
 					<button type="button" class="btn btn-danger addincart"><span class="
-							glyphicon glyphicon-usd"></span>　立即购买</button>
+							glyphicon glyphicon-usd" onclick="justbuy(this)"></span>　立即购买</button>
 							
 						</div>
 					
@@ -315,6 +315,7 @@
 <script src="/jyhwebstore/store/js/jquery.min.js"></script>
 <script src="/jyhwebstore/store/js/bootstrap.js"></script>
 <script src="/jyhwebstore/store/js/jquery.singlePageNav.min.js"></script>
+<script src="/jyhwebstore/store/js/jquery-transform_2d.js"></script>
 <script src="/jyhwebstore/store/js/webstore.js"></script>
 <script>
 
@@ -357,7 +358,7 @@
 							</a>
 							<input type="hidden" value="`+comid+`" id="comid" />
 							<button type="button" class="btn btn-danger addincart"><span class="
-									glyphicon glyphicon-download-alt"></span>　加入购物车</button>
+									glyphicon glyphicon-download-alt" onclick="addtocart(this)"></span>　加入购物车</button>
 							<button type="button" class="btn btn-danger addincart"><span class="
 									glyphicon glyphicon-usd"></span>　立即购买</button>
 									
@@ -371,8 +372,76 @@
 			}
 		})
 	}
-	
-	
-	
+	  var arr=new Array();
+		arr[0]="/jyhwebstore/store/img/雪花1.png";
+		arr[1]="/jyhwebstore/store/img/雪花2.png";
+		arr[2]="/jyhwebstore/store/img/雪花3.png";
+		arr[3]="/jyhwebstore/store/img/雪花4.png";
+	$(function(){
+		setInterval(function(){
+			  new SnowFlower();
+			}, 400);
+	})
+function SnowFlower(){
+ 		
+ 		this.oflower=null;
+ 		this.windowH = document.documentElement.clientHeight;
+ 		this.windowW = document.documentElement.clientWidth;
+ 		this.top = -100;
+ 		this.left=parseInt(Math.random() * (this.windowW-500));
+ 		this.timer =null;
+ 		this.step=10;
+ 		this.init = function(){
+ 		      //创建元素添加到页面
+ 		      this.oflower = document.createElement('img');
+ 		     
+ 		      this.oflower.className = 'flower';
+ 		      //设置左右随机位置
+ 		     this.oflower.style.position="fixed";
+ 		      this.oflower.style.left = this.left + 'px';
+// 		      this.oflower.style.top = this.top+"px";
+ 		     this.oflower.style.top = this.top+"px";
+ 		    this.oflower.style.width = 70+"px";
+ 		   this.oflower.style.height = 70+"px";
+ 		     this.oflower.src = arr[Math.floor(Math.random()*4)];
+ 		     $(this.oflower).animate({top:this.windowH+'px',left:this.left+this.windowH+"px"},10000);
+ 		     var that = this;
+ 		    $(this.oflower).mouseenter(function(){
+ 		    	
+ 		    	setTimeout(function(){
+ 		    		that.die();
+ 		    	},100);
+ 		    });
+ 		      //添加到页面
+ 		      document.body.appendChild(this.oflower);
+ 		    };
+ 		    
+ 		    this.go = function(){
+ 		    	var that = this;
+ 		    	
+ 		    	this.timer = setInterval(function(){
+ 		    		$(that).animate({top:that.windowH+'px',left:this.left+that.windowH+"px"},10000);
+// 		    		that.top += that.step;
+ 		    		if(that.top > 1000 )  
+ 		    			{
+ 		    				that.die();
+ 		    			}
+ 		    		if(that.left > 1000)
+ 		    			{
+ 		    			that.die();
+ 		    			}
+// 		           that.oflower.style.top = that.top + 'px';
+ 		    	},600)
+ 		    }
+ 		    
+ 		    this.die = function(){
+ 		    	clearInterval(this.timer);
+ 		    	document.body.removeChild(this.oflower);
+ 		    }
+ 		   //调用初始化方法
+ 		    this.init();
+ 		    //调用行走方法
+ 		    this.go();
+ 	}
 
 </script>

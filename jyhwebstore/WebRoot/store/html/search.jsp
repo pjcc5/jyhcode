@@ -14,20 +14,24 @@
 		<!-- 顶部导航栏 -->
 		<section class="top-lan">
 			<div class="row">
-				<div class="col-md-10 col-md-offset-1 col-sm-6 col-xs-12 links text-left">
+				<div class="col-md-11 col-md-offset-1 col-sm-6 col-xs-12 links text-left">
 					<div class="col-md-2" id="location">
 						<span class="glyphicon glyphicon-map-marker posi"></span>
 						<i class="icon iconfont"></i>
 						<span>送货地址:</span>
 						<em>长沙</em>
 						</div>
-					<div class="col-md-3  text-left links ">
+					<div class="col-md-2  text-left links ">
 						<span class="glyphicon glyphicon-volume-up posi"></span>
 						<a href="">防范金融诈骗提示</a>
-						<span id="current"></span>
+					</div>
+					<!-- 显示时间 -->
+					<div class="col-md-3	 text-left links ">
+					<span id="current" style="color:black;font-weight:bold; font-size:16px;"></span>
 					</div>
 					
-					<div class="col-md-5 col-md-offset-2 links-right   text-right">
+					
+					<div class="col-md-5 links-right   text-right">
 						<span id="goodnight">
 							<c:if test="${empty time}">
 								你好
@@ -94,13 +98,13 @@
 						
 					</div>
 					<ul class="search-list">
-						<li><a href="">桂格燕麦片</a></li>
-						<li><a href="">农夫山泉</a></li>
-						<li><a href="">电饭煲</a></li>
-						<li><a href="">咖啡</a></li>
-						<li><a href="">白糖</a></li>
-						<li><a href="">大米5kg</a></li>
-						<li><a href="">牛奶整箱</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=Apple">Apple</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=oppo">oppo</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=vivo">vivo</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=飞利浦">飞利浦</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=三星">三星</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=华为">华为</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=诺基亚">诺基亚</a></li>
 					</ul>
 				</div>
 				

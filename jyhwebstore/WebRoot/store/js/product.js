@@ -12,7 +12,6 @@ var comid= getUrlVal('comid');
 	  data:{'msg':comid},
 	  dataType:"json",
 	  success:function(result){
-		  
 		  var str = `
 			<p class="name">${result.comname}</p>
 			<p class="price"><span>价格</span><span class="price-m">￥${result.comprice}</span></p>
@@ -20,7 +19,6 @@ var comid= getUrlVal('comid');
 			<div class="hot"><span>好评</span><span class="hot-p"><span class="glyphicon glyphicon-heart"></span>${result.detailsdot}</span>
               </div>
 	    `;
-	    
 	    
 	    $(".goodsname").html(result.comname);
 	    for(var i=0;i<result.color.length;i++){

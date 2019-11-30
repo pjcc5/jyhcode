@@ -5,9 +5,11 @@
   	  $('.banner>ul>li').eq(n).stop().fadeIn(500).siblings().fadeOut(500);
   	  $('.number span').eq(n).stop().addClass('current').siblings().removeClass('current');
 	  }
-	  
+
+	var i =0;
   $(function(){  
 	setInterval("currenttime()",1000);
+	
   	$(window).scroll(function(){
   		var toTop=$(window).scrollTop();
   		if(toTop>=50){
@@ -35,7 +37,7 @@
   			
   			}else
 			{
-  				scrollTo(300,0);
+  				scrollTo(300,1000);
 			}
   			
   		});
@@ -252,3 +254,7 @@ function out(){
 		
 
  		}
+ 	
+ 	
+ 
+ 	
