@@ -1,4 +1,5 @@
-  var n = 0;//信号量
+
+var n = 0;//信号量
   $('.number span').mouseover(bannergo);
   function bannergo(i){
   	  n=$(this).index();

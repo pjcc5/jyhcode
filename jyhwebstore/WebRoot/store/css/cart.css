@@ -191,6 +191,7 @@ section{
 			font-size: 16px;
 			line-height: 60px;
 			padding-left: 10px;
+			overflow: hidden;
 			
 		}
 		
@@ -226,7 +227,7 @@ section{
 			width: 1200px;
 			padding-bottom: 30px;
 			margin: 0 auto;
-			background: url(images/bg.png) ;
+			background: url(/jyhwebstore/store/img/bg.png) ;
 			position: relative;
 		}
 		.cart-header{
@@ -412,7 +413,7 @@ section{
 		  	border-radius: 10px;
 		  	float: left;
 		  }
-		  .goods-mid .desc p{
+		  .goods-mid .desc div{
 		  	width: 310px;
 		  	height: 130px;
 		  	/*line-height: 70px;*/
@@ -424,6 +425,12 @@ section{
 		  	float: left;
 		  	overflow: hidden;
 		  }
+		  
+		   .desc div p{
+		  	margin-bottom: 10px;
+		  	font-size: 18px;
+		  }
+		  
 		  .goods-price{
 		  	padding-top:20px ;
 		  	padding-left: 10px;
@@ -476,7 +483,7 @@ section{
 		   	color: orangered;
 		   }
 		   body{
-		   	background: url(images/bg.png);
+		   	background: url(/jyhwebstore/store/img/bg.png);
 		   }
 		   
 		   

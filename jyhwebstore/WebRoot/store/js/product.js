@@ -1,5 +1,5 @@
 
-
+var detail;
 
 var pic=new Array();
 var comid= getUrlVal('comid');
@@ -22,23 +22,23 @@ console.log(comid);
 			<div class="hot"><span>好评</span><span class="hot-p"><span class="glyphicon glyphicon-heart"></span>${result.detailsdot}</span>
               </div>
 	    `;
-	    
+	    detail=result;
 	    
 	  
 	    for(var i=0;i<result.color.length;i++){
 	    	 var color;
 	    	  console.log(result.color[i]);
 	    	  if(i==0){
-	    	   color="<div class=dd><div class=\"item selected\" data-value="+result.color[i]+" title="+result.color[i]+" onclick=\"changeColor(this)\">"
+	    	   color="<div class=dd><div class=\"item selected\" data-value=\""+result.color[i]+"\" title=\""+result.color[i]+"\" onclick=\"changeColor(this)\">"
 	+" <p><span class=\"glyphicon glyphicon-ok\"></span></p>"
 	   		+"	<div>"
 	   				+"<i>"+result.color[i]+"</i>"
 	   			+"</div></div></div>";
 	    	  }else{
-	    		  color="<div class=dd><div class=\"item \" data-value="+result.color[i]+" title="+result.color[i]+"  onclick=\"changeColor(this)\">"
+	    		  color="<div class=dd><div class=\"item \" data-value=\""+result.color[i]+"\" title=\""+result.color[i]+"\"  onclick=\"changeColor(this)\">"
 	    			+" <p><span class=\"glyphicon glyphicon-ok\"></span></p>"
 	    			   		+"	<div>"
-	    			   				+"<i>"+result.color[i]+"</i>"
+	    			   				+"<i>\""+result.color[i]+"\"</i>"
 	    			   			+"</div></div></div>";
 	    	  }
 	    	   $('#choose-1').append(color);
@@ -223,9 +223,9 @@ var pagesize=43;
 					ur=result[i].compic.replace(/50x50/g,"100x100");
 					str1="<li><img src=\""+ur+"\"class=photo alt=\"\"><p>"+result[i].comname+"</p><p>￥"+result[i].comprice+"</p><a href=product.jsp?comid="+result[i].comid+">查看详情</a></li>"
 					;
-					console.log(str1);
+					
 //					str1="<li><img src=\""+ur+"\" class=photo alt=""><p>"+result[i].comname+"</p>";
-					console.log(ur);
+					
 //							"<p>￥"+result[i].comprice+"</p>"+
 //							"<a href=product.html?comid="+result[i].comid+">查看详情</a></li>";
 					$('.floatle ul').append(str1);
@@ -266,3 +266,24 @@ var pagesize=43;
 //	}
 //goodsList(page,pagesize);
 
+
+
+function addcart(){
+	(function(){
+		$.ajax({
+			  type:"POST",
+			  url:"/jyhwebstore/operationcartservlet",
+			  data:{"detail":JSON.stringify(detail)},
+			  dataType:"json",
+			  success:function(result){
+				 console.log(result);
+
+			  }
+		})
+			  })();
+}
+
+function gocart(obj){
+	
+	location.href="/jyhwebstore/store/html/cart.jsp";
+}

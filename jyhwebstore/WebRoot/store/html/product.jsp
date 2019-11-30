@@ -17,7 +17,7 @@
  <nav class="navbar navbar-default">
 			<div class="container ">
 				<div class="navbar-header">
-					<a class="navbar-brand" href="index.html">
+					<a class="navbar-brand" href="/jyhwebstore/index.jsp">
 						<span class="glyphicon glyphicon-home "></span>
 						聚优汇首页
 					</a>
@@ -28,9 +28,9 @@
 				<div class=" navbar-right" id="myNav">
 					<ul class="nav navbar-nav">
 
-						<li class=""><a href="login.html?">登录</a></li>
-						<li><a href="regist.html">注册</a></li>
-						<li><a href="cart.html"><span class="glyphicon glyphicon-list-alt"></span> 我的订单</a></li>
+						<li class=""><a href="/jyhwebstore/store/html/login.jsp?path=/jyhwebstore/store/html/product.jsp">登录</a></li>
+						<li><a href="/jyhwebstore/store/html/regist.jsp?path=/jyhwebstore/store/html/product.jsp">注册</a></li>
+						<li><a href="/jyhwebstore/store/html/order.jsp?path=/jyhwebstore/store/html/product.jsp"><span class="glyphicon glyphicon-list-alt"></span> 我的订单</a></li>
 
 					</ul>
 				</div>
@@ -47,12 +47,12 @@
 
 				<div class="header-right">
 
-					<div class="cart-2">
-						<a href="">
+					<div class="cart-2" onclick="gocart(this)">
+						
 							<span class="glyphicon glyphicon-shopping-cart"></span>
 							<span>购物车</span>
 
-						</a>
+						
 					</div>
 
 					<div class="search">
@@ -131,7 +131,7 @@
 						<div class="reduce"><span class="glyphicon glyphicon-triangle-bottom"></span></div>
 					</div>
 
-					<a href="javascript:" class="cart-a join">加入购物车</span></a>
+					<a href="javascript:addcart()" class="cart-a join">加入购物车</span></a>
 					<a href="javascrrpt:;" class="buy join">立即个购买<a/>
 				</div>
 				

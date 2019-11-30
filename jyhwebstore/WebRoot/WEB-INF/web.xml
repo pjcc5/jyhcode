@@ -90,6 +90,16 @@
     <servlet-name>AdvServlet</servlet-name>
     <servlet-class>tan.servlet.AdvServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>CartServlet</servlet-name>
+    <servlet-class>tan.servlet.CartServlet</servlet-class>
+  </servlet>
+  <servlet>
+    <servlet-name>OperationCartServlet</servlet-name>
+    <servlet-class>tan.servlet.OperationCartServlet</servlet-class>
+  </servlet>
+
+
 
 
 
@@ -135,6 +145,14 @@
   <servlet-mapping>
     <servlet-name>AdvServlet</servlet-name>
     <url-pattern>/advServlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>CartServlet</servlet-name>
+    <url-pattern>/cartservlet</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OperationCartServlet</servlet-name>
+    <url-pattern>/operationcartservlet</url-pattern>
   </servlet-mapping>
   
 
