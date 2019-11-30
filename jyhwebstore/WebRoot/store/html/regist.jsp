@@ -1,9 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 <!DOCTYPE html>
 <html>
 	<head>
@@ -28,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<!-- logo头部-->
 				<div class="navbar-header">
 					<!-- logo图标 -->
-					<a class="navbar-brand" href="">
+					<a class="navbar-brand" href="/jyhwebstore/index.jsp">
 						<img src="/jyhwebstore/store/img/Logo.jpg" class="nav-height-img">
 					</a>
 				</div>
@@ -39,14 +35,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</c:if>
 						<c:if test="${not empty acount}">
 							<a href="javascript:out()"  class="navbar-btn navbar-right  btn-xs nav-height-a" id="out">退出</a>
-
 							<a href="/jyhwebstore/store/html/operation/information.jsp?path=index.jsp" class="navbar-btn navbar-right  btn-xs nav-height-a"  id="log">
 								${acount.aname}
 							</a>
 						</c:if>
 						
 						
-				
+				<p id="current" style="line-height:80px;font-size:20px; display:inline-block; margin-left: 30%"></p>
 				<p class="navbar-text hidden-sm hidden-xs navbar-right">您好，欢迎光临聚优汇！</p>
 			</div>
 		</nav>
@@ -165,6 +160,79 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 </html>
 <script src="/jyhwebstore/store/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="/jyhwebstore/store/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
-<script src="/jyhwebstore/store/js/regist_input_fouces.js" type="text/javascript" charset="utf-8"></script>
 <script src="/jyhwebstore/store/js/webstore.js" type="text/javascript" charset="utf-8"></script>
+<script src="/jyhwebstore/store/js/regist_input_fouces.js" type="text/javascript" charset="utf-8"></script>
+<script>
+var arr=new Array();
+arr[0]="/jyhwebstore/store/img/雪花1.png";
+arr[1]="/jyhwebstore/store/img/雪花2.png";
+arr[2]="/jyhwebstore/store/img/雪花3.png";
+arr[3]="/jyhwebstore/store/img/雪花4.png";
+$(function(){
+	setInterval(function(){
+		  new SnowFlower();
+		}, 400);
+})
+function SnowFlower(){
+		
+		this.oflower=null;
+		this.windowH = document.documentElement.clientHeight;
+		this.windowW = document.documentElement.clientWidth;
+		this.top = -100;
+		this.left=parseInt(Math.random() * (this.windowW-500));
+		this.timer =null;
+		this.step=10;
+		this.init = function(){
+		      //创建元素添加到页面
+		      this.oflower = document.createElement('img');
+		     
+		      this.oflower.className = 'flower';
+		      //设置左右随机位置
+		     this.oflower.style.position="fixed";
+		      this.oflower.style.left = this.left + 'px';
+//		      this.oflower.style.top = this.top+"px";
+		     this.oflower.style.top = this.top+"px";
+		    this.oflower.style.width = 70+"px";
+		   this.oflower.style.height = 70+"px";
+		     this.oflower.src = arr[Math.floor(Math.random()*4)];
+		     $(this.oflower).animate({top:this.windowH+'px',left:this.left+this.windowH+"px"},5000);
+		     var that = this;
+		    $(this.oflower).mouseenter(function(){
+		    	
+		    	setTimeout(function(){
+		    		that.die();
+		    	},100);
+		    });
+		      //添加到页面
+		      document.body.appendChild(this.oflower);
+		    };
+		    
+		    this.go = function(){
+		    	var that = this;
+		    	
+		    	this.timer = setInterval(function(){
+		    		$(that).animate({top:that.windowH+'px',left:this.left+"px"},5000);
+//		    		that.top += that.step;
+		    		if(that.top > 1000 )  
+		    			{
+		    				that.die();
+		    			}
+		    		if(that.left > 1000)
+		    			{
+		    			that.die();
+		    			}
+//		           that.oflower.style.top = that.top + 'px';
+		    	},600)
+		    }
+		    
+		    this.die = function(){
+		    	clearInterval(this.timer);
+		    	document.body.removeChild(this.oflower);
+		    }
+		   //调用初始化方法
+		    this.init();
+		    //调用行走方法
+		    this.go();
+	}
 
+</script>

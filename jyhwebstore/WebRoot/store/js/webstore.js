@@ -6,9 +6,11 @@ var n = 0;//信号量
   	  $('.banner>ul>li').eq(n).stop().fadeIn(500).siblings().fadeOut(500);
   	  $('.number span').eq(n).stop().addClass('current').siblings().removeClass('current');
 	  }
-	  
+
+	var i =0;
   $(function(){  
 	setInterval("currenttime()",1000);
+	
   	$(window).scroll(function(){
   		var toTop=$(window).scrollTop();
   		if(toTop>=50){
@@ -36,7 +38,7 @@ var n = 0;//信号量
   			
   			}else
 			{
-  				scrollTo(300,0);
+  				scrollTo(300,1000);
 			}
   			
   		});
@@ -222,7 +224,7 @@ function out(){
 	//去登录页面
 	function gologin(obj){
 		var	path = location.pathname;
-	 	location.href = "/jyhwebstore/store/html/login.jsp?path="+path;
+	 	location.href = "/jyhwebstore/store/html/login.jsp?path="+path+location.search;
  	}
  	//去产品详情页
  	function goproduct(obj)
@@ -253,3 +255,4 @@ function out(){
 		
 
  		}
+

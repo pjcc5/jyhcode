@@ -90,6 +90,7 @@
     <servlet-name>AdvServlet</servlet-name>
     <servlet-class>tan.servlet.AdvServlet</servlet-class>
   </servlet>
+
   <servlet>
     <servlet-name>CartServlet</servlet-name>
     <servlet-class>tan.servlet.CartServlet</servlet-class>
@@ -104,6 +105,18 @@
 
 
 
+
+
+  <!-- 图片上传的servlet -->
+  <servlet>
+    <servlet-name>UploadServlet</servlet-name>
+    <servlet-class>mao.soft.web.servlet.UploadServlet</servlet-class>
+  </servlet>
+   <servlet-mapping>
+    <servlet-name>UploadServlet</servlet-name>
+    <url-pattern>/uploadServlet</url-pattern>
+  </servlet-mapping>
+  <!-- =============================================================================================== -->
 
 
 	 <!-- 加载更多的商品servlet -->
@@ -146,6 +159,7 @@
     <servlet-name>AdvServlet</servlet-name>
     <url-pattern>/advServlet</url-pattern>
   </servlet-mapping>
+
   <servlet-mapping>
     <servlet-name>CartServlet</servlet-name>
     <url-pattern>/cartservlet</url-pattern>
@@ -155,6 +169,7 @@
     <url-pattern>/operationcartservlet</url-pattern>
   </servlet-mapping>
   
+
 
 <!-- 字符转码 -->
 	  <filter>

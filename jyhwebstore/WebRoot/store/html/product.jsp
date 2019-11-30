@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <html>
   <head>
     
@@ -21,16 +22,30 @@
 						<span class="glyphicon glyphicon-home "></span>
 						聚优汇首页
 					</a>
-
+					
 				</div>
 
 
 				<div class=" navbar-right" id="myNav">
 					<ul class="nav navbar-nav">
 
-						<li class=""><a href="/jyhwebstore/store/html/login.jsp?path=/jyhwebstore/store/html/product.jsp">登录</a></li>
-						<li><a href="/jyhwebstore/store/html/regist.jsp?path=/jyhwebstore/store/html/product.jsp">注册</a></li>
-						<li><a href="/jyhwebstore/store/html/order.jsp?path=/jyhwebstore/store/html/product.jsp"><span class="glyphicon glyphicon-list-alt"></span> 我的订单</a></li>
+							
+						<li><a id="current"></a></li>
+						
+						<c:if test="${empty acount}">
+							<li class=""><a href="javascript:gologin(this);" >登录</a></li>
+						</c:if>
+						<c:if test="${not empty acount}">
+						<li>	<a href="/jyhwebstore/store/html/operation/information.jsp?path=index.jsp" id="log" style="color:red;">
+								${acount.aname }
+									
+								</a>
+								<li>	<a href="javascript:out()" id="out">退出</a></li>
+						</li>
+						</c:if>
+						
+						<li><a href="/jyhwebstore/store/html/regist.jsp">注册</a></li>
+						<li><a href="/jyhwebstore/store/html/cart.jsp"><span class="glyphicon glyphicon-list-alt"></span> 我的订单</a></li>
 
 					</ul>
 				</div>
@@ -41,8 +56,8 @@
 		<section>
 			<div class="header-bp">
 				<div class="logo">
-					<a href="index.html" class="hd-logo"><img src="/jyhwebstore/store/img/Logo.png" /></a>
-					<a href="index.html" class="hd-slogan"><img src="/jyhwebstore/store/img/slogan.png" /></a>
+					<a href="/jyhwebstore/index.jsp" class="hd-logo"><img src="/jyhwebstore/store/img/Logo.png" /></a>
+					<a href="/jyhwebstore/index.jsp" class="hd-slogan"><img src="/jyhwebstore/store/img/slogan.png" /></a>
 				</div>
 
 				<div class="header-right">
@@ -57,15 +72,16 @@
 
 					<div class="search">
 						<div class="hd-search">
-							<input type="text" placeholder="请输入要搜索的内容" />
-							<a href="" class="button"><span class="glyphicon glyphicon-search"></span>
-							</a>
+							<input type="text" placeholder="请输入要搜索的内容" id="searchIn1"/>
+							<button href="javascript:;" class="button" id="searchBtn1"><span class="glyphicon glyphicon-search"></span>
+							</button>
 						</div>
 						<ul>
-							<li><a href="">饮料</a></li>
-							<li><a href="">咖啡</a></li>
-							<li><a href="">黄油</a></li>
-							<li><a href="">湿巾</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=Apple">Apple</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=oppo">oppo</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=vivo">vivo</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=三星">三星</a></li>
+						<li><a href="/jyhwebstore/store/html/search.jsp?content=华为">华为</a></li>
 						</ul>
 					</div>
 				</div>
@@ -77,12 +93,11 @@
 
 		<div class="mod">
 			<ul>
-				<li><a href="index.html">首页</a></li>
-				<li><span class="glyphicon glyphicon-menu-right"></span></li>
-				<li><a href="javascript:;">商品</a></li>
+				<li><a href="/jyhwebstore/index.jsp">首页</a></li>
 				<li><span class="glyphicon glyphicon-menu-right"></span></li>
 				<li><a href="javascript:;">手机</a></li>
-
+				<li><span class="glyphicon glyphicon-menu-right"></span></li>
+				<li><span class="goodsname"></span></li>
 			</ul>
 
 		</div>
@@ -255,4 +270,6 @@
 
 <script src="/jyhwebstore/store/js/jquery-3.4.1.js"></script>
 <script src="/jyhwebstore/store/js/bootstrap.min.js"></script>
+<script src="/jyhwebstore/store/js/jquery-transform_2d.js"></script>
+<script src="/jyhwebstore/store/js/webstore.js"></script>
 <script src="/jyhwebstore/store/js/product.js"></script>

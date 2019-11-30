@@ -262,3 +262,40 @@ function gologin(obj){
 	var	path = location.pathname;
  	location.href = "/jyhwebstore/store/html/login.jsp?path="+path;
 }
+//点击Enter键直接注册(同意协议的情况下)
+$('#useinput').keydown(function(event){
+	if(event.keyCode ==13)
+	{	
+		if($("#check").prop("checked")){
+			$("#regists").click();
+		}
+	}
+	
+   });
+$('#phone').keydown(function(event){
+	if(event.keyCode ==13)
+	{
+		if($("#check").prop("checked")){
+			$("#regists").click();
+		}
+	}
+	
+   });
+$('#valdation').keydown(function(event){
+	if(event.keyCode ==13)
+	{
+		if($("#check").prop("checked")){
+			$("#regists").click();
+		}
+	}
+	
+   });
+$('#rpass').keydown(function(event){
+	if(event.keyCode ==13)
+	{
+		if($("#check").prop("checked")){
+			$("#regists").click();
+		}
+	}
+	
+   });
