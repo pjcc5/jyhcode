@@ -9,12 +9,13 @@
 	arr[0]="/jyhwebstore/store/img/雪花1.png";
 	arr[1]="/jyhwebstore/store/img/雪花2.png";
 	arr[2]="/jyhwebstore/store/img/雪花3.png";
+	arr[3]="/jyhwebstore/store/img/雪花4.png";
 	var i =0;
   $(function(){  
 	setInterval("currenttime()",1000);
 	setInterval(function(){
 		  new SnowFlower();
-		}, 500);
+		}, 400);
   	$(window).scroll(function(){
   		var toTop=$(window).scrollTop();
   		if(toTop>=50){
@@ -262,11 +263,12 @@ function out(){
  	
  	
  	function SnowFlower(){
+ 		
  		this.oflower=null;
  		this.windowH = document.documentElement.clientHeight;
  		this.windowW = document.documentElement.clientWidth;
- 		this.top = 0;
- 		this.left=parseInt(Math.random() * this.windowW);
+ 		this.top = -100;
+ 		this.left=parseInt(Math.random() * (this.windowW-500));
  		this.timer =null;
  		this.step=10;
  		this.init = function(){
@@ -279,10 +281,17 @@ function out(){
  		      this.oflower.style.left = this.left + 'px';
 // 		      this.oflower.style.top = this.top+"px";
  		     this.oflower.style.top = this.top+"px";
- 		    this.oflower.style.width = 100+"px";
- 		   this.oflower.style.height = 100+"px";
- 		     this.oflower.src = arr[Math.floor(Math.random()*3)];
- 		     $(this.oflower).animate({top:this.windowH+'px'},7000);
+ 		    this.oflower.style.width = 70+"px";
+ 		   this.oflower.style.height = 70+"px";
+ 		     this.oflower.src = arr[Math.floor(Math.random()*4)];
+ 		     $(this.oflower).animate({top:this.windowH+'px',left:this.left+2000+"px"},8000);
+ 		     var that = this;
+ 		    $(this.oflower).mouseenter(function(){
+ 		    	
+ 		    	setTimeout(function(){
+ 		    		that.die();
+ 		    	},100);
+ 		    });
  		      //添加到页面
  		      document.body.appendChild(this.oflower);
  		    };
@@ -291,7 +300,7 @@ function out(){
  		    	var that = this;
  		    	
  		    	this.timer = setInterval(function(){
- 		    		$(that).animate({top:that.windowH+'px'},7000);
+ 		    		$(that).animate({top:that.windowH+'px'},8000);
 // 		    		that.top += that.step;
  		    		if(that.top > 1000)
  		    			{

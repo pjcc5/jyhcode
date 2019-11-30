@@ -268,6 +268,6 @@
 
 <script src="/jyhwebstore/store/js/jquery-3.4.1.js"></script>
 <script src="/jyhwebstore/store/js/bootstrap.min.js"></script>
+<script src="/jyhwebstore/store/js/jquery-transform_2d.js"></script>
 <script src="/jyhwebstore/store/js/webstore.js"></script>
-
 <script src="/jyhwebstore/store/js/product.js"></script>
