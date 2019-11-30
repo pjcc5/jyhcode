@@ -4,18 +4,16 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 
-import javax.json.Json;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
-import net.sf.json.JSON;
-import net.sf.json.JSONObject;
-import db.DbHelp;
 import mao.soft.web.dao.MaoRegisterDao;
 import mao.soft.web.dao.imp.MaoRegisterDaoImp;
 import mao.soft.web.servlet.service.RegisterService;
+import net.sf.json.JSONObject;
+import db.DbHelp;
 
 public class Register extends HttpServlet {
 
@@ -73,7 +71,7 @@ public class Register extends HttpServlet {
 			RegisterService rs = new RegisterService();
 			try {
 				boolean flags = rs.register(aname, apassword, aphone);
-				System.out.println("/jyhwebstore/resource/mao/soft/web/servlet/Register.java:==========="+flags);
+//				System.out.println("/jyhwebstore/resource/mao/soft/web/servlet/Register.java:==========="+flags);
 				if(flags)
 				{
 					String flag = "{flag:"+"true"+"}";
