@@ -52,17 +52,21 @@ public class CartServlet extends HttpServlet {
 			throws ServletException, IOException {
 		 String aid=null;
            Acount acount=(Acount) request.getSession().getAttribute("acount");
+           PrintWriter out=response.getWriter();
            if(acount!=null){
             aid=acount.getAid();
-           }
+           
 		
 		List<Cart> list=null;
 		   Connection conn=  DbHelp.getConnection();
-			list=new CartServers().selecCart("1", conn);
-			PrintWriter out=response.getWriter();
+			list=new CartServers().selecCart(aid, conn);
+			
 			JSONArray obj= JSONArray.fromObject(list);
 			System.out.println(obj);
 			out.print(obj);
+           }else{
+        	   out.print(false);
+           }
 
 	
 	}

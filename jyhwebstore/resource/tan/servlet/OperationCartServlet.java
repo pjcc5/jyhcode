@@ -169,7 +169,10 @@ this.doPost(request, response);
 		
 	}
 		PrintWriter out=response.getWriter();
-		out.print(true);	
+		if(acount!=null){
+		out.print(true);}else{
+			out.print(false);
+		}	
 		
 	}
 
