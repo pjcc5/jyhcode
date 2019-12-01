@@ -50,7 +50,7 @@ public class UploadServlet extends HttpServlet {
 			user.setSex(usex);
 			user.setUphone(uphone);
 			user.setPic("");
-			user.setAid("");
+			user.setAid("bac0b9f5-2f8b-4476-b9d3-7c68e258e02b");
 			user.setMail(umail);
 			user.setSetadd(uadd);
 			//调用service层的插入方法
@@ -75,6 +75,7 @@ public class UploadServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
 		
 //			ModifyInformationUser insert = new ModifyInformationUser();
 //			try {
@@ -123,7 +124,6 @@ public class UploadServlet extends HttpServlet {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-	}
 	
 	public void init() throws ServletException {
 		// Put your code here

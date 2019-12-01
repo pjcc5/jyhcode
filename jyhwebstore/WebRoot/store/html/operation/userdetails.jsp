@@ -172,8 +172,25 @@
 	</body>
 	<script>
 	$("#button_modify").click(function(){
-		$("#form_userinform").hide();
-		$("#form_modify").show();
+		$.get({
+			type:"post",
+			url:"/jyhwebstore/ShowUserDetails",
+			data:"",
+			success:function(result){
+				console.log(result);
+				var jsons =JSON.parse(result);
+				var picture = jsons.pic;
+				var uname = jsons.uname;
+				var birth = jsons.birth;
+				var sex = jsons.sex;
+				var phone = jsons.uphone;
+				var mail = jsons.mail;
+				var address = jsons.setadd;
+				alert(uname);
+			}
+		});
+	//	$("#form_userinform").hide();
+		//$("#form_modify").show();
 	});
 	
 	$("#button_save").click(function(){

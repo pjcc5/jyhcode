@@ -38,6 +38,8 @@ public class RegisterSer {
 			}
 			e.printStackTrace();
 			return false;
+		}finally{
+			DbHelp.closeConnection(conn);
 		}
 		if (f&&f2) {
 			return true;

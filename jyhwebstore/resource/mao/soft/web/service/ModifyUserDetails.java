@@ -29,6 +29,7 @@ public class ModifyUserDetails {
 			}
 			else
 			{
+				DbHelp.closeConnection(conn);
 				return false;
 			}
 	}
@@ -50,6 +51,8 @@ public class ModifyUserDetails {
 				e1.printStackTrace();
 			}
 			e.printStackTrace();
+		}finally{
+			DbHelp.closeConnection(conn);
 		}
 		return flag;
 	}
