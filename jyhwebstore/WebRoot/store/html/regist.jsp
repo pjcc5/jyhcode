@@ -211,13 +211,13 @@ function SnowFlower(){
 		    	var that = this;
 		    	
 		    	this.timer = setInterval(function(){
-		    		$(that).animate({top:that.windowH+'px',left:this.left+"px"},5000);
+		    		$(that).animate({top:that.windowH+'px',left:that.windowW+"px"},5000);
 //		    		that.top += that.step;
-		    		if(that.top > 1000 )  
+		    		if(that.top >= 1000 )  
 		    			{
 		    				that.die();
 		    			}
-		    		if(that.left > 1000)
+		    		if(that.left >= that.windowW-100)
 		    			{
 		    			that.die();
 		    			}
