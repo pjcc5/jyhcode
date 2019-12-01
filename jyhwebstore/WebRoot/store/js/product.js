@@ -22,7 +22,7 @@ var comid= getUrlVal('comid');
 
 	    detail=result;
 	    
-	  
+	  detail.num=1;
 
 	    
 	    $(".goodsname").html(result.comname);
@@ -39,7 +39,7 @@ var comid= getUrlVal('comid');
 	    		  color="<div class=dd><div class=\"item \" data-value=\""+result.color[i]+"\" title=\""+result.color[i]+"\"  onclick=\"changeColor(this)\">"
 	    			+" <p><span class=\"glyphicon glyphicon-ok\"></span></p>"
 	    			   		+"	<div>"
-	    			   				+"<i>\""+result.color[i]+"\"</i>"
+	    			   				+"<i>"+result.color[i]+"</i>"
 	    			   			+"</div></div></div>";
 	    	  }
 	    	   $('#choose-1').append(color);
