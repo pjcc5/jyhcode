@@ -12,9 +12,32 @@
 	<meta http-equiv="description" content="This is my page">
 <link rel="stylesheet" href="/jyhwebstore/store/css/product.css" />
 		<link rel="stylesheet" href="/jyhwebstore/store/css/bootstrap.min.css">
+		
+		<style>
+		#show{
+		width:200px;
+		height: 84px;
+		position: fixed;
+		background:orange;
+		text-align:center;
+		line-height:84px;
+		left: 50%;
+		top: 50%;
+		margin-left: -100px;
+		margin-top: -42px;
+		border-radius:8px;
+		opacity:0.6;
+		z-index:999;
+		display: none;
+		font-size: 20px;
+		font-weight: bold;
+		}
+		</style>
   </head>
   
   <body>
+  
+  <div id="show">加入成功</div>
  <nav class="navbar navbar-default">
 			<div class="container ">
 				<div class="navbar-header">
@@ -28,6 +51,7 @@
 
 				<div class=" navbar-right" id="myNav">
 					<ul class="nav navbar-nav">
+
 							
 						<li><a id="current"></a></li>
 						
@@ -45,6 +69,7 @@
 						
 						<li><a href="/jyhwebstore/store/html/regist.jsp">注册</a></li>
 						<li><a href="/jyhwebstore/store/html/cart.jsp"><span class="glyphicon glyphicon-list-alt"></span> 我的订单</a></li>
+
 					</ul>
 				</div>
 			</div>
@@ -60,12 +85,12 @@
 
 				<div class="header-right">
 
-					<div class="cart-2">
-						<a href="">
+					<div class="cart-2" onclick="gocart(this)">
+						
 							<span class="glyphicon glyphicon-shopping-cart"></span>
 							<span>购物车</span>
 
-						</a>
+						
 					</div>
 
 					<div class="search">
@@ -144,7 +169,7 @@
 						<div class="reduce"><span class="glyphicon glyphicon-triangle-bottom"></span></div>
 					</div>
 
-					<a href="javascript:" class="cart-a join">加入购物车</span></a>
+					<a href="javascript:addcart()" class="cart-a join">加入购物车</span></a>
 					<a href="javascrrpt:;" class="buy join">立即个购买<a/>
 				</div>
 				
@@ -344,3 +369,4 @@ function SnowFlower(){
 	    this.go();
 }
 </script>
+<script src="/jyhwebstore/store/js/product.js"></script>

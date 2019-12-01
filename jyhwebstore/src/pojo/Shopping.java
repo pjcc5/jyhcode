@@ -7,69 +7,79 @@ import java.util.Date;
 
 public class Shopping  implements Serializable{
 	private java.lang.String shopid;//aid
-	private java.lang.String comid;//comid
-	private java.lang.Integer count;//count
-	private Date date;//date
-	private java.lang.String test1;//test1
-	private java.lang.String test2;//test2
-	private java.lang.String test3;//test3
-	private java.lang.String test4;//test4
-	
+	private java.lang.String compic;//comid
+	private java.lang.String count;//count
+	private String date;//date
+	private java.lang.String comprice;//test1
+	private java.lang.String size;//test2
+	private java.lang.String color;//test3
+	private java.lang.String comname;//test4
+	private String uuid;
 	public java.lang.String getShopid() {
 		return shopid;
 	}
 	public void setShopid(java.lang.String shopid) {
 		this.shopid = shopid;
 	}
-	public java.lang.String getComid(){
-		return this.comid;
+	public java.lang.String getCompic() {
+		return compic;
 	}
-	public void setComid(java.lang.String comid){
-		this.comid	= comid;
+	public void setCompic(java.lang.String compic) {
+		this.compic = compic;
 	}
-	public java.lang.Integer getCount(){
-		return this.count;
+	public java.lang.String getCount() {
+		return count;
 	}
-	public void setCount(java.lang.Integer count){
-		this.count	= count;
+	public void setCount(java.lang.String count) {
+		this.count = count;
 	}
-
-	public Date getDate() {
+	public String getDate() {
 		return date;
 	}
-	public void setDate(Date date) {
+	public void setDate(String date) {
 		this.date = date;
 	}
-	public java.lang.String getTest1(){
-		return this.test1;
+	public java.lang.String getComprice() {
+		return comprice;
 	}
-	public void setTest1(java.lang.String test1){
-		this.test1	= test1;
+	public void setComprice(java.lang.String comprice) {
+		this.comprice = comprice;
 	}
-	public java.lang.String getTest2(){
-		return this.test2;
+	public java.lang.String getSize() {
+		return size;
 	}
-	public void setTest2(java.lang.String test2){
-		this.test2	= test2;
+	public void setSize(java.lang.String size) {
+		this.size = size;
 	}
-	public java.lang.String getTest3(){
-		return this.test3;
+	public java.lang.String getColor() {
+		return color;
 	}
-	public void setTest3(java.lang.String test3){
-		this.test3	= test3;
+	public void setColor(java.lang.String color) {
+		this.color = color;
 	}
-	public java.lang.String getTest4(){
-		return this.test4;
+	public java.lang.String getComname() {
+		return comname;
 	}
-	public void setTest4(java.lang.String test4){
-		this.test4	= test4;
+	public void setComname(java.lang.String comname) {
+		this.comname = comname;
+	}
+	public String getUuid() {
+		return uuid;
+	}
+	public void setUuid(String uuid) {
+		this.uuid = uuid;
 	}
 	@Override
 	public String toString() {
-		return "Shopping [shopid=" + shopid + ", comid=" + comid + ", count="
-				+ count + ", date=" + date + ", test1=" + test1 + ", test2="
-				+ test2 + ", test3=" + test3 + ", test4=" + test4 + "]";
+		return "Shopping [shopid=" + shopid + ", compic=" + compic + ", count="
+				+ count + ", date=" + date + ", comprice=" + comprice
+				+ ", size=" + size + ", color=" + color + ", comname="
+				+ comname + ", uuid=" + uuid + "]";
 	}
+	
+	
+	
+	
 	
 	
 }

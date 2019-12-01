@@ -1,5 +1,5 @@
 
-
+var detail;
 
 var pic=new Array();
 var comid= getUrlVal('comid');
@@ -19,18 +19,24 @@ var comid= getUrlVal('comid');
 			<div class="hot"><span>好评</span><span class="hot-p"><span class="glyphicon glyphicon-heart"></span>${result.detailsdot}</span>
               </div>
 	    `;
+
+	    detail=result;
+	    
+	  detail.num=1;
+
 	    
 	    $(".goodsname").html(result.comname);
+
 	    for(var i=0;i<result.color.length;i++){
 	    	 var color;
 	    	  if(i==0){
-	    	   color="<div class=dd><div class=\"item selected\" data-value="+result.color[i]+" title="+result.color[i]+" onclick=\"changeColor(this)\">"
+	    	   color="<div class=dd><div class=\"item selected\" data-value=\""+result.color[i]+"\" title=\""+result.color[i]+"\" onclick=\"changeColor(this)\">"
 	+" <p><span class=\"glyphicon glyphicon-ok\"></span></p>"
 	   		+"	<div>"
 	   				+"<i>"+result.color[i]+"</i>"
 	   			+"</div></div></div>";
 	    	  }else{
-	    		  color="<div class=dd><div class=\"item \" data-value="+result.color[i]+" title="+result.color[i]+"  onclick=\"changeColor(this)\">"
+	    		  color="<div class=dd><div class=\"item \" data-value=\""+result.color[i]+"\" title=\""+result.color[i]+"\"  onclick=\"changeColor(this)\">"
 	    			+" <p><span class=\"glyphicon glyphicon-ok\"></span></p>"
 	    			   		+"	<div>"
 	    			   				+"<i>"+result.color[i]+"</i>"
@@ -171,12 +177,15 @@ function imgchange(obj){
   	sum++;
   	if(sum>10){sum=10};
   	$('.number').val(sum);
+  	
+  	detail.num=sum;
   });
   
   $('.reduce').click(function(){
   	sum--;
   	if(sum<=0){sum=1};
   	$('.number').val(sum);
+	detail.num=sum;
   })
   
   $('.number').keyup(function(){
@@ -217,9 +226,7 @@ var pagesize=43;
 					ur=result[i].compic.replace(/50x50/g,"100x100");
 					str1="<li><img src=\""+ur+"\"class=photo alt=\"\"><p>"+result[i].comname+"</p><p>￥"+result[i].comprice+"</p><a href=product.jsp?comid="+result[i].comid+">查看详情</a></li>"
 					;
-//					str1="<li><img src=\""+ur+"\" class=photo alt=""><p>"+result[i].comname+"</p>";
-//							"<p>￥"+result[i].comprice+"</p>"+
-//							"<a href=product.html?comid="+result[i].comid+">查看详情</a></li>";
+
 					$('.floatle ul').append(str1);
 		  }
 		  }
@@ -227,36 +234,35 @@ var pagesize=43;
 	
 })();
 
-//function goodsList(){
-//		$.get('http://www.wjian.top/shop/api_goods.php',{
-//			page:page,
-//			pagesize:pagesize,
-//		},function(result){
-//			var json =JSON.parse(result);
-//			console.log(json);
-//			if(json.code != 0)
-//			{
-//			  console.log(json.message);
-//			  return;
-//			}
-//			//渲染到页面中
-//			// console.log(json);
-//			var str=``;
-//			for(var i =0; i <json.data.length;i++ )
-//			{
-//				str=`
-//				<li>
-//					<img src="${json.data[i].goods_thumb}" class="photo" alt="">
-//					<p>${json.data[i].goods_name}</p>
-//					<p>${json.data[i].price}</p>
-//					<a href="product.html?goods_id=${json.data[i].goods_id}">查看详情</a>
-//				</li>
-//				`;
-//				$('.floatle ul').append(str);
-//			}
-//		})
-//	}
-//goodsList(page,pagesize);
+
+
+function addcart(){
+	(function(){
+		$.ajax({
+			  type:"POST",
+			  url:"/jyhwebstore/operationcartservlet",
+			  data:{"detail":JSON.stringify(detail)},
+			  dataType:"json",
+			  success:function(result){
+				 if(result==true){
+					 var show=$("#show").html("加入成功").fadeIn();
+						$("#show").fadeOut(1000);
+				 }else{
+					 var show=$("#show").html("请先登录").fadeIn();
+						$("#show").fadeOut(1500);
+				 }
+
+			  }
+		})
+			  })();
+	
+	
+}
+
+function gocart(obj){
+	
+	location.href="/jyhwebstore/store/html/cart.jsp";
+}
 
 //点击搜索按钮
 $("#searchBtn1").click(function(){
@@ -265,3 +271,4 @@ $("#searchBtn1").click(function(){
 	// alert(text);
 	window.location.href=`/jyhwebstore/store/html/search.jsp?content=${text}`;
 });
+

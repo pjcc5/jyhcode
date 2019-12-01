@@ -14,7 +14,7 @@ import db.DbHelp;
 public class RegisterSer {
 	public boolean register(Connection conn,Acount acount,User user)
 	{
-		 conn = DbHelp.getConnection();
+		conn = DbHelp.getConnection();
 		UserDao ud = new UserDaoImpl();
 		AcountDao acd = new AcountDaoImpl();
 		boolean f= false;

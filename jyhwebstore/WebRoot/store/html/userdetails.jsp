@@ -174,38 +174,61 @@
 	$("#button_modify").click(function(){
 		$("#form_userinform").hide();
 		$("#form_modify").show();
-	})
+	});
+	
 	$("#button_save").click(function(){
-		$("#form_userinform").show();
-		$("#form_modify").hide();
-		var nickname = $("#input_nickname").val();
-		$("#lable_nickname").html(nickname);
-		var telephone = $("#input_phone").val();
-		$("#lable_phone").html(telephone);
-		var usermail = $("#input_mail").val();
-		$("#lable_mail").html(usermail);
-		var homeaddress=$("#input_address").val();
-		$("#lable_address").html(homeaddress);
-		var sex = $("input:radio:checked").val();
-		$("#lable_sex").html(sex);
-		var user_birth = $("#birth_year").val()+"&nbsp年&nbsp"+$("#birth_month").val()+"月&nbsp"+$("#birth_day").val()+"&nbsp日";
-		console.log(user_birth);
-		$("#lable_birth").html(user_birth);
-		
-	})
-	function show(obj){
-		var fr =new  FileReader();
-		var f = obj.files[0];
-		fr.readAsDataURL(f);
-		fr.onload=function(e){
-		var content = e.target.result;
-		//预览
-		document.getElementById("img").src=content;
-		}
-	}
-	function picselect(){
-		document.getElementById("input_picture").click();
-	}
+		if($("#input_nickname").val()==""||$("input:radio:checked").val()==""||$("#input_phone").val()==""||$("#input_mail").val()==""||$("#input_address").val()==""||$("#birth_year").val()==""||$("#birth_month").val()==""||$("#birth_day").val()=="")
+			{
+			$("#input_nickname").focus();
+			alert("抱歉昵称/出生年月/性别/电话/邮箱/住址不能为空");
+			}
+		else
+			{
+				var nickname = $("#input_nickname").val();
+				var userbirth = $("#birth_year").val()+"-"+$("#birth_month").val()+"-"+$("#birth_day").val();
+				var usersex = $("input:radio:checked").val();
+				var userphone = $("#input_phone").val();
+				var usermail = $("#input_mail").val();
+				var useradd = $("#input_address").val();
+				var reg =/^1[3-5678]\d{9}$/;
+				var mailreg = /^([a-zA-Z]|[0-9])(\w|\-)+@[a-zA-Z0-9]+\.([a-zA-Z]{2,4})$/g;
+				if(reg.test(userphone) && mailreg.test(usermail))
+				{
+					$.get({
+						type:"post",
+						url:"/jyhwebstore/uploadServlet",
+						data:{"nickname":nickname,"userbirth":userbirth,"usersex":usersex,"userphone":userphone,"usermail":usermail,"useraddress":useradd},
+						success:function(result){
+							var jsons =JSON.parse(result);
+							if(jsons.flag==true)
+							{
+								alert("修改成功！");
+								$("#form_userinform").show();
+								$("#form_modify").hide();
+							}	
+							else
+							{
+								alert("手机号或用户名已存在！");
+							}
+						}
+					});
+				}
+				else
+				{
+					if(reg.test(userphone)==false)
+					{
+						$("#input_phone").focus();
+						alert("请检查您的手机号是否正确");
+						//alert(userphone);
+					}
+					else if(!mailreg.test(usermail))
+					{
+						$("#input_mail").focus();
+						alert("请检查您的邮箱是否正确");
+					}	
+				}
+			}
+	});
 </script>
 	
 </html>

@@ -14,7 +14,7 @@ public class DateFromat {
 		return time;
 	}
 	public static Date StringFormattoDate(String date) throws ParseException{
-		if(date==null){
+		if(date==null||date.length()<=0){
 			return null;
 		}
 		SimpleDateFormat format=new SimpleDateFormat("yyyy-MM-dd HH:mm:ss");
