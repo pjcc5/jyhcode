@@ -51,13 +51,14 @@ public class RegisterService {
 			String shopid = UUID.randomUUID().toString();
 			Shopping shop = new Shopping();
 			shop.setShopid(shopid);
-			shop.setComid("");
-			shop.setCount(0);
-			shop.setDate(new Date());
-			shop.setTest1(null);
-			shop.setTest2(null);
-			shop.setTest3(null);
-			shop.setTest4(null);
+			shop.setColor("");
+			shop.setComname("");
+			shop.setDate("");
+			shop.setSize("");
+			shop.setCount("");
+			shop.setCompic("");
+			shop.setComprice("");
+			shop.setUuid("");
 			ShoppingDao shopdao = new ShoppingDaoImpl();
 			shopdao.insertShoping(shop, conn);
 			//购物车中间表
