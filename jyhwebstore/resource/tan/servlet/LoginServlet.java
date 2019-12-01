@@ -37,6 +37,7 @@ public class LoginServlet extends HttpServlet{
 		 PrintWriter out= response.getWriter();
 		String uname=object.getString("uname");
 		String upass=object.getString("upass");
+		
 		//将密码加密传到service层
 		Encryption key = new Encryption();
 		try {
@@ -48,6 +49,7 @@ public class LoginServlet extends HttpServlet{
 		//================
 		Connection conn=db.DbHelp.getConnection();
 		loginService loginservice=new loginService();
+		
 		Acount acount=loginservice.login(uname, upass, conn);
 		JSONObject returnObject=null;
 		if(acount!=null){

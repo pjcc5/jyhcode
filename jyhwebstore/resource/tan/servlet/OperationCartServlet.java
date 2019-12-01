@@ -65,10 +65,13 @@ this.doPost(request, response);
         if(acount!=null){
          aid=acount.getAid();
         }
+        
+        
+        System.out.println(aid);
         CartServers dao=new CartServers();
         List<Cart> list=null;
 		
-			list = dao.selecCart("1", conn);
+			list = dao.selecCart(aid, conn);
 			
 		
 	
@@ -98,14 +101,14 @@ this.doPost(request, response);
 						list.get(index).setCount(num);
 						System.out.println("num="+list.get(index).getCount());
 						CartDaoImpl impl=new CartDaoImpl();
-						System.out.println(impl.UpdateCart(list, conn,"1"));
+						System.out.println(impl.UpdateCart(list, conn,aid));
 						
 						
 					}else{
 	                     System.out.println("num="+num);
 						list.remove(index);
 						
-						System.out.println(dao.UpdateCart(list, conn, "1"));
+						System.out.println(dao.UpdateCart(list, conn, aid));
 					}
                             break;
 				}
@@ -127,7 +130,7 @@ this.doPost(request, response);
 	}else{
 		
 		JSONObject object=JSONObject.fromObject(detail);
-		System.out.println(object);
+		int num=object.getInt("num");
 		
 		String comname=(String) object.get("comname");
 		int comprice=object.getInt("comprice");
@@ -147,7 +150,7 @@ this.doPost(request, response);
 	  cart.setColor(color);
 	  cart.setComname(comname);
 	  cart.setComprice(comprice);
-	  cart.setCount(1);
+	  cart.setCount(num);
 	  cart.setDate(new Date());
 	 
 	  cart.setSize(size);
@@ -156,7 +159,7 @@ this.doPost(request, response);
      list.add(cart);
      CartDaoImpl impl=new CartDaoImpl();
      try {
-    	 System.out.println(dao.UpdateCart(list, conn, "1"));
+    	 System.out.println(dao.UpdateCart(list, conn,aid));
     	 DbHelp.closeConnection(conn);
 	} catch (Exception e) {
 		// TODO: handle exception
@@ -166,7 +169,10 @@ this.doPost(request, response);
 		
 	}
 		PrintWriter out=response.getWriter();
-		out.print(true);	
+		if(acount!=null){
+		out.print(true);}else{
+			out.print(false);
+		}	
 		
 	}
 

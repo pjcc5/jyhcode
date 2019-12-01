@@ -22,7 +22,7 @@ var comid= getUrlVal('comid');
 
 	    detail=result;
 	    
-	  
+	  detail.num=1;
 
 	    
 	    $(".goodsname").html(result.comname);
@@ -39,7 +39,7 @@ var comid= getUrlVal('comid');
 	    		  color="<div class=dd><div class=\"item \" data-value=\""+result.color[i]+"\" title=\""+result.color[i]+"\"  onclick=\"changeColor(this)\">"
 	    			+" <p><span class=\"glyphicon glyphicon-ok\"></span></p>"
 	    			   		+"	<div>"
-	    			   				+"<i>\""+result.color[i]+"\"</i>"
+	    			   				+"<i>"+result.color[i]+"</i>"
 	    			   			+"</div></div></div>";
 	    	  }
 	    	   $('#choose-1').append(color);
@@ -177,12 +177,15 @@ function imgchange(obj){
   	sum++;
   	if(sum>10){sum=10};
   	$('.number').val(sum);
+  	
+  	detail.num=sum;
   });
   
   $('.reduce').click(function(){
   	sum--;
   	if(sum<=0){sum=1};
   	$('.number').val(sum);
+	detail.num=sum;
   })
   
   $('.number').keyup(function(){
@@ -241,11 +244,19 @@ function addcart(){
 			  data:{"detail":JSON.stringify(detail)},
 			  dataType:"json",
 			  success:function(result){
-				 console.log(result);
+				 if(result==true){
+					 var show=$("#show").html("加入成功").fadeIn();
+						$("#show").fadeOut(1000);
+				 }else{
+					 var show=$("#show").html("请先登录").fadeIn();
+						$("#show").fadeOut(1500);
+				 }
 
 			  }
 		})
 			  })();
+	
+	
 }
 
 function gocart(obj){

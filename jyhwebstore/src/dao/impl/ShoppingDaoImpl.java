@@ -27,13 +27,14 @@ public class ShoppingDaoImpl implements ShoppingDao{
 				while(rs.next()){
 					Shopping shopping=new Shopping();
 					shopping.setShopid(rs.getString("shopid"));
-					shopping.setComid(rs.getString("comid"));
-					shopping.setCount(rs.getInt("count"));
-					shopping.setDate(rs.getTimestamp("date"));
-					shopping.setTest1(rs.getString("test1"));
-					shopping.setTest2(rs.getString("test2"));
-					shopping.setTest3(rs.getString("test3"));
-					shopping.setTest4(rs.getString("test4"));
+					shopping.setColor(rs.getString("color"));
+					shopping.setComname(rs.getString("comname"));
+					shopping.setCompic(rs.getString("compic"));
+					shopping.setComprice(rs.getString("comprice"));
+					shopping.setCount(rs.getString("count"));
+					shopping.setDate(rs.getString("date"));
+					shopping.setSize(rs.getString("size"));
+					shopping.setUuid(rs.getString("uuid"));
 				   list.add(shopping);
 				}
 				return list;
@@ -59,13 +60,14 @@ public class ShoppingDaoImpl implements ShoppingDao{
 				if(rs.next()){
 					Shopping shopping=new Shopping();
 					shopping.setShopid(rs.getString("shopid"));
-					shopping.setComid(rs.getString("comid"));
-					shopping.setCount(rs.getInt("count"));
-					shopping.setDate(rs.getTimestamp("date"));
-					shopping.setTest1(rs.getString("test1"));
-					shopping.setTest2(rs.getString("test2"));
-					shopping.setTest3(rs.getString("test3"));
-					shopping.setTest4(rs.getString("test4"));
+					shopping.setColor(rs.getString("color"));
+					shopping.setComname(rs.getString("comname"));
+					shopping.setCompic(rs.getString("compic"));
+					shopping.setComprice(rs.getString("comprice"));
+					shopping.setCount(rs.getString("count"));
+					shopping.setDate(rs.getString("date"));
+					shopping.setSize(rs.getString("size"));
+					shopping.setUuid(rs.getString("uuid"));
 				   return shopping;
 				}
 			
@@ -82,16 +84,17 @@ public class ShoppingDaoImpl implements ShoppingDao{
 		}
 
 			if(!conn.isClosed()){
-				String sql="insert into shopping values(?,?,?,?,?,?,?,?) ";
+				String sql="insert into shopping values(?,?,?,?,?,?,?,?,?) ";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, shoping.getShopid());
-				ps.setString(2, shoping.getComid());
-				ps.setInt(3, shoping.getCount());
-				ps.setTimestamp(4, new Timestamp(shoping.getDate().getTime()));
-			    ps.setString(5, shoping.getTest1());
-			    ps.setString(6, shoping.getTest2());
-			    ps.setString(7, shoping.getTest3());
-			    ps.setString(8, shoping.getTest4());
+				ps.setString(2, shoping.getCompic());
+				ps.setString(3, shoping.getCount());
+				ps.setString(4, shoping.getDate());
+				ps.setString(5, shoping.getComprice());
+				ps.setString(6, shoping.getSize());
+				ps.setString(7, shoping.getColor());
+				ps.setString(8, shoping.getComname());
+				ps.setString(9, shoping.getUuid());
 			    int rs=ps.executeUpdate();
 			    if(rs>0){
 			    	return true;
@@ -111,6 +114,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 			String sql="delete from shopping where shopid=?";
 			PreparedStatement ps=conn.prepareStatement(sql);
 			ps.setString(1, aid);
+			
 			 int rs=ps.executeUpdate();
 			 if(rs>0){
 				 return true;
@@ -127,16 +131,17 @@ public class ShoppingDaoImpl implements ShoppingDao{
 		}
 	
 			if(!conn.isClosed()){
-				String sql="update shopping set comid=?,count=?,datees=?,test1=?,test2=?,test3=?,test4=? where shopid=?";
+				String sql="update shopping set compic=?,count=?,datees=?,comprice=?,size=?,color=?,comname=?,uuid=? where shopid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
-				ps.setString(1, shoping.getComid());
-				ps.setInt(2, shoping.getCount());
-				ps.setTimestamp(3, new Timestamp(shoping.getDate().getTime()));
-				ps.setString(4, shoping.getTest1());
-				ps.setString(5, shoping.getTest2());
-				ps.setString(6, shoping.getTest3());
-				ps.setString(7, shoping.getTest4());
-				ps.setString(8, shoping.getShopid());
+				ps.setString(1, shoping.getCompic());
+				ps.setString(2, shoping.getCount());
+				ps.setString(3, shoping.getDate());
+				ps.setString(4, shoping.getComprice());
+				ps.setString(5, shoping.getSize());
+				ps.setString(6, shoping.getColor());
+				ps.setString(7, shoping.getComname());
+				ps.setString(8, shoping.getUuid());
+				ps.setString(9, shoping.getShopid());
 				int rs=ps.executeUpdate();
 				if(rs>0){
 					return true;
