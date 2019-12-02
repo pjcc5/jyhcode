@@ -6,7 +6,6 @@ import java.sql.ResultSet;
 import java.util.ArrayList;
 import java.util.List;
 
-import pojo.AddTab;
 import pojo.Address;
 import dao.AddressDao;
 
@@ -20,7 +19,7 @@ public class AddressDaoImpl implements AddressDao{
 			return false;
 		}
 		else {
-			String sql = "insert into address(aid,isdefault,province,town,county,addressdetail,test1,test2,test3) values(?,?,?,?,?,?,?,?,?)";
+			String sql = "insert into address(aid,isdefault,province,town,county,addressdetail,recivephone,recivename,test3) values(?,?,?,?,?,?,?,?,?)";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, address.getAid());
 			ps.setInt(2, address.getIsdefault());
@@ -28,8 +27,8 @@ public class AddressDaoImpl implements AddressDao{
 			ps.setString(4, address.getTown());
 			ps.setString(5, address.getCounty());
 			ps.setString(6, address.getAddressdetail());
-			ps.setString(7, address.getTest1());
-			ps.setString(8, address.getTest2());
+			ps.setString(7, address.getRecivename());
+			ps.setString(8, address.getRecivephone());
 			ps.setString(9, address.getTest3());
 			
 			int rs = ps.executeUpdate();
@@ -84,9 +83,9 @@ public class AddressDaoImpl implements AddressDao{
 				address.setTown(rs.getString("town"));
 				address.setCounty(rs.getString("county"));
 				address.setAddressdetail(rs.getString("addressdetail"));
-				address.setTest1(rs.getString("test1"));
-				address.setTest2(rs.getString("test2"));
-				address.setTest2(rs.getString("test3"));
+				address.setRecivephone(rs.getString("recivephone"));
+				address.setRecivename(rs.getString("recivename"));
+				address.setTest3(rs.getString("test3"));
 				list.add(address);
 			}
 			return list;
@@ -112,7 +111,6 @@ public class AddressDaoImpl implements AddressDao{
 				return true;
 			}
 		}
-		
 		return false;
 	}
 

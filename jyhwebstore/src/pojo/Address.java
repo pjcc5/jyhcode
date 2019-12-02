@@ -10,8 +10,8 @@ public class Address implements Serializable{
 	private String town;
 	private String county;
 	private String addressdetail;
-	private String test1;
-	private String test2;
+	private String recivename;
+	private String recivephone;
 	private String test3;
 	public int getAddressid() {
 		return addressid;
@@ -55,35 +55,31 @@ public class Address implements Serializable{
 	public void setAddressdetail(String addressdetail) {
 		this.addressdetail = addressdetail;
 	}
-	public String getTest1() {
-		return test1;
-	}
-	public void setTest1(String test1) {
-		this.test1 = test1;
-	}
-	public String getTest2() {
-		return test2;
-	}
-	public void setTest2(String test2) {
-		this.test2 = test2;
-	}
 	public String getTest3() {
 		return test3;
 	}
 	public void setTest3(String test3) {
 		this.test3 = test3;
 	}
+	public String getRecivename() {
+		return recivename;
+	}
+	public void setRecivename(String recivename) {
+		this.recivename = recivename;
+	}
+	public String getRecivephone() {
+		return recivephone;
+	}
+	public void setRecivephone(String recivephone) {
+		this.recivephone = recivephone;
+	}
 	@Override
 	public String toString() {
 		return "Address [addressid=" + addressid + ", aid=" + aid
 				+ ", isdefault=" + isdefault + ", province=" + province
 				+ ", town=" + town + ", county=" + county + ", addressdetail="
-				+ addressdetail + ", test1=" + test1 + ", test2=" + test2
-				+ ", test3=" + test3 + "]";
+				+ addressdetail + ", recivename=" + recivename
+				+ ", recivephone=" + recivephone + ", test3=" + test3 + "]";
 	}
-	
-	
-	
-	
 	
 }

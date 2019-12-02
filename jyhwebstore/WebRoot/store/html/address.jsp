@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <input type="hidden" id="${acount.aid }" class="aid" />
         <div class="top_bar">
 			<div class="clearfix">
 				<div class="left">
@@ -183,7 +184,56 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
   </body>
 </html>
-<script src="/jyhwebstore/store/js/jquery-1.8.3.min.js"></script>
+
+<script src="/jyhwebstore/store/js/jquery.min.js"></script>
 <script src="/jyhwebstore/store/js/city.js"></script>
 <script src="/jyhwebstore/store/js/method.js"></script>
 <script src="/jyhwebstore/store/js/address.js"></script>
+
+<script>
+$(function(){
+	 var aid= $(".aid").prop("id");
+	$.get({
+		type:"get",
+		url:"/jyhwebstore/address",
+		data:"action="+"query"+"&aid="+aid,
+		datatype:"json",
+		success:function(result){
+			var json = JSON.parse(result);
+			for(var i = 0; i < json.length;i++)
+				{	
+					var isdefaut = json[i].isdefault;
+					
+					var str = `
+					<li>
+  					<div class="addr-default">默认地址</div>
+  					<div class="addr-information">
+  					<p class="nickname">收货人：<span>${acount.aname}</span> <em>收</em></p>
+  					<p class="addressname">
+  						<label>收货地址: </label>
+  						<span id="addr-prov" prov=${prov_val}>${prov_html}</span>
+  						<label> </label>
+  						<span id="addr-city" city=${city_val}>${city_html} </span>
+  						<label> </label>
+  					<span id="addr-country" country=${country_val}>${country_html}</span>
+  						<label> </label>
+  						<em>${detailaddr}</em>
+  					</p>
+  					<p class="call" >手机号: <span>${acount.aphone}</span></p>
+  					</div>
+  				<div class="opera">
+  					<div class="addr-edit" onclick="edit(this)">编辑</div>
+  					<div class="set-default" onclick="defaultAddr(this)">设为默认地址</div>
+  					<div class="delete" onclick="removeAddr(this)">删除</div>
+  				</div>	
+  				</li>
+					
+					`;
+				}
+			
+		}
+	
+	});
+})
+
+</script>

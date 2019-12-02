@@ -10,7 +10,7 @@ import db.DbHelp;
 import pojo.Address;
 
 public class AddressService {
-	public List<Address> getAddressByAid(String aid){
+	public static List<Address> getAddressByAid(String aid){
 		Connection conn = DbHelp.getConnection();
 		List<Address>  list = new ArrayList<Address>();
 		try {
