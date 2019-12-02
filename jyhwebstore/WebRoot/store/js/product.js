@@ -244,7 +244,13 @@ function addcart(){
 			  data:{"detail":JSON.stringify(detail)},
 			  dataType:"json",
 			  success:function(result){
-				 console.log(result);
+				 if(result==true){
+					 var show=$("#show").html("加入成功").fadeIn();
+						$("#show").fadeOut(1000);
+				 }else{
+					 var show=$("#show").html("请先登录").fadeIn();
+						$("#show").fadeOut(1500);
+				 }
 
 			  }
 		})

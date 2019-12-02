@@ -12,9 +12,32 @@
 	<meta http-equiv="description" content="This is my page">
 <link rel="stylesheet" href="/jyhwebstore/store/css/product.css" />
 		<link rel="stylesheet" href="/jyhwebstore/store/css/bootstrap.min.css">
+		
+		<style>
+		#show{
+		width:200px;
+		height: 84px;
+		position: fixed;
+		background:orange;
+		text-align:center;
+		line-height:84px;
+		left: 50%;
+		top: 50%;
+		margin-left: -100px;
+		margin-top: -42px;
+		border-radius:8px;
+		opacity:0.6;
+		z-index:999;
+		display: none;
+		font-size: 20px;
+		font-weight: bold;
+		}
+		</style>
   </head>
   
   <body>
+  
+  <div id="show">加入成功</div>
  <nav class="navbar navbar-default">
 			<div class="container ">
 				<div class="navbar-header">

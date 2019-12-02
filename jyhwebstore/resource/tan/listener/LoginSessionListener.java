@@ -80,7 +80,7 @@ public class LoginSessionListener implements HttpSessionAttributeListener{
 				if (map.get(personInfo.getAname()) != null) {
 					
 					HttpSession session = map.get(personInfo.getAname());
-					session.removeAttribute("personInfo");
+					session.removeAttribute("acount");
 					session.setAttribute("msg", "您的帐号已经在其他机器上登录，您被迫下线。");
 
 				}
