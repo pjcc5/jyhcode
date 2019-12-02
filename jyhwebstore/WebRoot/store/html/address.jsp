@@ -113,20 +113,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div>
 				<p>
 						<span class="glyphicon glyphicon-heart"></span> 我的关注
-					</p>
+				</p>
 					<a href="">关注商品</a>
-				
-					
 				</div>
 				
-				<div>
-				<p>
-						<span class="glyphicon glyphicon-grain"></span> 我的关注
-					</p>
-					<a href="">在线退换货</a>
-				
-					
-				</div>
 			</div>
 			  <div class="address">
 			  	<div class="addr-header">

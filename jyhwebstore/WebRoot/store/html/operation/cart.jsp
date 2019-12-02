@@ -40,6 +40,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 	             <div class=" navbar-right" id="myNav">
   	      <ul class="nav navbar-nav ">
+ 	     			 <li>	
+						<a id="current"></a>
+					</li>
   	        	<c:if test="${empty acount}">
   	        		<li>
 						<a href="javascript:gologin(this)" id="log">

@@ -250,6 +250,9 @@ function addcart(){
 				 }else{
 					 var show=$("#show").html("请先登录").fadeIn();
 						$("#show").fadeOut(1500);
+						setTimeout(function(){
+							gologin();
+						},1500);
 				 }
 
 			  }

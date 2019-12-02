@@ -474,9 +474,9 @@ function SnowFlower(){
 	{
 		var a = $(".floatitem").fadeIn(200);
 		a.children(".ite1").animate({"top":"10%","left":"30%"},500);
-		a.children(".ite2").animate({"top":"-30.4%","left":"50.5%"},500);
-		a.children(".ite3").animate({"top":"-29.5%","left":"30%"},500);
-		a.children(".ite4").animate({"top":"-70%","left":"50.5%"},500);
+		a.children(".ite2").animate({"top":"-29.8%","left":"50.5%"},500);
+		a.children(".ite3").animate({"top":"-27.5%","left":"30%"},500);
+		a.children(".ite4").animate({"top":"-67.5%","left":"50.5%"},500);
 	}
 	function hidemodol(obj){
 		$(obj).children(".ite1").animate({"top":"-4000"},500);
@@ -485,33 +485,7 @@ function SnowFlower(){
 		$(obj).children(".ite4").animate({"top":"4000"},500);
 		
 		$(obj).stop().fadeOut(500);
-		setTimeout(function(){
-			if(!$(obj).is(":animated"))
-			{
-			$(obj).children(".ite1").css({
-				
-				"top":"10%",
-				"left":"30%",
-				"background":"blue",
-			});
-			$(obj).children(".ite2").css({
-				"top":"-30.4%",
-				"left":"50.5%",
-				"background":"orange",
-			});
-			$(obj).children(".ite3").css({
-				"top":"-29.5%",
-				"left":"30%",
-				"background":"pink",
-			});
-			$(obj).children(".ite4").css({
-				"top":"-70%",
-				"left":"50.5%",
-				"background":"red",
-			});
-			}
 		
-		},400)
 		
 	}
 </script>
