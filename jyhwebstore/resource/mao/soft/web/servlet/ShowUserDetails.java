@@ -1,11 +1,12 @@
 package mao.soft.web.servlet;
 
-import java.awt.image.SampleModel;
+import java.io.FileInputStream;
 import java.io.IOException;
 import java.io.PrintWriter;
 import java.util.Date;
 
 import javax.servlet.ServletException;
+import javax.servlet.ServletOutputStream;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
@@ -44,7 +45,6 @@ public class ShowUserDetails extends HttpServlet {
 			User user = userinfor.selectUserByAid(aid);
 			Date births = (Date)user.getBirth();
 			user.setBirth(births);
-			System.out.println("我的时间日期："+user.getBirth());
 			if(user.getMail().equalsIgnoreCase(""))
 			{
 				user.setMail("nulls");
@@ -61,12 +61,17 @@ public class ShowUserDetails extends HttpServlet {
 			{
 				user.setSex("nulls");
 			}
+			
+			String pic = user.getPic();
+			pic =  request.getContextPath()+"/upload/"+pic;
+			request.getSession().setAttribute("pic", pic);
+			System.out.println("图片路径"+pic);
 			//帮助类，重写user中的birth属性，将原来的date属性改为String属性，方便传到前端
 			UserDate udate = new UserDate();
 			udate.setAid(user.getAid());
 			udate.setBirth(user.getBirth().toString());
 			udate.setMail(user.getMail());
-			udate.setPic(user.getPic());
+			udate.setPic(pic);
 			udate.setSetadd(user.getSetadd());
 			udate.setSex(user.getSex());
 			udate.setUname(user.getUname());
