@@ -3,7 +3,7 @@ var detail;
 
 var pic=new Array();
 var comid= getUrlVal('comid');
-
+console.log("product.jsp");
 (function(){
 	
   $.ajax({
@@ -28,6 +28,7 @@ var comid= getUrlVal('comid');
 	    $(".goodsname").html(result.comname);
 
 	    for(var i=0;i<result.color.length;i++){
+	    	
 	    	 var color;
 	    	  if(i==0){
 	    	   color="<div class=dd><div class=\"item selected\" data-value=\""+result.color[i]+"\" title=\""+result.color[i]+"\" onclick=\"changeColor(this)\">"
