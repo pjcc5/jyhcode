@@ -19,9 +19,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<style>
 	    
 	</style>
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 <link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/bootstrap.css"/>
 <link rel="stylesheet" href="/jyhwebstore/store/css/cart.css"/>
   </head>
@@ -74,23 +71,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="main">
 	<div class="content">
 		<div class="cart-header" >
-			<a href="">
+			<a href="/jyhwebstore/index.jsp">
 			<img src="/jyhwebstore/store/img/Logo.png"/>
 			<p>购物车</p></a>
 			 <div class="input-group  sear " >
-  	        <input type="text" class="form-control" placeholder="请输入关键词"/>
+  	        <input type="text" class="form-control search-input" placeholder="请输入关键词"/>
   	        
-  	        <div class="input-group-btn">
-  	          <button class=" btn btn-primary">
+  	        <div class="input-group-btn" >
+  	          <button class=" btn btn-primary" onclick="gosearch()">
   	            <span class="glyphicon glyphicon-search"></span> 	                     
   	          </button>
   	          </div>
-  	          
-  	      
   	      </div> 
 		</div>
-		
-		
 		
 	<div class="list-header">
 			<ul >
@@ -237,3 +230,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script src="/jyhwebstore/store/js/webstore.js"></script>
 <script src="/jyhwebstore/store/js/cart.js"></script>
+<script>
+//搜索按钮
+function gosearch(){
+	
+	// console.log("点击了搜索");
+	var searchText = $('.search-input').val();
+	console.log(searchText);
+	var text =encodeURI(searchText);
+	// alert(text);
+	window.location.href=`/jyhwebstore/store/html/search.jsp?content=`+searchText;
+};
+
+</script>

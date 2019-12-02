@@ -324,7 +324,7 @@ function getUrlVal(property){
 					var detailsdot =json[i].detailsdot;
 					var comid = json[i].comid;
 					var str=`
-							<div class="goods">
+							<div class="goods" onmouseover="bordershadow(this)" onmouseout="clearshadow(this)">
 							<img src=\"`+compic+`
 							" alt="">
 							<p class="goodsname">`+comname+`</p>

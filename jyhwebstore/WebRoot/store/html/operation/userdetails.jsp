@@ -65,7 +65,8 @@
 					<td style="font-size: 20px;">头像：</td>
 					<td>
 						<!-- <input id="input_picture" type="file" style="height: 30px;"/> -->
-						<img style="height: 150px;width: 150px;" src="" id="uimg"/>
+						<img style="height: 150px;width: 150px;" src="${pic}" id="uimg"/>
+						
 					</td>
 				</tr>
 				<tr>
@@ -113,7 +114,7 @@
 				<tr>
 					<td style="font-size: 20px;">头像：</td>
 					<td>
-						<img src="" width="150xp" height="150px" id="img" onclick="picselect()"/>
+						<img src="${pic}" width="150xp" height="150px" id="img" onclick="picselect()"/>
 					</td>
 					<input id="input_picture" type="file" style="height: 30px;display: none;" onchange="show(this)"/>
 				</tr>
@@ -165,7 +166,7 @@
 			</table>
 			<input type="button" value="保存" id="button_save" style="width: 70px;height: 40px;margin-left: 150px;"/>
 		</form>
-		<div style="background: #A6E1EC;width: 200px;height: 100px;text-align: center;display: none;font-size: 20px;margin-left: 700px;margin-top: 300px;line-height: 100px;" id="message">
+		<div style="background: #A6E1EC;width: 200px;height: 100px;text-align: center;display: none;font-size: 20px;margin-left: 700px;margin-top: -300px;line-height: 100px;" id="message">
 			<span>修改成功！</span>
 		</div>
 		<script src="/jyhwebstore/store/js/user_birth.js"></script>
@@ -174,10 +175,12 @@
 		<script src="/jyhwebstore/store/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 	<script>
+	//显示信息
 	myajax();
 	function myajax()
 	{
 		$.get({
+			async:false,
 			type:"post",
 			url:"/jyhwebstore/ShowUserDetails",
 			data:"",
@@ -212,6 +215,15 @@
 							$("input[type='radio']").eq(1).attr("checked",true);
 						}
 					}	
+					//if(picture.substring(picture.length-3)=="nulls" || picture.substring(picture.length-3)!="jpg")
+				//	{
+						
+				//	}
+				//	else
+				//	{
+					//	$("#uimg").attr("src",""+picture);
+					//	alert(picture);
+					//}
 					$("#input_nickname").val(uname);
 					$("#input_phone").val(phone);
 					$("#input_mail").val(mail);
@@ -236,6 +248,21 @@
 			}
 		});
 	}
+	var content;
+	function show(obj){
+		var fr =new  FileReader();
+		var f = obj.files[0];
+		fr.readAsDataURL(f);
+		fr.onload=function(e){
+		content = e.target.result;
+		//预览
+		document.getElementById("img").src=content;
+		}
+	}
+	function picselect(){
+		document.getElementById("input_picture").click();
+	}
+	//保存信息
 	$("#button_save").click(function(){
 		if($("#input_nickname").val()==""||$("input:radio:checked").val()==""||$("#input_phone").val()==""||$("#input_mail").val()==""||$("#input_address").val()==""||$("#birth_year").val()==""||$("#birth_month").val()==""||$("#birth_day").val()=="")
 			{
@@ -257,7 +284,7 @@
 					$.get({
 						type:"post",
 						url:"/jyhwebstore/uploadServlet",
-						data:{"nickname":nickname,"userbirth":userbirth,"usersex":usersex,"userphone":userphone,"usermail":usermail,"useraddress":useradd},
+						data:{"nickname":nickname,"userbirth":userbirth,"usersex":usersex,"userphone":userphone,"usermail":usermail,"useraddress":useradd,"picture":content},
 						success:function(result){
 							var jsons =JSON.parse(result);
 							if(jsons.flag==true)

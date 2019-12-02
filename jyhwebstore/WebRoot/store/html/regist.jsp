@@ -9,7 +9,6 @@
 		<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/bootstrap.css" />
 		<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/miancss/base.css" />
 		<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/regist_jyh.css" />
-		
 		<title>聚优汇注册</title>
 	</head> 
 	<script type="text/javascript">
@@ -163,5 +162,4 @@
 <script src="/jyhwebstore/store/js/webstore.js" type="text/javascript" charset="utf-8"></script>
 <script src="/jyhwebstore/store/js/regist_input_fouces.js" type="text/javascript" charset="utf-8"></script>
 <script>
-
 </script>
