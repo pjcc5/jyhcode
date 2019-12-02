@@ -174,6 +174,7 @@ this.doPost(request, response);
 			out.print(false);
 		}	
 		
+		DbHelp.closeConnection(conn);//关闭连接
 	}
 
 }

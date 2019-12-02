@@ -196,10 +196,10 @@
 						</div>
 					</a>
 					<input type="hidden" value="`+comid+`" id="${igd.comid}" />
-					<button type="button" class="btn btn-danger addincart"><span class="
-							glyphicon glyphicon-download-alt" onclick="addtocart(this)></span>　加入购物车</button>
-					<button type="button" class="btn btn-danger addincart"><span class="
-							glyphicon glyphicon-usd" onclick="justbuy(this)"></span>　立即购买</button>
+					<button type="button" class="btn btn-danger addincart" onclick="goproduct(this)"><span class="
+							glyphicon glyphicon-download-alt" ></span>　加入购物车</button>
+					<button type="button" class="btn btn-danger addincart" onclick="goproduct(this)">
+					<span class="glyphicon glyphicon-usd" ></span>　立即购买</button>
 							
 						</div>
 					
@@ -358,9 +358,9 @@
 								</div>
 							</a>
 							<input type="hidden" value="`+comid+`" id="comid" />
-							<button type="button" class="btn btn-danger addincart"><span class="
-									glyphicon glyphicon-download-alt" onclick="addtocart(this)"></span>　加入购物车</button>
-							<button type="button" class="btn btn-danger addincart"><span class="
+							<button type="button" class="btn btn-danger addincart" onclick="goproduct(this)"><span class="
+									glyphicon glyphicon-download-alt" ></span>　加入购物车</button>
+							<button type="button" class="btn btn-danger addincart" onclick="goproduct(this)" ><span class="
 									glyphicon glyphicon-usd"></span>　立即购买</button>
 									
 								</div>

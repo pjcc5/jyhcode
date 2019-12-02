@@ -3,14 +3,12 @@ package mao.soft.web.service;
 import java.sql.Connection;
 import java.sql.SQLException;
 
-import org.apache.log4j.varia.Roller;
-
-import dao.UserDao;
-import dao.impl.UserDaoImpl;
-import db.DbHelp;
 import mao.soft.web.dao.SelecUserPhoneAndNameDao;
 import mao.soft.web.dao.imp.SelecUserPhoneAndNameDaoImpl;
 import pojo.User;
+import dao.UserDao;
+import dao.impl.UserDaoImpl;
+import db.DbHelp;
 
 public class ModifyUserDetails {
 	//查看修改的手机号和昵称是否存在
