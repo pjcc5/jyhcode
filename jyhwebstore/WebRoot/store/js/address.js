@@ -153,11 +153,11 @@ function defaultAddr(obj){
 			var prov_val=prov.val();
 			var prov_html=prov.html();
 			
-			var city_val=prov.val();
-			var city_html=prov.html();
+			var city_val=city.val();
+			var city_html=city.html();
 			
-			var country_val=prov.val();
-			var country_html=prov.html();
+			var country_val=country.val();
+			var country_html=country.html();
 			
 			var str=`
 			<li>

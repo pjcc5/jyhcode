@@ -255,4 +255,32 @@ function out(){
 		
 
  		}
-
+ 	var timer =null;
+ 	//鼠标移入显示内边框
+ 	function bordershadow(obj){
+ 		
+ 		var r = Math.floor(Math.random()*256);
+	 	var g = Math.floor(Math.random()*256);
+	 	var b = Math.floor(Math.random()*256);
+	 	$(obj).css({
+	 			"box-shadow":"0 0 50px "+"rgb("+r+","+g+","+b+")"+" inset",
+	 		});
+ 		timer = setInterval(function(){
+ 			r = Math.floor(Math.random()*256);
+ 	 		g = Math.floor(Math.random()*256);
+ 	 		b = Math.floor(Math.random()*256);
+ 			$(obj).css({
+ 	 			"box-shadow":"0 0 50px "+"rgb("+r+","+g+","+b+")"+" inset",
+ 	 			"cursor":"defalut",
+ 	 		});
+ 		},300);
+ 		
+ 		
+ 	}
+ 	//鼠标移入显示内边框
+	 	function clearshadow(obj){
+	 		clearInterval(timer);
+	 		$(obj).css({
+	 			"box-shadow":"0 0 0px",
+	 		});
+	 	}

@@ -37,10 +37,10 @@ var comid= getUrlVal('comid');
 	   				+"<i>"+result.color[i]+"</i>"
 	   			+"</div></div></div>";
 	    	  }else{
-	    		  color="<div class=dd><div class=\"item \" data-value=\""+result.color[i]+"\" title=\""+result.color[i]+"\"  onclick=\"changeColor(this)\">"
+	    		  color="<div class=dd><div class=\"item \" data-value=\""+result.color[i]+"(无货)"+"\" title=\""+result.color[i]+"\"  onclick=\"changeColor(this)\">"
 	    			+" <p><span class=\"glyphicon glyphicon-ok\"></span></p>"
 	    			   		+"	<div>"
-	    			   				+"<i>"+result.color[i]+"</i>"
+	    			   				+"<i>"+result.color[i]+"(无货)"+"</i>"
 	    			   			+"</div></div></div>";
 	    	  }
 	    	   $('#choose-1').append(color);
@@ -56,10 +56,10 @@ var comid= getUrlVal('comid');
 	   		+"	<div>"
 	   				+"<i>"+result.size[i]+"</i>"
 	   			+"</div></div></div>";}else{
-	   				size="<div class=dd><div class=item data-value="+result.size[i]+" title="+result.size[i]+" onclick=\"changeSize(this)\">"
+	   				size="<div class=dd><div class=item data-value="+result.size[i]+"(无货)"+" title="+result.size[i]+" onclick=\"changeSize(this)\">"
 	   				+" <p><span class=\"glyphicon glyphicon-ok\"></span></p>"
 	   				   		+"	<div>"
-	   				   				+"<i>"+result.size[i]+"</i>"
+	   				   				+"<i>"+result.size[i]+"(无货)"+"</i>"
 	   				   			+"</div></div></div>";
 	   			}
 	    	

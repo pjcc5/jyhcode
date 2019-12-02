@@ -207,7 +207,7 @@
 					<img src="img/Logo.png" alt="">
 				</div> -->
 		<c:forEach items="${igds}" var="igd" >
-					<div class="goods">
+					<div class="goods" onmouseover="bordershadow(this)" onmouseout="clearshadow(this)">
 					<img src="${igd.compic}" alt="">
 					<p class="goodsname">${igd.comname}</p>
 					<p class="pai">${igd.pai}</p>
@@ -225,8 +225,7 @@
 					<button type="button" class="btn btn-danger addincart" onclick="goproduct(this)">
 					<span class="glyphicon glyphicon-usd" ></span>　立即购买</button>
 							
-						</div>
-					
+					</div>
 		</c:forEach>
 				
 			
@@ -237,10 +236,6 @@
 			</div>
 		</section>
 		
-		
-		<!-- <section>
-			<div class="insert">ss</div>
-		</section> -->
 		<!-- 底部 -->
 		<section>
 			<div class="footer">
@@ -304,13 +299,8 @@
 									<li><a href="">帮助中心</a></li>
 								</ul>
 							</div>
-							
 						</div>
-						
-						
 					</div>
-					
-					
 					<div class="QR-codes">
 						<p class="contact"><span class="glyphicon glyphicon-phone-alt"></span>联系我们</p>
 						<img src="/jyhwebstore/store/img/QR-code.png" alt="">
@@ -364,7 +354,7 @@
 					var detailsdot =json[i].detailsdot;
 					var comid = json[i].comid;
 					var str=`
-							<div class="goods">
+							<div class="goods" onmouseover="bordershadow(this)" onmouseout="clearshadow(this)">
 							<img src=\"`+compic+`
 							" alt="">
 							<p class="goodsname">`+comname+`</p>
@@ -483,9 +473,6 @@ function SnowFlower(){
 		$(obj).children(".ite2").animate({"left":"4000"},500);
 		$(obj).children(".ite3").animate({"left":"-4000"},500);
 		$(obj).children(".ite4").animate({"top":"4000"},500);
-		
 		$(obj).stop().fadeOut(500);
-		
-		
 	}
 </script>
