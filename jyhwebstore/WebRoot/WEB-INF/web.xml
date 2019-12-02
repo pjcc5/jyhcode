@@ -121,6 +121,12 @@
     <servlet-name>ShowUserDetails</servlet-name>
     <servlet-class>mao.soft.web.servlet.ShowUserDetails</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>AddressServlet</servlet-name>
+    <servlet-class>chao.servlet.AddressServlet</servlet-class>
+  </servlet>
+
+
    <servlet-mapping>
     <servlet-name>ShowUserDetails</servlet-name>
     <url-pattern>/ShowUserDetails</url-pattern>
@@ -175,10 +181,17 @@
     <servlet-name>CartServlet</servlet-name>
     <url-pattern>/cartservlet</url-pattern>
   </servlet-mapping>
+ 
   <servlet-mapping>
     <servlet-name>OperationCartServlet</servlet-name>
     <url-pattern>/operationcartservlet</url-pattern>
   </servlet-mapping>
+  <!-- 地址页面servlet -->
+  <servlet-mapping>
+    <servlet-name>AddressServlet</servlet-name>
+    <url-pattern>/address</url-pattern>
+  </servlet-mapping>
+  
 <!-- 字符转码 -->
 	  <filter>
   	<filter-name>character</filter-name>
@@ -217,12 +230,6 @@
   	<filter-name>Indexfilter</filter-name>
   	<url-pattern>/index.jsp</url-pattern>
   	</filter-mapping>
-  	
-  	
-  	
-  	
-  	
-  	
   	
   	
 </web-app>

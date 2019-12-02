@@ -154,15 +154,15 @@ var n = 0;//信号量
 		
 	});
 // 鼠标移入全部分类显示商品分类
-$('.all-items').mouseover(function(){
-	$('.allclassify').stop().slideDown(500);
-	$('.hover-forward span').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
-	
-});
-$('.all-items').mouseleave(function(){
-	$('.allclassify').stop().slideUp(500);
-	$('.hover-forward span').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
-});
+//$('.all-items').mouseover(function(){
+//	$('.allclassify').stop().slideDown(500);
+//	$('.hover-forward span').removeClass('glyphicon-chevron-down').addClass('glyphicon-chevron-up');
+//	
+//});
+//$('.all-items').mouseleave(function(){
+//	$('.allclassify').stop().slideUp(500);
+//	$('.hover-forward span').removeClass('glyphicon-chevron-up').addClass('glyphicon-chevron-down');
+//});
 //切换下一张的方法
 function next(){
 	n++;

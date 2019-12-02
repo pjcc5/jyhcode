@@ -250,6 +250,9 @@ function addcart(){
 				 }else{
 					 var show=$("#show").html("请先登录").fadeIn();
 						$("#show").fadeOut(1500);
+						setTimeout(function(){
+							gologin();
+						},1500);
 				 }
 
 			  }
@@ -261,7 +264,7 @@ function addcart(){
 
 function gocart(obj){
 	
-	location.href="/jyhwebstore/store/html/cart.jsp";
+	location.href="/jyhwebstore/store/html/operation/cart.jsp";
 }
 
 //点击搜索按钮
