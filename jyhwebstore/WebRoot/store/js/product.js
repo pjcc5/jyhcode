@@ -261,7 +261,7 @@ function addcart(){
 
 function gocart(obj){
 	
-	location.href="/jyhwebstore/store/html/cart.jsp";
+	location.href="/jyhwebstore/store/html/operation/cart.jsp";
 }
 
 //点击搜索按钮
