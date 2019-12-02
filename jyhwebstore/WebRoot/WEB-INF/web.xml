@@ -107,7 +107,7 @@
 
 
 
-  <!-- 图片上传的servlet -->
+  <!-- 用户信息上传的servlet -->
   <servlet>
     <servlet-name>UploadServlet</servlet-name>
     <servlet-class>mao.soft.web.servlet.UploadServlet</servlet-class>
@@ -116,6 +116,17 @@
     <servlet-name>UploadServlet</servlet-name>
     <url-pattern>/uploadServlet</url-pattern>
   </servlet-mapping>
+  <!-- 用户信息的显示servlet -->
+  <servlet>
+    <servlet-name>ShowUserDetails</servlet-name>
+    <servlet-class>mao.soft.web.servlet.ShowUserDetails</servlet-class>
+  </servlet>
+   <servlet-mapping>
+    <servlet-name>ShowUserDetails</servlet-name>
+    <url-pattern>/ShowUserDetails</url-pattern>
+  </servlet-mapping>
+  
+
   <!-- =============================================================================================== -->
 
 
@@ -168,9 +179,6 @@
     <servlet-name>OperationCartServlet</servlet-name>
     <url-pattern>/operationcartservlet</url-pattern>
   </servlet-mapping>
-  
-
-
 <!-- 字符转码 -->
 	  <filter>
   	<filter-name>character</filter-name>

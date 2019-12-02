@@ -46,7 +46,7 @@ public class SelectUserByAidDaoImpl implements SelectUserByAidDao{
 		if (conn==null||conn.isClosed()) {
 			return null;
 		} else {
-			String sql = "select uname,pic,birth,sex,uphone,mail,setadd from user where aids=?";
+			String sql = "select uname,pic,birth,sex,uphone,mail,setadd,aids from user where aids=?";
 			PreparedStatement ps = conn.prepareStatement(sql);
 			ps.setString(1, aid);
 			ResultSet rs = ps.executeQuery();
@@ -59,6 +59,7 @@ public class SelectUserByAidDaoImpl implements SelectUserByAidDao{
 				user.setUphone(rs.getString("uphone"));
 				user.setMail(rs.getString("mail"));
 				user.setSetadd(rs.getString("setadd"));
+				user.setAid(rs.getString("aids"));
 				return user;
 			}else
 			{

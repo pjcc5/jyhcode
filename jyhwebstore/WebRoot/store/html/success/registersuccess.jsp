@@ -39,7 +39,6 @@
 			location.href="/jyhwebstore/index.jsp?";
 		}
 	},1000);
-		
 	});
   </script>
   <body>
