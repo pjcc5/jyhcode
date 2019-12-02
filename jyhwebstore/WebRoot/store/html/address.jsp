@@ -24,6 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
   </head>
   
   <body>
+  <input type="hidden" id="${acount.aid }" class="aid" />
         <div class="top_bar">
 			<div class="clearfix">
 				<div class="left">
@@ -113,20 +114,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div>
 				<p>
 						<span class="glyphicon glyphicon-heart"></span> 我的关注
-					</p>
+				</p>
 					<a href="">关注商品</a>
-				
-					
 				</div>
 				
-				<div>
-				<p>
-						<span class="glyphicon glyphicon-grain"></span> 我的关注
-					</p>
-					<a href="">在线退换货</a>
-				
-					
-				</div>
 			</div>
 			  <div class="address">
 			  	<div class="addr-header">
@@ -193,7 +184,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			</div>
   </body>
 </html>
-<script src="/jyhwebstore/store/js/jquery-1.8.3.min.js"></script>
+
+<script src="/jyhwebstore/store/js/jquery.min.js"></script>
 <script src="/jyhwebstore/store/js/city.js"></script>
 <script src="/jyhwebstore/store/js/method.js"></script>
 <script src="/jyhwebstore/store/js/address.js"></script>
+
+<script>
+
+
+</script>

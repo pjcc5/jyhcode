@@ -399,3 +399,11 @@
 		  		cursor: not-allowed;
 		  	}
 		  	
+		  .addr-bar>li>.isdefault{
+		  	display: block;
+		  	}
+		  	
+		  .opera>.default{
+		  	display:none;
+		  	}
+		  	

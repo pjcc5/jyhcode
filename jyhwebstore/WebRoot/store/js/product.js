@@ -12,6 +12,7 @@ console.log("product.jsp");
 	  data:{'msg':comid},
 	  dataType:"json",
 	  success:function(result){
+		  console.log(result);
 		  var str = `
 			<p class="name">${result.comname}</p>
 			<p class="price"><span>价格</span><span class="price-m">￥${result.comprice}</span></p>
@@ -219,7 +220,6 @@ var pagesize=43;
 		  data:{'msg':comid},
 		  dataType:"json",
 		  success:function(result){
-			 console.log(result[0].comname);
 			 var str1;
 			 var ur;
 				for(var i =0; i <10;i++ )
@@ -251,6 +251,9 @@ function addcart(){
 				 }else{
 					 var show=$("#show").html("请先登录").fadeIn();
 						$("#show").fadeOut(1500);
+						setTimeout(function(){
+							gologin();
+						},1500);
 				 }
 
 			  }
@@ -262,7 +265,7 @@ function addcart(){
 
 function gocart(obj){
 	
-	location.href="/jyhwebstore/store/html/cart.jsp";
+	location.href="/jyhwebstore/store/html/operation/cart.jsp";
 }
 
 //点击搜索按钮

@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import mao.soft.web.service.ModifyUserDetails;
 import net.sf.json.JSONObject;
+import pojo.Acount;
 import pojo.User;
 
 public class UploadServlet extends HttpServlet {
@@ -40,6 +41,7 @@ public class UploadServlet extends HttpServlet {
 		String umail = request.getParameter("usermail");
 		String uadd = request.getParameter("useraddress");
 //		String aid = request.getAttribute("acount").toString();
+		Acount acount = (Acount)request.getSession().getAttribute("acount");
 		try {
 			//将值传入user对象
 			User user = new User();
@@ -50,7 +52,7 @@ public class UploadServlet extends HttpServlet {
 			user.setSex(usex);
 			user.setUphone(uphone);
 			user.setPic("");
-			user.setAid("");
+			user.setAid(acount.getAid());
 			user.setMail(umail);
 			user.setSetadd(uadd);
 			//调用service层的插入方法
@@ -75,6 +77,7 @@ public class UploadServlet extends HttpServlet {
 		} catch (Exception e) {
 			e.printStackTrace();
 		}
+	}
 		
 //			ModifyInformationUser insert = new ModifyInformationUser();
 //			try {
@@ -123,7 +126,6 @@ public class UploadServlet extends HttpServlet {
 //			// TODO Auto-generated catch block
 //			e.printStackTrace();
 //		}
-	}
 	
 	public void init() throws ServletException {
 		// Put your code here

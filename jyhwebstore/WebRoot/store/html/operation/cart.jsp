@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%
 String path = request.getContextPath();
 String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
@@ -7,9 +8,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
-    <base href="<%=basePath%>">
     
-    <title>My JSP 'cart.jsp' starting page</title>
+    <title>${acount.aname}购物车</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -39,13 +39,33 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			
 			
 	             <div class=" navbar-right" id="myNav">
-  	      <ul class="nav navbar-nav">
-  	        
-            <li class=""></span> <a href="login.html" class='login'><span class="glyphicon glyphicon-user"></span>登录</a></li>
+  	      <ul class="nav navbar-nav ">
+ 	     			 <li>	
+						<a id="current"></a>
+					</li>
+  	        	<c:if test="${empty acount}">
+  	        		<li>
+						<a href="javascript:gologin(this)" id="log">
+							登录
+						</a>
+						
+					</li>
+				</c:if>
+						
+						<c:if test="${not empty acount}">
+						<li>
+							<a href="/jyhwebstore/store/html/operation/information.jsp?path=index.jsp" id="log">
+							${acount.aname}
+							
+						</a>
+						</li>
+						<li><a href="javascript:out()" id="out">退出</a></li>
+						</c:if>
+          <!--  <li class=""></span> <a href="/jyhwebstore/store/html/login.jsp" class='login'><span class="glyphicon glyphicon-user"></span>登录</a></li>
             <li><a href="javascript:;" class="quit"><span class="quit-father"></span></a></li>
-			<li><a href="regist.html">注册</a></li>
+			<li><a href="/jyhwebstore/store/html/regist.jsp">注册</a></li>
             <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> 我的订单</a></li>
-  	      	
+  	      	 --> 
   	      </ul>
             </div>     
 		</div>
@@ -214,4 +234,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script src="/jyhwebstore/store/js/jquery.min.js"></script>
 <script src="/jyhwebstore/store/js/bootstrap.js"></script>
+
+<script src="/jyhwebstore/store/js/webstore.js"></script>
 <script src="/jyhwebstore/store/js/cart.js"></script>

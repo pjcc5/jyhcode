@@ -1,7 +1,6 @@
 <%@page import="db.DbHelp"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
-
 <html>
 <head>
 	<link rel="shortcut icon" type="image/x-icon" href="/jyhwebstore/store/img/task.png" />
@@ -23,7 +22,8 @@
 							</div>
 					<div class="col-md-2  text-left links ">
 						<span class="glyphicon glyphicon-volume-up posi"></span>
-						<a href="">防范金融诈骗提示</a>
+						<a href="/jyhwebstore/store/html/operation/userdetails.jsp">跳转到用户详情页面</a>
+					<!-- <a href="">防范金融诈骗提示</a> -->	
 						
 					</div>
 					
@@ -92,13 +92,12 @@
 				</div>
 				<!-- 顶部导航栏 -->
 				<div class="nav">
-					<div class="all-items">
+					<div class="all-items" onclick="showmodol(this)">
 						<span class="all-item-icon"><span class="glyphicon glyphicon-list" ></span></span>
 						全部类目
 						<span class="hover-forward"><span class="glyphicon glyphicon-chevron-down"></span></span>
 						
-						<div class="floatitem"></div>
-						<div class="allclassify">sss</div>
+						
 					</div>
 					<ul class="nav-list">
 						
@@ -119,6 +118,32 @@
 						
 			</div>
 		</section>
+		<!-- 模态框 -->
+			<div class="floatitem"  onclick="hidemodol(this)">
+							<div class="ite1 it" >
+								<a href="/jyhwebstore/store/html/search.jsp?content=Apple">
+									<img src="/jyhwebstore/store/img/apple.png" />
+								</a>
+							</div>
+							<div class="ite2 it">
+								<a href="/jyhwebstore/store/html/search.jsp?content=oppo">
+									<img src="/jyhwebstore/store/img/oppo.png" />
+								</a>
+							</div>
+							<div class="ite3 it">
+								<a href="/jyhwebstore/store/html/search.jsp?content=华为">
+									<img src="/jyhwebstore/store/img/华为.png" />
+								</a>
+							</div>
+							<div class="ite4 it">
+								<a href="/jyhwebstore/store/html/search.jsp?content=三星" >
+									<img src="/jyhwebstore/store/img/三星.png" />
+								</a>
+							</div>
+						
+						
+						</div>
+		
 		<!-- 轮播图 -->
 		<section>
 			<div class="banner">
@@ -195,10 +220,10 @@
 						</div>
 					</a>
 					<input type="hidden" value="`+comid+`" id="${igd.comid}" />
-					<button type="button" class="btn btn-danger addincart"><span class="
-							glyphicon glyphicon-download-alt" onclick="addtocart(this)></span>　加入购物车</button>
-					<button type="button" class="btn btn-danger addincart"><span class="
-							glyphicon glyphicon-usd" onclick="justbuy(this)"></span>　立即购买</button>
+					<button type="button" class="btn btn-danger addincart" onclick="goproduct(this)"><span class="
+							glyphicon glyphicon-download-alt" ></span>　加入购物车</button>
+					<button type="button" class="btn btn-danger addincart" onclick="goproduct(this)">
+					<span class="glyphicon glyphicon-usd" ></span>　立即购买</button>
 							
 						</div>
 					
@@ -357,9 +382,9 @@
 								</div>
 							</a>
 							<input type="hidden" value="`+comid+`" id="comid" />
-							<button type="button" class="btn btn-danger addincart"><span class="
-									glyphicon glyphicon-download-alt" onclick="addtocart(this)"></span>　加入购物车</button>
-							<button type="button" class="btn btn-danger addincart"><span class="
+							<button type="button" class="btn btn-danger addincart" onclick="goproduct(this)"><span class="
+									glyphicon glyphicon-download-alt" ></span>　加入购物车</button>
+							<button type="button" class="btn btn-danger addincart" onclick="goproduct(this)" ><span class="
 									glyphicon glyphicon-usd"></span>　立即购买</button>
 									
 								</div>
@@ -443,5 +468,24 @@ function SnowFlower(){
  		    //调用行走方法
  		    this.go();
  	}
-
+	
+	
+	function showmodol(obj)
+	{
+		var a = $(".floatitem").fadeIn(200);
+		a.children(".ite1").animate({"top":"10%","left":"30%"},500);
+		a.children(".ite2").animate({"top":"-29.8%","left":"50.5%"},500);
+		a.children(".ite3").animate({"top":"-27.5%","left":"30%"},500);
+		a.children(".ite4").animate({"top":"-67.5%","left":"50.5%"},500);
+	}
+	function hidemodol(obj){
+		$(obj).children(".ite1").animate({"top":"-4000"},500);
+		$(obj).children(".ite2").animate({"left":"4000"},500);
+		$(obj).children(".ite3").animate({"left":"-4000"},500);
+		$(obj).children(".ite4").animate({"top":"4000"},500);
+		
+		$(obj).stop().fadeOut(500);
+		
+		
+	}
 </script>
