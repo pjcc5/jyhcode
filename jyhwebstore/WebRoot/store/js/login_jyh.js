@@ -5,6 +5,7 @@ $('#logo').fadeIn(2000);
 
 
 function login(){
+	
 	var uname= $('#loginUsername').val();
 	var upass=$('#loginPassword').val();
 	var acount={"uname":uname,"upass":upass};
@@ -24,6 +25,7 @@ function login(){
 			alert("密码输入格式错误");
 			return;
 			}else{
+				
 				$.ajax({
 					type:"post",
 					url:"/jyhwebstore/store/html/login",

@@ -369,4 +369,3 @@ function SnowFlower(){
 	    this.go();
 }
 </script>
-<script src="/jyhwebstore/store/js/product.js"></script>

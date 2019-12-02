@@ -10,11 +10,12 @@ import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
+import db.DbHelp;
+import db.DbHelp2;
 import mao.soft.web.encryption.Encryption;
 import net.sf.json.JSONObject;
 import pojo.Acount;
 import service.loginService;
-
 import tan.dao.loginDao;
 import tan.dao.impl.loginDaoImpl;
 
@@ -51,6 +52,8 @@ public class LoginServlet extends HttpServlet{
 		loginService loginservice=new loginService();
 		
 		Acount acount=loginservice.login(uname, upass, conn);
+		DbHelp.closeConnection(conn);
+		//关闭连接
 		JSONObject returnObject=null;
 		if(acount!=null){
 	acount.setAddr(request.getRemoteAddr());
