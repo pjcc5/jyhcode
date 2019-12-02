@@ -12,6 +12,7 @@ var comid= getUrlVal('comid');
 	  data:{'msg':comid},
 	  dataType:"json",
 	  success:function(result){
+		  console.log(result);
 		  var str = `
 			<p class="name">${result.comname}</p>
 			<p class="price"><span>价格</span><span class="price-m">￥${result.comprice}</span></p>
@@ -218,7 +219,6 @@ var pagesize=43;
 		  data:{'msg':comid},
 		  dataType:"json",
 		  success:function(result){
-			 console.log(result[0].comname);
 			 var str1;
 			 var ur;
 				for(var i =0; i <10;i++ )
