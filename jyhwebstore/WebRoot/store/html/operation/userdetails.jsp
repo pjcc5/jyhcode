@@ -130,7 +130,7 @@
 						  <option value="" style="font-size: 18px;">请选择 年</option>
 						</select>
 						<select id="birth_month" name="MM" onchange="MMDD(this.value)" style="height: 30px;width: 100px;font-size: 18px;">
-						  <option  value="" style="font-size: 18px;">选择 月</option>
+						  <option value="" style="font-size: 18px;">选择 月</option>
 						</select>
 						<select id="birth_day" name="DD" style="height: 30px;width: 100px;font-size: 18px;">
 						  <option  value="" style="font-size: 18px;">选择 日</option>
@@ -165,19 +165,24 @@
 			</table>
 			<input type="button" value="保存" id="button_save" style="width: 70px;height: 40px;margin-left: 150px;"/>
 		</form>
+		<div style="background: #A6E1EC;width: 200px;height: 100px;text-align: center;display: none;font-size: 20px;margin-left: 700px;margin-top: 300px;line-height: 100px;" id="message">
+			<span>修改成功！</span>
+		</div>
 		<script src="/jyhwebstore/store/js/user_birth.js"></script>
 		<script src="/jyhwebstore/store/js/jquery-3.4.1.js"></script>
 		<script src="/jyhwebstore/store/js/webstore.js" type="text/javascript" charset="utf-8"></script>
 		<script src="/jyhwebstore/store/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 	<script>
-	$("#button_modify").click(function(){
+	myajax();
+	function myajax()
+	{
 		$.get({
 			type:"post",
 			url:"/jyhwebstore/ShowUserDetails",
 			data:"",
 			success:function(result){
-				console.log(result);
+				
 				var jsons =JSON.parse(result);
 				var picture = jsons.pic;
 				var uname = jsons.uname;
@@ -186,13 +191,51 @@
 				var phone = jsons.uphone;
 				var mail = jsons.mail;
 				var address = jsons.setadd;
-				alert(uname);
+				var userbirth = birth.split("-");
+				$("#lable_nickname").html(uname);
+				$("#lable_birth").html(birth);
+				$("#lable_sex").html(sex);
+				$("#lable_phone").html(phone);
+				$("#lable_mail").html(mail);
+				$("#lable_address").html(address);
+				
+				$("#button_modify").click(function(){
+					//给单选框赋值
+					if(sex!="nulls")
+					{
+						if(sex=="男")
+						{
+							$("input[type='radio']").eq(0).attr("checked",true);
+						}
+						else
+						{
+							$("input[type='radio']").eq(1).attr("checked",true);
+						}
+					}	
+					$("#input_nickname").val(uname);
+					$("#input_phone").val(phone);
+					$("#input_mail").val(mail);
+					$("#input_address").val(address);
+					$("#form_userinform").hide();
+					$("#form_modify").show();
+					//日期下拉框的js赋值==============================================
+					var optionyear =document.createElement("option");
+					$(optionyear).val(userbirth[0]);
+					$(optionyear).text(userbirth[0]);
+					$('#birth_year').append(optionyear);
+					var optionmonth =document.createElement("option");
+					$(optionmonth).val(userbirth[1]);
+					$(optionmonth).text(userbirth[1]);
+					$('#birth_month').append(optionmonth);
+					var optionday =document.createElement("option");
+					$(optionday).val(userbirth[2]);
+					$(optionday).text(userbirth[2]);
+					$('#birth_day').append(optionday);
+					//===============================================================
+				});
 			}
 		});
-	//	$("#form_userinform").hide();
-		//$("#form_modify").show();
-	});
-	
+	}
 	$("#button_save").click(function(){
 		if($("#input_nickname").val()==""||$("input:radio:checked").val()==""||$("#input_phone").val()==""||$("#input_mail").val()==""||$("#input_address").val()==""||$("#birth_year").val()==""||$("#birth_month").val()==""||$("#birth_day").val()=="")
 			{
@@ -219,9 +262,11 @@
 							var jsons =JSON.parse(result);
 							if(jsons.flag==true)
 							{
-								alert("修改成功！");
-								$("#form_userinform").show();
+								$("#message").fadeIn(1000);
+								$("#message").fadeOut(1500);
+								myajax();
 								$("#form_modify").hide();
+								$("#form_userinform").show();
 							}	
 							else
 							{
