@@ -9,16 +9,13 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <html>
   <head>
     
-    <title>My JSP 'information.jsp' starting page</title>
+    <title>${acount.aname }的信息</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
 	<meta http-equiv="expires" content="0">    
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
     <link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/information.css">
      <link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/bootstrap.css">
   </head>
@@ -71,8 +68,8 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					<div class="search">
 						<div class="hd-search">
-							<input type="text" placeholder="请输入要搜索的内容" />
-							<a href="" class="button"><span class="glyphicon glyphicon-search"></span>
+							<input type="text" placeholder="请输入要搜索的内容" class="search-input"/>
+							<a href="javascript:;" class="button" onclick="gosearch(this)"><span class="glyphicon glyphicon-search"></span>
 							</a>
 						</div>
 						<ul>
@@ -298,3 +295,24 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="/jyhwebstore/store/js/bootstrap.js"></script>
 <script src="/jyhwebstore/store/js/jquery.singlePageNav.min.js"></script>
 <script src="/jyhwebstore/store/js/webstore.js"></script>
+<script>
+//搜索按钮
+function gosearch(){
+	
+	// console.log("点击了搜索");
+	var searchText = $('.search-input').val();
+	var text =encodeURI(searchText);
+	// alert(text);
+	window.location.href=`/jyhwebstore/store/html/search.jsp?content=`+searchText;
+	
+};
+
+$("body").keydown(function(event){
+	if(event.keyCode == 13)
+		{
+			
+		}
+			
+	
+});
+</script>
