@@ -15,6 +15,13 @@ private	int count;
 private	String size;
 private	String color;
 private String uuid;
+private int selected;
+public int getSelected() {
+	return selected;
+}
+public void setSelected(int selected) {
+	this.selected = selected;
+}
 public String getUuid() {
 	return uuid;
 }
@@ -71,9 +78,11 @@ public void setColor(String color) {
 	this.color = color;
 }
 @Override
-public String toString(){
-	return "Cart [comname=" + comname + ", compic=" + compic + ", comprice="
-			+ comprice + ", count=" + count + ", size=" + size + ", color="
-			+ color + "]";
+public String toString() {
+	return "Cart [date=" + date + ", shopid=" + shopid + ", comname=" + comname
+			+ ", compic=" + compic + ", comprice=" + comprice + ", count="
+			+ count + ", size=" + size + ", color=" + color + ", uuid=" + uuid
+			+ ", selected=" + selected + "]";
 }
+
 }

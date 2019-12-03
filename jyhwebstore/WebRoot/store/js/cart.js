@@ -27,11 +27,11 @@ var msg={};
     	
     	var price=goodsList[i].comprice*goodsList[i].count;
     	var pic=goodsList[i].compic.replace(/50x50/g,"130x130");
-    	console.log(pic);
+    	
       var str = `
       <div class="goods" data='${goodsList[i].uuid}'>
 			<div class="goods-top">
-				<input  type="checkbox" class='select-d'/>
+				<input  type="checkbox" class='select-d' data='${goodsList[i].uuid}' choose="${goodsList[i].selected}"/>
 				<p>${goodsList[i].comname}</p>
 			</div>
 			<div class="goods-mid">
@@ -49,7 +49,7 @@ var msg={};
 						
 					<div class="count">
 						<div class="add">+</div>
-						<input type="number" value="${goodsList[i].count}" class='number' data='${goodsList[i].uuid}'/>
+						<input type="number" value="${goodsList[i].count}" class='number' data='${goodsList[i].uuid}' choose="${goodsList[i].selected}"/>
 						<div class="reduce">
 							&minus;</div>
 					</div>
@@ -85,8 +85,7 @@ $('.number').each(function(){
 var  windowH=$(window).height();
    var   container=
    $('.container').outerHeight(true)+$('.content').outerHeight(true);
-     console.log(container);
-     console.log(windowH);
+ 
      if(container>windowH){
      	$('.nav-pay').removeClass('pay-bottom')
       		$('.nav-pay').removeClass('pay-topr');
@@ -136,10 +135,11 @@ function clickAll(){
 			  spanDom.value=spanDomVal;
 			  
 			  var data=spanDom.getAttribute('data');
+			  var choose=spanDom.getAttribute('choose');
 			  msg.data=data;
 			  msg.num=spanDomVal;
-			  
-			  
+			  msg.choose=choose;
+			  console.log("msg="+msg.choose);
 			  (function(){
 					$.ajax({
 						  type:"POST",
@@ -178,10 +178,12 @@ function clickAll(){
 		 	  spanDom.value=spanDomVal;
 		 	  subtotal(event.target,spanDomVal);
 		 	 var data=spanDom.getAttribute('data');
+		 	 var choose=spanDom.getAttribute('choose');
+		 	 msg.choose=choose;
 			  msg.data=data;
 			  msg.num=spanDomVal;
 			  
-			  
+
 			  (function(){
 					$.ajax({
 						  type:"POST",
@@ -220,10 +222,10 @@ function clickAll(){
 			   
 			};
 			
-			  msg.data=dataspanDom.getAttribute('data');
-			  msg.num=spanDom.val;
-			  
-			  
+			 var choose=spanDom.getAttribute('choose');
+			  msg.data=spanDom.getAttribute('data');
+			  msg.num=spanDom.value;
+			  msg.choose=choose;
 			  (function(){
 					$.ajax({
 						  type:"POST",
@@ -251,9 +253,11 @@ function clickAll(){
 
 		}
 			
-			console.log(event.target.className);
+		
+			
+			
+			
          if(event.target.className=='select'){
-         	console.log(event.target.className);
          	
 		  if(event.target.checked == true){
 		  	
@@ -264,8 +268,29 @@ function clickAll(){
         $('.select-d').each(function(){
           $(this).prop('checked', true);
           //给当前元素加个标识(自定义的属性)
-          $(this).attr('data-price', 'active');        
+          $(this).attr('data-price', 'active');
+          $(this).attr('choose',1);
+          this.parentNode.nextElementSibling.childNodes[5].childNodes[3].setAttribute('choose',1);
+        
+          
         });
+		  	
+		    msg.data="";
+	          msg.choose=1;
+	          msg.num=1;
+	          var all="selectall";
+	          (function(){
+	  			$.ajax({
+	  				  type:"POST",
+	  				  url:"/jyhwebstore/operationcartservlet",
+	  				  data:{"msg":JSON.stringify(msg),"selectall":all},
+	  				  dataType:"json",
+	  				  success:function(result){
+	  					 console.log(result);
+
+	  				  }
+	  			})
+	  				  })();
         
         sumAll();
       }else{
@@ -278,11 +303,32 @@ function clickAll(){
           $(this).prop('checked', false);
           //拿掉标识(自定义的属性)
           $(this).attr('data-price', '');
+          
+          $(this).attr('choose',0);
+          this.parentNode.nextElementSibling.childNodes[5].childNodes[3].setAttribute('choose',0);
+          
         });
+      	
+      	 msg.data="";
+         msg.choose=0;
+         msg.num=1;
+         var all="selectall";
+         (function(){
+ 			$.ajax({
+ 				  type:"POST",
+ 				  url:"/jyhwebstore/operationcartservlet",
+ 				  data:{"msg":JSON.stringify(msg),"selectall":all},
+ 				  dataType:"json",
+ 				  success:function(result){
+ 					 console.log(result);
+
+ 				  }
+ 			})
+ 				  })();
          sumAll();
       };
      }
-         console.log(event.target.className);
+
           if(event.target.className == 'select-d'){
           	$('.select').each(function(){
           		$(this).prop('checked',false);
@@ -292,9 +338,48 @@ function clickAll(){
       if(event.target.checked == true){
         //给当前元素加个标识(自定义的属性)
         event.target.setAttribute('data-price', 'active');
+        event.target.setAttribute('choose',1);
+        event.target.parentNode.nextElementSibling.childNodes[5].childNodes[3].setAttribute('choose',1);
+        msg.data=event.target.getAttribute('data');
+        msg.choose=1;
+        msg.num=event.target.parentNode.nextElementSibling.childNodes[5].childNodes[3].value;
+        	
+        (function(){
+			$.ajax({
+				  type:"POST",
+				  url:"/jyhwebstore/operationcartservlet",
+				  data:{"msg":JSON.stringify(msg)},
+				  dataType:"json",
+				  success:function(result){
+					 console.log(result);
+
+				  }
+			})
+				  })();
+        
+        
       }else{
         //拿掉标识(自定义的属性)
-        event.target.setAttribute('data-price', '');       
+    	  var pars= event.target.setAttribute('data-price', '');   
+    	  event.target.setAttribute('choose',0);
+    	  event.target.parentNode.nextElementSibling.childNodes[5].childNodes[3].setAttribute('choose',0);
+    	  
+    	  msg.data=event.target.getAttribute('data');
+          msg.choose=0;
+          msg.num=event.target.parentNode.nextElementSibling.childNodes[5].childNodes[3].value;
+          (function(){
+  			$.ajax({
+  				  type:"POST",
+  				  url:"/jyhwebstore/operationcartservlet",
+  				  data:{"msg":JSON.stringify(msg)},
+  				  dataType:"json",
+  				  success:function(result){
+  					 console.log(result);
+
+  				  }
+  			})
+  				  })();
+          
       }
       //求总价
       sumAll();
@@ -355,8 +440,7 @@ function subtotal(that, count){
   var subtotalDom = that.parentNode.nextElementSibling;
   //设置
   var sum=subtotalDom.parentNode.nextElementSibling.firstElementChild;
-  console.log(sum.innerHTML);
-  console.log(count);
+
 subtotalDom.innerHTML = price * count + '.00';
 sum.innerHTML='商品总价:￥'+price * count + '.00';
 };
@@ -369,7 +453,7 @@ function sumAll(){
     sum += parseInt($(this).parent().siblings('.goods-mid').children('.subtotal').html());
     s+=parseInt($(this).parent().siblings('.goods-mid').find('.number').val());
   });
-  console.log(s);
+
   $('.checked').html('已选商品'+s+'件');
   //设置总价
 $('.total').html( sum + '.00');

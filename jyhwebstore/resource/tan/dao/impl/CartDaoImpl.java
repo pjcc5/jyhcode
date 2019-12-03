@@ -38,6 +38,7 @@ public class CartDaoImpl extends ShoppingDaoImpl implements CartDao{
 		Cart cart=null;
 		String[] date=null;
 		String[] uuid=null;
+		String[] selected=null;
 		String sql="select * FROM shopmiddle INNER JOIN shopping ON shopmiddle.shopid=shopping.shopid  WHERE shopmiddle.aid=?";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setString(1, aid);
@@ -52,8 +53,9 @@ public class CartDaoImpl extends ShoppingDaoImpl implements CartDao{
             uuid=StringOrArray.getArray(rs.getString("uuid"));
              date=StringOrArray.getArray(rs.getString("datees"));
            shopid= rs.getString("shopid");
+           selected=StringOrArray.getArray(rs.getString("selected"));
            
-           System.out.println("date="+date);
+  
 		}
 		
 		
@@ -72,6 +74,7 @@ public class CartDaoImpl extends ShoppingDaoImpl implements CartDao{
 			cart.setUuid(uuid[i]);
 			cart.setColor(color[i]);
 			cart.setSize(size[i]);
+			cart.setSelected(Integer.parseInt(selected[i]));
 			list.add(cart);
 			
 		}	
@@ -103,6 +106,7 @@ public String selectShopid(String aid,Connection conn)throws Exception{
 	
 	
 	public boolean UpdateCart(List<Cart> list,Connection conn,String aid) throws Exception{
+		System.out.println(list);
 		if(conn==null){
 			return false;
 		}
@@ -114,7 +118,7 @@ public String selectShopid(String aid,Connection conn)throws Exception{
 		StringBuffer color=new StringBuffer();
 		StringBuffer comname=new StringBuffer();
 		StringBuffer uuid=new StringBuffer();
-		
+		StringBuffer selected=new StringBuffer();
 		for(int j=0;j<list.size();j++){
 			count.append(Integer.toString(list.get(j).getCount()));
 			compic.append(list.get(j).getCompic());
@@ -124,6 +128,7 @@ public String selectShopid(String aid,Connection conn)throws Exception{
 			color.append(list.get(j).getColor());
 			comname.append(list.get(j).getComname());
 			uuid.append(list.get(j).getUuid());
+			selected.append(list.get(j).getSelected());
 			if(j<list.size()-1){
 			count.append(",");
 			compic.append(",");
@@ -133,12 +138,13 @@ public String selectShopid(String aid,Connection conn)throws Exception{
 			color.append(",");
 			comname.append(",");
 			uuid.append(",");
+			selected.append(",");
 			}
 		}
 		String shopid=null;
 	
 		shopid=new CartDaoImpl().selectShopid(aid, conn);
-		String sql="update shopping set compic=?,count=?,datees=?,comprice=?,size=?,color=?,comname=?,uuid=? where shopid=?";
+		String sql="update shopping set compic=?,count=?,datees=?,comprice=?,size=?,color=?,comname=?,uuid=?,selected=? where shopid=?";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setString(1, compic.toString());
 		ps.setString(2, count.toString());
@@ -148,7 +154,8 @@ public String selectShopid(String aid,Connection conn)throws Exception{
 		ps.setString(6, color.toString());
 		ps.setString(7, comname.toString());
 		ps.setString(8, uuid.toString());
-		ps.setString(9, shopid);
+		ps.setString(9, selected.toString());
+		ps.setString(10, shopid);
 		int rs=ps.executeUpdate();
 		
 		if(rs>0){
