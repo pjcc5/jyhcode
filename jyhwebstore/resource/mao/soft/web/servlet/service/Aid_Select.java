@@ -15,7 +15,7 @@ public class Aid_Select {
 		SelectAidByNameDao sad = new SelectAidByNameDaoImp();
 		Acount acount =  sad.selectAidByName(aname, conn);
 		String aid = acount.getAid().toString();
-		
+		DbHelp.closeConnection(conn);
 		return aid;
 		
 	}

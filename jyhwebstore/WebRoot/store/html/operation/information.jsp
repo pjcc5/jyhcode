@@ -53,16 +53,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="header-bp">
 				<div class="logo">
 					<a href="/jyhwebstore/index.jsp" class="hd-logo"><img src="/jyhwebstore/store/img/Logo.png" /></a>
-					
 				</div>
-
 				<div class="header-right">
-
 					<div class="cart-2">
 						<a href="/jyhwebstore/store/html/cart.jsp">
 							<span class="glyphicon glyphicon-shopping-cart"></span>
 							<span>购物车</span>
-
 						</a>
 					</div>
 
@@ -80,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</ul>
 					</div>
 				</div>
-
+ 
 			</div>
 		</div>
 		

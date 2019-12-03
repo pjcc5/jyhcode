@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 
 
+
 import mao.soft.web.service.ModifyUserDetails;
 import net.sf.json.JSONObject;
 import pojo.Acount;
@@ -70,8 +71,9 @@ public class UploadServlet extends HttpServlet {
 			User user = new User();
 			String pic =acount.getAid()+".jpg";
 			user.setUname(uname);
-			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");
+			SimpleDateFormat sdf = new SimpleDateFormat("yyyy-MM-dd");System.out.println(ubirth);
 			Date date = sdf.parse(ubirth);
+			System.out.println(date.toLocaleString());
 			user.setBirth(date);
 			user.setSex(usex);
 			user.setUphone(uphone);
@@ -79,6 +81,7 @@ public class UploadServlet extends HttpServlet {
 			user.setAid(acount.getAid());
 			user.setMail(umail);
 			user.setSetadd(uadd);
+			System.out.println("数据库的时间："+ubirth+"==========="+"页面修改的时间："+user.getBirth());
 			//调用service层的插入方法
 			ModifyUserDetails userDe = new ModifyUserDetails();
 			boolean flag = userDe.modifyUphoneAndUnameIsExist(user);

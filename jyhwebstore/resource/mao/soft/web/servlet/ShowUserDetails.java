@@ -45,19 +45,20 @@ public class ShowUserDetails extends HttpServlet {
 			User user = userinfor.selectUserByAid(aid);
 			Date births = (Date)user.getBirth();
 			user.setBirth(births);
-			if(user.getMail().equalsIgnoreCase(""))
+			System.out.println("性别："+"".equalsIgnoreCase(user.getSex()));
+			if("".equalsIgnoreCase(user.getMail()))
 			{
 				user.setMail("nulls");
 			}
-			if(user.getPic().equalsIgnoreCase(""))
+			if("".equalsIgnoreCase(user.getPic()))
 			{
 				user.setPic("nulls");
 			}
-			if(user.getSetadd().equalsIgnoreCase(""))
+			if("".equalsIgnoreCase(user.getSetadd()))
 			{
 				user.setSetadd("nulls");
 			}
-			if(user.getSex().equalsIgnoreCase(""))
+			if("".equalsIgnoreCase(user.getSex()))
 			{
 				user.setSex("nulls");
 			}
@@ -65,7 +66,7 @@ public class ShowUserDetails extends HttpServlet {
 			String pic = user.getPic();
 			pic =  request.getContextPath()+"/upload/"+pic;
 			request.getSession().setAttribute("pic", pic);
-			System.out.println("图片路径"+pic);
+			System.out.println("图片路径show:"+pic);
 			//帮助类，重写user中的birth属性，将原来的date属性改为String属性，方便传到前端
 			UserDate udate = new UserDate();
 			udate.setAid(user.getAid());

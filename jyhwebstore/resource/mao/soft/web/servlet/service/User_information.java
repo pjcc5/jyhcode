@@ -12,6 +12,7 @@ public class User_information {
 		Connection conn = DbHelp.getConnection();
 		SelectUserByAidDao selectuser = new SelectUserByAidDaoImpl();
 		User user = selectuser.selectUserByAid(aid, conn);
+		DbHelp.closeConnection(conn);
 		return user;
 	}
 }
