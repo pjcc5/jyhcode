@@ -60,7 +60,7 @@
 				</section>
 		<!-- 用户显示的信息 -->
 		<form  style="margin-top: 50px;margin-left:600px" id="form_userinform">
-			<table align="center" style="font-size: 20px; line-height:90px;">
+			<table align="center" style="font-size: 20px; line-height:50px;">
 				<tr>
 					<td style="font-size: 20px;">头像：</td>
 					<td>
@@ -110,7 +110,7 @@
 		</form>
 		<!--用户信息修改-->
 		<form style="margin-top: 50px;margin-left:600px; display: none;" id="form_modify" name="reg_testdate">
-			<table align="center" style="font-size: 20px; line-height:90px;">
+			<table align="center" style="font-size: 20px; line-height:50px;">
 				<tr>
 					<td style="font-size: 20px;">头像：</td>
 					<td>

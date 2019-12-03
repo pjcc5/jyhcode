@@ -71,7 +71,7 @@ this.doPost(request, response);
 		
 			list = dao.selecCart(aid, conn);
 			
-	if(!selectall.equals("")&&msg!=null){
+	if(!"".equals(selectall)&&msg!=null){
 		System.out.println("=======================全选=========================");
 		JSONObject object = JSONObject.fromObject(msg);
 		int choose=object.getInt("choose");
@@ -91,7 +91,7 @@ this.doPost(request, response);
 	
 		
         
-		if(msg!=null&&selectall.equals("")){
+		if(msg!=null&&"".equals(selectall)){
 		JSONObject object = JSONObject.fromObject(msg);
 		
 		String data=object.getString("data");

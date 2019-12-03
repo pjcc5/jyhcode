@@ -66,7 +66,7 @@ public class OrdersubmitServlet extends HttpServlet {
 				
 		if(msg!=null){
 		try {
-			List<Address> address=dao.getAddressByAid("463ce3c5-52c0-40e5-8750-187b7ef5b33a", conn);
+			List<Address> address=dao.getAddressByAid(aid, conn);
 			List<Cart> list1=dao1.SelectCart(aid, conn);
 			List<Cart> cart=new ArrayList<>();
 			for(int i=0;i<list1.size();i++){
