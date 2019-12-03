@@ -125,6 +125,11 @@
     <servlet-name>AddressServlet</servlet-name>
     <servlet-class>chao.servlet.AddressServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>OrdersubmitServlet</servlet-name>
+    <servlet-class>tan.servlet.OrdersubmitServlet</servlet-class>
+  </servlet>
+
 
 
    <servlet-mapping>
@@ -190,6 +195,10 @@
   <servlet-mapping>
     <servlet-name>AddressServlet</servlet-name>
     <url-pattern>/address</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>OrdersubmitServlet</servlet-name>
+    <url-pattern>/ordersubmit</url-pattern>
   </servlet-mapping>
   
 <!-- 字符转码 -->

@@ -178,6 +178,7 @@
 <script src="/jyhwebstore/store/js/method.js"></script>
 <script src="/jyhwebstore/store/js/address.js"></script>
 
+
 <script>
 //搜索按钮
 function gosearch(){
@@ -203,3 +204,4 @@ $("body").keydown(function(event){
 });
 
 </script>
+

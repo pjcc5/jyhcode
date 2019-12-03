@@ -56,9 +56,8 @@ this.doPost(request, response);
 		  int index=0;
 	      String msg=request.getParameter("msg");
 	      String detail=request.getParameter("detail");
-	      System.out.println("detail="+detail);
-	      System.out.println(msg);
-	      
+	      String selectall="";
+	      selectall= request.getParameter("selectall");
 		Connection conn=DbHelp.getConnection();
 		String aid=null;
 		 Acount acount=(Acount) request.getSession().getAttribute("acount");
@@ -66,46 +65,57 @@ this.doPost(request, response);
          aid=acount.getAid();
         }
         
-        
-        System.out.println(aid);
+ 
         CartServers dao=new CartServers();
         List<Cart> list=null;
 		
 			list = dao.selecCart(aid, conn);
 			
+	if(!selectall.equals("")&&msg!=null){
+		System.out.println("=======================全选=========================");
+		JSONObject object = JSONObject.fromObject(msg);
+		int choose=object.getInt("choose");
+		for(int i=0;i<list.size();i++){
+			list.get(i).setSelected(choose);
+		}
 		
+		CartDaoImpl impl=new CartDaoImpl();
+		try {
+			System.out.println(impl.UpdateCart(list, conn,aid));
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		
+	}
 	
 		
         
-		if(msg!=null){
+		if(msg!=null&&selectall.equals("")){
 		JSONObject object = JSONObject.fromObject(msg);
 		
 		String data=object.getString("data");
 		int num=object.getInt("num");
-		
-		
-		System.out.println("uuid="+data);
+		int choose=object.getInt("choose");
 		
 		 try {
-			  
-			
 			for (int i=0;i<list.size();i++) {
 		        Cart cart=list.get(i);
-				System.out.println("cartuuid="+cart.getUuid());
+
 				if(cart.getUuid().equals(data)){
 					index=i;
-					System.out.println("index="+i);
+
 					if(num>0){
 						
-						
+						System.out.println("index="+index+",choose="+choose);
 						list.get(index).setCount(num);
-						System.out.println("num="+list.get(index).getCount());
+                         list.get(index).setSelected(choose);
+                         System.out.println(list.get(index));
 						CartDaoImpl impl=new CartDaoImpl();
 						System.out.println(impl.UpdateCart(list, conn,aid));
 						
 						
 					}else{
-	                     System.out.println("num="+num);
 						list.remove(index);
 						
 						System.out.println(dao.UpdateCart(list, conn, aid));
@@ -117,18 +127,14 @@ this.doPost(request, response);
 			}
 			
 			
-			
-			
-//			
-			
-			
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
 		}
 		
-	}else{
+	}
 		
+		if(detail!=null){
 		JSONObject object=JSONObject.fromObject(detail);
 		int num=object.getInt("num");
 		
@@ -152,7 +158,7 @@ this.doPost(request, response);
 	  cart.setComprice(comprice);
 	  cart.setCount(num);
 	  cart.setDate(new Date());
-	 
+	  cart.setSelected(1);
 	  cart.setSize(size);
 	  cart.setUuid(UUID.randomUUID().toString());
 	  cart.setCompic(picurl);
@@ -165,9 +171,10 @@ this.doPost(request, response);
 		// TODO: handle exception
 		e.printStackTrace();
 	}
+		}
 		
 		
-	}
+	
 		PrintWriter out=response.getWriter();
 		if(acount!=null){
 		out.print(true);}else{

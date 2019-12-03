@@ -1,0 +1,554 @@
+*{margin: 0;padding: 0;}
+		  li{list-style: none;border: none;}
+		  a{text-decoration: none;}
+		  img{border: none;vertical-align: bottom;}
+			body{
+				background: url(/jyhwebstore/store/img/bg.png);
+				
+			}
+			
+			.order_header{
+				width: 1200px;
+				height: 80px;
+				padding-top:10px ;
+				margin: 0 auto;
+				
+			}
+			
+			
+				h1 {
+    display: block;
+    font-size: 2em;
+    margin-block-start: 0.67em;
+    margin-block-end: 0.67em;
+    margin-inline-start: 0px;
+    margin-inline-end: 0px;
+    font-weight: bold;
+}
+
+
+.order_header .logo {
+    float: left;
+    width: 100px;
+    height: 40px;
+    /*padding-top: 17px;*/
+    margin-right: 10px;
+    background: url(/jyhwebstore/store/img/Logo.png) no-repeat bottom;
+    background-size: 60px 40px;
+}
+
+.order_header .logo_txt {
+    float: left;
+    width: 100px;
+    height: 40px;
+    /*padding-top: 18px;*/
+    margin-right: 10px;
+    background: url(/jyhwebstore/store/img/logo_txt.png) no-repeat 0 10px ;
+}
+
+.same_module_rel{
+	width: 1200px;
+	/*height: 300px;*/
+	padding-top: 20px;
+	margin: 0 auto;
+	background: white;
+	margin-bottom: 40px;
+	padding-bottom: 20px;
+}
+
+.mod_rel_head{
+	/*height: 30px;*/
+	padding-left: 20px;
+	position: relative;
+}
+.mod_rel_head:after{
+	content: "";
+	display: block;
+	clear: both;
+}
+ .mr_tit {
+    display: inline-block;
+    float: left;
+    height: 14px;
+    margin-top: 8px;
+    line-height: 14px;
+    font-size: 16px;
+    color: #333;
+    border-left: 3px solid #ff5e5e;
+    text-indent: 12px;
+}
+
+.mod_rel_head .mr_ctrlbtn {
+    display: inline-block;
+    float: right;
+    height: 20px;
+    padding: 5px 2px;
+    color: #0066cc;
+}
+
+.sprite_odr{
+	background-image:url(/jyhwebstore/store/img/odr_cfm_spt.png);
+    background-repeat: no-repeat;
+    visibility: hidden;
+}
+
+.consign_rel_cont {
+    padding: 10px 0px;
+    padding-left: 20px;
+    margin-bottom: 10px;
+    overflow: hidden;
+}
+
+.consign-itme{
+	position: relative;
+	width: 192px;
+	height: 106px;
+	border: solid 1px #e5e5e5;
+	margin-right: 26px;
+	padding-left: 10px;
+	padding-right: 10px;
+	margin-bottom: 12px;
+	float: left;
+}
+
+.total_info{
+	
+	width: 192px;
+	height: 28px;
+	border-bottom: dashed 1px gainsboro;
+	padding-top: 6px;
+}
+
+.total_info em{
+	float: left;
+    margin-left: 8px;
+    height: 18px;
+    border-radius: 1px;
+    line-height: 18px;
+    background-color: #fff4f4;
+    border: 1px solid #ffdbdb;
+    color: #ff5e5e;
+}
+
+.total_info span{
+	
+	float: right;
+}
+
+.total_info span a{
+	float: left;
+	padding-left: 6px;
+	color: #0066CC;
+}
+
+
+.detail_info p{
+	color: grey;
+}
+
+
+
+.odr_tips{
+	position: absolute;
+    left: 110px;
+    top: 0;
+    height: 28px;
+    padding: 0px 6px;
+    line-height: 28px;
+    background-color: #fff7d1;
+    border: 1px solid #e5debc;
+    color: #666;
+    border-radius: 2px;
+}
+
+        
+	 .mod_rel_head .odr_tips i {
+	 	visibility: visible;
+    position: absolute;
+    left: -5px;
+    top: 10px;
+    width: 5px;
+    height: 10px;
+    background-position: -15px -50px;
+}
+
+
+
+.paymethd .item-selected i{
+	visibility: visible;
+	position: absolute;
+    right: -1px;
+    bottom: 0;
+    width: 17px;
+    height: 18px;
+    background-position: 0px 0px;
+}
+
+
+  
+
+
+.payment-item{
+	    position: relative;
+    display: inline-block;
+    height: 30px;
+    padding: 0px 25px;
+    margin-right: 10px;
+    line-height: 30px;
+    text-align: center;
+    border: 1px solid #e5e5e5;
+    background-color: #fff;
+    color: #666;
+    -moz-border-radius: 2px;
+    -webkit-border-radius: 2px;
+    border-radius: 2px;
+}
+
+.paymethd{
+	padding-top: 30px;
+	padding-bottom: 20px;
+	padding-left: 20px;
+}
+.item-selected{
+	border: solid 1px orangered;
+	
+}
+
+.is-choose{
+	visibility: visible;
+	position: absolute;
+    right: -1px;
+    bottom: 0;
+    width: 17px;
+    height: 18px;
+    background-position: 0 0;
+}
+
+.mr_ctrlbtn{
+	 display: inline-block;
+    float: right;
+    height: 20px;
+    padding: 5px 2px;
+    color: #0066cc;
+}
+
+.box{
+	width: 1200px;
+	height: 140px;
+	border: solid 1px gainsboro;
+	background: #fafafa;
+	margin: 10px auto;
+}
+
+.dib_tit{
+	padding:10px;
+}
+
+.dib_con li img{
+	width: 50px;
+	height: 50px;
+	float: left;
+	margin-left: 10px;
+	margin-top: 20px;
+	
+}
+
+.dib_con li p{
+	margin-top: 20px;
+	margin-left: 20px;
+	float: left;
+	line-height: 38px;
+}
+
+.des{
+	float: left;
+	margin-left: 50px;
+}
+
+
+.count{
+	float: right;
+	margin-right: 20px;
+	margin-top: 20px;
+}
+
+.price{
+	margin-top: 20px;
+	float: right;
+	margin-right: 20px;
+	font-weight: bold;
+}
+.exist{
+	margin-top: 20px;
+	float: right;
+	margin-right: 100px;
+}
+
+.rmk_tit{
+	height: 30px;
+    line-height: 30px;
+    color: #666;
+}
+
+
+.rmk_con input{
+	    height: 14px;
+    width: 428px;
+    padding: 5px 10px;
+    line-height: 14px;
+    border: 1px solid #dedede;
+    color: #333;
+}
+
+.rmk_con span{
+	    margin-left: 14px;
+    color: #999;
+}
+
+.invoce_rel_cont{
+	padding-bottom: 10px;
+	padding-top: 10px;
+	padding-left: 20px;
+}
+
+.invoce_rel_cont p{
+	position: relative;
+    display: inline-block;
+    line-height: 24px;
+    color: #666;
+    padding-right: 12px;
+}
+
+.invoce_rel_cont p i{
+	visibility: visible;
+	
+	position: absolute;
+    right: 0;
+    top: 0;
+    width: 12px;
+    height: 12px;
+    margin-top: 5px;
+    background-position: -40px -35px;
+    cursor: pointer;
+}
+
+.pay_tools_inner{
+	width: 1200px;
+	height: 70px;
+	margin: 0 auto;
+	background: white;
+}
+
+.pay_tli_adr{
+	float: left;
+    height: 60px;
+    width: 296px;
+    padding-top: 12px;
+    padding-left: 20px;
+}
+
+.pay_tli_adr p{
+	position: relative;
+    width: 296px;
+    height: 24px;
+    line-height: 24px;
+    color: #333;
+    white-space: nowrap;
+    text-overflow: ellipsis;
+    overflow: hidden;
+}
+.pay_tli_adr .adr_detail {
+    width: 276px;
+    padding-left: 20px;
+}
+
+.pay_tli_adr .adr_detail i {
+	visibility: visible;
+    position: absolute;
+    left: 0px;
+    top: 0px;
+    display: inline-block;
+    width: 17px;
+    height: 20px;
+    background-position: -76px 0px;
+    margin-top: 1px;
+}
+
+.adr_name_tel{
+	padding-left: 20px;
+}
+
+
+
+.pay_tli_price{
+	float: left;
+	height: 70px;
+}
+
+.pay_btn_smbit{
+	float: right;
+    display: inline-block;
+    width: 110px;
+    height: 70px;
+    line-height: 70px;
+    text-align: center;
+    background-color: #ff6c6c;
+    font-family: 'microsoft yahei';
+    font-weight: bold;
+    font-size: 17px;
+    color: #fff;
+}
+
+.pay_tli_count{
+	float: right;
+    width: 128px;
+    padding-top: 12px;
+    padding-right: 20px;
+    line-height: 24px;
+    text-align: right;
+}
+
+.pay_tli_count p{
+	color: #999999;
+}
+
+.pay_tli_count .ptc_count{
+	    font-weight: bold;
+    font-size: 16px;
+    color: #ff6c6c;
+}
+
+.footer{
+	width: 100%;
+	height: 72px;
+	margin-top: 30px;
+	
+	
+}
+.bordertop_solid{
+	width: 1200px;
+	height: 70px;
+	border-top: solid 2px gainsboro;
+	margin: 0 auto;
+	padding-bottom: 10px;
+}
+
+.sitemap2{
+	    width: 1200px;
+    height: 25px;
+    line-height: 25px;
+    margin-top: 5px;
+}
+
+.sitemap2 ul {
+    width: auto;
+    height: 25px;
+    text-align: center;
+}
+
+.sitemap2 ul li {
+    display: inline;
+}
+
+.copyright {
+    width: 1200px;
+    height: 25px;
+    margin-top: 5px;
+    text-align: center;
+}
+
+.sitemap2 ul li a {
+    color: #666;
+    text-decoration: none;
+}
+
+	.mod{
+		  		background: rgb(51,51,51,0.6);
+		  		display: none;
+		  		width: 100%;
+		  		height: 100%;
+		  		position: fixed;
+		  		left: 0px;
+		  		top: 0px;
+		  	}
+		  	
+		  	.fill-addr{
+		  		opacity: 1;
+		  		height: 610px;
+		  		width: 910px;
+		  		border: solid 10px gainsboro;
+		  		background: white;
+		  		margin: 0px auto;
+		  		margin-top: 10%;
+		  	}
+		  	
+		  	
+		  	
+		  	.fill-addr>div label{
+		  		display: inline-block;
+		  		width:280px;
+		  		text-align: right;
+		  		color: #999999;
+		  		font-size: 16px;
+		  		
+		  	}
+		  	.fill-addr input{
+		  		width: 400px;
+		  		height: 40px;
+		  	}
+		  	
+		  	.fill-addr h3{
+		  		margin-left: 30px;
+		  	}
+		  	
+		  	.fill-addr div{
+		  		margin-top: 30px;
+		  	}
+		  	
+		  	.fill-addr .user{
+		  		margin-top: 120px;
+		  	}
+		  	
+		  	.fill-addr select{
+		  		height: 40px;
+		  		width: 120px;
+		  		margin-right: 10px;
+		  	}
+		  	
+		  	
+		  	.fill-opera{
+		  		width: 300px;
+		  		height: 40px;
+		  		margin: 0 auto;
+		  		
+		  	}
+		  	
+		  	.fill-opera button{
+		  		width: 100px;
+		  		height: 40px;
+		  		margin-top: 0px;
+		  		margin-left: 16px;
+		  		border-radius: 6px;
+		  		line-height: 40px;
+		  		text-align: center;
+		  		background:  scroll 1px #9E9E9E;
+		  		float: left;
+		  		cursor: pointer;
+		  	}
+		  	.fill-opera .save{
+		  		cursor: not-allowed;
+		  	}
+		  	
+		  	.init_adrs{
+		  		display: none;
+		  	}
+		  	
+		 .consign-itme 	.adr_icon{
+		  		visibility: visible;
+		  		display: inline-block;
+                     width: 18px;
+                       height: 16px;
+                       margin-top: 5px;
+                        margin-right: 5px;
+                        background-position: -18px -2px;
+		  	}
