@@ -22,7 +22,7 @@
 							</div>
 					<div class="col-md-2  text-left links ">
 						<span class="glyphicon glyphicon-volume-up posi"></span>
-						<a href="/jyhwebstore/store/html/operation/userdetails.jsp?id=${acount.aid }">跳转到用户详情页面</a>
+						<a href="/jyhwebstore/store/html/operation/userdetails.jsp">跳转到用户详情页面</a>
 					<!-- <a href="">防范金融诈骗提示</a> -->	
 						
 					</div>

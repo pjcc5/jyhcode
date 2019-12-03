@@ -194,13 +194,13 @@
 				var mail = jsons.mail;
 				var address = jsons.setadd;
 				var userbirth = birth.split("-");
+				$("#uimg").attr('src',picture);
 				$("#lable_nickname").html(uname);
 				$("#lable_birth").html(birth);
 				$("#lable_sex").html(sex);
 				$("#lable_phone").html(phone);
 				$("#lable_mail").html(mail);
 				$("#lable_address").html(address);
-				
 				$("#button_modify").click(function(){
 					//给单选框赋值
 					if(sex!="nulls")
@@ -214,15 +214,6 @@
 							$("input[type='radio']").eq(1).attr("checked",true);
 						}
 					}	
-					//if(picture.substring(picture.length-3)=="nulls" || picture.substring(picture.length-3)!="jpg")
-				//	{
-						
-				//	}
-				//	else
-				//	{
-					//	$("#uimg").attr("src",""+picture);
-					//	alert(picture);
-					//}
 					$("#input_nickname").val(uname);
 					$("#input_phone").val(phone);
 					$("#input_mail").val(mail);
@@ -263,7 +254,7 @@
 	}
 	//保存信息
 	$("#button_save").click(function(){
-		alert($("input:radio:checked").val());
+		//alert($("input:radio:checked").val());
 		if($("#input_nickname").val()==""||($("input:radio:checked").val()!="男" && $("input:radio:checked").val()!="女" )||$("#input_phone").val()==""||($("#input_mail").val()=="nulls" || $("#input_mail").val()=="")||($("#input_address").val()=="nulls" || $("#input_address").val()=="")||$("#birth_year").val()==""||$("#birth_month").val()==""||$("#birth_day").val()=="")
 			{
 			$("#input_nickname").focus();
