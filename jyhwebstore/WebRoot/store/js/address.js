@@ -9,6 +9,7 @@ $(function(){
 		data:{"action":"query"},
 		datatype:"json",
 		success:function(result){
+			if(result!=false){
 			var json = JSON.parse(result);
 			
 			for(var i = 0; i < json.length;i++)
@@ -16,9 +17,6 @@ $(function(){
 					var isdefault = json[i].isdefault;
 					
 					if(isdefault==1){
-					
-						
-						
 						var str = `
 					<li>
   					<div class="  addr-default isdefault">默认地址</div>`;
@@ -66,6 +64,7 @@ $(function(){
 					$('.addr-bar').append(content);
 					
 				}
+		}
 			
 		}
 	
