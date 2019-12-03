@@ -40,22 +40,21 @@ public class SelecUserPhoneAndNameDaoImpl implements SelecUserPhoneAndNameDao{
 		return false;
 	}
 
+
 	@Override
-	public User selectUserPhone(String uphone,
-			Connection conn) throws Exception {
-		
+	public User selectUserName(String uname, Connection conn) throws Exception {
 		if (conn == null || conn.isClosed()) {
 			return null;
 		}else
 		{
-			String sql="select * from user where uphone=?";
+			String sql="select * from user where uname=?";
 			PreparedStatement ps =  conn.prepareStatement(sql);
-			ps.setString(1, uphone);
+			ps.setString(1, uname);
 			ResultSet rs = ps.executeQuery();
 			User user = null;
 			
 			if (rs.next()) {
-				System.out.println("好的查询成功了");
+				System.out.println("好的查询成功uname了");
 			    user=new User();
 				user.setUid(rs.getInt("uid"));
 				user.setUname(rs.getString("uname"));
@@ -71,22 +70,22 @@ public class SelecUserPhoneAndNameDaoImpl implements SelecUserPhoneAndNameDao{
 		}
 		return null;
 	}
+
 	@Override
-	public User selectUserName(String name,
-			Connection conn) throws Exception {
-		
+	public User selectUserPhone(String uphone, Connection conn)
+			throws Exception {
 		if (conn == null || conn.isClosed()) {
 			return null;
 		}else
 		{
-			String sql="select * from user where uname=?";
+			String sql="select * from user where uphone=?";
 			PreparedStatement ps =  conn.prepareStatement(sql);
-			ps.setString(1, name);
+			ps.setString(1, uphone);
 			ResultSet rs = ps.executeQuery();
 			User user = null;
 			
 			if (rs.next()) {
-				System.out.println("好的查询成功了");
+				System.out.println("好的查询成功uphone了");
 			    user=new User();
 				user.setUid(rs.getInt("uid"));
 				user.setUname(rs.getString("uname"));

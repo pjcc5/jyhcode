@@ -11,6 +11,9 @@
 		<title>用户详情页面</title>
 	</head>
 	<body style="background: url(/jyhwebstore/store/img/bgc.jpg);">
+	<div id="loading" style=" display: none; position: fixed;opacity: 0.6;background: white; text-align: center;width: 100%;height: 100%;z-index: 10000;">
+		<div style="font-size: 20px; margin-top: 320px;color: #000000;">正在加载中</div>
+	</div>
 		<section class="top-lan" style="height: 40px;">
 					<div class="row" style="height: 40px;">
 						<div class="col-md-11 col-md-offset-1 col-sm-6 col-xs-12 links text-left">
@@ -60,7 +63,7 @@
 				</section>
 		<!-- 用户显示的信息 -->
 		<form  style="margin-top: 50px;margin-left:600px" id="form_userinform">
-			<table align="center" style="font-size: 20px; line-height:90px;">
+			<table align="center" style="font-size: 20px; line-height:70px;">
 				<tr>
 					<td style="font-size: 20px;">头像：</td>
 					<td>
@@ -106,17 +109,17 @@
 					</td>
 				</tr>
 			</table>
-			<input type="button" value="修改" id="button_modify" style="width: 70px;height: 40px;margin-left: 150px;"/>
+			<input type="button" class=" regist-btn btn btn-danger" value="修改" id="button_modify" style="width: 70px;height: 40px;margin-left: 150px;"/>
 		</form>
 		<!--用户信息修改-->
 		<form style="margin-top: 50px;margin-left:600px; display: none;" id="form_modify" name="reg_testdate">
-			<table align="center" style="font-size: 20px; line-height:90px;">
+			<table align="center" style="font-size: 20px; line-height:70px;">
 				<tr>
 					<td style="font-size: 20px;">头像：</td>
 					<td>
-						<img src="${pic}" width="150xp" height="150px" id="img" onclick="picselect()"/>
+						<img src="${pic}" width="150xp" height="150px" id="img" onclick="picselect()" />
 					</td>
-					<input id="input_picture" type="file" style="height: 30px;display: none;" onchange="show(this)"/>
+					<input id="input_picture" type="file" style="height: 30px;display: none;" onchange="show(this)" onchange="verificationPicFile(this)"/>
 				</tr>
 				<tr>
 					<td style="font-size: 20px;">昵称：</td>
@@ -164,10 +167,16 @@
 					</td>
 				</tr>
 			</table>
-			<input type="button" value="保存" id="button_save" style="width: 70px;height: 40px;margin-left: 150px;"/>
+			<input type="button" class=" regist-btn btn btn-danger" value="保存" id="button_save" style="width: 70px;height: 40px;margin-left: 150px;"/>
 		</form>
 		<div style="background: #A6E1EC;width: 200px;height: 100px;text-align: center;display: none;font-size: 20px;margin-left: 700px;margin-top: -300px;line-height: 100px;" id="message">
 			<span>修改成功！</span>
+		</div>
+		<div style="background: #A6E1EC;width: 300px;height: 100px;text-align: center;display: none;font-size: 18px;margin-left: 700px;margin-top: -300px;line-height: 100px;" id="limitpicmax">
+			<span>图片大小不能超过1MB！</span>
+		</div>
+		<div style="background: #A6E1EC;width: 300px;height: 100px;text-align: center;display: none;font-size: 18px;margin-left: 700px;margin-top: -300px;line-height: 100px;" id="limitpicmin">
+			<span>图片大小不能小于0MB！</span>
 		</div>
 		<script src="/jyhwebstore/store/js/user_birth.js"></script>
 		<script src="/jyhwebstore/store/js/jquery-3.4.1.js"></script>
@@ -175,12 +184,11 @@
 		<script src="/jyhwebstore/store/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 	<script>
-	//显示信息
 	myajax();
 	function myajax()
 	{
 		$.get({
-			async:false,
+			async:true,
 			type:"post",
 			url:"/jyhwebstore/ShowUserDetails",
 			data:"",
@@ -195,13 +203,13 @@
 				var mail = jsons.mail;
 				var address = jsons.setadd;
 				var userbirth = birth.split("-");
+				$("#uimg").attr('src',picture);
 				$("#lable_nickname").html(uname);
 				$("#lable_birth").html(birth);
 				$("#lable_sex").html(sex);
 				$("#lable_phone").html(phone);
 				$("#lable_mail").html(mail);
 				$("#lable_address").html(address);
-				
 				$("#button_modify").click(function(){
 					//给单选框赋值
 					if(sex!="nulls")
@@ -211,19 +219,11 @@
 							$("input[type='radio']").eq(0).attr("checked",true);
 						}
 						else
-						{
+						{ 
 							$("input[type='radio']").eq(1).attr("checked",true);
 						}
 					}	
-					//if(picture.substring(picture.length-3)=="nulls" || picture.substring(picture.length-3)!="jpg")
-				//	{
-						
-				//	}
-				//	else
-				//	{
-					//	$("#uimg").attr("src",""+picture);
-					//	alert(picture);
-					//}
+					$("#uimg").attr('src',picture);
 					$("#input_nickname").val(uname);
 					$("#input_phone").val(phone);
 					$("#input_mail").val(mail);
@@ -248,6 +248,7 @@
 			}
 		});
 	}
+	
 	var content;
 	function show(obj){
 		var fr =new  FileReader();
@@ -255,16 +256,41 @@
 		fr.readAsDataURL(f);
 		fr.onload=function(e){
 		content = e.target.result;
+		var filemin = 0;
+		var filemax = 1024;
+		var filesize = f.size/1024;
 		//预览
 		document.getElementById("img").src=content;
+		if(filesize>filemax)
+		{
+			$("#limitpicmax").fadeIn(1000);
+			$("#limitpicmax").fadeOut(2000);
+			//alert("文件大小不能超过1MB");
+			$("#button_save").attr("disabled","disabled");
+			return false;
 		}
+		else if(filesize<filemin)
+		{
+			$("#limitpicmin").fadeIn(1000);
+			$("#limitpicmin").fadeOut(2000);
+			//alert("文件大小不能小于0MB");
+			$("#button_save").attr("disabled","disabled");
+			return false;
+		}
+		if(filemin<=filesize && filesize<=filemax)
+		{
+			$("#button_save").removeAttr("disabled");			
+		}
+		};
 	}
 	function picselect(){
 		document.getElementById("input_picture").click();
 	}
 	//保存信息
 	$("#button_save").click(function(){
-		if($("#input_nickname").val()==""||$("input:radio:checked").val()==""||$("#input_phone").val()==""||$("#input_mail").val()==""||$("#input_address").val()==""||$("#birth_year").val()==""||$("#birth_month").val()==""||$("#birth_day").val()=="")
+		$("#loading").show();
+		//alert($("input:radio:checked").val());
+		if($("#input_nickname").val()==""||($("input:radio:checked").val()!="男" && $("input:radio:checked").val()!="女" )||$("#input_phone").val()==""||($("#input_mail").val()=="nulls" || $("#input_mail").val()=="")||($("#input_address").val()=="nulls" || $("#input_address").val()=="")||$("#birth_year").val()==""||$("#birth_month").val()==""||$("#birth_day").val()=="")
 			{
 			$("#input_nickname").focus();
 			alert("抱歉昵称/出生年月/性别/电话/邮箱/住址不能为空");
@@ -289,15 +315,26 @@
 							var jsons =JSON.parse(result);
 							if(jsons.flag==true)
 							{
-								$("#message").fadeIn(1000);
-								$("#message").fadeOut(1500);
+								$("#loading").hide();
+								$("#message").show();
+								$("#message").fadeOut(2000);
 								myajax();
 								$("#form_modify").hide();
 								$("#form_userinform").show();
+								location.reload();
 							}	
 							else
 							{
-								alert("手机号或用户名已存在！");
+								if(jsons.error==false)
+								{
+									alert("手机号或用户名已存在！");
+									
+								}
+								else
+								{
+									alert("系统错误！");
+									location.href = "/jyhwebstore/store/html/login.jsp?id=systemerror";
+								}
 							}
 						}
 					});
