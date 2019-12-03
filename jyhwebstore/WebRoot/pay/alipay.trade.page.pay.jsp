@@ -18,13 +18,13 @@
 	alipayRequest.setNotifyUrl(AlipayConfig.notify_url);
 	
 	//商户订单号，商户网站订单系统中唯一订单号，必填
-	String out_trade_no = new String(request.getParameter("WIDout_trade_no").getBytes("ISO-8859-1"),"UTF-8");
+	String out_trade_no = new String(request.getParameter("WIDout_trade_no"));
 	//付款金额，必填
-	String total_amount = new String(request.getParameter("WIDtotal_amount").getBytes("ISO-8859-1"),"UTF-8");
+	String total_amount = new String(request.getParameter("WIDtotal_amount"));
 	//订单名称，必填
-	String subject = new String(request.getParameter("WIDsubject").getBytes("ISO-8859-1"),"UTF-8");
+	String subject = new String(request.getParameter("WIDsubject"));
 	//商品描述，可空
-	String body = new String(request.getParameter("WIDbody").getBytes("ISO-8859-1"),"UTF-8");
+	String body = new String(request.getParameter("WIDbody"));
 	
 	alipayRequest.setBizContent("{\"out_trade_no\":\""+ out_trade_no +"\"," 
 			+ "\"total_amount\":\""+ total_amount +"\"," 
@@ -50,3 +50,6 @@
 <body>
 </body>
 </html>
+<script>
+console.log("=========================================================================");
+</script>

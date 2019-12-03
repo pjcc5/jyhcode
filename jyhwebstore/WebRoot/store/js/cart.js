@@ -1,4 +1,5 @@
 var msg={};
+
 (function(){
 	$.ajax({
 		  type:"POST",
@@ -16,6 +17,9 @@ var msg={};
 
 
  function callback(result){
+	 var total=0;
+	 var count=0;
+	 var selectcount=0;
 	 if(result.length>0){
 	msg.shopid=result[0].shopid;
 	
@@ -26,13 +30,26 @@ var msg={};
       //拿到每一项  goodsList[i].goodsName
     	
     	var price=goodsList[i].comprice*goodsList[i].count;
+    	count=count+goodsList[i].count;
+    	console.log("count="+count)
     	var pic=goodsList[i].compic.replace(/50x50/g,"130x130");
-    	
+    	var selected=goodsList[i].selected;
+    	if(selected==1){
+    		total=total+goodsList[i].comprice*goodsList[i].count;
+    		selectcount=selectcount+goodsList[i].count;
+    		console.log("selectcount="+selectcount);
       var str = `
       <div class="goods" data='${goodsList[i].uuid}'>
 			<div class="goods-top">
-				<input  type="checkbox" class='select-d' data='${goodsList[i].uuid}' choose="${goodsList[i].selected}"/>
-				<p>${goodsList[i].comname}</p>
+				<input  type="checkbox" class='select-d' checked="checked" data='${goodsList[i].uuid}' choose="${goodsList[i].selected}" data-price="active"/>`;
+				
+    	}else{
+    		var str=`
+    		 <div class="goods" data='${goodsList[i].uuid}'>
+ 			<div class="goods-top">
+ 				<input  type="checkbox" class='select-d' data='${goodsList[i].uuid}' choose="${goodsList[i].selected}"/>`;
+    	}
+			var str1=`<p>${goodsList[i].comname}</p>
 			</div>
 			<div class="goods-mid">
 					<div class="desc">
@@ -69,18 +86,20 @@ var msg={};
       
       `;
       //把每次组装好的添加进table
-      $('.content').append(str);
+      $('.content').append(str+str1);
+      
+      
     }
+    
+    $('.total').html(total+".00");
+    $('.all').html("(共"+count+"件)");
+    $('.checked').html("已选商品"+selectcount+"件");
     };
  
  
  
  var num=0;
-$('.number').each(function(){
-    
-	num++;
-	$('.all').html('(共'+num+'件)');
-});
+
 
 var  windowH=$(window).height();
    var   container=
@@ -283,7 +302,7 @@ function clickAll(){
 	  			$.ajax({
 	  				  type:"POST",
 	  				  url:"/jyhwebstore/operationcartservlet",
-	  				  data:{"msg":JSON.stringify(msg),"selectall":all},
+	  				  data:{"msg":JSON.stringify(msg),"selectall":"selectall"},
 	  				  dataType:"json",
 	  				  success:function(result){
 	  					 console.log(result);
@@ -317,7 +336,7 @@ function clickAll(){
  			$.ajax({
  				  type:"POST",
  				  url:"/jyhwebstore/operationcartservlet",
- 				  data:{"msg":JSON.stringify(msg),"selectall":all},
+ 				  data:{"msg":JSON.stringify(msg),"selectall":"selectall"},
  				  dataType:"json",
  				  success:function(result){
  					 console.log(result);
@@ -398,7 +417,7 @@ function clickAll(){
     var data=tr.getAttribute('data');
 	  msg.data=data;
 	  msg.num=-1;
-	  
+	  msg.choose=0;
 	  (function(){
 			$.ajax({
 				  type:"POST",
@@ -463,6 +482,10 @@ $('.total').html( sum + '.00');
 
 }
 
+
+$('.check-out').click(function(){
+	location.href="/jyhwebstore/store/html/ordersubmit.jsp";
+})
 
 $('#top').click(function(){
   			// $(document).scrollTop(0);

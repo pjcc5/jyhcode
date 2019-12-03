@@ -20,6 +20,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<link rel="stylesheet" type="text/css" href="styles.css">
 	-->
 <link rel="stylesheet" href="/jyhwebstore/store/css/ordersubmit.css"/>
+
+<style>
+
+.color{float: left; margin-top: 20px;margin-left: 100px}
+.size{float:left;margin-top: 20px;margin-left: 40px}
+</style>
   </head>
   
   <body>
@@ -40,31 +46,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				
 				<div class="consign_rel_cont">
 				<ul id="consignee_list">
-					<!--  <li class="consign-itme item-selected" onclick="defaultAddr(this)">
-						<div class="total_info">
-							<i class="sprite_odr  adr_icon"></i>
-							
-							<span>
-								<a href="javascript:;" class="edit-consignee" onclick="edit(this)">编辑</a>
-								<a href="javascript:;"
-class="del-consignee" style="display: none;" onclick="removeAddr(this)">删除</a>
-							</span>
-						</div>
-						<div class="detail_info">
-							<p>
-								<span>谭</span>
-								<span>18890573466</span>
-							</p>
-							<p><span prov="5">湖南 </span>
-								<span city="1">长沙</span>
-								<span country="1">岳麓区</span>
-							</p>
-							<p>麓谷街道 长丰五期</p>
-						</div>
-						<div class="sprite_odr is-choose"></div>
-						
-					</li>
-					-->
+					
 				</ul>
 			</div>
 			</div>
@@ -89,24 +71,13 @@ class="del-consignee" style="display: none;" onclick="removeAddr(this)">删除</
 			<div class="same_module_rel">
 				<div class=" mod_rel_head">
 					<span class="mr_tit">配送清单</span>
-					<a href="" class="mr_ctrlbtn">返回购物车修改</a>
+					<a href="/jyhwebstore/store/html/operation/cart.jsp" class="mr_ctrlbtn">返回购物车修改</a>
 				</div>
 				
 				<div class="good-list">
-					<div class="box">
-						<div class="dib_tit">聚优汇</div>
-						<div class="dib_con">
-							<ul>
-								<li class="des">
-									<img src="/jyhwebstore/store/img/bgctop.jpg"/>
-									<p>name</p>
-								</li>
-								<li class="exist">有货</li>
-								<li class="count">×1</li>
-								<li class="price">￥19.90</li>
-							</ul>
-						</div>
-					</div>
+					
+					
+					
 					
 					<div class="add_remak">
 						<p class="rmk_tit">添加备注</p>
@@ -135,19 +106,11 @@ class="del-consignee" style="display: none;" onclick="removeAddr(this)">删除</
 			<div class="pay_tools_inner">
 				<div class="pay_tli_adr">
 					
-						<p class="adr_name_tel">
-							<span class="pat_name">sad</span>
-							<span class="pta_name">18890573466</span>
-						</p>
-						<p class="adr_detail">
-							<i class="sprite_odr"></i>
-							<span class="area_Name">湖南 长沙市 岳麓区 麓谷街道长丰 五期</span>
-						</p>
 					
 				</div>
 
 				
-				<a class="pay_btn_smbit" href="javascript:;" onclick="">提交订单</a>
+				<a class="pay_btn_smbit" href="javascript:;" onclick="submitorder(this)">提交订单</a>
 				
 				<div class="pay_tli_count">
 					<p class="ptc_tips">需支付</p>
