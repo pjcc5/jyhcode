@@ -94,7 +94,7 @@
 					<input type="text" class="search-input" id="searchIn1" placeholder="搜索手机">
 					<button type="button" class="search-btn" id="searchBtn1"><span class="glyphicon glyphicon-search"></span></button>
 					<div>
-						<a href="cart.html" class="cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
+						<a href="/jyhwebstore/store/html/operation/cart.jsp" class="cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
 						
 					</div>
 					<ul class="search-list">
@@ -462,11 +462,11 @@ function SnowFlower(){
 		    	this.timer = setInterval(function(){
 		    		$(that).animate({top:that.windowH+'px',left:this.left+that.windowH+"px"},10000);
 //		    		that.top += that.step;
-		    		if(that.top > 1000 )  
+		    		if(that.top > 700 )  
 		    			{
 		    				that.die();
 		    			}
-		    		if(that.left > 1000)
+		    		if(that.left >600)
 		    			{
 		    			that.die();
 		    			}

@@ -69,7 +69,7 @@
 		<section>
 			<header>
 				<div class="logo">
-					<a href=""><img src="/jyhwebstore/store/img/Logo.png" class="logo-img"></a>
+					<a href="/jyhwebstore/index.jsp"><img src="/jyhwebstore/store/img/Logo.png" class="logo-img"></a>
 					<a><img src="/jyhwebstore/store/img/slogan.png" class="slogan" alt=""></a>
 				</div>
 				
@@ -77,7 +77,7 @@
 					<input type="text" class="search-input" id="searchIn1" placeholder="搜索手机">
 					<button type="button" class="search-btn" id="searchBtn1"><span class="glyphicon glyphicon-search"></span></button>
 					<div>
-						<a href="/jyhwebstore/store/html/cart.jsp" class="cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
+						<a href="/jyhwebstore/store/html/operation/cart.jsp" class="cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
 						
 					</div>
 					<ul class="search-list">
@@ -109,7 +109,7 @@
 			<!-- 浮动导航栏 -->
 			<div class="mynav">
 				<div title="sss" class="logo">
-					<a href=""><img src="/jyhwebstore/store/img/Logo.png" class="nav-logo-img"></a>
+					<a href="/jyhwebstore/index.jsp"><img src="/jyhwebstore/store/img/Logo.png" class="nav-logo-img"></a>
 				</div>
 				<div class="nav-search">
 					<input type="text" class="search-input" id="searchIn2" placeholder="搜索手机">

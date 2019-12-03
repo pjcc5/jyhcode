@@ -143,12 +143,7 @@
 				<div class="big"></div>
 				<div class="goods">
 					<div class="info">
-					<!--  	<p class="name">希菲 原肉整切10片1300g牛排套餐 西冷眼肉 手工微腌 生鲜儿童牛肉</p>
-			<p class="price"><span>价格</span><span class="price-m">￥129</span></p>
-			<p class="desc"><span>销量</span><span class="desc-p">desc</span></p>
-			<div class="hot"><span>好评</span><span class="hot-p"><span class="glyphicon glyphicon-heart"></span>100</span>
-
-					</div>-->
+					
 				</div>
 				<div id="choose">
 					<div id="choose-1">
