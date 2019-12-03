@@ -164,10 +164,6 @@ public class AddressServlet extends HttpServlet {
 			}
 			DbHelp2.closeConnection(conn);
 		}
-		
-		
-		 
-		
 	}
 
 	public void init() throws ServletException {

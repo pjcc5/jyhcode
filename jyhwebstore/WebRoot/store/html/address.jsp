@@ -189,8 +189,3 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 <script src="/jyhwebstore/store/js/city.js"></script>
 <script src="/jyhwebstore/store/js/method.js"></script>
 <script src="/jyhwebstore/store/js/address.js"></script>
-
-<script>
-
-
-</script>
