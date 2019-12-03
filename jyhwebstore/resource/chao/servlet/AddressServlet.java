@@ -57,7 +57,7 @@ public class AddressServlet extends HttpServlet {
 		}
 		
 		if(action.equals("update")){
-			System.out.println("update");
+			
 		String data=	request.getParameter("msg");
 		JSONObject object=JSONObject.fromObject(data);
 		Connection conn=DbHelp2.getConnection();
@@ -65,10 +65,12 @@ public class AddressServlet extends HttpServlet {
 		
 		try {
 			
-		
-		
-		Address address=dao.getAddressByAddressid(object.getString("oldflag"), conn);
-	dao.changeDefault(address.getAddressid(), 0, conn);
+			String oldflag=object.getString("oldflag");
+			System.out.println(oldflag);
+		if(!oldflag.equals("")){
+		Address address=dao.getAddressByAddressid(oldflag, conn);
+	    dao.changeDefault(address.getAddressid(), 0, conn);
+	}
 		Address address1=dao.getAddressByAddressid(object.getString("newflag"), conn);
 		
 		dao.changeDefault(address1.getAddressid(), 1, conn);

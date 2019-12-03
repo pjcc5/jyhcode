@@ -90,7 +90,12 @@ function defaultAddr(obj){
 		});	
 		addr_default.addClass('isdefault');
 		
-		data.oldflag=$('.default').attr('flag');
+		data.oldflag="";
+		var oldflag=$('.default').attr('flag');
+		if(oldflag!=null){
+			console.log("oldflag!=null");
+			data.oldflag=oldflag;
+		}
 		$('.set-default').each(function(i,n){
 			$(n).removeClass('default');
 		});
