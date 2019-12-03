@@ -5,9 +5,12 @@ import java.util.ArrayList;
 import java.util.List;
 import java.util.UUID;
 
+import pojo.Address;
 import pojo.Details;
 import pojo.Shopping;
+import dao.AddressDao;
 import dao.ShoppingDao;
+import dao.impl.AddressDaoImpl;
 import dao.impl.ShoppingDaoImpl;
 import db.DbHelp;
 import db.DbHelp2;
@@ -21,19 +24,14 @@ import tan.servers.ProductDetail;
 public class test {
 	public static void main(String[] args) throws Exception {
 		String shopid = UUID.randomUUID().toString();
-		Shopping shop = new Shopping();
-		shop.setShopid(shopid);
-		shop.setColor("");
-		shop.setComname("");
-		shop.setDate("");
-		shop.setSize("");
-		shop.setCount("");
-		shop.setCompic("");
-		shop.setComprice("");
-		shop.setUuid("");
-		ShoppingDao shopdao = new ShoppingDaoImpl();
-		Connection conn=DbHelp2.getConnection();
-		System.out.println(shopdao.insertShoping(shop, conn));
+		AddressDao dao=new AddressDaoImpl();
+	Connection conn=	DbHelp2.getConnection();
+	Address address=new Address();
+	address.setAddressid("2");
+	address.setAid(UUID.randomUUID().toString());
+	address.setIsdefault(1);
+	address.setRecivephone("18890573466");
+		System.out.println(dao.modifyAdd(address, conn));;
 	}
 	
 
