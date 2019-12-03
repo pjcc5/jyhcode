@@ -11,6 +11,9 @@
 		<title>用户详情页面</title>
 	</head>
 	<body style="background: url(/jyhwebstore/store/img/bgc.jpg);">
+	<div id="loading" style=" display: none; position: fixed;opacity: 0.6;background: white; text-align: center;width: 100%;height: 100%;z-index: 10000;">
+		<div style="font-size: 20px; margin-top: 320px;color: #000000;">正在加载中</div>
+	</div>
 		<section class="top-lan" style="height: 40px;">
 					<div class="row" style="height: 40px;">
 						<div class="col-md-11 col-md-offset-1 col-sm-6 col-xs-12 links text-left">
@@ -285,6 +288,7 @@
 	}
 	//保存信息
 	$("#button_save").click(function(){
+		$("#loading").show();
 		//alert($("input:radio:checked").val());
 		if($("#input_nickname").val()==""||($("input:radio:checked").val()!="男" && $("input:radio:checked").val()!="女" )||$("#input_phone").val()==""||($("#input_mail").val()=="nulls" || $("#input_mail").val()=="")||($("#input_address").val()=="nulls" || $("#input_address").val()=="")||$("#birth_year").val()==""||$("#birth_month").val()==""||$("#birth_day").val()=="")
 			{
@@ -311,8 +315,9 @@
 							var jsons =JSON.parse(result);
 							if(jsons.flag==true)
 							{
-								$("#message").fadeIn(1000);
-								$("#message").fadeOut(1500);
+								$("#loading").hide();
+								$("#message").show();
+								$("#message").fadeOut(2000);
 								myajax();
 								$("#form_modify").hide();
 								$("#form_userinform").show();

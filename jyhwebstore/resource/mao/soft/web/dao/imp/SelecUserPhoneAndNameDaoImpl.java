@@ -40,38 +40,6 @@ public class SelecUserPhoneAndNameDaoImpl implements SelecUserPhoneAndNameDao{
 		return false;
 	}
 
-	@Override
-	public User selectUserNameAndPhone( String uname ,String uphone,
-			Connection conn) throws Exception {
-		
-		if (conn == null || conn.isClosed()) {
-			return null;
-		}else
-		{
-			String sql="select * from user where uname=? and uphone=?";
-			PreparedStatement ps =  conn.prepareStatement(sql);
-			ps.setString(1, uname);
-			ps.setString(2, uphone);
-			ResultSet rs = ps.executeQuery();
-			User user = null;
-			
-			if (rs.next()) {
-				System.out.println("好的查询成功了");
-			    user=new User();
-				user.setUid(rs.getInt("uid"));
-				user.setUname(rs.getString("uname"));
-				user.setPic(rs.getString("pic"));
-				user.setBirth(rs.getTimestamp("birth"));
-				user.setSex(rs.getString("sex"));
-				user.setUphone(rs.getString("uphone"));
-				user.setMail(rs.getString("mail"));
-				user.setSetadd(rs.getString("setadd"));
-				user.setAid(rs.getString("aids"));
-				return user;
-			} 
-		}
-		return null;
-	}
 
 	@Override
 	public User selectUserName(String uname, Connection conn) throws Exception {
