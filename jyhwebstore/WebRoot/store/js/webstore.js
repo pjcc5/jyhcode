@@ -6,7 +6,6 @@ var n = 0;//信号量
   	  $('.banner>ul>li').eq(n).stop().fadeIn(500).siblings().fadeOut(500);
   	  $('.number span').eq(n).stop().addClass('current').siblings().removeClass('current');
 	  }
-
 	var i =0;
   $(function(){  
 	setInterval("currenttime()",1000);
@@ -38,7 +37,8 @@ var n = 0;//信号量
   			
   			}else
 			{
-  				scrollTo(300,1000);
+  				$(document).scrollTop(300);
+  				
 			}
   			
   		});
