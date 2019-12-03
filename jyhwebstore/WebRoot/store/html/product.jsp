@@ -68,7 +68,7 @@
 						</c:if>
 						
 						<li><a href="/jyhwebstore/store/html/regist.jsp">注册</a></li>
-						<li><a href="/jyhwebstore/store/html/cart.jsp"><span class="glyphicon glyphicon-list-alt"></span> 我的订单</a></li>
+						<li><a href="/jyhwebstore/store/html/operation/cart.jsp"><span class="glyphicon glyphicon-list-alt"></span> 我的订单</a></li>
 
 					</ul>
 				</div>

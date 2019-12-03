@@ -24,7 +24,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
     <div class="top_bar">
 			<div class="clearfix">
 				<div class="left">
-				<a href="">
+				<a href="/jyhwebstore/index.jsp">
 				<span class="glyphicon glyphicon-home"></span>
 				聚优汇首页</a>
 				</div>
@@ -39,9 +39,9 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</a>
 					</c:if>
 						<c:if test="${not empty acount}">
+							<a href="javascript:out()" id="out">退出</a>
 							<a href="/jyhwebstore/store/html/operation/information.jsp?path=index.jsp" id="log">
 							${acount.aname }
-							<a href="javascript:out()" id="out">退出</a>
 						</a>
 						</c:if>
 					
@@ -59,7 +59,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				<div class="header-right">
 
 					<div class="cart-2">
-						<a href="">
+						<a href="/jyhwebstore/store/html/cart.jsp">
 							<span class="glyphicon glyphicon-shopping-cart"></span>
 							<span>购物车</span>
 
@@ -73,10 +73,10 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 							</a>
 						</div>
 						<ul>
-							<li><a href="">饮料</a></li>
-							<li><a href="">咖啡</a></li>
-							<li><a href="">黄油</a></li>
-							<li><a href="">湿巾</a></li>
+							<li><a href="/jyhwebstore/store/html/search.jsp?content=Apple">Apple</a></li>
+							<li><a href="/jyhwebstore/store/html/search.jsp?content=oppo">oppo</a></li>
+							<li><a href="/jyhwebstore/store/html/search.jsp?content=vivo">vivo</a></li>
+							<li><a href="/jyhwebstore/store/html/search.jsp?content=飞利浦">飞利浦</a></li>
 						</ul>
 					</div>
 				</div>
@@ -93,43 +93,21 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						<span class="glyphicon glyphicon-list-alt"></span>  我的交易
 						
 				</p>
-				<a href="/jyhwebstore/store/html/order.jsp">聚优汇订单</a>
-				<a href="">我的预约</a>
-				<a href="">常购清单</a>
+				<a href="/jyhwebstore/store/html/operation/order.jsp">聚优汇订单</a>
 				</div>
 				
 				<div class="menber">
 					<p>
 						<span class="glyphicon glyphicon-star"></span> 会员资料
 					</p>
-					<a href="">个人资料</a>
-					<a href="">地址管理</a>
+					<a href="/jyhwebstore/store/html/operation/information.jsp" class="active">个人资料</a>
+					<a href="/jyhwebstore/store/html/address.jsp">地址管理</a>
 				</div>
 				
-				<div class="judgement">
-					<p>
-						<span class="glyphicon glyphicon-comment"></span> 我的评论
-					</p>
-					<a href="">评论商品</a>
-					
-				</div>
-				<div>
-				<p>
-						<span class="glyphicon glyphicon-heart"></span> 我的关注
-					</p>
-					<a href="">关注商品</a>
 				
-					
-				</div>
 				
-				<div>
-				<p>
-						<span class="glyphicon glyphicon-grain"></span> 我的关注
-					</p>
-					<a href="">在线退换货</a>
 				
-					
-				</div>
+				
 			</div>
 			<div class="information">
 				<div class="edit-top">
@@ -310,7 +288,11 @@ function gosearch(){
 $("body").keydown(function(event){
 	if(event.keyCode == 13)
 		{
-			
+			var  content = $(".search-input").val();
+			if(content != "")
+			{
+				gosearch();
+			}
 		}
 			
 	

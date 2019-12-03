@@ -94,7 +94,7 @@
 				<div class="nav">
 					<div class="all-items" onclick="showmodol(this)">
 						<span class="all-item-icon"><span class="glyphicon glyphicon-list" ></span></span>
-						全部类目
+						热门品牌
 						<span class="hover-forward"><span class="glyphicon glyphicon-chevron-down"></span></span>
 						
 						
@@ -114,7 +114,7 @@
 				<div class="nav-search">
 					<input type="text" class="search-input" id="searchIn2" placeholder="搜索手机">
 					<button type="button" class="nav-search-btn" id="searchBtn2" ><span class="glyphicon glyphicon-search"></span></button>
-					<a href="/jyhwebstore/store/html/cart.jsp" class="cart nav-cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
+					<a href="/jyhwebstore/store/html/operation/cart.jsp" class="cart nav-cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
 						
 			</div>
 		</section>

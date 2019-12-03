@@ -138,6 +138,7 @@ header{
 	line-height: 38px;
 	color: white;
 	position: relative;
+	cursor:pointer;
 	
 }
 .nav-list{

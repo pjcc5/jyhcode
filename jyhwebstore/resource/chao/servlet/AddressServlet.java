@@ -43,12 +43,14 @@ public class AddressServlet extends HttpServlet {
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		Acount acount=(Acount) request.getSession().getAttribute("acount");
+		String aid="";
 		if(acount!=null){
-		String aid=acount.getAid();}
+			aid = acount.getAid();
+		}
 		String action = request.getParameter("action");
 		if(action.equals("query")){
 		PrintWriter out = response.getWriter();
-		 List<Address> list = AddressService.getAddressByAid("463ce3c5-52c0-40e5-8750-187b7ef5b33a");
+		 List<Address> list = AddressService.getAddressByAid(aid);
 		 if(list!=null){
 		 JSONArray ja = JSONArray.fromObject(list);
 		 System.out.println(ja);
@@ -94,7 +96,7 @@ public class AddressServlet extends HttpServlet {
 			
 			Address address=new Address();
 			address.setAddressid(UUID.randomUUID().toString());
-			address.setAid("463ce3c5-52c0-40e5-8750-187b7ef5b33a");
+			address.setAid(aid);
 			address.setAddressdetail(object.getString("detailaddr"));
 			address.setCounty(object.getString("countryhtml"));
 			address.setCountyval(object.getString("countryval"));

@@ -1,5 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
-
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>	
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>    
@@ -13,20 +13,27 @@
     <div class="top_bar">
 			<div class="clearfix">
 				<div class="left">
-				<a href="">
+				<a href="/jyhwebstore/index.jsp">
 				<span class="glyphicon glyphicon-home"></span>
 				聚优汇首页</a>
 				
 				</div>
-				
-				
+				<a id="current" style="display:inline-block;margin:0 auto;"></a>
 				<div class="right">
-					<a href="">
+					<a href="/jyhwebstore/store/html/operation/order.jsp">
 						<span class="glyphicon glyphicon-list-alt"></span>
 						我的订单</a>
-					
-					<a href="">注册</a>
-					<a href="">登录</a>
+					<c:if test="${empty acount}">
+						<a href="/jyhwebstore/store/html/login.jsp?path=index.jsp" id="log">
+							登录
+						</a>
+					</c:if>
+						<c:if test="${not empty acount}">
+							<a href="javascript:out()" id="out">退出</a>
+							<a href="/jyhwebstore/store/html/operation/information.jsp?path=index.jsp" id="log">
+							${acount.aname }
+						</a>
+						</c:if>
 					
 				</div>
 			</div>
@@ -35,31 +42,29 @@
 			<div class="header">
 			<div class="header-bp">
 				<div class="logo">
-					<a href="index.html" class="hd-logo"><img src="../img/Logo.png" /></a>
-					
+					<a href="/jyhwebstore/index.jsp" class="hd-logo"><img src="/jyhwebstore/store/img/Logo.png" /></a>
 				</div>
 
 				<div class="header-right">
 
 					<div class="cart-2">
-						<a href="">
+						<a href="/jyhwebstore/store/html/operation/cart.jsp">
 							<span class="glyphicon glyphicon-shopping-cart"></span>
 							<span>购物车</span>
-
 						</a>
 					</div>
 
 					<div class="search">
 						<div class="hd-search">
-							<input type="text" placeholder="请输入要搜索的内容" />
-							<a href="" class="button"><span class="glyphicon glyphicon-search"></span>
+							<input type="text" placeholder="请输入要搜索的内容" class="search-input"/>
+							<a href="javascript:;" class="button" onclick="gosearch()"><span class="glyphicon glyphicon-search"></span>
 							</a>
 						</div>
 						<ul>
-							<li><a href="">饮料</a></li>
-							<li><a href="">咖啡</a></li>
-							<li><a href="">黄油</a></li>
-							<li><a href="">湿巾</a></li>
+							<li><a href="/jyhwebstore/store/html/search.jsp?content=Apple">Apple</a></li>
+							<li><a href="/jyhwebstore/store/html/search.jsp?content=oppo">oppo</a></li>
+							<li><a href="/jyhwebstore/store/html/search.jsp?content=vivo">vivo</a></li>
+							<li><a href="/jyhwebstore/store/html/search.jsp?content=飞利浦">飞利浦</a></li>
 						</ul>
 					</div>
 				</div>
@@ -74,45 +79,22 @@
 					
 					<p>
 						<span class="glyphicon glyphicon-list-alt"></span>  我的交易
-				
-				</p>
-				<a href="">聚优汇订单</a>
-				<a href="">我的预约</a>
-				<a href="">常购清单</a>
+					</p>
+				<a href="/jyhwebstore/store/html/operation/order.jsp" class="a-active">聚优汇订单</a>
 				</div>
 				
 				<div class="menber">
 					<p>
 						<span class="glyphicon glyphicon-star"></span> 会员资料
 					</p>
-					<a href="">个人资料</a>
-					<a href="">地址管理</a>
+					<a href="/jyhwebstore/store/html/operation/information.jsp">个人资料</a>
+					<a href="/jyhwebstore/store/html/address.jsp">地址管理</a>
 				</div>
 				
-				<div class="judgement">
-					<p>
-						<span class="glyphicon glyphicon-comment"></span> 我的评论
-					</p>
-					<a href="">评论商品</a>
-					
-				</div>
-				<div>
-				<p>
-						<span class="glyphicon glyphicon-heart"></span> 我的关注
-					</p>
-					<a href="">关注商品</a>
 				
-					
-				</div>
 				
-				<div>
-				<p>
-						<span class="glyphicon glyphicon-grain"></span> 我的关注
-					</p>
-					<a href="">在线退换货</a>
 				
-					
-				</div>
+				
 			</div>
 			<div class="order">
 				<ul id="choose">
@@ -148,7 +130,7 @@
 				<div class="order-list">
 					<div class="order-pro">
 						<a href="">
-						<img src="../img/bgctop.jpg"/></a>
+						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
 						<div class="order-title">
 							<p class="desc">商品描述</p>
 							<div class="buy-btn">再次购买</div>
@@ -185,7 +167,7 @@
 				<div class="order-list">
 					<div class="order-pro">
 						<a href="">
-						<img src="../img/bgctop.jpg"/></a>
+						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
 						<div class="order-title">
 							<p class="desc">商品描述</p>
 							<div class="buy-btn">再次购买</div>
@@ -221,7 +203,7 @@
 				<div class="order-list">
 					<div class="order-pro">
 						<a href="">
-						<img src="../img/bgctop.jpg"/></a>
+						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
 						<div class="order-title">
 							<p class="desc">商品描述</p>
 							<div class="buy-btn">再次购买</div>
@@ -257,7 +239,7 @@
 				<div class="order-list">
 					<div class="order-pro">
 						<a href="">
-						<img src="../img/bgctop.jpg"/></a>
+						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
 						<div class="order-title">
 							<p class="desc">商品描述</p>
 							<div class="buy-btn">再次购买</div>
@@ -293,7 +275,7 @@
 				<div class="order-list">
 					<div class="order-pro">
 						<a href="">
-						<img src="../img/bgctop.jpg"/></a>
+						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
 						<div class="order-title">
 							<p class="desc">商品描述</p>
 							<div class="buy-btn">再次购买</div>
@@ -353,22 +335,22 @@
 			<div class="footer">
 				<div class="footer-top">
 					<div class="icon">
-						<img src="../img/icon1.png" class="icons">
+						<img src="/jyhwebstore/store/img/icon1.png" class="icons">
 						<h3 class="content-1">正品保障</h3>
 						<p class="sub-content">正品行货 放心选购</p>
 					</div>
 					<div class="icon">
-						<img src="../img/icon2.png" class="icons">
+						<img src="/jyhwebstore/store/img/icon2.png" class="icons">
 						<h3 class="content-1">满99包邮</h3>
 						<p class="sub-content">满99元 免运费</p>
 					</div>
 					<div class="icon">
-						<img src="../img/icon3.png" class="icons">
+						<img src="/jyhwebstore/store/img/icon3.png" class="icons">
 						<h3 class="content-1">售后无忧</h3>
 						<p class="sub-content">7天无理由退货</p>
 					</div>
 					<div class="icon">
-						<img src="../img/icon4.png" class="icons">
+						<img src="/jyhwebstore/store/img/icon4.png" class="icons">
 						<h3 class="content-1">准时送达</h3>
 						<p class="sub-content">收货时间由你做主</p>
 					</div>
@@ -450,5 +432,32 @@
 	
   </body>
 </html>
-<script src="../js/jquery.min.js"></script>
-<script src="../js/order.js"></script>
+<script src="/jyhwebstore/store/js/jquery.min.js"></script>
+<script src="/jyhwebstore/store/js/webstore.js"></script>
+<script src="/jyhwebstore/store/js/order.js"></script>
+<script>
+//搜索按钮
+function gosearch(){
+	
+	// console.log("点击了搜索");
+	var searchText = $('.search-input').val();
+	var text =encodeURI(searchText);
+	// alert(text);
+	window.location.href=`/jyhwebstore/store/html/search.jsp?content=`+searchText;
+	
+};
+
+$("body").keydown(function(event){
+	if(event.keyCode == 13)
+		{
+			var  content = $(".search-input").val();
+			if(content != "")
+			{
+				gosearch();
+			}
+		}
+			
+	
+});
+
+</script>
