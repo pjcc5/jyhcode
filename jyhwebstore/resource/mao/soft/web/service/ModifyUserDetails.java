@@ -18,22 +18,87 @@ public class ModifyUserDetails {
 			String uname = user.getUname();
 			String uphone = user.getUphone();
 			SelecUserPhoneAndNameDao sedao = new SelecUserPhoneAndNameDaoImpl();
-			User users = sedao.selectUserNameAndPhone(uname, uphone, conn);
-			System.out.println("我的modifyUphoneAndUnameIsExist："+conn);
-			System.out.println("页面上传的user："+user+"\n"+"通过uname和uphone查询的user："+users);
-			
-			if(users.getAid().equalsIgnoreCase(user.getAid()))
+			User userByphone =  sedao.selectUserPhone(uphone, conn);
+			User userByname = sedao.selectUserName(uname, conn);
+			if(userByname==null && userByphone==null)
 			{
-				System.out.println("两个user对象的aids是相等的");
-				boolean flags = modifyUserDetails(user,conn);
-				DbHelp.closeConnection(conn);
+				boolean flags = getmodifyUserDetails(user,conn);
 				return flags;
+			}
+			else if(userByname!=null && userByphone==null)
+			{
+				if(userByname.getAid().equalsIgnoreCase(user.getAid()))
+				{
+					boolean flags = getmodifyUserDetails(user,conn);
+					return flags;
+				}
+				else
+				{
+					DbHelp.closeConnection(conn);
+					return false;
+				}
+			}else if(userByname==null && userByphone!=null)
+			{
+				if(userByphone.getAid().equalsIgnoreCase(user.getAid()))
+				{
+					boolean flags = getmodifyUserDetails(user,conn);
+					return flags;
+				}
+				else
+				{
+					DbHelp.closeConnection(conn);
+					return false;
+				}
+			}
+			else if(userByname!=null && userByphone!=null)
+			{
+				if( userByname.getAid().equalsIgnoreCase(user.getAid()) && userByphone.getAid().equalsIgnoreCase(user.getAid()))
+				{
+					boolean flags = getmodifyUserDetails(user,conn);
+					return flags;
+				}
+				else
+				{
+					DbHelp.closeConnection(conn);
+					return false;
+				}
 			}
 			else
 			{
 				DbHelp.closeConnection(conn);
 				return false;
 			}
+//			User users = sedao.selectUserNameAndPhone(uname, uphone, conn);
+//			if(users==null)
+//			{
+//				boolean flags = modifyUserDetails(user,conn);
+//				DbHelp.closeConnection(conn);
+//				return flags;
+//			}
+//			else{
+//				System.out.println("我的modifyUphoneAndUnameIsExist："+conn);
+//				System.out.println("页面上传的user："+user+"\n"+"通过uname和uphone查询的user："+users);
+//				//判断该账号是否改动
+//				if(users.getAid().equalsIgnoreCase(user.getAid()))
+//				{
+//					System.out.println("两个user对象的aids是相等的");
+//					boolean flags = modifyUserDetails(user,conn);
+//					DbHelp.closeConnection(conn);
+//					return flags;
+//				}
+//				else
+//				{
+//					DbHelp.closeConnection(conn);
+//					return false;
+//				}
+//			}
+	}
+	//中间的调用方法
+	private boolean getmodifyUserDetails(User user,Connection conn)
+	{
+		boolean flags = modifyUserDetails(user,conn);
+		DbHelp.closeConnection(conn);
+		return flags;
 	}
 	//修改用户信息的方法
 	private boolean modifyUserDetails(User user,Connection conn)

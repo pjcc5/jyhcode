@@ -45,7 +45,7 @@ public class OrderDaoImpl implements OrderDao{
 					order.setOrderreturn(rs.getInt("orderreturn"));
 					order.setOrderid(rs.getString("orderid"));
 					order.setOrdercompany(rs.getString("ordercompany"));
-					order.setTest1(rs.getString("test1"));
+					order.setComcount(rs.getInt("comcount"));
 					order.setTest2(rs.getString("test2"));
 					order.setTest3(rs.getString("test3"));
 					order.setTest4(rs.getString("test4"));
@@ -85,7 +85,7 @@ public class OrderDaoImpl implements OrderDao{
 			o.setOrderreturn(rs.getInt("orderreturn"));
 			o.setOrderid(rs.getString("orderid"));
 			o.setOrdercompany(rs.getString("ordercompany"));
-			o.setTest1(rs.getString("test1"));
+			o.setComcount(rs.getInt("comcount"));
 			o.setTest2(rs.getString("test2"));
 			o.setTest3(rs.getString("test3"));
 			o.setTest4(rs.getString("test4"));
@@ -120,7 +120,7 @@ public class OrderDaoImpl implements OrderDao{
 				ps.setInt(11, order.getOrderreturn());
 				ps.setString(12, order.getOrderid());
 				ps.setString(13, order.getOrdercompany());
-				ps.setString(14, order.getTest1());
+				ps.setInt(14, order.getComcount());
 				ps.setString(15, order.getTest2());
 				ps.setString(16, order.getTest3());
 				ps.setString(17, order.getTest4());
@@ -180,7 +180,7 @@ public class OrderDaoImpl implements OrderDao{
 				ps.setInt(10, order.getOrderreturn());
 				ps.setString(11, order.getOrderid());
 				ps.setString(12, order.getOrdercompany());
-				ps.setString(13, order.getTest1());
+				ps.setInt(13, order.getComcount());
 				ps.setString(14, order.getTest2());
 				ps.setString(15, order.getTest3());
 				ps.setString(16, order.getTest4());
