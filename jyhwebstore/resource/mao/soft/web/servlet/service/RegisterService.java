@@ -75,6 +75,7 @@ public class RegisterService {
 			adddao.insertAdd(conn, addtab);
 			//调插入方法
 			boolean blog = rs.register(conn,acount, user);
+			DbHelp.closeConnection(conn);
 			return blog;
 	}
 }

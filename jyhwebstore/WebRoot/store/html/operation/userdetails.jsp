@@ -175,12 +175,11 @@
 		<script src="/jyhwebstore/store/js/bootstrap.js" type="text/javascript" charset="utf-8"></script>
 	</body>
 	<script>
-	//显示信息
 	myajax();
 	function myajax()
 	{
 		$.get({
-			async:false,
+			async:true,
 			type:"post",
 			url:"/jyhwebstore/ShowUserDetails",
 			data:"",
@@ -257,14 +256,15 @@
 		content = e.target.result;
 		//预览
 		document.getElementById("img").src=content;
-		}
+		};
 	}
 	function picselect(){
 		document.getElementById("input_picture").click();
 	}
 	//保存信息
 	$("#button_save").click(function(){
-		if($("#input_nickname").val()==""||$("input:radio:checked").val()==""||$("#input_phone").val()==""||$("#input_mail").val()==""||$("#input_address").val()==""||$("#birth_year").val()==""||$("#birth_month").val()==""||$("#birth_day").val()=="")
+		alert($("input:radio:checked").val());
+		if($("#input_nickname").val()==""||($("input:radio:checked").val()!="男" && $("input:radio:checked").val()!="女" )||$("#input_phone").val()==""||($("#input_mail").val()=="nulls" || $("#input_mail").val()=="")||($("#input_address").val()=="nulls" || $("#input_address").val()=="")||$("#birth_year").val()==""||$("#birth_month").val()==""||$("#birth_day").val()=="")
 			{
 			$("#input_nickname").focus();
 			alert("抱歉昵称/出生年月/性别/电话/邮箱/住址不能为空");
@@ -294,10 +294,20 @@
 								myajax();
 								$("#form_modify").hide();
 								$("#form_userinform").show();
+								location.reload();
 							}	
 							else
 							{
-								alert("手机号或用户名已存在！");
+								if(jsons.error==false)
+								{
+									alert("手机号或用户名已存在！");
+									
+								}
+								else
+								{
+									alert("系统错误！");
+									location.href = "/jyhwebstore/store/html/login.jsp?id=systemerror";
+								}
 							}
 						}
 					});

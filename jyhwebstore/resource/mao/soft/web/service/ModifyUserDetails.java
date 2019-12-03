@@ -18,11 +18,10 @@ public class ModifyUserDetails {
 			String uname = user.getUname();
 			String uphone = user.getUphone();
 			SelecUserPhoneAndNameDao sedao = new SelecUserPhoneAndNameDaoImpl();
-			User users = sedao.selectUserPhone(uphone,conn);
-			User useres = sedao.selectUserName(uname, conn);
+			User users = sedao.selectUserNameAndPhone(uname, uphone, conn);
 			System.out.println("我的modifyUphoneAndUnameIsExist："+conn);
 			System.out.println("页面上传的user："+user+"\n"+"通过uname和uphone查询的user："+users);
-			if(users.getAid().equalsIgnoreCase(user.getAid()) && useres.getAid().equalsIgnoreCase(user.getAid()))
+			if(users.getAid().equalsIgnoreCase(user.getAid()))
 			{
 				System.out.println("两个user对象的aids是相等的");
 				boolean flags = modifyUserDetails(user,conn);
@@ -47,6 +46,7 @@ public class ModifyUserDetails {
 			flag = udao.modifyUser(user, conn);
 			System.out.println("modifyUserDetails返回的一个boolean："+flag);
 			conn.commit();
+			DbHelp.closeConnection(conn);
 		} catch (Exception e) {
 			try {
 				conn.rollback();
