@@ -56,8 +56,9 @@ this.doPost(request, response);
 		  int index=0;
 	      String msg=request.getParameter("msg");
 	      String detail=request.getParameter("detail");
-	      String selectall="";
-	      selectall= request.getParameter("selectall");
+	      String selectall=request.getParameter("selectall");
+	     
+	     
 		Connection conn=DbHelp.getConnection();
 		String aid=null;
 		 Acount acount=(Acount) request.getSession().getAttribute("acount");
@@ -71,7 +72,7 @@ this.doPost(request, response);
 		
 			list = dao.selecCart(aid, conn);
 			
-	if(!selectall.equals("")&&msg!=null){
+	if(selectall!=null&&msg!=null){
 		System.out.println("=======================全选=========================");
 		JSONObject object = JSONObject.fromObject(msg);
 		int choose=object.getInt("choose");
@@ -91,7 +92,7 @@ this.doPost(request, response);
 	
 		
         
-		if(msg!=null&&selectall.equals("")){
+		if(msg!=null&&selectall==null){
 		JSONObject object = JSONObject.fromObject(msg);
 		
 		String data=object.getString("data");
