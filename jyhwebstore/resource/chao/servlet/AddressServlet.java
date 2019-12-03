@@ -49,9 +49,12 @@ public class AddressServlet extends HttpServlet {
 		if(action.equals("query")){
 		PrintWriter out = response.getWriter();
 		 List<Address> list = AddressService.getAddressByAid("463ce3c5-52c0-40e5-8750-187b7ef5b33a");
+		 if(list!=null){
 		 JSONArray ja = JSONArray.fromObject(list);
 		 System.out.println(ja);
-		 out.print(ja.toString());
+		 out.print(ja.toString());}else{
+			 out.print(false);
+		 }
 		 
 		
 		}
