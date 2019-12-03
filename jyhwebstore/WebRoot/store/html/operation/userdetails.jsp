@@ -210,7 +210,7 @@
 							$("input[type='radio']").eq(0).attr("checked",true);
 						}
 						else
-						{
+						{ 
 							$("input[type='radio']").eq(1).attr("checked",true);
 						}
 					}	
