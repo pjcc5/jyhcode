@@ -1,27 +1,125 @@
+
+
+var data={};
+$(function(){
+
+	$.get({
+		type:"get",
+		url:"/jyhwebstore/address",
+		data:{"action":"query"},
+		datatype:"json",
+		success:function(result){
+			if(result!=false){
+			var json = JSON.parse(result);
+			
+			for(var i = 0; i < json.length;i++)
+				{	
+					var isdefault = json[i].isdefault;
+					
+					if(isdefault==1){
+						var str = `
+					<li>
+  					<div class="  addr-default isdefault">默认地址</div>`;
+  					
+  					var str2=`
+  					<div class="opera">
+  					<div class="addr-edit" onclick="edit(this)" flag="${json[i].addressid}">编辑</div>
+  					<div class="set-default default" onclick="defaultAddr(this)" flag="${json[i].addressid}">设为默认地址</div>
+  					<div class="delete default" onclick="removeAddr(this)" flag="${json[i].addressid}">删除</div>
+  				</div>	
+  				</li>
+					
+					`;
+  					}else{
+  						var str = `
+  						<li>
+  	  					<div class="addr-default">默认地址</div>`;
+  	  				var str2=`
+  					<div class="opera">
+  					<div class="addr-edit" onclick="edit(this)" flag="${json[i].addressid}">编辑</div>
+  					<div class="set-default " onclick="defaultAddr(this)" flag="${json[i].addressid}">设为默认地址</div>
+  					<div class="delete" onclick="removeAddr(this)" flag="${json[i].addressid}">删除</div>
+  				</div>	
+  				</li>
+					`;
+  	  					
+  					}
+					var str1=`
+  					<div class="addr-information" >
+  					<p class="nickname">收货人：<span>${json[i].recivename}</span> <em>收</em></p>
+  					<p class="addressname">
+  						<label>收货地址: </label>
+  						<span id="addr-prov" prov="${json[i].proval}">${json[i].province}</span>
+  						<label> </label>
+  						<span id="addr-city" city="${json[i].townval}">${json[i].town}</span>
+  						<label> </label>
+  					<span id="addr-country" country="${json[i].countyval}">${json[i].county}</span>
+  						<label> </label>
+  						<em>${json[i].addressdetail}</em>
+  					</p>
+  					<p class="call" >手机号: <span>${json[i].recivephone}</span></p>
+  					</div>`;
+					var content=str+str1+str2;
+					
+					$('.addr-bar').append(content);
+					
+				}
+		}
+			
+		}
+	
+	});
+})
+
+
+
+
+
+
+
+
+
+//设置默认地址
+
 function defaultAddr(obj){
 		var addr_default=$(obj).parent().siblings().eq(0);
 		
-			$('.addr-default').each(function(i,n){
-			    $(n).css({
-			     	'display':'none',
-			     });
-		});
-			
-			$('.set-default').each(function(i,n){
-				 $(n).css({
-			     	'display':'block',
-			     });
-			})
-			
-		addr_default.css({
-			'display':'block',
+		$('.addr-default').each(function(i,n){
+			$(n).removeClass('isdefault');
+		});	
+		addr_default.addClass('isdefault');
+		
+		data.oldflag="";
+		var oldflag=$('.default').attr('flag');
+		if(oldflag!=null){
+			console.log("oldflag!=null");
+			data.oldflag=oldflag;
 		}
-		)
-		$(obj).css({
-			'display':'none',
-		})
+		$('.set-default').each(function(i,n){
+			$(n).removeClass('default');
+		});
+		
+		$(obj).addClass('default');
+		data.newflag=$(obj).attr("flag");
+		
+		$('.delete').each(function(i,n){
+			$(n).removeClass('default');
+		});
+		
+		$(obj).siblings().eq(1).addClass('default');
+		$.get({
+			type:"get",
+			url:"/jyhwebstore/address",
+			data:{"action":"update","msg":JSON.stringify(data)},
+			datatype:"json",
+			success:function(result){
+			}
+			});
 		
 		}
+
+
+
 		
 	
 	
@@ -68,9 +166,10 @@ function defaultAddr(obj){
 	 var detailaddr=$('.detail-addr input').val("");
 		var call=$('.addr-call input').val("");
 		var username=$('.user input').val("");
-		var prov= $('#prov option:first').attr("selected",'selected');
-		var city=$('#city option:first').attr("selected",'selected');
-		var country=$('#country option:first').attr("selected",'selected');	
+		var prov= $('#prov option:first').prop("selected",'selected');
+		var city=$('#city option:first').prop("selected",'selected');
+		var country=$('#country option:first').prop("selected",'selected');	
+		
 	});
 	
 	var par;
@@ -80,8 +179,8 @@ function defaultAddr(obj){
 		$(".mod").css({
 			'display':'block',
 		})
-		
-
+		data.flag=$(obj).attr('flag');
+       console.log(data.flag);
 		par=$(obj).parent().siblings();
            
      
@@ -140,28 +239,36 @@ function defaultAddr(obj){
 	$(".save").click(function(){
 		
 	    var detailaddr=$('.detail-addr input').val();
+	    data.detailaddr=detailaddr;
 		var call=$('.addr-call input').val();
+		data.call=call;
 		var username=$('.user input').val();
+		data.username=username;
 		var prov= $('#prov option:selected');
 		var city=$('#city option:selected');
 		var country=$('#country option:selected');	
 		
-		
+		var prov_val=prov.val();
+		data.proval=prov_val
+		var prov_html=prov.html();
+		data.provhtml=prov_html
+		var city_val=city.val();
+		data.cityval=city_val
+		var city_html=city.html();
+		data.cityhtml=city_html
+		var country_val=country.val();
+		data.countryval=country_val
+		var country_html=country.html();
+		data.countryhtml=country_html;
 		
 		if(flag){
 			
-			var prov_val=prov.val();
-			var prov_html=prov.html();
-			
-			var city_val=prov.val();
-			var city_html=prov.html();
-			
-			var country_val=prov.val();
-			var country_html=prov.html();
+
+		
 			
 			var str=`
 			<li>
-			  					<div class="addr-default">默认地址</div>
+			  					<div class="addr-default ">默认地址</div>
 			  					<div class="addr-information">
 			  					<p class="nickname">收货人：<span>${username}</span> <em>收</em></p>
 			  					<p class="addressname">
@@ -187,6 +294,14 @@ function defaultAddr(obj){
 			
 			$('.addr-bar').append(str);
 			
+			$.get({
+				type:"get",
+				url:"/jyhwebstore/address",
+				data:{"action":"insert","msg":JSON.stringify(data)},
+				datatype:"json",
+				success:function(result){
+				}
+				});
 			
 			flag=false;
 		}else{
@@ -196,6 +311,16 @@ function defaultAddr(obj){
 		par.children().eq(1).children().eq(1).attr('prov',prov.val()).html(prov.html());
 		par.children().eq(1).children().eq(3).attr('city',city.val()).html(city.html());
 		par.children().eq(1).children().eq(5).attr('country',country.val()).html(country.html());
+		
+		$.get({
+			type:"get",
+			url:"/jyhwebstore/address",
+			data:{"action":"updateaddr","msg":JSON.stringify(data)},
+			datatype:"json",
+			success:function(result){
+			}
+			});
+		
 		}
 		$('.mod').css({
 			'display':'none',
@@ -204,6 +329,17 @@ function defaultAddr(obj){
 		
 		
 		function removeAddr(obj){
+			data.flag=$(obj).attr("flag");
 			$(obj).parent().parent().remove();
+			$.get({
+				type:"get",
+				url:"/jyhwebstore/address",
+				data:{"action":"delete","msg":JSON.stringify(data)},
+				datatype:"json",
+				success:function(result){
+				}
+				});
 			
-		}
+			}
+			
+		

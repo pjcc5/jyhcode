@@ -1,15 +1,11 @@
 <%@ page language="java" import="java.util.*" pageEncoding="utf-8"%>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
-<%
-String path = request.getContextPath();
-String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.getServerPort()+path+"/";
-%>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>
     
-    <title>${acount.aname}购物车</title>
+    <title>${acount.aname}的购物车</title>
     
 	<meta http-equiv="pragma" content="no-cache">
 	<meta http-equiv="cache-control" content="no-cache">
@@ -19,9 +15,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<style>
 	    
 	</style>
-	<!--
-	<link rel="stylesheet" type="text/css" href="styles.css">
-	-->
 <link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/bootstrap.css"/>
 <link rel="stylesheet" href="/jyhwebstore/store/css/cart.css"/>
   </head>
@@ -61,11 +54,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</li>
 						<li><a href="javascript:out()" id="out">退出</a></li>
 						</c:if>
-          <!--  <li class=""></span> <a href="/jyhwebstore/store/html/login.jsp" class='login'><span class="glyphicon glyphicon-user"></span>登录</a></li>
-            <li><a href="javascript:;" class="quit"><span class="quit-father"></span></a></li>
-			<li><a href="/jyhwebstore/store/html/regist.jsp">注册</a></li>
-            <li><a href=""><span class="glyphicon glyphicon-list-alt"></span> 我的订单</a></li>
-  	      	 --> 
   	      </ul>
             </div>     
 		</div>
@@ -74,23 +62,19 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<div class="main">
 	<div class="content">
 		<div class="cart-header" >
-			<a href="">
+			<a href="/jyhwebstore/index.jsp">
 			<img src="/jyhwebstore/store/img/Logo.png"/>
 			<p>购物车</p></a>
 			 <div class="input-group  sear " >
-  	        <input type="text" class="form-control" placeholder="请输入关键词"/>
+  	        <input type="text" class="form-control search-input" placeholder="请输入关键词"/>
   	        
-  	        <div class="input-group-btn">
-  	          <button class=" btn btn-primary">
+  	        <div class="input-group-btn" >
+  	          <button class=" btn btn-primary" onclick="gosearch()">
   	            <span class="glyphicon glyphicon-search"></span> 	                     
   	          </button>
   	          </div>
-  	          
-  	      
   	      </div> 
 		</div>
-		
-		
 		
 	<div class="list-header">
 			<ul >
@@ -237,3 +221,16 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 <script src="/jyhwebstore/store/js/webstore.js"></script>
 <script src="/jyhwebstore/store/js/cart.js"></script>
+<script>
+//搜索按钮
+function gosearch(){
+	
+	// console.log("点击了搜索");
+	var searchText = $('.search-input').val();
+	console.log(searchText);
+	var text =encodeURI(searchText);
+	// alert(text);
+	window.location.href=`/jyhwebstore/store/html/search.jsp?content=`+searchText;
+};
+
+</script>

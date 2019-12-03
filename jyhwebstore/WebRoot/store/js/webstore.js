@@ -6,7 +6,6 @@ var n = 0;//信号量
   	  $('.banner>ul>li').eq(n).stop().fadeIn(500).siblings().fadeOut(500);
   	  $('.number span').eq(n).stop().addClass('current').siblings().removeClass('current');
 	  }
-
 	var i =0;
   $(function(){  
 	setInterval("currenttime()",1000);
@@ -38,7 +37,8 @@ var n = 0;//信号量
   			
   			}else
 			{
-  				scrollTo(300,1000);
+  				$(document).scrollTop(300);
+  				
 			}
   			
   		});
@@ -255,4 +255,32 @@ function out(){
 		
 
  		}
-
+ 	var timer =null;
+ 	//鼠标移入显示内边框
+ 	function bordershadow(obj){
+ 		
+ 		var r = Math.floor(Math.random()*256);
+	 	var g = Math.floor(Math.random()*256);
+	 	var b = Math.floor(Math.random()*256);
+	 	$(obj).css({
+	 			"box-shadow":"0 0 50px "+"rgb("+r+","+g+","+b+")"+" inset",
+	 		});
+ 		timer = setInterval(function(){
+ 			r = Math.floor(Math.random()*256);
+ 	 		g = Math.floor(Math.random()*256);
+ 	 		b = Math.floor(Math.random()*256);
+ 			$(obj).css({
+ 	 			"box-shadow":"0 0 50px "+"rgb("+r+","+g+","+b+")"+" inset",
+ 	 			"cursor":"defalut",
+ 	 		});
+ 		},300);
+ 		
+ 		
+ 	}
+ 	//鼠标移入显示内边框
+	 	function clearshadow(obj){
+	 		clearInterval(timer);
+	 		$(obj).css({
+	 			"box-shadow":"0 0 0px",
+	 		});
+	 	}

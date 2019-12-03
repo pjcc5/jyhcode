@@ -69,7 +69,7 @@
 		<section>
 			<header>
 				<div class="logo">
-					<a href=""><img src="/jyhwebstore/store/img/Logo.png" class="logo-img"></a>
+					<a href="/jyhwebstore/index.jsp"><img src="/jyhwebstore/store/img/Logo.png" class="logo-img"></a>
 					<a><img src="/jyhwebstore/store/img/slogan.png" class="slogan" alt=""></a>
 				</div>
 				
@@ -77,7 +77,7 @@
 					<input type="text" class="search-input" id="searchIn1" placeholder="搜索手机">
 					<button type="button" class="search-btn" id="searchBtn1"><span class="glyphicon glyphicon-search"></span></button>
 					<div>
-						<a href="/jyhwebstore/store/html/cart.jsp" class="cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
+						<a href="/jyhwebstore/store/html/operation/cart.jsp" class="cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
 						
 					</div>
 					<ul class="search-list">
@@ -94,7 +94,7 @@
 				<div class="nav">
 					<div class="all-items" onclick="showmodol(this)">
 						<span class="all-item-icon"><span class="glyphicon glyphicon-list" ></span></span>
-						全部类目
+						热门品牌
 						<span class="hover-forward"><span class="glyphicon glyphicon-chevron-down"></span></span>
 						
 						
@@ -109,12 +109,12 @@
 			<!-- 浮动导航栏 -->
 			<div class="mynav">
 				<div title="sss" class="logo">
-					<a href=""><img src="/jyhwebstore/store/img/Logo.png" class="nav-logo-img"></a>
+					<a href="/jyhwebstore/index.jsp"><img src="/jyhwebstore/store/img/Logo.png" class="nav-logo-img"></a>
 				</div>
 				<div class="nav-search">
 					<input type="text" class="search-input" id="searchIn2" placeholder="搜索手机">
 					<button type="button" class="nav-search-btn" id="searchBtn2" ><span class="glyphicon glyphicon-search"></span></button>
-					<a href="/jyhwebstore/store/html/cart.jsp" class="cart nav-cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
+					<a href="/jyhwebstore/store/html/operation/cart.jsp" class="cart nav-cart"><span class="glyphicon glyphicon-shopping-cart"></span>购物车<span class="badge hidden">6</span></a>
 						
 			</div>
 		</section>
@@ -207,7 +207,7 @@
 					<img src="img/Logo.png" alt="">
 				</div> -->
 		<c:forEach items="${igds}" var="igd" >
-					<div class="goods">
+					<div class="goods" onmouseover="bordershadow(this)" onmouseout="clearshadow(this)">
 					<img src="${igd.compic}" alt="">
 					<p class="goodsname">${igd.comname}</p>
 					<p class="pai">${igd.pai}</p>
@@ -225,8 +225,7 @@
 					<button type="button" class="btn btn-danger addincart" onclick="goproduct(this)">
 					<span class="glyphicon glyphicon-usd" ></span>　立即购买</button>
 							
-						</div>
-					
+					</div>
 		</c:forEach>
 				
 			
@@ -237,10 +236,6 @@
 			</div>
 		</section>
 		
-		
-		<!-- <section>
-			<div class="insert">ss</div>
-		</section> -->
 		<!-- 底部 -->
 		<section>
 			<div class="footer">
@@ -304,13 +299,8 @@
 									<li><a href="">帮助中心</a></li>
 								</ul>
 							</div>
-							
 						</div>
-						
-						
 					</div>
-					
-					
 					<div class="QR-codes">
 						<p class="contact"><span class="glyphicon glyphicon-phone-alt"></span>联系我们</p>
 						<img src="/jyhwebstore/store/img/QR-code.png" alt="">
@@ -364,7 +354,7 @@
 					var detailsdot =json[i].detailsdot;
 					var comid = json[i].comid;
 					var str=`
-							<div class="goods">
+							<div class="goods" onmouseover="bordershadow(this)" onmouseout="clearshadow(this)">
 							<img src=\"`+compic+`
 							" alt="">
 							<p class="goodsname">`+comname+`</p>
@@ -483,9 +473,6 @@ function SnowFlower(){
 		$(obj).children(".ite2").animate({"left":"4000"},500);
 		$(obj).children(".ite3").animate({"left":"-4000"},500);
 		$(obj).children(".ite4").animate({"top":"4000"},500);
-		
 		$(obj).stop().fadeOut(500);
-		
-		
 	}
 </script>

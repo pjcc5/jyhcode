@@ -203,7 +203,7 @@ a{
 		  		margin-top: 15px;
 		  		display: block;
 		  		margin-left: 26px;
-		  		color: #999;
+		  		color: black;
 		  		text-decoration: none;
 		  	}
 		  	.side-nav div a:hover{
@@ -525,7 +525,13 @@ a{
 	.order-item>.active{
 		display: block;
 	}
+	/*激活状态下的高亮*/
+	.a-active{
+	display:inline-block;
+	width:35%;
+	background:#b2b4b9;
 	
+	}
 	
 	#top{
 	width: 80px;

@@ -138,6 +138,7 @@ header{
 	line-height: 38px;
 	color: white;
 	position: relative;
+	cursor:pointer;
 	
 }
 .nav-list{
@@ -423,9 +424,9 @@ header{
 	top: 1%;
 	left:3%;
 	border-radius: 7%;
+	cursor:url("../img/buyit.cur"),auto;
 	/* display: none; */
 }
-
 .goods:hover .content_a .cover {
 	background: rgba(0,0,0,0.6);
 	color:rgba(255,255,255,1);

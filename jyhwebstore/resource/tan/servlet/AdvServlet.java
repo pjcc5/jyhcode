@@ -49,7 +49,7 @@ public class AdvServlet extends HttpServlet {
 	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
-		
+		System.out.println("进人ADVservlet");
 		 PrintWriter out= response.getWriter();
 			String msg = request.getParameter("msg");
 			System.out.println("msg="+msg);

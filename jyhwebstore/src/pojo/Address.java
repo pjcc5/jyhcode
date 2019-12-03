@@ -3,7 +3,7 @@ package pojo;
 import java.io.Serializable;
 
 public class Address implements Serializable{
-	private int addressid;
+	private String addressid;
 	private String aid;
 	private int isdefault;
 	private String province;
@@ -12,12 +12,33 @@ public class Address implements Serializable{
 	private String addressdetail;
 	private String recivename;
 	private String recivephone;
-	private String test3;
-	public int getAddressid() {
+	private String proval;
+	private String townval;
+	private String countyval;
+	public String getAddressid() {
 		return addressid;
 	}
-	public void setAddressid(int addressid) {
+	public void setAddressid(String addressid) {
 		this.addressid = addressid;
+	}
+	private String test3;
+	public String getProval() {
+		return proval;
+	}
+	public void setProval(String proval) {
+		this.proval = proval;
+	}
+	public String getTownval() {
+		return townval;
+	}
+	public void setTownval(String townval) {
+		this.townval = townval;
+	}
+	public String getCountyval() {
+		return countyval;
+	}
+	public void setCountyval(String countyval) {
+		this.countyval = countyval;
 	}
 	public String getAid() {
 		return aid;
@@ -79,7 +100,10 @@ public class Address implements Serializable{
 				+ ", isdefault=" + isdefault + ", province=" + province
 				+ ", town=" + town + ", county=" + county + ", addressdetail="
 				+ addressdetail + ", recivename=" + recivename
-				+ ", recivephone=" + recivephone + ", test3=" + test3 + "]";
+				+ ", recivephone=" + recivephone + ", proval=" + proval
+				+ ", townval=" + townval + ", countyval=" + countyval
+				+ ", test3=" + test3 + "]";
 	}
+	
 	
 }
