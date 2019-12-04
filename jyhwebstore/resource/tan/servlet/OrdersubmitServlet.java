@@ -40,6 +40,7 @@ import dao.impl.OrderMiddleDaoImpl;
 import dao.impl.OrderformDaoImpl;
 import db.DbHelp;
 import db.DbHelp2;
+import dto.OrderDetailDto;
 
 public class OrdersubmitServlet extends HttpServlet {
 
@@ -64,7 +65,44 @@ public class OrdersubmitServlet extends HttpServlet {
 		Connection conn= DbHelp2.getConnection();
 		String msg=request.getParameter("msg");
 		String uuid1=request.getParameter("uuid");
-		if(msg!=null){
+		String orderid=request.getParameter("orderid");
+		if(orderid!=null){
+			OrderformDao order=new OrderformDaoImpl();
+			try {
+				List<Address> address=dao.getAddressByAid(aid, conn);
+				List<OrderDetailDto> list= order.getComidsByOrderId(orderid, conn);
+				List<Cart> list1=new ArrayList<>();
+				for(int i=0;i<list.size();i++){
+				OrderDetailDto dto=	list.get(i);
+				Cart cart=new Cart();
+				cart.setColor(dto.getColor());
+				cart.setComid(dto.getComid());
+				cart.setComname(dto.getComname());
+				cart.setCompic(dto.getCompic());
+				cart.setComprice(new Double(dto.getComprice()).intValue() );
+				cart.setCount(dto.getComcount());
+				cart.setDate(new Date());
+				cart.setSelected(1);
+				cart.setShopid("");
+				cart.setSize(dto.getSize());
+				cart.setUuid("");
+				list1.add(cart);
+				}
+				
+				List<Object> list3=new ArrayList<>();
+				list3.add(address);
+				list3.add(list1);
+				
+				JSONArray arry=JSONArray.fromObject(list3);
+				out.print(arry.toString());
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
+		}
+		
+		
+		if(msg!=null&&orderid==null){
 		try {
 			List<Address> address=dao.getAddressByAid(aid, conn);
 			List<Cart> cart=new ArrayList<>();
@@ -117,6 +155,8 @@ public class OrdersubmitServlet extends HttpServlet {
 		
 		
 		
+		
+		
 		if(uuid1!=null&&!uuid1.equals("")){
 			
               
@@ -153,6 +193,17 @@ public class OrdersubmitServlet extends HttpServlet {
             	 String ordernumber=object.getString("ordernum");
             	 double total=object.getDouble("price");
             	  JSONArray object1= JSONArray.fromObject( object.get("goods"));
+            	  
+            	  Ordermiddle middle=new Ordermiddle();
+        		  middle.setAid(aid);
+        		  middle.setOrderid(ordernumber);
+        		  OrderMiddleDao dao3=new OrderMiddleDaoImpl();
+        		  try {
+					dao3.insertOrdermiddle(middle, conn);
+				} catch (Exception e1) {
+					// TODO Auto-generated catch block
+					e1.printStackTrace();
+				}
             	  for(int i=0;i<object1.size();i++){
             		  JSONObject json= (JSONObject) object1.get(i);
             		  double price=json.getDouble("comprice");
@@ -161,10 +212,7 @@ public class OrdersubmitServlet extends HttpServlet {
             		  String color=json.getString("color");
             		  String comname=json.getString("comname");
             		  String comid=json.getString("comid");
-            		  Ordermiddle middle=new Ordermiddle();
-            		  middle.setAid(aid);
-            		  middle.setOrderid(ordernumber);
-            		  OrderMiddleDao dao3=new OrderMiddleDaoImpl();
+            		  
             		  Orderform form=new Orderform();
             		  form.setAid(aid);
             		  form.setComcount(count);
@@ -175,11 +223,12 @@ public class OrdersubmitServlet extends HttpServlet {
             		  form.setOrderid(ordernumber);
             		  form.setOrderpay(1);
             		  form.setOrderphone(call);
-            		  form.setOrderstatement(2);
+            		  form.setOrderstatement(3);
             		  form.setOrderprice(price);
+            		  form.setOrdername(name);
             		  OrderformDao dao4=new OrderformDaoImpl();
             		  try {
-						dao3.insertOrdermiddle(middle, conn);
+						
 						dao4.insertOrderform(form, conn);
 					} catch (Exception e) {
 						// TODO Auto-generated catch block

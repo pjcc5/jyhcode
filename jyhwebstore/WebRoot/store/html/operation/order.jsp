@@ -404,7 +404,7 @@ $(function(){
  						<div class="order-header">
  							<div class="order-left">
  							<div class="time">`+time+`</div>
- 							<div class="order-num">订单号：`+orderid+`</div>
+ 							<div class="order-num">订单号：<span>`+orderid+`</span></div>
  							<div class="receiver">收货人:`+ordername+`</div>
  							</div>
  							
@@ -417,14 +417,14 @@ $(function(){
  							
  						</div >
  						 
- 						<div class="order-list">
+ 						<div class="order-4list">
  							<div class="order-pro">
  								<a href="">
  								<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
  								<div class="order-title">
  									<p class="desc">`+comname+`<span>等    `+orderForms.length+`件商品</span>`+`</p>
  									
- 									<div class="buy-btn">再次购买</div>
+ 									<div class="buy-btn" onclick="buyagin(this)">再次购买</div>
  								</div>
  							</div>
  							<div class="order-btns">`+orderstatmentstr+`</div>
@@ -451,6 +451,16 @@ $(function(){
 	
 });
 
+function goorderdetail(obj){
+var orderid= $(obj).parent().siblings().eq(0).children().eq(0).children().eq(1).children().eq(0).html();
+location.href="/jyhwebstore/store/html/operation/orderdetail.jsp?orderid="+orderid;
 
+}
+
+function buyagin(obj){
+
+var orderid=$(obj).parent().parent().parent().siblings().eq(0).children().eq(0).children().eq(1).children().eq(0).html();
+location.href="/jyhwebstore/store/html/operation/ordersubmit.jsp?orderid="+orderid;
+}
 
 </script>

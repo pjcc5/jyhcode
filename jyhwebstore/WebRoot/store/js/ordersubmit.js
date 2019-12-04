@@ -1,5 +1,6 @@
 
 var comid=getUrlVal("comid");
+var orderid=getUrlVal("orderid");
 var msg={};
 var comid1="";
 var price=0;
@@ -16,7 +17,7 @@ $(function(){
 	$.get({
 		type:"get",
 		url:"/jyhwebstore/ordersubmit",
-		data:{"msg":comid1,"num":num},
+		data:{"msg":comid1,"num":num,"orderid":orderid},
 		datatype:"json",
 		success:function(result){
 		
