@@ -66,7 +66,8 @@ public class OrdersubmitServlet extends HttpServlet {
 		String msg=request.getParameter("msg");
 		String uuid1=request.getParameter("uuid");
 		String orderid=request.getParameter("orderid");
-		if(orderid!=null){
+		if(!"".equals(orderid)){
+			
 			OrderformDao order=new OrderformDaoImpl();
 			try {
 				List<Address> address=dao.getAddressByAid(aid, conn);
@@ -102,7 +103,8 @@ public class OrdersubmitServlet extends HttpServlet {
 		}
 		
 		
-		if(msg!=null&&orderid==null){
+		if(msg!=null&&"".equals(orderid)){
+			System.out.println("============="+orderid);
 		try {
 			List<Address> address=dao.getAddressByAid(aid, conn);
 			List<Cart> cart=new ArrayList<>();
