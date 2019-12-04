@@ -15,42 +15,26 @@ import net.sf.json.JSONArray;
 import pojo.Acount;
 import pojo.Address;
 import tan.dao.CartDao;
+import tan.dao.ExDetailDao;
 import tan.dao.impl.CartDaoImpl;
+import tan.dao.impl.ExDetailsByComidImpl;
 import tan.dto.Cart;
 import tan.servers.CartServers;
 import util.StringOrArray;
 import dao.AddressDao;
+import dao.DetailsDao;
 import dao.impl.AddressDaoImpl;
+import db.DbHelp;
 import db.DbHelp2;
 
 public class OrdersubmitServlet extends HttpServlet {
 
-	/**
-	 * The doGet method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to get.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
-	 */
 	public void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
 		this.doPost(request, response);
 	}
 
-	/**
-	 * The doPost method of the servlet. <br>
-	 *
-	 * This method is called when a form has its tag value method equals to post.
-	 * 
-	 * @param request the request send by the client to the server
-	 * @param response the response send by the server to the client
-	 * @throws ServletException if an error occurred
-	 * @throws IOException if an error occurred
-	 */
 	public void doPost(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		
@@ -91,7 +75,7 @@ public class OrdersubmitServlet extends HttpServlet {
 		}
 		
 		if(msg!=null){
-			System.out.println("==============================");
+			
 			System.out.println(msg);
 			String[] uuid=StringOrArray.getArray(msg);
 			
@@ -99,16 +83,27 @@ public class OrdersubmitServlet extends HttpServlet {
 		 for(int i=0;i<uuid.length;i++){
 			 for(int j=0;j<list.size();j++){
 			 if(uuid[i].equals(list.get(j).getUuid())){
+				 String comid=list.get(j).getComid();
+				 int num=list.get(j).getCount();
+				 ExDetailDao dao2=new ExDetailsByComidImpl();
+				 try {
+					 System.out.println("comid="+comid);
+					System.out.println("更新销量"+dao2.updateSaleByComid(comid, conn, num));
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+				}
 				 list.remove(j);
 			 }
 			 }
 		 }
 		 dao1.UpdateCart(list, conn, aid);
 		}
+
 		
+		DbHelp.closeConnection(conn);
 		
-		
-		
+
 
 	}
 

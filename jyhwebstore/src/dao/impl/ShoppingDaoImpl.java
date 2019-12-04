@@ -36,6 +36,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 					shopping.setSize(rs.getString("size"));
 					shopping.setUuid(rs.getString("uuid"));
 					shopping.setSelected(rs.getString("selected"));
+					shopping.setComid(rs.getString("comid"));
 				   list.add(shopping);
 				}
 				return list;
@@ -70,6 +71,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 					shopping.setSize(rs.getString("size"));
 					shopping.setUuid(rs.getString("uuid"));
 					shopping.setSelected(rs.getString("selected"));
+					shopping.setComid(rs.getString("comid"));
 				   return shopping;
 				}
 			
@@ -86,7 +88,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 		}
 
 			if(!conn.isClosed()){
-				String sql="insert into shopping values(?,?,?,?,?,?,?,?,?,?) ";
+				String sql="insert into shopping values(?,?,?,?,?,?,?,?,?,?,?) ";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, shoping.getShopid());
 				ps.setString(2, shoping.getCompic());
@@ -98,6 +100,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 				ps.setString(8, shoping.getComname());
 				ps.setString(9, shoping.getUuid());
 				ps.setString(10,shoping.getSelected());
+				ps.setString(11, shoping.getComid());
 			    int rs=ps.executeUpdate();
 			    if(rs>0){
 			    	return true;
@@ -134,7 +137,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 		}
 	
 			if(!conn.isClosed()){
-				String sql="update shopping set compic=?,count=?,datees=?,comprice=?,size=?,color=?,comname=?,uuid=?,selected=? where shopid=?";
+				String sql="update shopping set compic=?,count=?,datees=?,comprice=?,size=?,color=?,comname=?,uuid=?,selected=?,comid=? where shopid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, shoping.getCompic());
 				ps.setString(2, shoping.getCount());
@@ -144,8 +147,9 @@ public class ShoppingDaoImpl implements ShoppingDao{
 				ps.setString(6, shoping.getColor());
 				ps.setString(7, shoping.getComname());
 				ps.setString(8, shoping.getUuid());
-				ps.setString(9, shoping.getShopid());
-				ps.setString(10, shoping.getSelected());
+				ps.setString(9, shoping.getSelected());
+				ps.setString(10, shoping.getComid());
+				ps.setString(11, shoping.getShopid());
 				int rs=ps.executeUpdate();
 				if(rs>0){
 					return true;

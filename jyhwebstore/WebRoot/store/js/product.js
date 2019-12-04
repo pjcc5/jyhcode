@@ -12,7 +12,7 @@ console.log("product.jsp");
 	  data:{'msg':comid},
 	  dataType:"json",
 	  success:function(result){
-		  console.log(result);
+		 
 		  var str = `
 			<p class="name">${result.comname}</p>
 			<p class="price"><span>价格</span><span class="price-m">￥${result.comprice}</span></p>
