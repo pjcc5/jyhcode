@@ -374,7 +374,7 @@ $(function(){
 		 				    ordername =orderForms[i].ordername;
 		 				var orderphone = orderForms[i].orderphone;
 		 				 orderprice =orderForms[i].orderprice;
-		 				console.log(orderForms[i])
+		 				console.log(orderForms[i]);
 		 				
 						}
 				
