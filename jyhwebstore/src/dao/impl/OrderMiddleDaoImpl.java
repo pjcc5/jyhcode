@@ -77,6 +77,7 @@ public class OrderMiddleDaoImpl implements OrderMiddleDao{
 				Ordermiddle ordermiddle=new Ordermiddle();
 				ordermiddle.setAid(rs.getString("aid"));
 				ordermiddle.setOrderid(rs.getString("orderid"));
+				ordermiddle.setOrderindex(rs.getInt("orderindex"));
 				list.add(ordermiddle);
 			}
 			return list;
@@ -102,6 +103,7 @@ public class OrderMiddleDaoImpl implements OrderMiddleDao{
 				Ordermiddle ordermiddle=new Ordermiddle();
 				ordermiddle.setAid(rs.getString("aid"));
 				ordermiddle.setOrderid(rs.getString("orderid"));
+				ordermiddle.setOrderindex(rs.getInt("orderindex"));
 				return ordermiddle;
 			}
 			

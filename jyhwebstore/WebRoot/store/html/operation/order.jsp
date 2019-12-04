@@ -3,8 +3,7 @@
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
   <head>    
-    <title>My JSP 'order.jsp' starting page</title>
-    <!-- meta name="viewport" content="width=device-width, initial-scale=1" /> -->
+    <title>${acount.aname }的订单</title>
 	<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/order.css"/>
 	<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/bootstrap.css"/>
   </head>
@@ -147,148 +146,22 @@
 					</div>
 					
 					
-					<div class="order-pay">
-						<div class="order-item-pay">
-				
-				<div class="order-header">
-					<div class="order-left">
-					<div class="time">2019-11-20</div>
-					<div class="order-num">订单号：11111</div>
-					<div class="receiver">收货人:eee</div>
+		<div class="order-pay">
+					<!-- 待付款的商品 -->
 					</div>
-					
-					
-				<div class="order-right">
-					<div class="price">总金额：￥34.90</div>
-					<div class="state">待付款</div>
-				<div class="name">聚优汇</div>
-				
-				</div>
-					
-				</div >
-				
-				<div class="order-list">
-					<div class="order-pro">
-						<a href="">
-						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
-						<div class="order-title">
-							<p class="desc">商品描述</p>
-							<div class="buy-btn">再次购买</div>
-						</div>
-					</div>
-					<div class="order-btns">立即支付</div>
-					<div class="order-btns">订单详情</div>
-				</div>
-			</div>
-					</div>
-					
 					
 					<div class="order-receive">
-						<div class="order-item-reveive">
-				
-				<div class="order-header">
-					<div class="order-left">
-					<div class="time">2019-11-20</div>
-					<div class="order-num">订单号：11111</div>
-					<div class="receiver">收货人:ddd</div>
+					<!-- 待收货的商品 -->
 					</div>
-					
-					
-				<div class="order-right">
-					<div class="price">总金额：￥34.90</div>
-					<div class="state">待收货</div>
-				<div class="name">聚优汇</div>
-				
-				</div>
-					
-				</div >
-				
-				<div class="order-list">
-					<div class="order-pro">
-						<a href="">
-						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
-						<div class="order-title">
-							<p class="desc">商品描述</p>
-							<div class="buy-btn">再次购买</div>
-						</div>
-					</div>
-					<div class="order-btns">确认收货</div>
-					<div class="order-btns">订单详情</div>
-				</div>
-			</div>
-					</div>
-					
 					
 					<div class="order-fished">
-						<div class="order-item-fished">
-				
-				<div class="order-header">
-					<div class="order-left">
-					<div class="time">2019-11-20</div>
-					<div class="order-num">订单号：11111</div>
-					<div class="receiver">收货人:bbb</div>
+					<!-- 已完成的商品 -->
+					
 					</div>
-					
-					
-				<div class="order-right">
-					<div class="price">总金额：￥34.90</div>
-					<div class="state">已完成</div>
-				<div class="name">聚优汇</div>
-				
-				</div>
-					
-				</div >
-				
-				<div class="order-list">
-					<div class="order-pro">
-						<a href="">
-						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
-						<div class="order-title">
-							<p class="desc">商品描述</p>
-							<div class="buy-btn">再次购买</div>
-						</div>
-					</div>
-					<div class="order-btns">已完成</div>
-					<div class="order-btns">订单详情</div>
-				</div>
-			</div>
-					</div>
-					
 					
 					<div class="order-cancel">
-						<div class="order-item-cancel">
-				
-				<div class="order-header">
-					<div class="order-left">
-					<div class="time">2019-11-20</div>
-					<div class="order-num">订单号：11111</div>
-					<div class="receiver">收货人:ccc</div>
+					<!-- 已取消的商品 -->
 					</div>
-					
-					
-				<div class="order-right">
-					<div class="price">总金额：￥34.90</div>
-					<div class="state">已取消</div>
-				<div class="name">聚优汇</div>
-				
-				</div>
-					
-				</div >
-				
-				<div class="order-list">
-					<div class="order-pro">
-						<a href="">
-						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
-						<div class="order-title">
-							<p class="desc">商品描述</p>
-							<div class="buy-btn">再次购买</div>
-						</div>
-					</div>
-					<div class="order-btns">已取消</div>
-					<div class="order-btns">订单详情</div>
-				</div>
-			</div>
-			</div>
 				</div>
 				
 			
@@ -463,6 +336,7 @@ $("body").keydown(function(event){
 	
 });
 
+var allForm;//所有订单,方便处理
 
 //获得所有该用户的订单
 $(function(){
@@ -472,65 +346,83 @@ $(function(){
 		data:"action=getallbyid"+"&aid="+"${acount.aid}",
 		success:function(result){
 			var json = JSON.parse(result);
-			/*for(var i=0; i<json.length;i++)
+			allForm = json;
+		//	console.log(json);
+			for(var j=0; j<json.length;j++)//遍历所有订单
 			{	
-				console.log(json[i]);
-				var aid = json[i].aid;
-				var comid=json[i].comid;
-				var comname=json[i].comname;
-				var orderadd=json[i].orderadd;
-				var ordercompany=json[i].ordercompany;
-				var year= json[i].orderdate.year-100+2000;
-				var day =json[i].orderdate.day;
-				var month =json[i].orderdate.month+1;
-				var hours =json[i].orderdate.hours;
-				var minutes=json[i].orderdate.minutes;
-				var seconds = json[i].orderdate.seconds;
-				var time = ""+year+"年"+month+"月"+day+"日"+hours+"时"+minutes+"分"+seconds+"秒";
-				console.log(time);
- 				var orderid = json[i].orderid;
- 				var ordername =json[i].ordername;
- 				var orderphone = json[i].orderphone;
- 				var orderprice
-				*/
-				console.log(json);
+				console.log("订单"+j);
+				var orderid;
+				var ordername;
+				var orderprice;
+				
+				var orderForms = json[j].orderForms;
+				for (var i = 0; i < orderForms.length;i++) {
+						var aid = orderForms[i].aid;
+						var comid=orderForms[i].comid;
+						var comname=orderForms[i].comname;
+						var orderadd=orderForms[i].orderadd;
+						var ordercompany=orderForms[i].ordercompany;
+						var year= orderForms[i].orderdate.year-100+2000;
+						var day =orderForms[i].orderdate.day;
+						var month =orderForms[i].orderdate.month+1;
+						var hours =orderForms[i].orderdate.hours;
+						var minutes=orderForms[i].orderdate.minutes;
+						var seconds = orderForms[i].orderdate.seconds;
+						//var time = ""+year+"年"+month+"月"+day+"日"+hours+"时"+minutes+"分"+seconds+"秒";
+						var time = year+"年"+month+"月"+day+"日";
+		 				    orderid = orderForms[i].orderid;
+		 				    ordername =orderForms[i].ordername;
+		 				var orderphone = orderForms[i].orderphone;
+		 				 orderprice =orderForms[i].orderprice;
+		 				console.log(orderForms[i])
+		 				
+						}
+				
+				
 				var str=`
- 		<div class="order-item-all">
-				
-				<div class="order-header">
-					<div class="order-left">
-					<div class="time">2019-11-20</div>
-					<div class="order-num">订单号：11111</div>
-					<div class="receiver">收货人:aaa</div>
-					</div>
-					
-					
-				<div class="order-right">
-					<div class="price">总金额：￥34.90</div>
-					<div class="state">已完成</div>
-				<div class="name">聚优汇</div>
-				
-				</div>
-					
-				</div >
-				
-				<div class="order-list">
-					<div class="order-pro">
-						<a href="">
-						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
-						<div class="order-title">
-							<p class="desc">商品描述</p>
-							<div class="buy-btn">再次购买</div>
-						</div>
-					</div>
-					<div class="order-btns">已完成</div>
-					<div class="order-btns">订单详情</div>
-				</div>
-			</div>
-				
-				`;
-				
-			//}
+ 		 		<div class="order-item-all">
+ 						
+ 						<div class="order-header">
+ 							<div class="order-left">
+ 							<div class="time">`+time+`</div>
+ 							<div class="order-num">订单号：`+orderid+`</div>
+ 							<div class="receiver">收货人:`+ordername+`</div>
+ 							</div>
+ 							
+ 							
+ 						<div class="order-right">
+ 							<div class="price">总金额：`+orderprice+`元</div>
+ 							<div class="state">已完成</div>
+ 						
+ 						</div>
+ 							
+ 						</div >
+ 						
+ 						<div class="order-list">
+ 							<div class="order-pro">
+ 								<a href="">
+ 								<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
+ 								<div class="order-title">
+ 									<p class="desc">`+comname+`<span>等    `+orderForms.length+`件商品</span>`+`</p>
+ 									
+ 									<div class="buy-btn">再次购买</div>
+ 								</div>
+ 							</div>
+ 							<div class="order-btns">已完成</div>
+ 							<div class="order-btns">订单详情</div>
+ 						</div>
+ 					</div>
+ 						
+ 						`;
+ 						$(".order-all").append(str);
+			}
+			
+			
+			shownotpay();
+			showgetgoods();	
+			getgoodsok();
+			getgoodscancel();
+			
 		}
 		
 		
@@ -538,7 +430,305 @@ $(function(){
 	
 	
 	
-})
+});
 
 
+function shownotpay(){
+	var forms = allForm;
+	console.log("这是shownotpay方法");
+	for (var i = 0; i < forms.length; i++) {
+		var orderid;
+		var ordername;
+		var orderprice;
+		var orderstatement;
+		var orderpay;
+		var form = forms[i];
+		var goods=form.orderForms;
+		console.log(goods[0].aid);
+			var aid = goods[0].aid;
+			var comid=goods[0].comid;
+			var comname=goods[0].comname;
+			var orderadd=goods[0].orderadd;
+			var ordercompany=goods[0].ordercompany;
+			var year= goods[0].orderdate.year-100+2000;
+			var day =goods[0].orderdate.day;
+			var month =goods[0].orderdate.month+1;
+			var hours =goods[0].orderdate.hours;
+			var minutes=goods[0].orderdate.minutes;
+			var seconds = goods[0].orderdate.seconds;
+			//var time = ""+year+"年"+month+"月"+day+"日"+hours+"时"+minutes+"分"+seconds+"秒";
+			var time = year+"年"+month+"月"+day+"日";
+		    orderid = goods[0].orderid;
+		    ordername =goods[0].ordername;
+			var orderphone = goods[0].orderphone;
+			orderprice =goods[0].orderprice;
+			orderstatement =goods[0].orderstatement;
+			orderpay =goods[0].orderpay;
+		if(orderpay == 1)
+			{
+			var str = `
+			<div class="order-item-pay">
+			
+			<div class="order-header">
+				<div class="order-left">
+				<div class="time">`+time+`</div>
+				<div class="order-num">订单号：`+orderid+`</div>
+				<div class="receiver">收货人:`+ordername+`</div>
+				</div>
+				
+				
+			<div class="order-right">
+				<div class="price">总金额:`+orderprice+`元</div>
+				<div class="state">待付款</div>
+			
+			</div>
+				
+			</div >
+			
+			<div class="order-list">
+				<div class="order-pro">
+					<a href="">
+					<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
+					<div class="order-title">
+					<p class="desc">`+comname+`<span>等    `+goods.length+`件商品</span>`+`</p>
+						
+						<div class="buy-btn">再次购买</div>
+					</div>
+				</div>
+				<div class="order-btns">立即支付</div>
+				<div class="order-btns">订单详情</div>
+			</div>
+		</div>
+								
+			
+			`;
+			$(".order-pay").append(str);
+			
+			}
+		
+	}
+}
+function showgetgoods(){
+	//获取收货了的商品
+	var forms = allForm;
+	for (var i = 0; i < forms.length; i++) {
+		var orderid;
+		var ordername;
+		var orderprice;
+		var orderstatement;
+		var orderpay;
+		var form = forms[i];
+		var goods=form.orderForms;
+		console.log(goods[0].aid);
+			var aid = goods[0].aid;
+			var comid=goods[0].comid;
+			var comname=goods[0].comname;
+			var orderadd=goods[0].orderadd;
+			var ordercompany=goods[0].ordercompany;
+			var year= goods[0].orderdate.year-100+2000;
+			var day =goods[0].orderdate.day;
+			var month =goods[0].orderdate.month+1;
+			var hours =goods[0].orderdate.hours;
+			var minutes=goods[0].orderdate.minutes;
+			var seconds = goods[0].orderdate.seconds;
+			//var time = ""+year+"年"+month+"月"+day+"日"+hours+"时"+minutes+"分"+seconds+"秒";
+			var time = year+"年"+month+"月"+day+"日";
+		    orderid = goods[0].orderid;
+		    ordername =goods[0].ordername;
+			var orderphone = goods[0].orderphone;
+			orderprice =goods[0].orderprice;
+			orderstatement =goods[0].orderstatement;
+			orderpay =goods[0].orderpay;
+		if(orderstatement == 2)
+			{
+			var str = `
+			<div class="order-item-pay">
+			
+			<div class="order-header">
+				<div class="order-left">
+				<div class="time">`+time+`</div>
+				<div class="order-num">订单号：`+orderid+`</div>
+				<div class="receiver">收货人:`+ordername+`</div>
+				</div>
+				
+				
+			<div class="order-right">
+				<div class="price">总金额:`+orderprice+`元</div>
+				<div class="state">待付款</div>
+			
+			</div>
+				
+			</div >
+			
+			<div class="order-list">
+				<div class="order-pro">
+					<a href="">
+					<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
+					<div class="order-title">
+					<p class="desc">`+comname+`<span>等    `+goods.length+`件商品</span>`+`</p>
+						
+						<div class="buy-btn">再次购买</div>
+					</div>
+				</div>
+				<div class="order-btns">立即支付</div>
+				<div class="order-btns">订单详情</div>
+			</div>
+		</div>
+								
+			
+			`;
+			$(".order-receive").append(str);
+			
+			}
+		
+	}
+}
+function getgoodsok(){
+	//获取完成了的商品
+	var forms = allForm;
+	for (var i = 0; i < forms.length; i++) {
+		var orderid;
+		var ordername;
+		var orderprice;
+		var orderstatement;
+		var orderpay;
+		var form = forms[i];
+		var goods=form.orderForms;
+		console.log(goods[0].aid);
+			var aid = goods[0].aid;
+			var comid=goods[0].comid;
+			var comname=goods[0].comname;
+			var orderadd=goods[0].orderadd;
+			var ordercompany=goods[0].ordercompany;
+			var year= goods[0].orderdate.year-100+2000;
+			var day =goods[0].orderdate.day;
+			var month =goods[0].orderdate.month+1;
+			var hours =goods[0].orderdate.hours;
+			var minutes=goods[0].orderdate.minutes;
+			var seconds = goods[0].orderdate.seconds;
+			//var time = ""+year+"年"+month+"月"+day+"日"+hours+"时"+minutes+"分"+seconds+"秒";
+			var time = year+"年"+month+"月"+day+"日";
+		    orderid = goods[0].orderid;
+		    ordername =goods[0].ordername;
+			var orderphone = goods[0].orderphone;
+			orderprice =goods[0].orderprice;
+			orderstatement =goods[0].orderstatement;
+			orderpay =goods[0].orderpay;
+		if(orderstatement == 1)
+			{
+			var str = `
+			<div class="order-item-pay">
+			
+			<div class="order-header">
+				<div class="order-left">
+				<div class="time">`+time+`</div>
+				<div class="order-num">订单号：`+orderid+`</div>
+				<div class="receiver">收货人:`+ordername+`</div>
+				</div>
+				
+				
+			<div class="order-right">
+				<div class="price">总金额:`+orderprice+`元</div>
+				<div class="state">待付款</div>
+			<div class="name">聚优汇</div>
+			
+			</div>
+				
+			</div >
+			
+			<div class="order-list">
+				<div class="order-pro">
+					<a href="">
+					<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
+					<div class="order-title">
+					<p class="desc">`+comname+`<span>等    `+goods.length+`件商品</span>`+`</p>
+						
+						<div class="buy-btn">再次购买</div>
+					</div>
+				</div>
+				<div class="order-btns">订单详情</div>
+			</div>
+		</div>
+								
+			
+			`;
+			$(".order-fished").append(str);
+			
+			}
+		
+	}
+}
+function getgoodscancel(){
+	//获取取消了的商品
+	var forms = allForm;
+	for (var i = 0; i < forms.length; i++) {
+		var orderid;
+		var ordername;
+		var orderprice;
+		var orderstatement;
+		var orderpay;
+		var form = forms[i];
+		var goods=form.orderForms;
+		console.log(goods[0].aid);
+			var aid = goods[0].aid;
+			var comid=goods[0].comid;
+			var comname=goods[0].comname;
+			var orderadd=goods[0].orderadd;
+			var ordercompany=goods[0].ordercompany;
+			var year= goods[0].orderdate.year-100+2000;
+			var day =goods[0].orderdate.day;
+			var month =goods[0].orderdate.month+1;
+			var hours =goods[0].orderdate.hours;
+			var minutes=goods[0].orderdate.minutes;
+			var seconds = goods[0].orderdate.seconds;
+			//var time = ""+year+"年"+month+"月"+day+"日"+hours+"时"+minutes+"分"+seconds+"秒";
+			var time = year+"年"+month+"月"+day+"日";
+		    orderid = goods[0].orderid;
+		    ordername =goods[0].ordername;
+			var orderphone = goods[0].orderphone;
+			orderprice =goods[0].orderprice;
+			orderstatement =goods[0].orderstatement;
+			orderpay =goods[0].orderpay;
+		if(orderstatement == 4)
+			{
+			var str = `
+			<div class="order-item-pay">
+			
+			<div class="order-header">
+				<div class="order-left">
+				<div class="time">`+time+`</div>
+				<div class="order-num">订单号：`+orderid+`</div>
+				<div class="receiver">收货人:`+ordername+`</div>
+				</div>
+				
+				
+			<div class="order-right">
+				<div class="price">总金额:`+orderprice+`元</div>
+				<div class="state">待付款</div>
+			
+			</div>
+				
+			</div >
+			
+			<div class="order-list">
+				<div class="order-pro">
+					<a href="">
+					<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
+					<div class="order-title">
+					<p class="desc">`+comname+`<span>等    `+goods.length+`件商品</span>`+`</p>
+						
+						<div class="buy-btn">再次购买</div>
+					</div>
+				</div>
+				<div class="order-btns">订单详情</div>
+			</div>
+		</div>
+								
+			
+			`;
+			$(".order-cancel").append(str);
+			}
+		
+	}
+}
 </script>
