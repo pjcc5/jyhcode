@@ -77,7 +77,7 @@ $('input:eq(0)').blur(function() {
 // 手机号
 $('input:eq(1)').blur(function() {
 	var number = $('input:eq(1)').val();
-	var reg = /^1[3456789]\d{9}$/g;
+	var reg = /^1[3-5678]\d{9}$/;
 	if (reg.test(number)) {
 		flagph = true;
 	} else {
