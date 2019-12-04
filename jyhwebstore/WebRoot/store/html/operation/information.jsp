@@ -17,89 +17,85 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 	<meta http-equiv="keywords" content="keyword1,keyword2,keyword3">
 	<meta http-equiv="description" content="This is my page">
     <link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/information.css">
-     <link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/bootstrap.css">
+    <link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/bootstrap.css">
   </head>
   
   <body>
     <div class="top_bar">
 			<div class="clearfix">
 				<div class="left">
-				<a href="/jyhwebstore/index.jsp">
-				<span class="glyphicon glyphicon-home"></span>
-				聚优汇首页</a>
+					<a href="/jyhwebstore/index.jsp">
+						<span class="glyphicon glyphicon-home"></span>
+						聚优汇首页
+					</a>
 				</div>
 				<span id="current" style="display:inline-block;margin:0 auto;"></span>
 				<div class="right">
-					<a href="/jyhwebstore/store/html/order.jsp">
-						<span class="glyphicon glyphicon-list-alt"></span>
-						我的订单</a>
-					<c:if test="${empty acount}">
-						<a href="/jyhwebstore/store/html/login.jsp?path=index.jsp" id="log">
-							登录
+						<a href="/jyhwebstore/store/html/order.jsp">
+							<span class="glyphicon glyphicon-list-alt"></span>
+							我的订单
 						</a>
-					</c:if>
+						<c:if test="${empty acount}">
+							<a href="/jyhwebstore/store/html/login.jsp?path=index.jsp" id="log">
+								登录
+							</a>
+						</c:if>
 						<c:if test="${not empty acount}">
 							<a href="javascript:out()" id="out">退出</a>
-							<a href="/jyhwebstore/store/html/operation/information.jsp?path=index.jsp" id="log">
-							${acount.aname }
-						</a>
+								<a href="/jyhwebstore/store/html/operation/information.jsp?path=index.jsp" id="log">
+									${acount.aname }
+								</a>
 						</c:if>
-					
 				</div>
 			</div>
 		</div>
-		
 			<div class="header">
-			<div class="header-bp">
-				<div class="logo">
-					<a href="/jyhwebstore/index.jsp" class="hd-logo"><img src="/jyhwebstore/store/img/Logo.png" /></a>
-				</div>
-				<div class="header-right">
-					<div class="cart-2">
-						<a href="/jyhwebstore/store/html/cart.jsp">
-							<span class="glyphicon glyphicon-shopping-cart"></span>
-							<span>购物车</span>
-						</a>
+				<div class="header-bp">
+					<div class="logo">
+						<a href="/jyhwebstore/index.jsp" class="hd-logo"><img src="/jyhwebstore/store/img/Logo.png" /></a>
 					</div>
-
-					<div class="search">
-						<div class="hd-search">
-							<input type="text" placeholder="请输入要搜索的内容" class="search-input"/>
-							<a href="javascript:;" class="button" onclick="gosearch(this)"><span class="glyphicon glyphicon-search"></span>
+					<div class="header-right">
+						<div class="cart-2">
+							<a href="/jyhwebstore/store/html/cart.jsp">
+								<span class="glyphicon glyphicon-shopping-cart"></span>
+								<span>购物车</span>
 							</a>
 						</div>
-						<ul>
-							<li><a href="/jyhwebstore/store/html/search.jsp?content=Apple">Apple</a></li>
-							<li><a href="/jyhwebstore/store/html/search.jsp?content=oppo">oppo</a></li>
-							<li><a href="/jyhwebstore/store/html/search.jsp?content=vivo">vivo</a></li>
-							<li><a href="/jyhwebstore/store/html/search.jsp?content=飞利浦">飞利浦</a></li>
-						</ul>
+						<div class="search">
+							<div class="hd-search">
+								<input type="text" placeholder="请输入要搜索的内容" class="search-input"/>
+								<a href="javascript:;" class="button" onclick="gosearch(this)">
+									<span class="glyphicon glyphicon-search"></span>
+								</a>
+							</div>
+							<ul>
+								<li><a href="/jyhwebstore/store/html/search.jsp?content=Apple">Apple</a></li>
+								<li><a href="/jyhwebstore/store/html/search.jsp?content=oppo">oppo</a></li>
+								<li><a href="/jyhwebstore/store/html/search.jsp?content=vivo">vivo</a></li>
+								<li><a href="/jyhwebstore/store/html/search.jsp?content=飞利浦">飞利浦</a></li>
+							</ul>
+						</div>
 					</div>
 				</div>
- 
 			</div>
-		</div>
 		
 		<div class="mycontent">
 			<div class="body-clearfix">
-			<div class="side-nav">
-				<div class="side-nav-order">
-					
-					<p>
-						<span class="glyphicon glyphicon-list-alt"></span>  我的交易
-						
-				</p>
-				<a href="/jyhwebstore/store/html/operation/order.jsp">聚优汇订单</a>
+				<div class="side-nav">
+						<div class="side-nav-order">
+							<p>
+								<span class="glyphicon glyphicon-list-alt"></span>  我的交易
+							</p>
+							<a href="/jyhwebstore/store/html/operation/order.jsp">聚优汇订单</a>
+						</div>
+						<div class="menber">
+							<p>
+								<span class="glyphicon glyphicon-star"></span> 会员资料
+							</p>
+							<a href="/jyhwebstore/store/html/operation/information.jsp" class="active">个人资料</a>
+							<a href="/jyhwebstore/store/html/address.jsp">地址管理</a>
+						</div>
 				</div>
-				
-				<div class="menber">
-					<p>
-						<span class="glyphicon glyphicon-star"></span> 会员资料
-					</p>
-					<a href="/jyhwebstore/store/html/operation/information.jsp" class="active">个人资料</a>
-					<a href="/jyhwebstore/store/html/address.jsp">地址管理</a>
-				</div>
-			</div>
 			<div class="information">
 				<div class="edit-top">
 					<div class="edit-left">
