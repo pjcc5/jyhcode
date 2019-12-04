@@ -7,6 +7,7 @@
     <!-- meta name="viewport" content="width=device-width, initial-scale=1" /> -->
 	<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/order.css"/>
 	<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/bootstrap.css"/>
+	<link rel="shortcut icon" type="image/x-icon" href="/jyhwebstore/store/img/task.png" />
   </head>
   
   <body>

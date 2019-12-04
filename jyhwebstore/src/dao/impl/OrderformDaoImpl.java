@@ -9,6 +9,7 @@ import java.util.List;
 
 import pojo.Orderform;
 import dao.OrderformDao;
+import dto.OrderDetailDto;
 
 public class OrderformDaoImpl implements OrderformDao{
 
@@ -192,6 +193,39 @@ public class OrderformDaoImpl implements OrderformDao{
 		
 		
 		return false;
+	}
+
+	@Override
+	public List<OrderDetailDto> getComidsByOrderId(String orderid,Connection conn) throws Exception {
+			if(conn == null)
+			{
+				return null;
+			}
+			List<OrderDetailDto> list = new ArrayList<OrderDetailDto>();
+			if(!conn.isClosed()){
+			String sql="select commodity.comid,commodity.comname,commodity.compic,commodity.comprice,details.detailsdot,details.pai,details.detailsstock,commodity.color,commodity.size,orderform.comcount from orderform inner join commodity inner join details on orderform.comid = commodity.comid and orderform.comid = details.comid  where orderid=?";
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setString(1, orderid);
+			ResultSet rs=ps.executeQuery();
+			while(rs.next()){
+				OrderDetailDto odd = new OrderDetailDto();
+				odd.setComid(rs.getString("comid"));
+				odd.setComname(rs.getString("comname"));
+				odd.setCompic(rs.getString("compic"));
+				odd.setComprice(rs.getDouble("comprice"));
+				odd.setDetailsdot(rs.getInt("detailsdot"));
+				odd.setPai(rs.getString("pai"));
+				odd.setComcount(rs.getInt("detailsstock"));
+				odd.setColor(rs.getString("color"));
+				odd.setSize(rs.getString("size"));
+				odd.setComcount(rs.getInt("comcount"));
+				list.add(odd);
+			}
+			return list;
+				
+			}
+		
+		return list;
 	}
 
 }
