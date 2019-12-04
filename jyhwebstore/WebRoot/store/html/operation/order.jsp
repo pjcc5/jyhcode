@@ -86,7 +86,7 @@
 					<p>
 						<span class="glyphicon glyphicon-star"></span> 会员资料
 					</p>
-					<a href="/jyhwebstore/store/html/operation/information.jsp">个人资料</a>
+					<a href="/jyhwebstore/store/html/operation/userdetails.jsp">个人资料</a>
 					<a href="/jyhwebstore/store/html/address.jsp">地址管理</a>
 				</div>
 				
