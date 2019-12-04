@@ -246,7 +246,8 @@ h2 {
 </body>
 <script language="javascript">
 
-	
+	var price;
+	var order;
 	function GetDateNow() {
 		var vNow = new Date();
 		var sNow = "";
@@ -259,8 +260,21 @@ h2 {
 		sNow += String(vNow.getMilliseconds());
 		document.getElementById("WIDout_trade_no").value =  sNow;
 		document.getElementById("WIDsubject").value = "手机";
-		document.getElementById("WIDtotal_amount").value = "0.1";
+		
 	}
 	GetDateNow();
+	
+	price=getUrlVal("price");
+	
+	document.getElementById("WIDtotal_amount").value = price;
+	
+	function getUrlVal(property){
+  //地址栏
+  var urlStr = window.location.search.substring(1);
+  var re = new RegExp('(^|&)'+ property +'=([^&]*)(&|$)');
+  var result = urlStr.match(re);
+  if(result == null){return null};
+  return result[2];
+};
 </script>
 </html>

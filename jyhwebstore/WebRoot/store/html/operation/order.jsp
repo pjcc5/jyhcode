@@ -108,7 +108,8 @@
 				
 				<div class="order-item">
 					<div class="active order-all">
-						<div class="order-item-all">
+			<!--  
+				<div class="order-item-all">
 				
 				<div class="order-header">
 					<div class="order-left">
@@ -140,6 +141,8 @@
 					<div class="order-btns">订单详情</div>
 				</div>
 			</div>
+			
+			-->
 			
 					</div>
 					
@@ -459,5 +462,83 @@ $("body").keydown(function(event){
 			
 	
 });
+
+
+//获得所有该用户的订单
+$(function(){
+	$.get({
+		type:"get",
+		url:"/jyhwebstore/order",
+		data:"action=getallbyid"+"&aid="+"${acount.aid}",
+		success:function(result){
+			var json = JSON.parse(result);
+			/*for(var i=0; i<json.length;i++)
+			{	
+				console.log(json[i]);
+				var aid = json[i].aid;
+				var comid=json[i].comid;
+				var comname=json[i].comname;
+				var orderadd=json[i].orderadd;
+				var ordercompany=json[i].ordercompany;
+				var year= json[i].orderdate.year-100+2000;
+				var day =json[i].orderdate.day;
+				var month =json[i].orderdate.month+1;
+				var hours =json[i].orderdate.hours;
+				var minutes=json[i].orderdate.minutes;
+				var seconds = json[i].orderdate.seconds;
+				var time = ""+year+"年"+month+"月"+day+"日"+hours+"时"+minutes+"分"+seconds+"秒";
+				console.log(time);
+ 				var orderid = json[i].orderid;
+ 				var ordername =json[i].ordername;
+ 				var orderphone = json[i].orderphone;
+ 				var orderprice
+				*/
+				console.log(json);
+				var str=`
+ 		<div class="order-item-all">
+				
+				<div class="order-header">
+					<div class="order-left">
+					<div class="time">2019-11-20</div>
+					<div class="order-num">订单号：11111</div>
+					<div class="receiver">收货人:aaa</div>
+					</div>
+					
+					
+				<div class="order-right">
+					<div class="price">总金额：￥34.90</div>
+					<div class="state">已完成</div>
+				<div class="name">聚优汇</div>
+				
+				</div>
+					
+				</div >
+				
+				<div class="order-list">
+					<div class="order-pro">
+						<a href="">
+						<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
+						<div class="order-title">
+							<p class="desc">商品描述</p>
+							<div class="buy-btn">再次购买</div>
+						</div>
+					</div>
+					<div class="order-btns">已完成</div>
+					<div class="order-btns">订单详情</div>
+				</div>
+			</div>
+				
+				`;
+				
+			//}
+		}
+		
+		
+	});
+	
+	
+	
+})
+
 
 </script>

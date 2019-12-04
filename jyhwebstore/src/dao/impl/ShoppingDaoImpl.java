@@ -35,6 +35,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 					shopping.setDate(rs.getString("date"));
 					shopping.setSize(rs.getString("size"));
 					shopping.setUuid(rs.getString("uuid"));
+					shopping.setSelected(rs.getString("selected"));
 				   list.add(shopping);
 				}
 				return list;
@@ -68,6 +69,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 					shopping.setDate(rs.getString("date"));
 					shopping.setSize(rs.getString("size"));
 					shopping.setUuid(rs.getString("uuid"));
+					shopping.setSelected(rs.getString("selected"));
 				   return shopping;
 				}
 			
@@ -84,7 +86,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 		}
 
 			if(!conn.isClosed()){
-				String sql="insert into shopping values(?,?,?,?,?,?,?,?,?) ";
+				String sql="insert into shopping values(?,?,?,?,?,?,?,?,?,?) ";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, shoping.getShopid());
 				ps.setString(2, shoping.getCompic());
@@ -95,6 +97,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 				ps.setString(7, shoping.getColor());
 				ps.setString(8, shoping.getComname());
 				ps.setString(9, shoping.getUuid());
+				ps.setString(10,shoping.getSelected());
 			    int rs=ps.executeUpdate();
 			    if(rs>0){
 			    	return true;
@@ -131,7 +134,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 		}
 	
 			if(!conn.isClosed()){
-				String sql="update shopping set compic=?,count=?,datees=?,comprice=?,size=?,color=?,comname=?,uuid=? where shopid=?";
+				String sql="update shopping set compic=?,count=?,datees=?,comprice=?,size=?,color=?,comname=?,uuid=?,selected=? where shopid=?";
 				PreparedStatement ps=conn.prepareStatement(sql);
 				ps.setString(1, shoping.getCompic());
 				ps.setString(2, shoping.getCount());
@@ -142,6 +145,7 @@ public class ShoppingDaoImpl implements ShoppingDao{
 				ps.setString(7, shoping.getComname());
 				ps.setString(8, shoping.getUuid());
 				ps.setString(9, shoping.getShopid());
+				ps.setString(10, shoping.getSelected());
 				int rs=ps.executeUpdate();
 				if(rs>0){
 					return true;

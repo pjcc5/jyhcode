@@ -118,6 +118,9 @@ public class AddressServlet extends HttpServlet {
 			}
 			DbHelp2.closeConnection(conn);
 			
+			PrintWriter out = response.getWriter();
+			out.print(address.getAddressid());
+			
 		}
 		
 		

@@ -336,8 +336,8 @@ public class Test {
 		 * 测试order表
 		 */
 		//测试order表插入一条数据OK
-		Orderform o =new Orderform();
-		OrderDao od = new OrderDaoImpl();
+//		Orderform o =new Orderform();
+//		OrderDao od = new OrderDaoImpl();
 //		o.setAid(1);
 //		o.setComid("comid");
 //		o.setComname("华为");

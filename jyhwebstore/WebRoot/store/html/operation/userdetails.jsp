@@ -193,7 +193,6 @@
 			url:"/jyhwebstore/ShowUserDetails",
 			data:"",
 			success:function(result){
-				
 				var jsons =JSON.parse(result);
 				var picture = jsons.pic;
 				var uname = jsons.uname;

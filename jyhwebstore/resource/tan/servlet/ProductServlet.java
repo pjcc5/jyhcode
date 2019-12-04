@@ -54,6 +54,7 @@ public class ProductServlet extends HttpServlet {
 		ProductDetail dao=new ProductDetail();
 		ProductInformation detail=null;
 		Connection conn=DbHelp.getConnection();
+		
 			detail=dao.getProduct(msg, conn);
 			DbHelp.closeConnection(conn);
 		JSONObject object = JSONObject.fromObject(detail);

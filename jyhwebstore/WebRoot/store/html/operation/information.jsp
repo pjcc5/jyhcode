@@ -53,16 +53,12 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 			<div class="header-bp">
 				<div class="logo">
 					<a href="/jyhwebstore/index.jsp" class="hd-logo"><img src="/jyhwebstore/store/img/Logo.png" /></a>
-					
 				</div>
-
 				<div class="header-right">
-
 					<div class="cart-2">
 						<a href="/jyhwebstore/store/html/cart.jsp">
 							<span class="glyphicon glyphicon-shopping-cart"></span>
 							<span>购物车</span>
-
 						</a>
 					</div>
 
@@ -80,7 +76,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 						</ul>
 					</div>
 				</div>
-
+ 
 			</div>
 		</div>
 		
@@ -103,11 +99,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<a href="/jyhwebstore/store/html/operation/information.jsp" class="active">个人资料</a>
 					<a href="/jyhwebstore/store/html/address.jsp">地址管理</a>
 				</div>
-				
-				
-				
-				
-				
 			</div>
 			<div class="information">
 				<div class="edit-top">
@@ -242,11 +233,6 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 					</div>
 
-
-					<!--<div class="QR-codes">
-						<p class="contact"><span class="glyphicon glyphicon-phone-alt"></span>联系我们</p>
-						<img src="images/QR-code.png" alt="">
-					</div>-->
 				</div>
 			</div>
 		</section>

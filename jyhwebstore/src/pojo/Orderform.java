@@ -18,7 +18,7 @@ public class Orderform implements Serializable{
 	private int orderreturn;
 	private String orderid;
 	private String ordercompany;
-	private String test1;
+	private int comcount;
 	private String test2;
 	private String test3;
 	private String test4;
@@ -100,12 +100,6 @@ public class Orderform implements Serializable{
 	public void setOrdercompany(String ordercompany) {
 		this.ordercompany = ordercompany;
 	}
-	public String getTest1() {
-		return test1;
-	}
-	public void setTest1(String test1) {
-		this.test1 = test1;
-	}
 	public String getTest2() {
 		return test2;
 	}
@@ -124,17 +118,25 @@ public class Orderform implements Serializable{
 	public void setTest4(String test4) {
 		this.test4 = test4;
 	}
+	public int getComcount() {
+		return comcount;
+	}
+	public void setComcount(int comcount) {
+		this.comcount = comcount;
+	}
 	@Override
 	public String toString() {
-		return "Order [aid=" + aid + ", comid=" + comid + ", comname="
+		return "Orderform [aid=" + aid + ", comid=" + comid + ", comname="
 				+ comname + ", orderadd=" + orderadd + ", ordername="
 				+ ordername + ", orderphone=" + orderphone + ", orderprice="
 				+ orderprice + ", orderdate=" + orderdate + ", orderstatement="
 				+ orderstatement + ", orderpay=" + orderpay + ", orderreturn="
 				+ orderreturn + ", orderid=" + orderid + ", ordercompany="
-				+ ordercompany + ", test1=" + test1 + ", test2=" + test2
+				+ ordercompany + ", comcount=" + comcount + ", test2=" + test2
 				+ ", test3=" + test3 + ", test4=" + test4 + "]";
 	}
+	
+	
 	
 	
 	
