@@ -23,15 +23,9 @@ import tan.servers.ProductDetail;
 
 public class test {
 	public static void main(String[] args) throws Exception {
-		String shopid = UUID.randomUUID().toString();
-		AddressDao dao=new AddressDaoImpl();
-	Connection conn=	DbHelp2.getConnection();
-	Address address=new Address();
-	address.setAddressid("2");
-	address.setAid(UUID.randomUUID().toString());
-	address.setIsdefault(1);
-	address.setRecivephone("18890573466");
-		System.out.println(dao.modifyAdd(address, conn));;
+		ExDetailDao dao=new ExDetailsByComidImpl();
+		Connection conn=DbHelp2.getConnection();
+		dao.updateSaleByComid("0412f87d-1642-41a1-805b-e6dce58e1555", conn, 4);
 	}
 	
 

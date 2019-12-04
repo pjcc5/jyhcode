@@ -15,7 +15,14 @@ public class Shopping  implements Serializable{
 	private java.lang.String color;//test3
 	private java.lang.String comname;//test4
 	private String uuid;
-	private String selected;
+	private String selected="";
+	private String comid="";
+	public String getComid() {
+		return comid;
+	}
+	public void setComid(String comid) {
+		this.comid = comid;
+	}
 	public java.lang.String getShopid() {
 		return shopid;
 	}
@@ -76,13 +83,17 @@ public class Shopping  implements Serializable{
 	public void setSelected(String selected) {
 		this.selected = selected;
 	}
+	
+	
 	@Override
 	public String toString() {
 		return "Shopping [shopid=" + shopid + ", compic=" + compic + ", count="
 				+ count + ", date=" + date + ", comprice=" + comprice
 				+ ", size=" + size + ", color=" + color + ", comname="
-				+ comname + ", uuid=" + uuid + ", selected=" + selected + "]";
+				+ comname + ", uuid=" + uuid + ", selected=" + selected
+				+ ", comid=" + comid + "]";
 	}
+	
 	
 	
 	

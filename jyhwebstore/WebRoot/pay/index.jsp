@@ -247,27 +247,14 @@ h2 {
 <script language="javascript">
 
 	var price;
-	var order;
-	function GetDateNow() {
-		var vNow = new Date();
-		var sNow = "";
-		sNow += String(vNow.getFullYear());
-		sNow += String(vNow.getMonth() + 1);
-		sNow += String(vNow.getDate());
-		sNow += String(vNow.getHours());
-		sNow += String(vNow.getMinutes());
-		sNow += String(vNow.getSeconds());
-		sNow += String(vNow.getMilliseconds());
-		document.getElementById("WIDout_trade_no").value =  sNow;
-		document.getElementById("WIDsubject").value = "手机";
-		
-	}
-	GetDateNow();
-	
+	var sNow;
+	var uuid;
+	document.getElementById("WIDsubject").value = "手机";
 	price=getUrlVal("price");
-	
+	sNow=getUrlVal("order");
+	uuid=getUrlVal("uuid");
 	document.getElementById("WIDtotal_amount").value = price;
-	
+	document.getElementById("WIDout_trade_no").value = sNow;
 	function getUrlVal(property){
   //地址栏
   var urlStr = window.location.search.substring(1);

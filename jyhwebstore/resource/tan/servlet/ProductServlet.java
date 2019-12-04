@@ -51,11 +51,22 @@ public class ProductServlet extends HttpServlet {
 		 PrintWriter out= response.getWriter();
 		String msg = request.getParameter("msg");
 		System.out.println("msg="+msg);
+		
+		
 		ProductDetail dao=new ProductDetail();
 		ProductInformation detail=null;
 		Connection conn=DbHelp.getConnection();
 		
 			detail=dao.getProduct(msg, conn);
+			int dot=detail.getDetailsdot();
+			dot++;
+			ExDetailDao dao1=new ExDetailsByComidImpl();
+			try {
+				dao1.updatedot(msg, conn, dot);
+			} catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			}
 			DbHelp.closeConnection(conn);
 		JSONObject object = JSONObject.fromObject(detail);
 		

@@ -14,16 +14,25 @@ public class ProductInformation {
 
 	int detailsdot;
 	int detailssale;
+	int detailsstock;
+	
+	public int getDetailsstock() {
+		return detailsstock;
+	}
+	public void setDetailsstock(int detailsstock) {
+		this.detailsstock = detailsstock;
+	}
 	public List<String> getColor() {
 		return color;
 	}
+
 	@Override
 	public String toString() {
 		return "ProductInformation [color=" + color + ", picurl=" + picurl
-				+ ", comid=" + comid + ", comname=" + comname + ", comprice="
-				+ comprice + ", pai=" + pai + ", size=" + size
+				+ ", size=" + size + ", comid=" + comid + ", comname="
+				+ comname + ", comprice=" + comprice + ", pai=" + pai
 				+ ", detailsdot=" + detailsdot + ", detailssale=" + detailssale
-				+ "]";
+				+ ", detailsstock=" + detailsstock + "]";
 	}
 	public void setColor(List<String> color) {
 		this.color = color;

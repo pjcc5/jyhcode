@@ -39,6 +39,7 @@ public class CartDaoImpl extends ShoppingDaoImpl implements CartDao{
 		String[] date=null;
 		String[] uuid=null;
 		String[] selected=null;
+		String[] comid=null;
 		String sql="select * FROM shopmiddle INNER JOIN shopping ON shopmiddle.shopid=shopping.shopid  WHERE shopmiddle.aid=?";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setString(1, aid);
@@ -54,7 +55,7 @@ public class CartDaoImpl extends ShoppingDaoImpl implements CartDao{
              date=StringOrArray.getArray(rs.getString("datees"));
            shopid= rs.getString("shopid");
            selected=StringOrArray.getArray(rs.getString("selected"));
-           
+           comid=StringOrArray.getArray(rs.getString("comid"));
   
 		}
 		
@@ -75,6 +76,7 @@ public class CartDaoImpl extends ShoppingDaoImpl implements CartDao{
 			cart.setColor(color[i]);
 			cart.setSize(size[i]);
 			cart.setSelected(Integer.parseInt(selected[i]));
+			cart.setComid(comid[i]);
 			list.add(cart);
 			
 		}	
@@ -119,6 +121,7 @@ public String selectShopid(String aid,Connection conn)throws Exception{
 		StringBuffer comname=new StringBuffer();
 		StringBuffer uuid=new StringBuffer();
 		StringBuffer selected=new StringBuffer();
+		StringBuffer comid=new StringBuffer();
 		for(int j=0;j<list.size();j++){
 			count.append(Integer.toString(list.get(j).getCount()));
 			compic.append(list.get(j).getCompic());
@@ -129,6 +132,7 @@ public String selectShopid(String aid,Connection conn)throws Exception{
 			comname.append(list.get(j).getComname());
 			uuid.append(list.get(j).getUuid());
 			selected.append(list.get(j).getSelected());
+			comid.append(list.get(j).getComid());
 			if(j<list.size()-1){
 			count.append(",");
 			compic.append(",");
@@ -139,12 +143,13 @@ public String selectShopid(String aid,Connection conn)throws Exception{
 			comname.append(",");
 			uuid.append(",");
 			selected.append(",");
+			comid.append(",");
 			}
 		}
 		String shopid=null;
 	
 		shopid=new CartDaoImpl().selectShopid(aid, conn);
-		String sql="update shopping set compic=?,count=?,datees=?,comprice=?,size=?,color=?,comname=?,uuid=?,selected=? where shopid=?";
+		String sql="update shopping set compic=?,count=?,datees=?,comprice=?,size=?,color=?,comname=?,uuid=?,selected=?,comid=? where shopid=?";
 		PreparedStatement ps=conn.prepareStatement(sql);
 		ps.setString(1, compic.toString());
 		ps.setString(2, count.toString());
@@ -155,7 +160,8 @@ public String selectShopid(String aid,Connection conn)throws Exception{
 		ps.setString(7, comname.toString());
 		ps.setString(8, uuid.toString());
 		ps.setString(9, selected.toString());
-		ps.setString(10, shopid);
+		ps.setString(10, comid.toString());
+		ps.setString(11, shopid);
 		int rs=ps.executeUpdate();
 		
 		if(rs>0){

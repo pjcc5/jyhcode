@@ -3,6 +3,8 @@
 var msg={};
 var price=0;
 var uuid="";
+var information;
+var sNow = "";
 $(function(){
 	$.get({
 		type:"get",
@@ -12,7 +14,7 @@ $(function(){
 		success:function(result){
 		
 			var json=JSON.parse(result);
-			
+			information=json;
 			console.log(json[1]);
 			for(var i=0;i<json[1].length;i++){
 				var js=json[1];
@@ -432,6 +434,8 @@ var flag=false;
 		country.siblings()
 	}
 	
+	
+	//提交订单
 	function submitorder(obj){
 		$.ajax({
 			type:"post",
@@ -440,8 +444,24 @@ var flag=false;
 			datatype:"json",
 			success:function(result){}
 		});
-		
-		location.href="/jyhwebstore/pay/index.jsp?price="+price+"&uuid="+uuid;
+		GetDateNow();
+		console.log(sNow)
+		location.href="/jyhwebstore/pay/index.jsp?price="+price+"&uuid="+uuid+"&order="+sNow;
 		
 		
 	}
+	
+	function GetDateNow() {
+		var vNow = new Date();
+		
+		sNow += String(vNow.getFullYear());
+		sNow += String(vNow.getMonth() + 1);
+		sNow += String(vNow.getDate());
+		sNow += String(vNow.getHours());
+		sNow += String(vNow.getMinutes());
+		sNow += String(vNow.getSeconds());
+		sNow += String(vNow.getMilliseconds());
+	
+		
+	}
+	
