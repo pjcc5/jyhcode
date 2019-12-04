@@ -63,7 +63,7 @@ public class AddressServlet extends HttpServlet {
 		
 		if(action.equals("update")){
 			
-		String data=	request.getParameter("msg");
+		String data=request.getParameter("msg");
 		JSONObject object=JSONObject.fromObject(data);
 		Connection conn=DbHelp2.getConnection();
 		AddressDao dao=new AddressDaoImpl();
@@ -91,7 +91,7 @@ public class AddressServlet extends HttpServlet {
 		}
 		
 		if(action.equals("insert")){
-			String data=	request.getParameter("msg");
+			String data=request.getParameter("msg");
 			JSONObject object=JSONObject.fromObject(data);
 			
 			Address address=new Address();

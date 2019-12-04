@@ -14,7 +14,7 @@ private	int comprice;
 private	int count;
 private	String size;
 private	String color;
-private String uuid;
+private String uuid="";
 private int selected;
 private String comid;
 public String getComid() {
@@ -60,6 +60,8 @@ public String getCompic() {
 public void setCompic(String compic) {
 	this.compic = compic;
 }
+
+
 public int getComprice() {
 	return comprice;
 }

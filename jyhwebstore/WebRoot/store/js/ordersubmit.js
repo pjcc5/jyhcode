@@ -1,27 +1,37 @@
 
-
+var comid=getUrlVal("comid");
 var msg={};
+var comid1="";
 var price=0;
 var uuid="";
-var information;
+var orderform={};
 var sNow = "";
+var num="";
+var addr="";
+if(comid!=null){
+	comid1=comid;
+	num=getUrlVal("num");
+}
 $(function(){
 	$.get({
 		type:"get",
 		url:"/jyhwebstore/ordersubmit",
-		data:{},
+		data:{"msg":comid1,"num":num},
 		datatype:"json",
 		success:function(result){
 		
 			var json=JSON.parse(result);
-			information=json;
+			orderform.goods=json[1];
 			console.log(json[1]);
 			for(var i=0;i<json[1].length;i++){
 				var js=json[1];
 				price=price+(parseInt(js[i].comprice)*parseInt(js[i].count));
+				
+				if(!js[i].uuid==""){
 				uuid=uuid+js[i].uuid;
 				if(i<json[1].length-1){
 					uuid=uuid+",";
+				}
 				}
 				var str=`
 				<div class="box">
@@ -131,7 +141,7 @@ $(function(){
 });
 	
 
-
+//更改地址
 var flag=false;
 	function defaultAddr(obj){
 	
@@ -208,6 +218,8 @@ var flag=false;
 		
 		}
 	
+	
+	//删除地址
 	function removeAddr(obj){
 		$(obj).parent().parent().parent().remove();
 
@@ -229,6 +241,8 @@ var flag=false;
 		
 	}
 	
+	
+	//编辑地址
 	var par;
 	function edit(obj){
 		msg.flag=$(obj).attr('addr');
@@ -346,9 +360,6 @@ var flag=false;
 		msg.call=call;
 		msg.username=username;
 		if(flag){
-			
-			
-			
 			$.get({
 				type:"get",
 				url:"/jyhwebstore/address",
@@ -407,6 +418,21 @@ var flag=false;
 				data:{"action":"updateaddr","msg":JSON.stringify(msg)},
 				datatype:"json",
 				success:function(result){
+					
+var address=`
+					
+					<p class="adr_name_tel">
+					<span class="pat_name">${nickname}</span>
+					<span> </span>
+					<span class="pta_name">${call}</span>
+				</p>
+				<p class="adr_detail">
+					<i class="sprite_odr"></i>
+					<span class="area_Name">${prov_html} ${city_html} ${country_html} ${detailaddr}</span>
+				</p>
+					`;
+					
+					$(".pay_tli_adr").html(address);
 				}
 				});
 			
@@ -431,22 +457,29 @@ var flag=false;
 		var prov= $('#prov option:first').attr("selected",'selected');
 		var city=$('#city option:first').attr("selected",'selected');
 		var country=$('#country option:first').attr("selected",'selected');	
-		country.siblings()
+		
 	}
 	
 	
 	//提交订单
 	function submitorder(obj){
+		orderform.name=$('.pat_name').eq(0).html();
+		orderform.call=$('.pat_name').siblings().eq(1).html();
+		orderform.address=$('.area_Name').html();
+		orderform.price=price;
+		GetDateNow();
+		orderform.ordernum=sNow;
+
+		
 		$.ajax({
 			type:"post",
 			url:"/jyhwebstore/ordersubmit",
-			data:{"msg":uuid},
+			data:{"uuid":uuid,"orderform":JSON.stringify(orderform)},
 			datatype:"json",
 			success:function(result){}
 		});
-		GetDateNow();
-		console.log(sNow)
-		location.href="/jyhwebstore/pay/index.jsp?price="+price+"&uuid="+uuid+"&order="+sNow;
+		
+		location.href="/jyhwebstore/pay/index.jsp?price="+price+"&coumid="+comid+"&order="+sNow;
 		
 		
 	}
@@ -464,4 +497,14 @@ var flag=false;
 	
 		
 	}
+	
+	 
+	function getUrlVal(property){
+		  //地址栏
+		  var urlStr = window.location.search.substring(1);
+		  var re = new RegExp('(^|&)'+ property +'=([^&]*)(&|$)');
+		  var result = urlStr.match(re);
+		  if(result == null){return null};
+		  return result[2];
+		};
 	
