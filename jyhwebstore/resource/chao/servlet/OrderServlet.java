@@ -12,6 +12,7 @@ import javax.servlet.http.HttpServletResponse;
 import net.sf.json.JSONArray;
 import pojo.Orderform;
 import chao.service.OrderService;
+import dto.InnerOrderDto;
 import dto.OrderDto;
 
 public class OrderServlet extends HttpServlet {
@@ -40,17 +41,27 @@ public class OrderServlet extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("进入了orderservlet");
 			String action = request.getParameter("action");
-			String aid = request.getParameter("aid");
+			
 			PrintWriter out = response.getWriter();
-			System.out.println(action+"===="+aid);
 			if(action != null)
 			{
 				if("getallbyid".equals(action))
-				{
+				{	
+					String aid = request.getParameter("aid");
 					List<OrderDto>  list = OrderService.getAllOrderByAid(aid);
-					
 					JSONArray ja = JSONArray.fromObject(list);
 					out.print(ja.toString());
+				}
+				
+				if("getorderfrombyorderid".equals(action))
+				{
+					String orderid =  request.getParameter("orderid");
+					if(orderid != null)
+					{
+						InnerOrderDto  iod = OrderService.getOrderCommodities(orderid);
+						JSONArray ja = JSONArray.fromObject(iod);
+						out.print(ja.toString());
+					}
 				}
 			}
 			

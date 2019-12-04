@@ -8,9 +8,14 @@ import net.sf.json.JSONArray;
 import chao.dao.OrderFormDao;
 import chao.dao.impl.OrderFormDaoImpl;
 import dao.OrderMiddleDao;
+import dao.OrderformDao;
 import dao.impl.OrderMiddleDaoImpl;
+import dao.impl.OrderformDaoImpl;
 import db.DbHelp;
+import dto.InnerOrderDto;
+import dto.OrderDetailDto;
 import dto.OrderDto;
+import pojo.Commodity;
 import pojo.Orderform;
 import pojo.Ordermiddle;
 
@@ -52,4 +57,31 @@ public class OrderService {
 		
 		return null;
 	}
+	
+	
+	
+	
+	public static  InnerOrderDto getOrderCommodities(String orderid){
+		Connection conn = DbHelp.getConnection();
+		OrderformDao ofd = new OrderformDaoImpl();
+		InnerOrderDto iod = new InnerOrderDto();
+		double price =0d;
+		try {
+			//拿到所有订单中的商品
+			List<OrderDetailDto> orderdetaildtos =  ofd.getComidsByOrderId(orderid, conn);
+			//拿到订单总价
+			for (OrderDetailDto or : orderdetaildtos) {
+				price+=or.getComprice();
+			}
+			iod.setOrderprice(price);
+			iod.setOrderdetaildtos(orderdetaildtos);
+			
+			return iod;
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+		}
+		return iod;
+		
+	} 
 }
