@@ -16,6 +16,13 @@ private	String size;
 private	String color;
 private String uuid;
 private int selected;
+private String comid;
+public String getComid() {
+	return comid;
+}
+public void setComid(String comid) {
+	this.comid = comid;
+}
 public int getSelected() {
 	return selected;
 }
@@ -82,7 +89,8 @@ public String toString() {
 	return "Cart [date=" + date + ", shopid=" + shopid + ", comname=" + comname
 			+ ", compic=" + compic + ", comprice=" + comprice + ", count="
 			+ count + ", size=" + size + ", color=" + color + ", uuid=" + uuid
-			+ ", selected=" + selected + "]";
+			+ ", selected=" + selected + ", comid=" + comid + "]";
 }
+
 
 }

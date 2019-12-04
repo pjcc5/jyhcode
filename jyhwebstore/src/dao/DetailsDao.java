@@ -12,6 +12,6 @@ public interface DetailsDao {
 	public boolean insertDetails(Details details,Connection conn)throws Exception;//插入详情的方法
 	public boolean deleteDetailsByid(int aid,Connection conn)throws Exception;//删除一条详情的方法
 	public boolean modifyDetails(Details details,Connection conn)throws Exception;//修改详情的方法
-	
+	public Details getDetailsFromComid(String comid,Connection conn)throws Exception;
 	
 }

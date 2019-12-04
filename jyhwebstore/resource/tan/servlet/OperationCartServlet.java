@@ -69,11 +69,8 @@ this.doPost(request, response);
  
         CartServers dao=new CartServers();
         List<Cart> list=null;
-		
-			list = dao.selecCart(aid, conn);
-			
+			list = dao.selecCart(aid, conn);	
 	if(selectall!=null&&msg!=null){
-		System.out.println("=======================全选=========================");
 		JSONObject object = JSONObject.fromObject(msg);
 		int choose=object.getInt("choose");
 		for(int i=0;i<list.size();i++){
@@ -138,7 +135,7 @@ this.doPost(request, response);
 		if(detail!=null){
 		JSONObject object=JSONObject.fromObject(detail);
 		int num=object.getInt("num");
-		
+		String comid=object.getString("comid");
 		String comname=(String) object.get("comname");
 		int comprice=object.getInt("comprice");
 		String picurl=(String) object.getJSONArray("picurl").get(0);
@@ -163,6 +160,7 @@ this.doPost(request, response);
 	  cart.setSize(size);
 	  cart.setUuid(UUID.randomUUID().toString());
 	  cart.setCompic(picurl);
+	  cart.setComid(comid);
      list.add(cart);
      CartDaoImpl impl=new CartDaoImpl();
      try {

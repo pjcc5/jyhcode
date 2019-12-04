@@ -62,7 +62,7 @@ public class CartServlet extends HttpServlet {
 			list=new CartServers().selecCart(aid, conn);
 			DbHelp.closeConnection(conn);
 			JSONArray obj= JSONArray.fromObject(list);
-			System.out.println(obj);
+			
 			out.print(obj);
            }else{
         	   out.print(false);

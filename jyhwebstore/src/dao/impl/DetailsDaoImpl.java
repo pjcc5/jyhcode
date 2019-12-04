@@ -149,7 +149,7 @@ public class DetailsDaoImpl implements DetailsDao{
 		}
 		
 			String sql="update details set detailsstock=?,detailsprice=?,detailsdrawing=?,"
-					+ "detailsdot=?,detailssale=?,color=?,size=?,pai=?,test4=?,test5=?,test6=? where detailsid=?";
+					+ "detailsdot=?,detailssale=?,color=?,size=?,pai=?,comid=?,test5=?,test6=? where detailsid=?";
 		   PreparedStatement ps=conn.prepareStatement(sql);
 		   ps.setInt(1, details.getDetailsstock());
 		   ps.setDouble(2, details.getDetailsprice());
@@ -170,6 +170,43 @@ public class DetailsDaoImpl implements DetailsDao{
 		  }
 		
 		return false;
+	}
+
+	@Override
+	public Details getDetailsFromComid(String comid, Connection conn)
+			throws Exception {
+		if(conn == null)
+		{
+			return null;
+		}
+		
+	
+			if(!conn.isClosed()){
+				String sql="select * from details where comid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setString(1, comid);
+				ResultSet rs=ps.executeQuery();
+			if(rs.next()){
+			Details details=new Details();
+			details.setDetailsdot(rs.getInt("detailsdot"));
+			details.setDetailsdrawing(rs.getString("detailsdrawing"));
+			details.setDetailsid(rs.getInt("detailsid"));
+			details.setDetailsprice(rs.getDouble("detailsprice"));
+			details.setDetailssale(rs.getInt("detailssale"));
+			details.setDetailsstock(rs.getInt("detailsstock"));
+			details.setColor(rs.getString("color"));
+			details.setSize(rs.getString("size"));
+			details.setPai(rs.getString("pai"));
+			details.setComid(rs.getString("comid"));
+			details.setTest5(rs.getString("test5"));
+			details.setTest6(rs.getString("test6"));
+			
+			return details;
+			}
+				
+			}
+		
+		return null;
 	}
 
 }

@@ -95,12 +95,7 @@ var msg={};
     $('.all').html("(共"+count+"件)");
     $('.checked').html("已选商品"+selectcount+"件");
     };
- 
- 
- 
  var num=0;
-
-
 var  windowH=$(window).height();
    var   container=
    $('.container').outerHeight(true)+$('.content').outerHeight(true);
