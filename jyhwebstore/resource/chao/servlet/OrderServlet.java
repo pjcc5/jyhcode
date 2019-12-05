@@ -70,16 +70,17 @@ public class OrderServlet extends HttpServlet {
 						out.print(ja.toString());
 					}
 				}
+
 				
 				
-				String orderid=request.getParameter("orderid");
 				
-				System.out.println("action="+action);
-				System.out.println("orderid="+orderid);
+				
+				
 				
 				Connection conn=DbHelp.getConnection();
 				
-				if(action.equals("delete")&&orderid!=null){
+				if(action.equals("delete")){
+					String orderid=request.getParameter("orderid");
 				OrderMiddleDao dao=new  OrderMiddleDaoImpl();
 				OrderFormDao dao1=new OrderFormDaoImpl();
 				try {
@@ -101,15 +102,16 @@ public class OrderServlet extends HttpServlet {
 				}
 				
 				
-				if("buy".equals(action)&&orderid!=null){
+				if("buy".equals(action)){
 					double price=0;
+					String orderid=request.getParameter("orderid");
 					OrderFormDao dao1=new OrderFormDaoImpl();
 					List<Orderform> list= dao1.getAllOrderformByOrderid(orderid, conn);
 					for(int i=0;i<list.size();i++){
 						price=price+list.get(i).getOrderprice()*list.get(i).getComcount();
 					}
 					String str=new Double(price).toString();
-					System.out.println("======================="+str);
+					
 					out.print(str);
 					
 					
@@ -117,6 +119,26 @@ public class OrderServlet extends HttpServlet {
 				}
 				DbHelp.closeConnection(conn);
 			
+
+				if("editstate".equals(action))
+				{	
+					String orderid =  request.getParameter("orderid");
+					boolean result = false;
+					try {
+						int orderstatement = Integer.parseInt(request.getParameter("orderstatement"));
+						int orderpay = Integer.parseInt(request.getParameter("orderpay"));
+						if(orderid != null)
+						{
+							 result = OrderService.modifyOrderFormState(orderid, orderstatement, orderpay);
+						}
+						out.print(result);
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+				}
+
 			}
 			
 		

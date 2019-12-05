@@ -357,6 +357,7 @@ $(function(){
 				var orderstatement;
 				var orderpay;
 				var orderstatmentstr;//显示在页面上的订单状态
+				var orderpaystr;
 				var orderForms = json[j].orderForms;
 				for (var i = 0; i < orderForms.length;i++) {
 						var aid = orderForms[i].aid;
@@ -383,6 +384,8 @@ $(function(){
 						}
 				if(orderstatement == 1)
 					{
+					
+					
 						orderstatmentstr = "已完成";
 						var str1=`<div class="buy-btn" onclick="buyagin(this)">再次购买</div>
  									
@@ -436,7 +439,14 @@ $(function(){
  						
  						`;
 					}
-				
+				 if(orderpay == 1)
+					{
+					orderpaystr = "未支付";
+					}
+				else if(orderpay == 2)
+					{
+					orderpaystr = "已经支付";
+					}
 				var str=`
  		 		<div class="order-item-all">
  						
@@ -450,7 +460,7 @@ $(function(){
  							
  						<div class="order-right">
  							<div class="price">总金额：`+orderprice+`元</div>
- 							<div class="state">`+orderstatmentstr+`</div>
+ 							<div class="state">`+orderstatmentstr+"  "+orderpaystr+`</div>
  						
  						</div>
  							
@@ -499,7 +509,7 @@ var action;
 
 
 function cancel(obj){
-if(confirm("确定删除")==true){
+if(confirm("删除订单")==true){
 var orderid=$(obj).parent().parent().parent().siblings().eq(0).children().eq(0).children().eq(1).children().eq(0).html();
 (function(){
 action="delete";

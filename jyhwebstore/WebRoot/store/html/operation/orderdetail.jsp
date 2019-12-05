@@ -197,7 +197,27 @@ $(function(){
 				})
 		}
 	
-		
+
+		if(getUrlVal("out_trade_no")!=null)
+			{
+				//说明是从支付成功页面转跳过来的
+				//获取订单号传到后端进行修改状态
+				var orderid=getUrlVal("orderid");
+				$.get({
+					type:"get",
+					url:"/jyhwebstore/order",
+					data:{"action":"editstate","orderid":orderid,"orderstatement":"5","orderpay":"2"},
+					datatype:"json",
+					success:function(result){
+						console.log(result);
+					},
+					
+					
+					
+				});
+				
+				
+			}
 		
 	
 });

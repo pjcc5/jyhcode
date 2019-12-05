@@ -246,4 +246,27 @@ public class OrderformDaoImpl implements OrderformDao{
 		return false;
 	}
 
+	@Override
+	public boolean modifyOrderformState(String orderid, int orderstatement,
+			int orderpay, Connection conn) throws Exception {
+		if(conn == null)
+		{
+			return false;
+		}
+		
+		if(!conn.isClosed()){
+			String sql = "update orderform set orderstatement=?,orderpay=? where orderid=?";
+			PreparedStatement ps=conn.prepareStatement(sql);
+			ps.setInt(1, orderstatement);
+			ps.setInt(2, orderpay);
+			ps.setString(3, orderid);
+			int rs=ps.executeUpdate();
+			if(rs>0){
+				return true;
+			}
+			 
+			}
+		return false;
+	}
+
 }
