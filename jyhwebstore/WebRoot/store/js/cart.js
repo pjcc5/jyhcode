@@ -1,5 +1,5 @@
 var msg={};
-
+var goodsList;
 (function(){
 	$.ajax({
 		  type:"POST",
@@ -23,7 +23,8 @@ var msg={};
 	 if(result.length>0){
 	msg.shopid=result[0].shopid;
 	
-    var goodsList = result;
+	goodsList = result;
+	
     
     for(var i = 0; i < goodsList.length; i++){
     	
@@ -479,7 +480,12 @@ $('.total').html( sum + '.00');
 
 
 $('.check-out').click(function(){
+	if(goodsList!=null){
 	location.href="/jyhwebstore/store/html/operation/ordersubmit.jsp";
+	}else{
+		 var show=$("#show").fadeIn();
+			$("#show").fadeOut(3000);
+	}
 })
 
 $('#top').click(function(){

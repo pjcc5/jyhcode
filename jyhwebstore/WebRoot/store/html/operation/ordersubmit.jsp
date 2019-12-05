@@ -25,10 +25,29 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 
 .color{float: left; margin-top: 20px;margin-left: 100px}
 .size{float:left;margin-top: 20px;margin-left: 40px}
+#show{
+		width:200px;
+		height: 84px;
+		position: fixed;
+		background:orange;
+		text-align:center;
+		line-height:84px;
+		left: 50%;
+		top: 50%;
+		margin-left: -100px;
+		margin-top: -42px;
+		border-radius:8px;
+		opacity:0.6;
+		z-index:999;
+		display: none;
+		font-size: 16px;
+		font-weight: bold;
+		}
 </style>
   </head>
   
   <body>
+   <div id="show">未选择收货地址</div>
     <div class="order_header">
 			<h1>
 				<a class="logo" href="/jyhwebstore/index.jsp"></a>

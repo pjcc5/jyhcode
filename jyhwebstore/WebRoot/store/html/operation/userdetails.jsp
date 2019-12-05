@@ -26,7 +26,7 @@
 					</div>
 					<span id="current" style="display:inline-block;margin:0 auto;"></span>
 					<div class="right">
-							<a href="/jyhwebstore/store/html/order.jsp">
+							<a href="/jyhwebstore/store/html/operation/order.jsp">
 								<span class="glyphicon glyphicon-list-alt"></span>
 								我的订单
 							</a>
@@ -51,7 +51,7 @@
 					</div>
 					<div class="header-right">
 						<div class="cart-2">
-							<a href="/jyhwebstore/store/html/cart.jsp">
+							<a href="/jyhwebstore/store/html/operation/cart.jsp">
 								<span class="glyphicon glyphicon-shopping-cart"></span>
 								<span>购物车</span>
 							</a>
@@ -87,7 +87,7 @@
 								<span class="glyphicon glyphicon-star"></span> 会员资料
 							</p>
 							<a href="/jyhwebstore/store/html/operation/information.jsp" class="active">个人资料</a>
-							<a href="/jyhwebstore/store/html/address.jsp">地址管理</a>
+							<a href="/jyhwebstore/store/html/operation/address.jsp">地址管理</a>
 						</div>
 				</div>
 		</div>
