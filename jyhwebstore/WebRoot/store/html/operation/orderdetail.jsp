@@ -151,9 +151,15 @@ $("body").keydown(function(event){
 
 //获取地址栏上面的购物车id然后获取所有该购物车的商品
 $(function showgoods(){
-	var orderid=getUrlVal("out_trade_no");
-	if(orderid!=null)
+	var orderid=getUrlVal("orderid");
+	
+	if(orderid == null)
 		{
+			orderid=getUrlVal("out_trade_no");
+		}
+	if(orderid!=null)
+		{	
+			
 			$.get({
 					type:"get",
 					url:"/jyhwebstore/order",

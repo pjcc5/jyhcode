@@ -60,7 +60,6 @@ $(window).scroll(function(){
 		var orderpay;
 		var form = forms[i];
 		var goods=form.orderForms;
-		console.log(goods[0].aid);
 			var aid = goods[0].aid;
 			var comid=goods[0].comid;
 			var comname=goods[0].comname;
