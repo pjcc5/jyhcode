@@ -384,18 +384,57 @@ $(function(){
 				if(orderstatement == 1)
 					{
 						orderstatmentstr = "已完成";
+						var str1=`<div class="buy-btn" onclick="buyagin(this)">再次购买</div>
+ 									
+ 								</div>
+ 							</div>
+ 							<div class="order-btns">`+orderstatmentstr+`</div>
+ 							<div class="order-btns" onclick="goorderdetail(this)">订单详情</div>
+ 						</div>
+ 					</div>
+ 						
+ 						`;
 					}
 				else if(orderstatement ==2 )
 					{
 						orderstatmentstr = "未收货";
+						var str1=`<div class="buy-btn" onclick="buyagin(this)">再次购买</div>
+ 								
+ 								</div>
+ 							</div>
+ 							<div class="order-btns">`+orderstatmentstr+`</div>
+ 							<div class="order-btns" onclick="goorderdetail(this)">订单详情</div>
+ 						</div>
+ 					</div>
+ 						
+ 						`;
 					}
 				else if(orderstatement ==3 )
 					{
-						orderstatmentstr = "未取消";
+						orderstatmentstr = "未付款";
+						var str1=`<div class="buy-btn" onclick="buyagin(this)">再次购买</div>
+ 									<div class="cancel-btn" onclick="cancel(this)">取消订单</div>
+ 								</div>
+ 							</div>
+ 							<div class="order-btns" onclick="pay(this)">立即支付</div>
+ 							<div class="order-btns" onclick="goorderdetail(this)">订单详情</div>
+ 						</div>
+ 					</div>
+ 						
+ 						`;
 					}
 				else if(orderstatement ==4 )
 					{
 						orderstatmentstr = "已取消";
+						var str1=`<div class="buy-btn" onclick="buyagin(this)">再次购买</div>
+ 								</div>
+ 							</div>
+ 							<div class="order-btns">`+orderstatmentstr+`</div>
+ 							<div class="order-btns" onclick="goorderdetail(this)">订单详情</div>
+ 						</div>
+ 					</div>
+ 						
+ 						`;
 					}
 				
 				var str=`
@@ -422,18 +461,12 @@ $(function(){
  								<a href="">
  								<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
  								<div class="order-title">
- 									<p class="desc">`+comname+`<span>等    `+orderForms.length+`件商品</span>`+`</p>
+ 									<p class="desc">`+comname+`<span>等    `+orderForms.length+`件商品</span>`+`</p>`;
  									
- 									<div class="buy-btn" onclick="buyagin(this)">再次购买</div>
- 								</div>
- 							</div>
- 							<div class="order-btns">`+orderstatmentstr+`</div>
- 							<div class="order-btns" onclick="goorderdetail(this)">订单详情</div>
- 						</div>
- 					</div>
- 						
- 						`;
- 						$(".order-all").append(str);
+ 									
+ 									
+ 									
+ 						$(".order-all").append(str+str1);
 			}
 			
 			
@@ -461,6 +494,51 @@ function buyagin(obj){
 
 var orderid=$(obj).parent().parent().parent().siblings().eq(0).children().eq(0).children().eq(1).children().eq(0).html();
 location.href="/jyhwebstore/store/html/operation/ordersubmit.jsp?orderid="+orderid;
+}
+var action;
+
+
+function cancel(obj){
+if(confirm("确定删除")==true){
+var orderid=$(obj).parent().parent().parent().siblings().eq(0).children().eq(0).children().eq(1).children().eq(0).html();
+(function(){
+action="delete";
+
+	$.ajax({
+		  type:"POST",
+		  url:"/jyhwebstore/order",
+		  data:{"action":action,"orderid":orderid},
+		  dataType:"json",
+		  success:function(result){
+               console.log(result);
+               $(obj).parent().parent().parent().parent().remove();
+               
+		  }
+	})
+		  })();
+		  }else{
+		  return;
+		  }
+}
+
+
+
+
+function pay(obj){
+action="buy";
+var orderid= $(obj).parent().siblings().eq(0).children().eq(0).children().eq(1).children().eq(0).html();
+(function(){
+
+	$.ajax({
+		  type:"POST",
+		  url:"/jyhwebstore/order",
+		  data:{"action":action,"orderid":orderid},
+		  dataType:"json",
+		  success:function(result){
+              location.href="/jyhwebstore/pay/index.jsp?price="+result+"&order="+orderid;
+		  }
+	})
+		  })();
 }
 
 </script>

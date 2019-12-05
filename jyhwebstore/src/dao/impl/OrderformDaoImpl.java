@@ -227,5 +227,23 @@ public class OrderformDaoImpl implements OrderformDao{
 		
 		return list;
 	}
+	
+	public boolean deleteOrderformByorderid(String orderid, Connection conn)throws Exception {
+		if(conn==null){
+			return false;
+		}
+		
+			if(!conn.isClosed()){
+				String sql="delete from orderform where orderid=?";
+				PreparedStatement ps=conn.prepareStatement(sql);
+				ps.setString(1, orderid);
+				int rs=ps.executeUpdate();
+				if(rs>0){
+					return true;
+				}
+			}
+		
+		return false;
+	}
 
 }

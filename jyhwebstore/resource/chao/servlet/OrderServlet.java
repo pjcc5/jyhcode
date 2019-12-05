@@ -2,6 +2,8 @@ package chao.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,7 +13,12 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
 import pojo.Orderform;
+import chao.dao.OrderFormDao;
+import chao.dao.impl.OrderFormDaoImpl;
 import chao.service.OrderService;
+import dao.OrderMiddleDao;
+import dao.impl.OrderMiddleDaoImpl;
+import db.DbHelp;
 import dto.InnerOrderDto;
 import dto.OrderDto;
 
@@ -63,6 +70,53 @@ public class OrderServlet extends HttpServlet {
 						out.print(ja.toString());
 					}
 				}
+				
+				
+				String orderid=request.getParameter("orderid");
+				
+				System.out.println("action="+action);
+				System.out.println("orderid="+orderid);
+				
+				Connection conn=DbHelp.getConnection();
+				
+				if(action.equals("delete")&&orderid!=null){
+				OrderMiddleDao dao=new  OrderMiddleDaoImpl();
+				OrderFormDao dao1=new OrderFormDaoImpl();
+				try {
+					conn.setAutoCommit(false);
+					dao.deleteOrdermiddle(orderid, conn);
+					dao1.deleteOrderformByorderid(orderid, conn);
+					conn.commit();
+					out.print(true);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					try {
+						conn.rollback();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				}
+				
+				
+				if("buy".equals(action)&&orderid!=null){
+					double price=0;
+					OrderFormDao dao1=new OrderFormDaoImpl();
+					List<Orderform> list= dao1.getAllOrderformByOrderid(orderid, conn);
+					for(int i=0;i<list.size();i++){
+						price=price+list.get(i).getOrderprice()*list.get(i).getComcount();
+					}
+					String str=new Double(price).toString();
+					System.out.println("======================="+str);
+					out.print(str);
+					
+					
+					
+				}
+				DbHelp.closeConnection(conn);
+			
 			}
 			
 		

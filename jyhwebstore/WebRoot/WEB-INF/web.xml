@@ -133,6 +133,8 @@
     <servlet-name>OrderServlet</servlet-name>
     <servlet-class>chao.servlet.OrderServlet</servlet-class>
   </servlet>
+ 
+
 
 
 
@@ -209,6 +211,7 @@
     <servlet-name>OrderServlet</servlet-name>
     <url-pattern>/order</url-pattern>
   </servlet-mapping>
+  
   
 <!-- 字符转码 -->
 

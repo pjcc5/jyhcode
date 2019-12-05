@@ -464,7 +464,7 @@ var address=`
 	
 	//提交订单
 	function submitorder(obj){
-		orderform.name=$('.pat_name').eq(0).html();
+		orderform.name=$('.pat_name').html();
 		orderform.call=$('.pat_name').siblings().eq(1).html();
 		orderform.address=$('.area_Name').html();
 		orderform.price=price;
@@ -477,10 +477,12 @@ var address=`
 			url:"/jyhwebstore/ordersubmit",
 			data:{"uuid":uuid,"orderform":JSON.stringify(orderform)},
 			datatype:"json",
-			success:function(result){}
+			success:function(result){
+				location.href="/jyhwebstore/pay/index.jsp?price="+price+"&coumid="+comid+"&order="+sNow;
+			}
 		});
 		
-		location.href="/jyhwebstore/pay/index.jsp?price="+price+"&coumid="+comid+"&order="+sNow;
+		
 		
 		
 	}

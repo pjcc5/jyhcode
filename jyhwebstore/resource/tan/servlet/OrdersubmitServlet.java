@@ -104,7 +104,7 @@ public class OrdersubmitServlet extends HttpServlet {
 		
 		
 		if(msg!=null&&"".equals(orderid)){
-			System.out.println("============="+orderid);
+		
 		try {
 			List<Address> address=dao.getAddressByAid(aid, conn);
 			List<Cart> cart=new ArrayList<>();
@@ -201,6 +201,7 @@ public class OrdersubmitServlet extends HttpServlet {
         		  middle.setOrderid(ordernumber);
         		  OrderMiddleDao dao3=new OrderMiddleDaoImpl();
         		  try {
+        			  System.out.println("=============+"+middle);
 					dao3.insertOrdermiddle(middle, conn);
 				} catch (Exception e1) {
 					// TODO Auto-generated catch block

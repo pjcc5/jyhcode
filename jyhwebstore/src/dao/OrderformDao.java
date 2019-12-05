@@ -15,6 +15,7 @@ public interface OrderformDao {
 	public boolean deleteOrderformByid(String aid,Connection conn)throws Exception;//删除订单项的方法
 	public boolean modifyOrderform(Orderform order,Connection conn)throws Exception;//修改订单项的方法
 	public List<OrderDetailDto> getComidsByOrderId(String orderid,Connection conn) throws Exception;
+	public boolean deleteOrderformByorderid(String orderid, Connection conn)throws Exception;
 	
 
 }
