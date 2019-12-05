@@ -23,7 +23,7 @@
             <h1 class="topbar-logo none"><a href="/jyhwebstore/index.jsp" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
                 <li><a class="on" href="/jyhwebstore/admindex.jsp">首页</a></li>
-                <li><a href="#" target="_blank">网站首页</a></li>
+                <li><a href="/jyhwebstore/index.jsp">网站首页</a></li>
             </ul>
         </div>
         <div class="top-info-wrap">
@@ -45,7 +45,7 @@
                 <li>
                     <a href="#">商品管理</a>
                     <ul class="sub-menu">
-                        <li id="comadm"><a href="design.jsp">商品管理</a></li>
+                        <li id="comadm"><a href="/jyhwebstore/ComiAdmiServlet">商品管理</a></li>
                     </ul>
                 </li>
                 <li>
@@ -108,3 +108,4 @@
 </div>
   </body>
 </html>
+

@@ -165,7 +165,7 @@
 					</div>
 
 					<a href="javascript:addcart()" class="cart-a join">加入购物车</span></a>
-					<a href="javascrrpt:;" class="buy join">立即个购买<a/>
+					<a href="javascript:buynow()" class="buy join" >立即个购买<a/>
 				</div>
 				
 

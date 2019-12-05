@@ -1,4 +1,5 @@
 <%@ page language="java" import="java.util.*" pageEncoding="UTF-8"%>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 
 <!DOCTYPE HTML PUBLIC "-//W3C//DTD HTML 4.01 Transitional//EN">
 <html>
@@ -23,7 +24,7 @@
             <h1 class="topbar-logo none"><a href="/jyhwebstore/admindex.jsp" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
                 <li><a class="on" href="/jyhwebstore/admindex.jsp">首页</a></li>
-                <li><a href="#" target="_blank">网站首页</a></li>
+                <li><a href="/jyhwebstore/index.jsp">网站首页</a></li>
             </ul>
         </div>
         <div class="top-info-wrap">
@@ -45,7 +46,7 @@
                 <li>
                     <a href="#">商品管理</a>
                     <ul class="sub-menu">
-                        <li id="comadm"><a href="/jyhwebstore/design.jsp">商品管理</a></li>
+                        <li id="comadm"><a href="/jyhwebstore/ComiAdmiServlet">商品管理</a></li>
                     </ul>
                 </li>
                 <li>
@@ -87,12 +88,10 @@
 					    <table class="result-tab" width="100%" style="text-align: center;">
 							<thead>
 								<tr>
-									<th class="tc" width="5%"><input class="allChoose" name="" type="checkbox"></th>
+									<th >编号</th>
 									<th>商品ID</th>
 									<th>商品名称</th>
 									<th>商品价格</th>
-									<th>商品图片</th>
-									<th>商品详情</th>
 									<th>商品颜色</th>
 									<th>商品品牌</th>
 									<th>商品尺寸</th>
@@ -100,24 +99,35 @@
 								</tr>
 							</thead>
 							<tbody>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
-									<td></td>
+								<c:forEach items="${list}" var="commo" varStatus="i">
+									<tr>
+										<td>${i.count}</td>
+										<td>${commo.comid}</td>
+										<td>${commo.comname}</td>
+										<td>${commo.comprice}</td>
+										<td>${commo.color}</td>
+										<td>${commo.pai}</td>
+										<td>${commo.size}</td>
+										<td><button id="deletecom" onclick="deleteStudent('${commo.comid }')">删除</button>
+										<button id="updatecom" onclick="updateStudent('${commo.comid }')">修改</button></td>
+									</tr>
+								</c:forEach>	
 							</tbody>
 					    </table>
 					</div>
                 </div>
             </form>
         </div>
+					<center style="margin-top:20px">
+						<a  style="margin-left:10px;"   href="/jyhwebstore/ComiAdmiServlet?pageNo=1&pageSize=${pageSize}">首页</a>
+						<a  style="margin-left:40px;" href="/jyhwebstore/ComiAdmiServlet?pageNo=${pageNo-1}&pageSize=${pageSize }">上一页</a>
+						<span style="margin-left:40px;">第${pageNo}页</span>
+						<a  style="margin-left:40px;" href="/jyhwebstore/ComiAdmiServlet?pageNo=${pageNo+1}&pageSize=${pageSize }">下一页</a>
+						<a  style="margin-left:40px;" href="/jyhwebstore/ComiAdmiServlet?pageNo=${maxPageNo}&pageSize=${pageSize }">尾页</a>
+					</center>
     </div>
 </div>
+			
   </body>
 </html>
 <script src="/jyhwebstore/store/js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>

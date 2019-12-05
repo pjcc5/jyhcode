@@ -479,7 +479,7 @@ $('.total').html( sum + '.00');
 
 
 $('.check-out').click(function(){
-	location.href="/jyhwebstore/store/html/ordersubmit.jsp";
+	location.href="/jyhwebstore/store/html/operation/ordersubmit.jsp";
 })
 
 $('#top').click(function(){

@@ -27,10 +27,10 @@ public class AlipayConfig {
     public static String alipay_public_key = "MIIBIjANBgkqhkiG9w0BAQEFAAOCAQ8AMIIBCgKCAQEA0FRovvPYxyjojSMrrK9xIrlqkZvrzLjV2Ld77lLuhs020Ml9VJLfiTZQ/aW3edkLeL+BdA8oNla7bPvZBcGYb5NSdpqN/1P8N/LNyMAvdY8KlWsPqqT4TSEWE/XxjUQF7ciET0g6nOLDNkOLJdDB4uaWbYeKpNLxkytI1gJSz+2Ar8QdNQOKngzZ9Sgp7kU4RV0V5Tvir5olOczpFHmEOxWjzehzYxMlhKdX+NtHlh0FVWJECDTrlWdbeDsv7SzLTaVFAY8/l/0557qY22/R78hGqG3ABN/ELr3WrFCvyRMpGeeqO5qGIBcJowHdguUtZYqVmvKpjuDsy3O7lUSk0wIDAQAB";
 
 	// 服务器异步通知页面路径  需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String notify_url = "http://localhost:8080/jyhwebstore/store/html/order.jsp";
+	public static String notify_url = "http://localhost:8080/jyhwebstore/store/html/operation/orderdetail.jsp";
 
 	// 页面跳转同步通知页面路径 需http://格式的完整路径，不能加?id=123这类自定义参数，必须外网可以正常访问
-	public static String return_url = "http://localhost:8080/jyhwebstore/store/html/order.jsp";
+	public static String return_url = "http://localhost:8080/jyhwebstore/store/html/operation/orderdetail.jsp";
 
 	// 签名方式
 	public static String sign_type = "RSA2";

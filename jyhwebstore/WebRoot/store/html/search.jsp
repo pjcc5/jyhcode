@@ -9,6 +9,7 @@
 	<meta name="viewport" content="width=device-width,initial-scale=1"/>
 	<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/bootstrap.css"/>
 	<link rel="stylesheet" type="text/css" href="/jyhwebstore/store/css/webstore.css"/>
+	<link rel="shortcut icon" type="image/x-icon" href="/jyhwebstore/store/img/task.png" />
 </head>
 	<body>
 		<!-- 顶部导航栏 -->
@@ -286,15 +287,7 @@
 <script src="/jyhwebstore/store/js/jquery.singlePageNav.min.js"></script>
 <script src="/jyhwebstore/store/js/webstore.js"></script>
 <script>
-//获取地址栏信息
-function getUrlVal(property){
-	  //地址栏
-	  var urlStr = window.location.search.substring(1);
-	  var re = new RegExp('(^|&)'+ property +'=([^&]*)(&|$)');
-	  var result = urlStr.match(re);
-	  if(result == null){return null};
-	  return result[2];
-	};
+
 
 
 

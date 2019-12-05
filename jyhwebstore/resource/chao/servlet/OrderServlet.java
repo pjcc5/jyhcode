@@ -2,6 +2,8 @@ package chao.servlet;
 
 import java.io.IOException;
 import java.io.PrintWriter;
+import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.List;
 
 import javax.servlet.ServletException;
@@ -11,7 +13,13 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
 import pojo.Orderform;
+import chao.dao.OrderFormDao;
+import chao.dao.impl.OrderFormDaoImpl;
 import chao.service.OrderService;
+import dao.OrderMiddleDao;
+import dao.impl.OrderMiddleDaoImpl;
+import db.DbHelp;
+import dto.InnerOrderDto;
 import dto.OrderDto;
 
 public class OrderServlet extends HttpServlet {
@@ -40,18 +48,97 @@ public class OrderServlet extends HttpServlet {
 			throws ServletException, IOException {
 		System.out.println("进入了orderservlet");
 			String action = request.getParameter("action");
-			String aid = request.getParameter("aid");
+			
 			PrintWriter out = response.getWriter();
-			System.out.println(action+"===="+aid);
 			if(action != null)
 			{
 				if("getallbyid".equals(action))
-				{
+				{	
+					String aid = request.getParameter("aid");
 					List<OrderDto>  list = OrderService.getAllOrderByAid(aid);
-					
 					JSONArray ja = JSONArray.fromObject(list);
 					out.print(ja.toString());
 				}
+				
+				if("getorderfrombyorderid".equals(action))
+				{
+					String orderid =  request.getParameter("orderid");
+					if(orderid != null)
+					{
+						InnerOrderDto  iod = OrderService.getOrderCommodities(orderid);
+						JSONArray ja = JSONArray.fromObject(iod);
+						out.print(ja.toString());
+					}
+				}
+
+				
+				
+				
+				
+				
+				
+				Connection conn=DbHelp.getConnection();
+				
+				if(action.equals("delete")){
+					String orderid=request.getParameter("orderid");
+				OrderMiddleDao dao=new  OrderMiddleDaoImpl();
+				OrderFormDao dao1=new OrderFormDaoImpl();
+				try {
+					conn.setAutoCommit(false);
+					dao.deleteOrdermiddle(orderid, conn);
+					dao1.deleteOrderformByorderid(orderid, conn);
+					conn.commit();
+					out.print(true);
+				} catch (Exception e) {
+					// TODO Auto-generated catch block
+					e.printStackTrace();
+					try {
+						conn.rollback();
+					} catch (SQLException e1) {
+						// TODO Auto-generated catch block
+						e1.printStackTrace();
+					}
+				}
+				}
+				
+				
+				if("buy".equals(action)){
+					double price=0;
+					String orderid=request.getParameter("orderid");
+					OrderFormDao dao1=new OrderFormDaoImpl();
+					List<Orderform> list= dao1.getAllOrderformByOrderid(orderid, conn);
+					for(int i=0;i<list.size();i++){
+						price=price+list.get(i).getOrderprice()*list.get(i).getComcount();
+					}
+					String str=new Double(price).toString();
+					
+					out.print(str);
+					
+					
+					
+				}
+				DbHelp.closeConnection(conn);
+			
+
+				if("editstate".equals(action))
+				{	
+					String orderid =  request.getParameter("orderid");
+					boolean result = false;
+					try {
+						int orderstatement = Integer.parseInt(request.getParameter("orderstatement"));
+						int orderpay = Integer.parseInt(request.getParameter("orderpay"));
+						if(orderid != null)
+						{
+							 result = OrderService.modifyOrderFormState(orderid, orderstatement, orderpay);
+						}
+						out.print(result);
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+				}
+
 			}
 			
 		

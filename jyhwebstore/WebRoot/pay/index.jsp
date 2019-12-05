@@ -248,7 +248,7 @@ h2 {
 
 	var price;
 	var sNow;
-	var uuid;
+
 	document.getElementById("WIDsubject").value = "手机";
 	price=getUrlVal("price");
 	sNow=getUrlVal("order");

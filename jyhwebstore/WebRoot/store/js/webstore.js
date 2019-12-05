@@ -1,4 +1,12 @@
-
+//获取地址栏信息
+function getUrlVal(property){
+	  //地址栏
+	  var urlStr = window.location.search.substring(1);
+	  var re = new RegExp('(^|&)'+ property +'=([^&]*)(&|$)');
+	  var result = urlStr.match(re);
+	  if(result == null){return null};
+	  return result[2];
+	};
 var n = 0;//信号量
   $('.number span').mouseover(bannergo);
   function bannergo(i){
@@ -37,8 +45,7 @@ var n = 0;//信号量
   			
   			}else
 			{
-  				$(document).scrollTop(300);
-  				
+  				$('body,html').animate({'scrollTop':0},1);
 			}
   			
   		});
@@ -233,6 +240,15 @@ function out(){
  		var input = goods.find("input");
  		//组织字符串访问详情页
  		location.href="/jyhwebstore/store/html/product.jsp?comid="+input.attr("id");
+ 		
+ 	}
+ 	
+ 	//去订单页
+ 	function goordersubmit(obj){
+ 		var goods =$(obj).parent();
+ 		var input = goods.find("input");
+ 		//组织字符串访问详情页
+ 		location.href="/jyhwebstore/store/html/operation/ordersubmit.jsp?comid="+input.attr("id")+"&num="+1;
  		
  	}
 	

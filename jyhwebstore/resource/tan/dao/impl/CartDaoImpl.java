@@ -126,7 +126,7 @@ public String selectShopid(String aid,Connection conn)throws Exception{
 			count.append(Integer.toString(list.get(j).getCount()));
 			compic.append(list.get(j).getCompic());
 			date.append(DateFromat.DateFormatToString(list.get(j).getDate()));
-			comprice.append(Integer.toString(list.get(j).getComprice()));
+			comprice.append(list.get(j).getComprice());
 			size.append(list.get(j).getSize());
 			color.append(list.get(j).getColor());
 			comname.append(list.get(j).getComname());
