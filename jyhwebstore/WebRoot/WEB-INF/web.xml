@@ -133,6 +133,13 @@
     <servlet-name>OrderServlet</servlet-name>
     <servlet-class>chao.servlet.OrderServlet</servlet-class>
   </servlet>
+  <servlet>
+    <servlet-name>ComiAdmiServlet</servlet-name>
+    <display-name>This is the display name of my J2EE component</display-name>
+    <description>This is the description of my J2EE component</description>
+    <servlet-class>mao.soft.web.servlet.ComiAdmiServlet</servlet-class>
+  </servlet>
+
 
 
 
@@ -208,6 +215,10 @@
   <servlet-mapping>
     <servlet-name>OrderServlet</servlet-name>
     <url-pattern>/order</url-pattern>
+  </servlet-mapping>
+  <servlet-mapping>
+    <servlet-name>ComiAdmiServlet</servlet-name>
+    <url-pattern>/ComiAdmiServlet</url-pattern>
   </servlet-mapping>
   
 <!-- 字符转码 -->

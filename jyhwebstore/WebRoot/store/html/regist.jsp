@@ -138,21 +138,25 @@
 					</li>
 				</ul>
 			</div>
-		</div>
-		<div class="successes" id="success" >
-			<div id="success-container" class="success-container" >
-				<span id="success-container-success" style="margin-left: -40px;">
-					恭喜老板注册成功！请点击确定，跳转登录界面
-				</span>
-				<span id="success-container-exist" style="float: left; margin-left: -50px;margin-top: 20px;background: url(/jyhwebstore/store/img/bg1.jpg);">抱歉，手机号或者用户名已被占用！</span>
-				<span id="success-container-failed" style="float: left; margin-left: -55px;">老板您注册失败了哟！请检查您的输入是否正确！</span>
-				<span id="success-container-error" style="float: left; margin-left: -55px;">系统未知错误！</span>
+			<div id="regists_ok" style="width: 400px;height: 200px;background: url(../img/bg1.jpg);margin-top: -300px;margin-left: 590px;text-align: center; font-size: 20px;display: none;">
+				<h3 style="margin-top: -200px;">恭喜您注册成功！</h3>
+				<button type="button" id="register_ok_btn" value="确定" style="margin-top: 100px;color: black;">确定</button>
 			</div>
-			<div id="success-btn" class="success-btn">
-				<button id="success-btn-1" type="button" style="color: blue; margin-bottom: -50px;"> 确定</button>
-				<button id="success-btn-2" type="button" style="color: red;margin-bottom: -80px;">确定</button>
-				<button type="button" id="success-btn-3" style="margin-bottom: -80px;" >确定</button>
-				<button type="button" id="success-btn-4" style="margin-bottom: -80px;" >确定</button>
+			<div id="regists_exist" style="width: 400px;height: 200px;background: url(../img/bg1.jpg);margin-top: -300px;margin-left: 590px;text-align: center; font-size: 20px;display: none;">
+				<h3 style="margin-top: -200px;">用户名或手机号已存在！</h3>
+				<button type="button" id="regists_exist_btn" value="确定" style="margin-top: 100px;color: black;">确定</button>
+			</div>
+			<div id="regists_validation" style="width: 400px;height: 200px;background: url(../img/bg1.jpg);margin-top: -300px;margin-left: 590px;text-align: center; font-size: 20px;display: none;">
+				<h3 style="margin-top: -200px;">验证码错误！</h3>
+				<button type="button" id="regists_validation_btn" value="确定" style="margin-top: 100px;color: black;">确定</button>
+			</div>
+			<div id="regists_check" style="width: 400px;height: 200px;background: url(../img/bg1.jpg);margin-top: -300px;margin-left: 590px;text-align: center; font-size: 20px;display: none;">
+				<h3 style="margin-top: -200px;">请检查您的输入是否都正确！</h3>
+				<button type="button" id="regists_check_btn" value="确定" style="margin-top: 100px;color: black;">确定</button>
+			</div>
+			<div id="regists_system" style="width: 400px;height: 200px;background: url(../img/bg1.jpg);margin-top: -300px;margin-left: 590px;text-align: center; font-size: 20px;display: none;">
+				<h3 style="margin-top: -200px;">系统错误！</h3>
+				<button type="button" id="regists_system_btn" value="确定" style="margin-top: 100px;color: black;">确定</button>
 			</div>
 		</div>
 	</body>

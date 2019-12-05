@@ -1,0 +1,5 @@
+$("#comadm").click(function(){
+	$.get({
+		
+	});
+});

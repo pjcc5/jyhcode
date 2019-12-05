@@ -93,11 +93,14 @@ $('input:eq(1)').blur(function() {
 
 	$('span:eq(1)').fadeOut(200);
 	$('.regist-li-div2 div:eq(0)').slideUp(200);
-
-
-
-
 });
+
+
+function flush(obj) {
+	obj.src = "/jyhwebstore/image?id="+new Date().getTime();
+};
+
+
 // 验证码
 $('input:eq(2)').blur(function() {
 	$('span:eq(2)').fadeOut();
@@ -210,52 +213,50 @@ $('#regists').click(function() {
 				var json = JSON.parse(result);
 				if(json.flag==true)
 				{
-					$('#success').slideDown().children('#success-container').children('#success-container-success').slideDown(350).siblings().hide();
-					$('#success').children('#success-btn').children('#success-btn-1').show().siblings().hide();
-					
+					//alert("恭喜您注册成功！");
+					$("#regists_ok").slideDown(1000);
+					$("#regists").attr("disabled", "false");
 				}
-				else if(json.flag==false)
+				if(json.flag==false)
 				{
-					$('#success').slideDown().children('#success-container').children('#success-container-exist').show().siblings().hide();
-					$('#success').children('#success-btn').children('#success-btn-2').show().siblings().hide();
+					alert("抱歉用户名或手机号存在！");
+					//$("#regists_exist").slideDown(1000);
 				}
 				if(json.error==false)
 				{
-					$('#success').slideDown().children('#success-container').children('#success-container-error').show().siblings().hide();
-					$('#success').children('#success-btn').children('#success-btn-4').show().siblings().hide();
+					//alert("系统错误");
+					$("#regists_system").slideDown(1000);
+				}
+				if(json.valde==false)
+				{
+					///alert("验证码错误");
+					$("#regists_validation").slideDown(500);
 				}
 			}
 		});
 	}else
 		{
-		$('#success').slideDown().children('#success-container').children('#success-container-failed').show().siblings().hide();
-		$('#success').children('#success-btn').children('#success-btn-3').show().siblings().hide();
+			alert("请检查输入");
+			//$("#regists_check").slideDown(1000);
 		}
 });
 
-//用户名存在的情况
-$('#success-btn-2').click(function() {
-	location.href="regist.jsp?id="+new Date().getTime();
-	$("#success").slideUp(350);
-	$('input:eq(0)').focus();
-})
 
-//输入有误的时候
-$('#success-btn-3').click(function() {
-	location.href="regist.jsp?id="+new Date().getTime();
-	$("#success").slideUp(350);
-})
+$("#register_ok_btn").click(function(){
+	alert("我正在去验证页面");
+	window.location.href="/jyhwebstore/store/html/success/registersuccess.jsp?success";
+});
 
-//注册成功
-$('#success-btn-1').click(function(){
-	var userNames = $("#useinput").val();
-	window.open("success/registersuccess.jsp?id="+userNames);
-	location.href="regist.jsp";
-})
-//未知错误
-$("#success-btn-4").click(function(){
-	location.href="regist.jsp?id="+new Date().getTime();
-})
+//验证码
+$("#regists_validation_btn").click(function(){
+	$("#regists_validation").slideUp(1000);
+});
+//系统错误则刷新界面
+$("#regists_system_btn").click(function(){
+	var	path = location.pathname;
+ 	location.href = "/jyhwebstore/store/html/regist.jsp?id="+path;
+});
+
 
 //去登录页面
 function gologin(obj){
@@ -270,5 +271,4 @@ $('body').keydown(function(event){
 			$("#regists").click();
 		}
 	}
-	
    });
