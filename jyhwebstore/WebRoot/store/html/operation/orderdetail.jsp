@@ -150,8 +150,8 @@ $("body").keydown(function(event){
 });
 
 //获取地址栏上面的购物车id然后获取所有该购物车的商品
-$(function(){
-	var orderid=getUrlVal("orderid");
+$(function showgoods(){
+	var orderid=getUrlVal("out_trade_no");
 	if(orderid!=null)
 		{
 			$.get({
@@ -196,17 +196,16 @@ $(function(){
 					}
 				})
 		}
-	
 
 		if(getUrlVal("out_trade_no")!=null)
 			{
 				//说明是从支付成功页面转跳过来的
 				//获取订单号传到后端进行修改状态
-				var orderid=getUrlVal("orderid");
+				var orderid=getUrlVal("out_trade_no");
 				$.get({
 					type:"get",
 					url:"/jyhwebstore/order",
-					data:{"action":"editstate","orderid":orderid,"orderstatement":"5","orderpay":"2"},
+					data:{"action":"editstate","orderid":orderid,"orderstatement":"2","orderpay":"2"},
 					datatype:"json",
 					success:function(result){
 						console.log(result);
