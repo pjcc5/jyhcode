@@ -59,7 +59,7 @@ this.doPost(request, response);
 	      String selectall=request.getParameter("selectall");
 	     
 	     
-		Connection conn=DbHelp.getConnection();
+
 		String aid=null;
 		 Acount acount=(Acount) request.getSession().getAttribute("acount");
         if(acount!=null){
@@ -69,21 +69,16 @@ this.doPost(request, response);
  
         CartServers dao=new CartServers();
         List<Cart> list=null;
-			list = dao.selecCart(aid, conn);	
+			list = dao.selecCart(aid);	
 	if(selectall!=null&&msg!=null){
 		JSONObject object = JSONObject.fromObject(msg);
 		int choose=object.getInt("choose");
 		for(int i=0;i<list.size();i++){
 			list.get(i).setSelected(choose);
 		}
+		dao.UpdateCart(list, aid);
 		
-		CartDaoImpl impl=new CartDaoImpl();
-		try {
-			System.out.println(impl.UpdateCart(list, conn,aid));
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		
 	}
 	
@@ -108,15 +103,14 @@ this.doPost(request, response);
 						System.out.println("index="+index+",choose="+choose);
 						list.get(index).setCount(num);
                          list.get(index).setSelected(choose);
-                         System.out.println(list.get(index));
-						CartDaoImpl impl=new CartDaoImpl();
-						System.out.println(impl.UpdateCart(list, conn,aid));
+
+                         dao.UpdateCart(list, aid);
 						
 						
 					}else{
 						list.remove(index);
-						
-						System.out.println(dao.UpdateCart(list, conn, aid));
+						dao.UpdateCart(list, aid);
+
 					}
                             break;
 				}
@@ -162,14 +156,9 @@ this.doPost(request, response);
 	  cart.setCompic(picurl);
 	  cart.setComid(comid);
      list.add(cart);
-     CartDaoImpl impl=new CartDaoImpl();
-     try {
-    	 System.out.println(dao.UpdateCart(list, conn,aid));
-    	 DbHelp.closeConnection(conn);
-	} catch (Exception e) {
-		// TODO: handle exception
-		e.printStackTrace();
-	}
+
+     dao.UpdateCart(list, aid);
+
 		}
 		
 		
@@ -180,7 +169,7 @@ this.doPost(request, response);
 			out.print(false);
 		}	
 		
-		DbHelp.closeConnection(conn);//关闭连接
+
 	}
 
 }

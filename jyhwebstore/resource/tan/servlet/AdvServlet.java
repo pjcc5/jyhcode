@@ -15,6 +15,7 @@ import chao.dao.impl.PjcDetailsDaoImpl;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import tan.dto.ProductInformation;
+import tan.servers.AdvServes;
 import tan.servers.ProductDetail;
 import db.DbHelp;
 import dto.IndexGoodsDto;
@@ -52,22 +53,16 @@ public class AdvServlet extends HttpServlet {
 		System.out.println("进人ADVservlet");
 		 PrintWriter out= response.getWriter();
 			String msg = request.getParameter("msg");
-			System.out.println("msg="+msg);
-			Connection conn=DbHelp.getConnection();
+
 			PjcDetailsDao dao=new PjcDetailsDaoImpl();
 			List<IndexGoodsDto> list;
-			try {
-				list = dao.getfifdetailorderydot(1, conn);
-				DbHelp.closeConnection(conn);
-				
+
+				list=new AdvServes().getDetaildot();
 				JSONArray object = JSONArray.fromObject(list);
 				
-				 System.out.println("进入productservlet"+object);
+
 				 out.print(object.toString());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+
 		
 
 	}

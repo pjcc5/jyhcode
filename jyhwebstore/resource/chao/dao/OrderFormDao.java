@@ -7,6 +7,6 @@ import pojo.Orderform;
 import dao.OrderformDao;
 
 public interface OrderFormDao extends OrderformDao {
-	public List<Orderform> getAllOrderformByAid(String aid,Connection conn);
-	public List<Orderform> getAllOrderformByOrderid(String orderid,Connection conn);
+	public List<Orderform> getAllOrderformByAid(String aid,Connection conn)throws Exception;
+	public List<Orderform> getAllOrderformByOrderid(String orderid,Connection conn) throws Exception;
 }
