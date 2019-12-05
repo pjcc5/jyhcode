@@ -137,7 +137,7 @@
 		 .price .price-m{
 		   
 		 	font-size: 20px;
-		 	color: orangered;
+		 	
 		 	margin-left: 20px;
 		 	font-weight: bold;
 		 }
@@ -167,14 +167,14 @@
 		 
 		 .hot .hot-p{
 		 		font-size: 20px;
-		 	color: orangered;
+		
 		 	margin-left: 20px;
 		 	font-weight: bold;
 		 }
 		 
 		 .hot .hot-p span{
 		 	font-size: 16px;
-		 	color: orangered;
+		 
 		 	margin-right: 6px;
 		 	margin-left: 10px;
 		 }

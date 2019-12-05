@@ -3,7 +3,7 @@ var detail;
 
 var pic=new Array();
 var comid= getUrlVal('comid');
-console.log("product.jsp");
+
 (function(){
 	
   $.ajax({
@@ -17,7 +17,7 @@ console.log("product.jsp");
 			<p class="name">${result.comname}</p>
 			<p class="price"><span>价格</span><span class="price-m">￥${result.comprice}</span></p>
 			<p class="desc"><span>销量</span><span class="desc-p">${result.detailssale}</span></p>
-			<div class="hot"><span>点击量</span><span class="hot-p"><span class="glyphicon glyphicon-heart"></span>${result.detailsdot}</span>
+			<div class="hot"><span>点击量</span><span class="hot-p"><span class="glyphicon glyphicon-star"></span>${result.detailsdot}</span>
               </div>
 	    `;
 
