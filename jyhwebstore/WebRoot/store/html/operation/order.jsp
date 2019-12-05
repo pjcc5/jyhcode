@@ -400,7 +400,7 @@ $(function(){
 					}
 				else if(orderstatement ==2 )
 					{
-						orderstatmentstr = "未收货";
+						orderstatmentstr = "查看物流";
 						var str1=`<div class="buy-btn" onclick="buyagin(this)">再次购买</div>
  								
  								</div>
