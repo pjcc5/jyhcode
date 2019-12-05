@@ -80,8 +80,27 @@ public class OrderService {
 		} catch (Exception e) {
 			// TODO Auto-generated catch block
 			e.printStackTrace();
+		}finally{
+			DbHelp.closeConnection(conn);
 		}
 		return iod;
 		
 	} 
+	
+	
+	public static boolean modifyOrderFormState(String orderid, int orderstatement,
+			int orderpay){
+		Connection conn = DbHelp.getConnection();
+		OrderformDao ofd = new OrderformDaoImpl();
+		try {
+			boolean result = ofd.modifyOrderformState(orderid, orderstatement, orderpay, conn);
+			return result;
+		} catch (Exception e) {
+			e.printStackTrace();
+		}finally{
+			DbHelp.closeConnection(conn);
+		}
+		
+		return false;
+	}
 }

@@ -357,6 +357,7 @@ $(function(){
 				var orderstatement;
 				var orderpay;
 				var orderstatmentstr;//显示在页面上的订单状态
+				var orderpaystr;
 				var orderForms = json[j].orderForms;
 				for (var i = 0; i < orderForms.length;i++) {
 						var aid = orderForms[i].aid;
@@ -397,7 +398,14 @@ $(function(){
 					{
 						orderstatmentstr = "已取消";
 					}
-				
+				 if(orderpay == 1)
+					{
+					orderpaystr = "未支付";
+					}
+				else if(orderpay == 2)
+					{
+					orderpaystr = "已经支付";
+					}
 				var str=`
  		 		<div class="order-item-all">
  						
@@ -411,7 +419,7 @@ $(function(){
  							
  						<div class="order-right">
  							<div class="price">总金额：`+orderprice+`元</div>
- 							<div class="state">`+orderstatmentstr+`</div>
+ 							<div class="state">`+orderstatmentstr+"  "+orderpaystr+`</div>
  						
  						</div>
  							

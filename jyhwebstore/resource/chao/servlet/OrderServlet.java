@@ -63,6 +63,24 @@ public class OrderServlet extends HttpServlet {
 						out.print(ja.toString());
 					}
 				}
+				if("editstate".equals(action))
+				{	
+					String orderid =  request.getParameter("orderid");
+					boolean result = false;
+					try {
+						int orderstatement = Integer.parseInt(request.getParameter("orderstatement"));
+						int orderpay = Integer.parseInt(request.getParameter("orderpay"));
+						if(orderid != null)
+						{
+							 result = OrderService.modifyOrderFormState(orderid, orderstatement, orderpay);
+						}
+						out.print(result);
+						
+					} catch (Exception e) {
+						e.printStackTrace();
+					}
+					
+				}
 			}
 			
 		
