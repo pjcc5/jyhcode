@@ -1,6 +1,7 @@
 package chao.service;
 
 import java.sql.Connection;
+import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
@@ -102,5 +103,45 @@ public class OrderService {
 		}
 		
 		return false;
+	}
+	
+	public void deleteOrderform(String orderid){
+		Connection conn=DbHelp.getConnection();
+		OrderMiddleDao dao=new  OrderMiddleDaoImpl();
+		OrderFormDao dao1=new OrderFormDaoImpl();
+		try {
+			conn.setAutoCommit(false);
+			dao.deleteOrdermiddle(orderid, conn);
+			dao1.deleteOrderformByorderid(orderid, conn);
+			conn.commit();
+
+		} catch (Exception e) {
+			// TODO Auto-generated catch block
+			e.printStackTrace();
+			try {
+				conn.rollback();
+			} catch (SQLException e1) {
+				// TODO Auto-generated catch block
+				e1.printStackTrace();
+			}
+		
+	}finally{
+		DbHelp.closeConnection(conn);
+	}
+	}
+	
+	public List<Orderform> getAllOrderformByOrderid(String orderid){
+		Connection conn=DbHelp.getConnection();
+		OrderFormDao dao1=new OrderFormDaoImpl();
+		try {
+			List<Orderform> list= dao1.getAllOrderformByOrderid(orderid, conn);
+			
+			return list;
+		} catch (Exception e) {
+			// TODO: handle exception
+		}finally{
+			DbHelp.closeConnection(conn);
+		}
+		return null;
 	}
 }

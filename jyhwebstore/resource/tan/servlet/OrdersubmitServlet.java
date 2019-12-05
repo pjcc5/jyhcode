@@ -14,6 +14,7 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 
 import chao.dao.OrderFormDao;
+import chao.service.AddressService;
 import net.sf.json.JSONArray;
 import net.sf.json.JSONObject;
 import pojo.Acount;
@@ -28,6 +29,7 @@ import tan.dao.impl.CartDaoImpl;
 import tan.dao.impl.ExDetailsByComidImpl;
 import tan.dto.Cart;
 import tan.servers.CartServers;
+import tan.servers.OrdersubmitServes;
 import util.StringOrArray;
 import dao.AddressDao;
 import dao.CommodityDao;
@@ -54,7 +56,7 @@ public class OrdersubmitServlet extends HttpServlet {
 			throws ServletException, IOException {
 		
 		System.out.println("========进入ordersubmitservlet=============");
-		AddressDao dao=new AddressDaoImpl();
+
 		CartServers dao1=new CartServers();
 		Acount acount=(Acount) request.getSession().getAttribute("acount");
 		PrintWriter out=response.getWriter();
@@ -62,16 +64,17 @@ public class OrdersubmitServlet extends HttpServlet {
 		if(acount!=null){
 			aid=acount.getAid();
 		}
-		Connection conn= DbHelp2.getConnection();
+
 		String msg=request.getParameter("msg");
 		String uuid1=request.getParameter("uuid");
 		String orderid=request.getParameter("orderid");
 		if(!"".equals(orderid)){
+			OrdersubmitServes orderserves=new OrdersubmitServes();
+			List<Object> addranddetail=orderserves.getAddrAnddetai(aid, orderid);
 			
-			OrderformDao order=new OrderformDaoImpl();
 			try {
-				List<Address> address=dao.getAddressByAid(aid, conn);
-				List<OrderDetailDto> list= order.getComidsByOrderId(orderid, conn);
+				List<Address> address=(List<Address>) addranddetail.get(0);
+				List<OrderDetailDto> list= (List<OrderDetailDto>) addranddetail.get(1);
 				List<Cart> list1=new ArrayList<>();
 				for(int i=0;i<list.size();i++){
 				OrderDetailDto dto=	list.get(i);
@@ -105,11 +108,11 @@ public class OrdersubmitServlet extends HttpServlet {
 		
 		if(msg!=null&&"".equals(orderid)){
 		
-		try {
-			List<Address> address=dao.getAddressByAid(aid, conn);
+
+			List<Address> address=new AddressService().getAddressByAid(aid);
 			List<Cart> cart=new ArrayList<>();
 			if(msg.equals("")){
-			List<Cart> list1=dao1.selecCart(aid, conn);
+			List<Cart> list1=dao1.selecCart(aid);
 			
 			for(int i=0;i<list1.size();i++){
 				if(list1.get(i).getSelected()==1){
@@ -123,8 +126,8 @@ public class OrdersubmitServlet extends HttpServlet {
 					num=Integer.parseInt(number);
 				}
 				
-				CommodityDao d=new CommodityDaoImpl();
-				Commodity good=d.getCommodityById(msg, conn);
+			
+				Commodity good=new OrdersubmitServes().getCommodityById(msg);
 				Cart c=new Cart();
 				c.setColor(good.getColor());
 				c.setComid(msg);
@@ -149,10 +152,7 @@ public class OrdersubmitServlet extends HttpServlet {
 			
 			
 			
-		} catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		}
+
 		}
 		
 		
@@ -164,25 +164,19 @@ public class OrdersubmitServlet extends HttpServlet {
               
 			String[] uuid=StringOrArray.getArray(uuid1);
 			
-		 List<Cart> list = dao1.selecCart(aid, conn);
+		 List<Cart> list = dao1.selecCart(aid);
 		 for(int i=0;i<uuid.length;i++){
 			 for(int j=0;j<list.size();j++){
 			 if(uuid[i].equals(list.get(j).getUuid())){
 				 String comid=list.get(j).getComid();
 				 int num=list.get(j).getCount();
-				 ExDetailDao dao2=new ExDetailsByComidImpl();
-				 try {
-	
-					System.out.println("更新销量"+dao2.updateSaleByComid(comid, conn, num));
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-				}
+
+				 new OrdersubmitServes().updateSaleByComid(comid, num);
 				 list.remove(j);
 			 }
 			 }
 		 }
-		 dao1.UpdateCart(list, conn, aid);
+		 dao1.UpdateCart(list,  aid);
 		}
 		
 		String orderform=request.getParameter("orderform");
@@ -199,14 +193,8 @@ public class OrdersubmitServlet extends HttpServlet {
             	  Ordermiddle middle=new Ordermiddle();
         		  middle.setAid(aid);
         		  middle.setOrderid(ordernumber);
-        		  OrderMiddleDao dao3=new OrderMiddleDaoImpl();
-        		  try {
-        			  System.out.println("=============+"+middle);
-					dao3.insertOrdermiddle(middle, conn);
-				} catch (Exception e1) {
-					// TODO Auto-generated catch block
-					e1.printStackTrace();
-				}
+
+        		  new OrdersubmitServes().insertOrdermiddle(middle);
             	  for(int i=0;i<object1.size();i++){
             		  JSONObject json= (JSONObject) object1.get(i);
             		  double price=json.getDouble("comprice");
@@ -229,14 +217,8 @@ public class OrdersubmitServlet extends HttpServlet {
             		  form.setOrderstatement(3);
             		  form.setOrderprice(price);
             		  form.setOrdername(name);
-            		  OrderformDao dao4=new OrderformDaoImpl();
-            		  try {
-						
-						dao4.insertOrderform(form, conn);
-					} catch (Exception e) {
-						// TODO Auto-generated catch block
-						e.printStackTrace();
-					}
+
+            		  new OrdersubmitServes().insertOrderform(form);
             		  
             	  }
             	
@@ -244,11 +226,6 @@ public class OrdersubmitServlet extends HttpServlet {
                  
       
              }
-
-		
-		DbHelp.closeConnection(conn);
-		
-
 
 	}
 
