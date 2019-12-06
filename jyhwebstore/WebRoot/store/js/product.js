@@ -314,7 +314,7 @@ function buynow(){
 		},1600);
 	}else{
 	var num=$('.number').val();
-	buynowflag=true;
+	
 	location.href="/jyhwebstore/store/html/operation/ordersubmit.jsp?comid="+comid+"&num="+num;
 	}
 	}

@@ -72,11 +72,12 @@ public class OrdersubmitServes {
 		Connection conn=DbHelp.getConnection();
 		ExDetailDao dao2=new ExDetailsByComidImpl();
 		 try {
-				
 				System.out.println("更新销量"+dao2.updateSaleByComid(comid, conn, num));
 			} catch (Exception e) {
 				// TODO Auto-generated catch block
 				e.printStackTrace();
+			}finally{
+				DbHelp.closeConnection(conn);
 			}
 	}
 	

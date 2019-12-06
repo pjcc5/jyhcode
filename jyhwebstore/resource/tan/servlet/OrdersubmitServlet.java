@@ -69,6 +69,7 @@ public class OrdersubmitServlet extends HttpServlet {
 		String uuid1=request.getParameter("uuid");
 		String orderid=request.getParameter("orderid");
 		if(!"".equals(orderid)){
+			
 			OrdersubmitServes orderserves=new OrdersubmitServes();
 			List<Object> addranddetail=orderserves.getAddrAnddetai(aid, orderid);
 			
@@ -104,7 +105,7 @@ public class OrdersubmitServlet extends HttpServlet {
 		
 		
 		if(msg!=null&&"".equals(orderid)){
-		
+
 
 			List<Address> address=new AddressService().getAddressByAid(aid);
 			List<Cart> cart=new ArrayList<>();
@@ -118,12 +119,11 @@ public class OrdersubmitServlet extends HttpServlet {
 			}
 			}else{
 				String number=request.getParameter("num");
+				System.out.println("number="+number);
 				int num=1;
 				if(number!=null){
 					num=Integer.parseInt(number);
 				}
-				
-			
 				Commodity good=new OrdersubmitServes().getCommodityById(msg);
 				Cart c=new Cart();
 				c.setColor(good.getColor());
@@ -157,8 +157,7 @@ public class OrdersubmitServlet extends HttpServlet {
 		
 		
 		if(uuid1!=null&&!uuid1.equals("")){
-			
-              
+
 			String[] uuid=StringOrArray.getArray(uuid1);
 			
 		 List<Cart> list = dao1.selecCart(aid);
@@ -177,7 +176,6 @@ public class OrdersubmitServlet extends HttpServlet {
 		}
 		
 		String orderform=request.getParameter("orderform");
-		
              if(orderform!=null){
             	 JSONObject object=JSONObject.fromObject(orderform);
             	 String name=object.getString("name");
@@ -216,7 +214,7 @@ public class OrdersubmitServlet extends HttpServlet {
             		  form.setOrdername(name);
 
             		  new OrdersubmitServes().insertOrderform(form);
-            		  
+            		  new OrdersubmitServes().updateSaleByComid(comid, count);
             	  }
             	
                    

@@ -13,6 +13,7 @@ import javax.servlet.http.HttpServletResponse;
 
 import net.sf.json.JSONArray;
 import pojo.Orderform;
+import tan.servers.OrdersubmitServes;
 import chao.dao.OrderFormDao;
 import chao.dao.impl.OrderFormDaoImpl;
 import chao.service.OrderService;
@@ -81,9 +82,12 @@ public class OrderServlet extends HttpServlet {
 				
 				if(action.equals("cancel")){
 					String orderid=request.getParameter("orderid");
-//				
-//					
 					OrderService order=new OrderService();
+                  List<Orderform> list=  order.getAllOrderformByOrderid(orderid);		
+                    for(int i=0;i<list.size();i++){
+                   	new OrdersubmitServes().updateSaleByComid(list.get(i).getComid(), -list.get(i).getComcount());
+                    }
+				
 					order.modifyOrderFormState(orderid, 4, 1);
 					out.print(true);
 				}

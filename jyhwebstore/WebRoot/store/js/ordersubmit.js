@@ -617,7 +617,7 @@ var address=`
 	function submitorder(obj){
 		
 		if(submitorderflag){
-			console.log("sakdalsj");
+
 			submitorderflag=false;
 		orderform.name=$('.pat_name').html();
 		orderform.call=$('.pat_name').siblings().eq(1).html();
