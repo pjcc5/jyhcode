@@ -350,7 +350,7 @@ $(function(){
 		//	console.log(json);
 			for(var j=0; j<json.length;j++)//遍历所有订单
 			{	
-				console.log("订单"+j);
+				//console.log("订单"+j);
 				var orderid;
 				var ordername;
 				var orderprice;
@@ -379,7 +379,7 @@ $(function(){
 		 				 orderprice =orderForms[i].orderprice;
 		 				orderstatement =orderForms[i].orderstatement;
 		 				orderpay =orderForms[i].orderpay;
-		 				console.log(orderForms[i]);
+		 			//	console.log(orderForms[i]);
 		 				
 						}
 				if(orderstatement == 1)
@@ -460,7 +460,6 @@ $(function(){
  							
  							
  						<div class="order-right">
- 							<div class="price">总金额：`+orderprice+`元</div>
  							<div class="state">`+orderpaystr+`</div>
  						
  						</div>
@@ -472,7 +471,7 @@ $(function(){
  								<a href="">
  								<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
  								<div class="order-title">
- 									<p class="desc">`+comname+`<span>等    `+orderForms.length+`件商品</span>`+`</p>`;
+ 									<p class="desc">`+comname+`<span>等    `+orderForms.length+`种商品</span>`+`</p>`;
  									
  									
  									
@@ -522,9 +521,10 @@ action="cancel";
 		  data:{"action":action,"orderid":orderid},
 		  dataType:"json",
 		  success:function(result){
-               console.log(result);
+            //   console.log(result);
               $(obj).parent().parent().siblings().eq(0).html("已取消");
               $(obj).attr("onclick","deleteform(this)").html("删除订单"); 
+              location.reload();
 		  }
 	})
 		  })();
@@ -533,6 +533,7 @@ action="cancel";
 
 function deleteform(obj){
 if(confirm("删除订单")==true){
+	//console.log("OKKSKOSKOSK");
 var orderid=$(obj).parent().parent().parent().siblings().eq(0).children().eq(0).children().eq(1).children().eq(0).html();
 (function(){
 action="delete";
@@ -543,10 +544,9 @@ $(obj).parent().parent().parent().parent().remove();
 		  url:"/jyhwebstore/order",
 		  data:{"action":action,"orderid":orderid},
 		  dataType:"json",
-		  success:function(result){
+		  success:function(result){console.log("sasdkjsdsa");
                console.log(result);
-             
-               
+               location.reload();
 		  }
 	})
 		  })();

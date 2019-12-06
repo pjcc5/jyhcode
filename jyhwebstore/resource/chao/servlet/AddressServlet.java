@@ -97,15 +97,7 @@ public class AddressServlet extends HttpServlet {
 			address.setTown(object.getString("cityhtml"));
 			address.setTownval(object.getString("cityval"));
 			
-//			Connection conn=DbHelp2.getConnection();
-//			AddressDao dao=new AddressDaoImpl();
-//			try {
-//				dao.insertAddress(address, conn);
-//			} catch (Exception e) {
-//				// TODO: handle exception
-//				e.printStackTrace();
-//			}
-//			DbHelp2.closeConnection(conn);
+//		
 			AddressService addr= new AddressService();
 			addr.insertAddress(address);
 			
@@ -134,33 +126,20 @@ public class AddressServlet extends HttpServlet {
 			address.setTown(object.getString("cityhtml"));
 			address.setTownval(object.getString("cityval"));
 			
-//			Connection conn=DbHelp2.getConnection();
-//			AddressDao dao=new AddressDaoImpl();
-//			try {
-//				System.out.println(dao.modifyAdd(address, conn));;
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			DbHelp2.closeConnection(conn);
+
 			AddressService addr=new AddressService();
 			addr.modifyaddr(address);
 			
 		}
 		
 		if(action.equals("delete")){
-			Connection conn=DbHelp2.getConnection();
+
 			AddressDao dao=new AddressDaoImpl();
 			String data=	request.getParameter("msg");
 			JSONObject object=JSONObject.fromObject(data);
 			String addressid=object.getString("flag");
-//			try {
-//				dao.deleteAddress(addressid, conn);
-//			} catch (Exception e) {
-//				// TODO Auto-generated catch block
-//				e.printStackTrace();
-//			}
-//			DbHelp2.closeConnection(conn);
+
+	
 			AddressService addr=new AddressService();
 			addr.deleteAddress(addressid);
 		}

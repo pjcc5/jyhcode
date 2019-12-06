@@ -2,8 +2,8 @@ var choose=document.getElementById('choose');
 	var now=choose.getElementsByTagName('li');
 	var order=document.getElementsByClassName('order-item');
 	var active=order[0].children;
-	console.log(active.length);
-	console.log(now.length);
+	//console.log(active.length);
+	//console.log(now.length);
 	var n=0;
 	for(var i=0;i<now.length;i++){
 		(function(x){
@@ -95,7 +95,6 @@ $(window).scroll(function(){
 						
 						
 					<div class="order-right">
-						<div class="price">总金额：`+orderprice+`元</div>
 						<div class="state">未支付</div>
 					
 					</div>
@@ -134,7 +133,7 @@ function showgetgoods(){
 		var orderpay;
 		var form = forms[i];
 		var goods=form.orderForms;
-		console.log(goods[0].aid);
+		//console.log(goods[0].aid);
 			var aid = goods[0].aid;
 			var comid=goods[0].comid;
 			var comname=goods[0].comname;
@@ -168,7 +167,6 @@ function showgetgoods(){
 						
 						
 					<div class="order-right">
-						<div class="price">总金额：`+orderprice+`元</div>
 						<div class="state">待收货</div>
 					
 					</div>
@@ -246,7 +244,6 @@ function getgoodsok(){
 						
 						
 					<div class="order-right">
-						<div class="price">总金额：`+orderprice+`元</div>
 						<div class="state">未支付</div>
 					
 					</div>
@@ -290,6 +287,7 @@ function getgoodscancel(){
 		var orderstatement;
 		var orderpay;
 		var form = forms[i];
+		
 		var goods=form.orderForms;
 		if(goods.length > 0)
 			{
@@ -327,7 +325,6 @@ function getgoodscancel(){
 							
 							
 						<div class="order-right">
-							<div class="price">总金额：`+orderprice+`元</div>
 							<div class="state">未支付</div>
 						
 						</div>

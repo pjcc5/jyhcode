@@ -617,7 +617,7 @@ var address=`
 	function submitorder(obj){
 		
 		if(submitorderflag){
-			console.log("sakdalsj");
+
 			submitorderflag=false;
 		orderform.name=$('.pat_name').html();
 		orderform.call=$('.pat_name').siblings().eq(1).html();
@@ -633,8 +633,7 @@ var address=`
 			data:{"uuid":uuid,"orderform":JSON.stringify(orderform)},
 			datatype:"json",
 			success:function(result){
-				console.log("=================================");
-				submitorderflag=true;
+
 				location.href="/jyhwebstore/pay/index.jsp?price="+price+"&coumid="+comid+"&order="+sNow;
 				
 			}
