@@ -108,8 +108,8 @@
 										<td>${commo.color}</td>
 										<td>${commo.pai}</td>
 										<td>${commo.size}</td>
-										<td><input type="button" id="${commo.comid }" onclick="deleteStudent('${commo.comid }',this)" value="删除"/>
-										<input type="button"  onclick="updateStudent('${commo.comid }')" value="修改" /></td>
+										<td><input type="button"  id="delete_ccommodity" onclick="deleteCommodity('${commo.comid }',this)" value="删除"/>
+										<input type="button"  onclick="updateCommodity('${commo.comid }')" value="修改" /></td>
 									</tr>
 								</c:forEach>	
 							</tbody>
@@ -137,16 +137,19 @@
 <script type="/jyhwebstore/store/js/javascript" src="js/libs/modernizr.min.js"></script>
 <script type="text/javascript">
 	//删除方法
-	function deleteStudent(obj,that){
+	function deleteCommodity(obj,that){
 		$("#delete_com").show();
-	$("#delete_com").html(`<div style="width: 300px;height: 150px;background:#E1E1E1;line-height: 130px;">
-	<div style="font-size: 20px;margin-top: -400px;">
-	<span>您确定删除吗？</span>
-	 <input type="button" name="deletes" id="delete_sure" value="确定" style="margin-top: -150px;margin-right: 100px;width: 20%;"/>
-<input type="button" name="deletes" id="delete_canser" value="取消" style="margin-top: -150px;margin-right: 0px;width: 20%;" />
-</div>
-
-</div>`);
+	$("#delete_com").html(`<div style="width:90%; height: 95%;  position: fixed; background:white;margin-top: -700px; margin-left: 210px; opacity: 0.8;">
+	<div style="font-size: 30px;margin-top: 300px;">
+		<center>
+		<span>您确定删除吗？</span>
+		</center>
+		<center>
+		<input type="button" name="deletes" id="delete_sure" value="确定" style="margin-top: 200px;margin-right: 150px;width: 10%;height: 5%;"/>
+		<input type="button" name="deletes" id="delete_canser" value="取消" style="margin-top: 200px;margin-right: 0px;width: 10%;height: 5%;" />
+		</center>
+		</div>
+	</div>`);
 	var comid = obj;
 	$("#delete_sure").click(function(){
 		console.log(comid);
@@ -160,7 +163,7 @@
 				{
 					$("#delete_com").hide();
 					$(that).parent().parent().remove();
-					alert("删除成功！");
+					alert("删除成功！ ");
 					return true;
 				}
 				else if(json.flag==false)
