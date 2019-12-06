@@ -158,7 +158,7 @@ public class OrdersubmitServlet extends HttpServlet {
 		
 		
 		if(uuid1!=null&&!uuid1.equals("")){
-
+			 System.out.println("uuuuuuuuuuu============");
 			String[] uuid=StringOrArray.getArray(uuid1);
 			
 		 List<Cart> list = dao1.selecCart(aid);
@@ -174,10 +174,11 @@ public class OrdersubmitServlet extends HttpServlet {
 			 }
 		 }
 		 dao1.UpdateCart(list,  aid);
-		}
+		}else{
 		
 		String orderform=request.getParameter("orderform");
              if(orderform!=null){
+            	 System.out.println("orderfrom============");
             	 JSONObject object=JSONObject.fromObject(orderform);
             	 String name=object.getString("name");
             	 String call=object.getString("call");
@@ -222,6 +223,7 @@ public class OrdersubmitServlet extends HttpServlet {
                  
       
              }
+		}
 
 	}
 
