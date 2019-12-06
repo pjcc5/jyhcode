@@ -20,7 +20,7 @@ $(function(){
 		data:{"msg":comid1,"num":num,"orderid":orderid},
 		datatype:"json",
 		success:function(result){
-		
+		console.log(result);
 			var json=JSON.parse(result);
 			orderform.goods=json[1];
 
@@ -115,7 +115,7 @@ $(function(){
 						<span>${re[i].recivename}</span>
 						<span>${re[i].recivephone}</span>
 					</p>
-					<p><span prov="{re[i].proval}">${re[i].province} </span>
+					<p><span prov="${re[i].proval}">${re[i].province} </span>
 						<span city="${re[i].townval}">${re[i].town}</span>
 						<span country="${re[i].countyval}">${re[i].county}</span>
 					</p>
@@ -606,9 +606,9 @@ var address=`
 	 var detailaddr=$('.detail-addr input').val("");
 		var call=$('.addr-call input').val("");
 		var username=$('.user input').val("");
-		var prov= $('#prov option:first').attr("selected",'selected');
-		var city=$('#city option:first').attr("selected",'selected');
-		var country=$('#country option:first').attr("selected",'selected');	
+		var prov= $('#prov option:first').prop("selected",'selected');
+		var city=$('#city option:first').prop("selected",'selected');
+		var country=$('#country option:first').prop("selected",'selected');	
 		
 	}
 	
