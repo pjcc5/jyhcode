@@ -228,6 +228,7 @@ h2 {
 						<span class="new-btn-login-sp">
 							<button class="new-btn-login" type="submit"
 								style="text-align: center;">付 款</button>
+								<a href="/jyhwebstore/index.jsp">返回首页</a>
 						</span> <span class="note-help">如果您点击“付款”按钮，即表示您同意该次的执行操作。</span>
 					</dd>
 				</dl>

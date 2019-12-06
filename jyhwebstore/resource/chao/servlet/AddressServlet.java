@@ -129,6 +129,8 @@ public class AddressServlet extends HttpServlet {
 
 			AddressService addr=new AddressService();
 			addr.modifyaddr(address);
+			PrintWriter out = response.getWriter();
+			out.print(true);
 			
 		}
 		
@@ -142,6 +144,8 @@ public class AddressServlet extends HttpServlet {
 	
 			AddressService addr=new AddressService();
 			addr.deleteAddress(addressid);
+			PrintWriter out = response.getWriter();
+			out.print(true);
 		}
 	}
 

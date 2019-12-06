@@ -244,10 +244,11 @@ var flag=false;
 		
 	}
 	
-	
+	var callnumber,prov1,city1,country1,name1,detailaddr1;
 	//编辑地址
 	var par;
 	function edit(obj){
+		callnumber=true;prov1=true;city1=true;country1=true;name1=true;detailaddr1=true;
 		window.event.stopPropagation();
 		msg.flag=$(obj).attr('addr');
 		par=$(obj).parent().parent().siblings();
@@ -290,16 +291,12 @@ var flag=false;
 		
 		var reg = /^1[3456789]\d{9}$/g;
 		if(reg.test(call)){
-			$('.save').attr('disabled',false).css({
-				'cursor':'pointer',
-			});
+			
 			$('.addr-call span').css({
 				'display':'none',
 			})
 		}else{
-			$('.save').attr('disabled',false).css({
-				'cursor':'not-allowed',
-			});
+			
 			$('.addr-call span').css({
 				'display':'inline',
 			})
@@ -309,7 +306,7 @@ var flag=false;
 	
 	
 	
-var callnumber,prov1,city1,country1,name1,detailaddr;
+
 	
 	
 	$('.addr-call input').keyup(function(){
@@ -327,8 +324,8 @@ var callnumber,prov1,city1,country1,name1,detailaddr;
 			})
 			callnumber=false;
 		}
-		console.log("callnumber="+callnumber+",prov1="+prov1+",city1="+city1+",country1="+country1+",name1="+name1+",detailaddr="+detailaddr);
-		if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+		console.log("callnumber="+callnumber+",prov1="+prov1+",city1="+city1+",country1="+country1+",name1="+name1+",detailaddr="+detailaddr1);
+		if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr1){
 			$('.save').attr('disabled',false).css({
 				'cursor':'pointer',
 			});
@@ -345,13 +342,13 @@ var callnumber,prov1,city1,country1,name1,detailaddr;
 	$('.user input').keyup(function(){
 		var username=$('.user input').val();
 		
-	if(username.indexOf(" ",0)==-1&&username.length>=1){
+	if(username.indexOf(" ",0)==-1&&username.length>=1&&username.length<=6){
 		name1=true;
 	}else{
 		name1=false;
 	}
 		console.log("name="+name1);
-		if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+		if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr1){
 			
 			$('.save').attr('disabled',false).css({
 				'cursor':'pointer',
@@ -385,7 +382,7 @@ var callnumber,prov1,city1,country1,name1,detailaddr;
 			}
 			
 			
-			if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr1){
 			$('.save').attr('disabled',false).css({
 				'cursor':'pointer',
 			});
@@ -413,7 +410,7 @@ var callnumber,prov1,city1,country1,name1,detailaddr;
 				country1=false;
 			}
 			
-			if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr1){
 			$('.save').attr('disabled',false).css({
 				'cursor':'pointer',
 			});
@@ -438,7 +435,7 @@ var callnumber,prov1,city1,country1,name1,detailaddr;
 			}else{
 				country1=false;
 			}
-			if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr1){
 			$('.save').attr('disabled',false).css({
 				'cursor':'pointer',
 			});
@@ -456,14 +453,14 @@ var callnumber,prov1,city1,country1,name1,detailaddr;
 	$('.detail-addr input').keyup(function(){
 		var addr=$('.detail-addr input').val();
 		
-		if(addr.indexOf(" ",0)!=0&&addr.length>=1){
-			detailaddr=true;
-			console.log("detailaddr="+detailaddr);
+		if(addr.indexOf(" ",0)!=0&&addr.length>=1&&addr.length<=12){
+			detailaddr1=true;
+			
 			
 		}else{
-			detailaddr=false;
+			detailaddr1=false;
 		}
-		if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+		if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr1){
 			$('.save').attr('disabled',false).css({
 				'cursor':'pointer',
 			});
@@ -479,6 +476,10 @@ var callnumber,prov1,city1,country1,name1,detailaddr;
 	
 	
 	$('.cancel').click(function(){
+		callnumber=false;prov1=false;city1=false;country1=false;name1=false;detailaddr1=false;
+		$('.save').attr('disabled',true).css({
+			'cursor':'not-allowed',
+		});
 		$('.mod').css({
 			'display':'none',
 		})
@@ -488,7 +489,10 @@ var callnumber,prov1,city1,country1,name1,detailaddr;
 	
 	//地址保存
 	$(".save").click(function(){
-//		
+		callnumber=false;prov1=false;city1=false;country1=false;name1=false;detailaddr1=false;
+		$('.save').attr('disabled',true).css({
+			'cursor':'not-allowed',
+		});
 	    var detailaddr=$('.detail-addr input').val();
 		var call=$('.addr-call input').val();
 		var username=$('.user input').val();

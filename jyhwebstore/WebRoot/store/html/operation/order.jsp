@@ -504,7 +504,23 @@ location.href="/jyhwebstore/store/html/operation/orderdetail.jsp?orderid="+order
 function buyagin(obj){
 
 var orderid=$(obj).parent().parent().parent().siblings().eq(0).children().eq(0).children().eq(1).children().eq(0).html();
-location.href="/jyhwebstore/store/html/operation/ordersubmit.jsp?orderid="+orderid;
+
+$.get({
+			type:"get",
+			url:"/jyhwebstore/cartservlet",
+			data:{"action":"buyagin","orderid":orderid},
+			datatype:"json",
+			success:function(result){
+				if(result!="no"){
+					alert(result);
+				}else{
+				location.href="/jyhwebstore/store/html/operation/ordersubmit.jsp?orderid="+orderid;
+				}
+			}
+		})
+		
+
+
 }
 var action;
 

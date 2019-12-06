@@ -77,6 +77,7 @@ public class OrdersubmitServlet extends HttpServlet {
 				List<Address> address=(List<Address>) addranddetail.get(0);
 				List<OrderDetailDto> list= (List<OrderDetailDto>) addranddetail.get(1);
 				List<Cart> list1=new ArrayList<>();
+				
 				for(int i=0;i<list.size();i++){
 				OrderDetailDto dto=	list.get(i);
 				Cart cart=new Cart();

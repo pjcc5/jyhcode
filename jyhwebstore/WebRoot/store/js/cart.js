@@ -4,7 +4,7 @@ var goodsList;
 	$.ajax({
 		  type:"POST",
 		  url:"/jyhwebstore/cartservlet",
-		  data:{},
+		  data:{"action":"init"},
 		  dataType:"json",
 		  success:function(result){
 			 
@@ -481,7 +481,21 @@ $('.total').html( sum + '.00');
 
 $('.check-out').click(function(){
 	if(goodsList!=null){
-	location.href="/jyhwebstore/store/html/operation/ordersubmit.jsp";
+		$.get({
+			type:"get",
+			url:"/jyhwebstore/cartservlet",
+			data:{"action":"stock"},
+			datatype:"json",
+			success:function(result){
+				if(result!="no"){
+					alert(result);
+				}else{
+					location.href="/jyhwebstore/store/html/operation/ordersubmit.jsp";
+				}
+			}
+		})
+		
+
 	}else{
 		 var show=$("#show").fadeIn();
 			$("#show").fadeOut(3000);

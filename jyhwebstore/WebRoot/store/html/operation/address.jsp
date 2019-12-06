@@ -60,7 +60,7 @@
 				<div class="header-right">
 
 					<div class="cart-2">
-						<a href="/jyhwebstore/store/html/cart.jsp">
+						<a href="/jyhwebstore/store/html/operation/cart.jsp">
 							<span class="glyphicon glyphicon-shopping-cart"></span>
 							<span>购物车</span>
 
@@ -127,7 +127,7 @@
 					
 					<div class="user">
 					<label>收件人:　</label>
-					<input type="text" placeholder="请输入收货人,不能填写空格"/>
+					<input type="text" placeholder="请输入收货人,不能填写空格,限6个字"/>
 					</div>
 					
 					<div class="three-addr">
@@ -152,7 +152,7 @@
 					</div>
 					<div class="detail-addr">
 						<label>详细地址:　</label>
-						<input type="text" placeholder="请输入详细地址，首位不能为空格"/>
+						<input type="text" placeholder="请输入详细地址，首位不能为空格,限12个字"/>
 					</div>
 					
 					<div class="addr-call" onmouseenter="">

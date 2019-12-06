@@ -160,7 +160,7 @@ function defaultAddr(obj){
 	$('.user input').keyup(function(){
 		var username=$('.user input').val();
 		
-	if(username.indexOf(" ",0)==-1&&username.length>=1){
+	if(username.indexOf(" ",0)==-1&&username.length>=1&&username.length<=6){
 		name1=true;
 	}else{
 		name1=false;
@@ -237,27 +237,21 @@ function defaultAddr(obj){
 			$('.save').attr('disabled',true).css({
 				'cursor':'not-allowed',
 			});
-			
 		}
 		})
 		
 		$("#country").click(function(){
 			var index=$(this).find("option:selected").html();
 			var idname=$(this).attr('id');
-		
-			
-			if(index!="请选择县区"&&idname=="country"){
-				
+			if(index!="请选择县区"&&idname=="country"){	
 				country1=true;
-				
 			}else{
 				country1=false;
 			}
 			if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
 			$('.save').attr('disabled',false).css({
 				'cursor':'pointer',
-			});
-			
+			});	
 		}else{
 			$('.save').attr('disabled',true).css({
 				'cursor':'not-allowed',
@@ -271,18 +265,15 @@ function defaultAddr(obj){
 	$('.detail-addr input').keyup(function(){
 		var addr=$('.detail-addr input').val();
 		
-		if(addr.indexOf(" ",0)!=0&&addr.length>=1){
+		if(addr.indexOf(" ",0)!=0&&addr.length>=1&&addr.length<=6){
 			detailaddr=true;
-			console.log("detailaddr="+detailaddr);
-			
 		}else{
 			detailaddr=false;
 		}
 		if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
 			$('.save').attr('disabled',false).css({
 				'cursor':'pointer',
-			});
-			
+			});	
 		}else{
 			$('.save').attr('disabled',true).css({
 				'cursor':'not-allowed',
@@ -293,6 +284,10 @@ function defaultAddr(obj){
 	
 	
 	$('.cancel').click(function(){
+		callnumber=false;prov1=false;city1=false;country1=false;name1=false;detailaddr=false;
+		$('.save').attr('disabled',true).css({
+			'cursor':'not-allowed',
+		});
 		$('.mod').css({
 			'display':'none',
 		})
@@ -321,6 +316,7 @@ function defaultAddr(obj){
 	
 	
 	function edit(obj){
+		callnumber=true;prov1=true;city1=true;country1=true;name1=true;detailaddr=true;
 		$(".mod").css({
 			'display':'block',
 		})
@@ -340,9 +336,7 @@ function defaultAddr(obj){
 		prov= parseInt(prov)+1;
 		city=parseInt(city)+1;
 		country=parseInt(country)+1;
-		console.log(prov);
-		console.log(city);
-		console.log(country);
+
 		
 		
 		$('.addr-call input').val(call);
@@ -354,9 +348,7 @@ function defaultAddr(obj){
 		$('#city option').eq(city).prop('selected','selected');
 		
 		  var c=document.getElementById("city");
-		  c.onchange();
-//		  
-//		  
+		  c.onchange();	  
 		  $('#country option').eq(country).prop('selected','selected');
 		
 		  var coun=document.getElementById("country");
@@ -364,16 +356,12 @@ function defaultAddr(obj){
 		
 		var reg = /^1[3456789]\d{9}$/g;
 		if(reg.test(call)){
-			$('.save').attr('disabled',false).css({
-				'cursor':'pointer',
-			});
+			
 			$('.addr-call span').css({
 				'display':'none',
 			})
 		}else{
-			$('.save').attr('disabled',false).css({
-				'cursor':'not-allowed',
-			});
+			
 			$('.addr-call span').css({
 				'display':'inline',
 			})
@@ -382,7 +370,9 @@ function defaultAddr(obj){
 	
 
 	$(".save").click(function(){
-		
+		$('.save').attr('disabled',true).css({
+			'cursor':'not-allowed',
+		});
 	    var detailaddr=$('.detail-addr input').val();
 	    data.detailaddr=detailaddr;
 		var call=$('.addr-call input').val();
@@ -407,7 +397,7 @@ function defaultAddr(obj){
 		data.countryhtml=country_html;
 		
 		if(flag){
-			
+			callnumber=false;prov1=false;city1=false;country1=false;name1=false;detailaddr=false;
 			$.get({
 				type:"get",
 				url:"/jyhwebstore/address",
@@ -453,6 +443,8 @@ function defaultAddr(obj){
 			
 			flag=false;
 		}else{
+	
+			callnumber=false;prov1=false;city1=false;country1=false;name1=false;detailaddr=false;
 		par.children().eq(0).children().eq(0).html(username);
 		par.children().eq(1).children().eq(7).html(detailaddr);
 		par.children().eq(2).children().eq(0).html(call);
@@ -470,6 +462,7 @@ function defaultAddr(obj){
 			});
 		
 		}
+		
 		$('.mod').css({
 			'display':'none',
 		})
