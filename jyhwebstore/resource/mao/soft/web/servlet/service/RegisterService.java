@@ -24,6 +24,7 @@ public class RegisterService {
 	{
 		
 			Connection conn = DbHelp.getConnection();
+			conn.setAutoCommit(false);
 			RegisterSer rs = new RegisterSer();
 			Encryption keys = new Encryption();
 			password = keys.getKey(password);
@@ -59,6 +60,7 @@ public class RegisterService {
 			shop.setCompic("");
 			shop.setComprice("");
 			shop.setUuid("");
+			shop.setComid("");
 			ShoppingDao shopdao = new ShoppingDaoImpl();
 			shopdao.insertShoping(shop, conn);
 			//购物车中间表
@@ -75,6 +77,7 @@ public class RegisterService {
 			adddao.insertAdd(conn, addtab);
 			//调插入方法
 			boolean blog = rs.register(conn,acount, user);
+			conn.commit();
 			DbHelp.closeConnection(conn);
 			return blog;
 	}

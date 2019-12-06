@@ -1,6 +1,5 @@
 package mao.soft.web.dateuti;
 
-import java.util.Date;
 
 public class UserDate {
 	private String uname;//uname
