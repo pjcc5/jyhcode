@@ -471,7 +471,7 @@ $(function(){
  								<a href="">
  								<img src="/jyhwebstore/store/img/bgctop.jpg"/></a>
  								<div class="order-title">
- 									<p class="desc">`+comname+`<span>等    `+orderForms.length+`件商品</span>`+`</p>`;
+ 									<p class="desc">`+comname+`<span>等    `+orderForms.length+`种商品</span>`+`</p>`;
  									
  									
  									
