@@ -21,17 +21,14 @@
  <div class="topbar-wrap white">
     <div class="topbar-inner clearfix">
         <div class="topbar-logo-wrap clearfix">
-            <h1 class="topbar-logo none"><a href="/jyhwebstore/admindex.jsp" class="navbar-brand">后台管理</a></h1>
+            <h1 class="topbar-logo none"><a href="/jyhwebstore/store/html/operation/admindex.jsp" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="/jyhwebstore/admindex.jsp">首页</a></li>
+                <li><a class="on" href="/jyhwebstore/store/html/operation/admindex.jsp">首页</a></li>
                 <li><a href="/jyhwebstore/index.jsp">网站首页</a></li>
             </ul>
         </div>
         <div class="top-info-wrap">
             <ul class="top-info-list clearfix">
-                <li><a href="#">管理员</a></li>
-                <li><a href="#">修改密码</a></li>
-                <li><a href="#">退出</a></li>
             </ul>
         </div>
     </div>
@@ -52,8 +49,8 @@
                 <li>
                     <a href="#">用户管理</a>
                     <ul class="sub-menu">
-                        <li id="user_illegal"><a href="/jyhwebstore/system.jsp">违规管理</a></li>
-                        <li id="com_send"><a href="/jyhwebstore/system.jsp">发货管理</a></li>
+                        <li id="user_illegal"><a href="/jyhwebstore/store/html/operation/system.jsp">违规管理</a></li>
+                        <li id="com_send"><a href="/jyhwebstore/store/html/operation/system.jsp">发货管理</a></li>
                     </ul>
                 </li>
             </ul>
@@ -61,16 +58,17 @@
     </div>
     <div class="main-wrap">
         <div class="crumb-wrap">
-            <div class="crumb-list"><a href="/jyhwebstore/admindex.jsp">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">商品管理</span></div>
+            <div class="crumb-list"><a href="/jyhwebstore/store/html/operation/admindex.jsp">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">商品管理</span></div>
         </div>
         <div class="search-wrap">
             <div class="search-content">
                 <form action="#" method="post">
                     <table class="search-tab">
                         <tr>
-                            <th width="70">搜索商品:</th>
+                           <!--  <th width="70">搜索商品:</th>
                             <td><input class="common-text" placeholder="搜索商品" name="keywords" value="" id="" type="text"></td>
                             <td><input class="btn btn-primary btn2" name="sub" value="查询" type="submit"></td>
+                             -->
                         </tr>
                     </table>
                 </form>
@@ -80,9 +78,7 @@
             <form name="myform" id="myform" method="post">
                 <div class="result-title">
                     <div class="result-list">
-                        <a href="insert.jsp">新增商品</a>
-                        <a id="batchDel" href="javascript:void(0)">批量删除</a>
-                        <a id="updateOrd" href="javascript:void(0)">更新排序</a>
+                    <!--    <a href="insert.jsp">新增商品</a>     -->
                     </div>
 					<div class="result-content">
 					    <table class="result-tab" width="100%" style="text-align: center;">

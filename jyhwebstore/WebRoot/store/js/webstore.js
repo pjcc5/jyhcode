@@ -210,6 +210,7 @@ function out(){
 					"top":"0px",
 					"left":"40%",
 					"text-align":"center",
+					"line-height":"100px",
 					"font-size":"30px",
 					"color":"orange",
 					"display":"none",
@@ -217,13 +218,13 @@ function out(){
 				});
 				modol.html("退出成功");
 				$("body").prepend(modol);
-				modol.slideDown(600);
+				modol.slideDown(800);
 				setTimeout(function(){
 					if(result == "OK")
 					{
 						location.reload();
 					}
-				},600);
+				},800);
 			}	
 				
 		

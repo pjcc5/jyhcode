@@ -36,7 +36,7 @@ public class ComiAdmiServlet extends HttpServlet {
 			throws ServletException, IOException {
 		SelectMaxPageSize max = new SelectMaxPageSize();
 		//每次只显示五条数据
-		int pageSize = 10;
+		int pageSize = 5;
 		System.out.println("pageSize:==="+pageSize);
 			//根据五条数据来分页，显示最大的页码数量
 			int maxPageNu = max.maxPage(pageSize);
@@ -66,7 +66,7 @@ public class ComiAdmiServlet extends HttpServlet {
 			//存当前的集合
 			request.setAttribute("list", list);
 			//转发到页面
-			request.getRequestDispatcher("/design.jsp").forward(request, response);
+			request.getRequestDispatcher("/store/html/operation/design.jsp").forward(request, response);
 	}
 
 	public void init() throws ServletException {

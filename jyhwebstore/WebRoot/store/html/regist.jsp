@@ -89,7 +89,7 @@
 					<lable style=" font-weight:bold; font-size: 10px;color: red;line-height: 1px;float: right;margin-right: 430px; margin-top:30px">看不清点击图片换一张</lable>
 					<li class="regist-YZM">
 						<span>验证码</span>
-						<input type="text" class="form-control" placeholder="identifying code" id="valdation"/>
+						<input type="text" class="form-control" maxlength="4"; placeholder="identifying code" id="valdation"/>
 					<img src="/jyhwebstore/image" style="float: right;margin-right: 550px; width: 130px;height: 43px; margin-top: -60px;" onclick="flush(this)">
 					</li>
 					<!-- 密码 -->
