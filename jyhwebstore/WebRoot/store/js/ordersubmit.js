@@ -633,8 +633,8 @@ var address=`
 			data:{"uuid":uuid,"orderform":JSON.stringify(orderform)},
 			datatype:"json",
 			success:function(result){
-				console.log("=================================");
-				submitorderflag=true;
+				
+				
 				location.href="/jyhwebstore/pay/index.jsp?price="+price+"&coumid="+comid+"&order="+sNow;
 				
 			}

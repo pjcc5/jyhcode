@@ -39,7 +39,7 @@ function login(){
 						var show=$("#show").html("登录成功").fadeIn(500);
 						$("#show").fadeOut(2500);
 						setTimeout(function(){
-							flag=true;
+							
 							location.href=path;
 						}, 3000);
 //						
