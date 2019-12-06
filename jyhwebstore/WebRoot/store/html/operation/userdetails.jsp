@@ -182,7 +182,7 @@
 				<tr>
 					<td>电话：</td>
 					<td>
-						<input id="input_phone" type="text" style="height: 30px;width: 400px;"/>
+						<input id="input_phone" maxlength="11";  type="text" style="height: 30px;width: 400px;"/>
 					</td>
 				</tr>
 				<tr>

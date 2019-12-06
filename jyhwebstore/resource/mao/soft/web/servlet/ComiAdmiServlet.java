@@ -36,7 +36,7 @@ public class ComiAdmiServlet extends HttpServlet {
 			throws ServletException, IOException {
 		SelectMaxPageSize max = new SelectMaxPageSize();
 		//每次只显示五条数据
-		int pageSize = 10;
+		int pageSize = 5;
 		System.out.println("pageSize:==="+pageSize);
 			//根据五条数据来分页，显示最大的页码数量
 			int maxPageNu = max.maxPage(pageSize);

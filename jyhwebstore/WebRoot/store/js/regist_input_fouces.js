@@ -243,7 +243,6 @@ $('#regists').click(function() {
 
 
 $("#register_ok_btn").click(function(){
-	alert("我正在去验证页面");
 	window.location.href="/jyhwebstore/store/html/success/registersuccess.jsp?success";
 });
 
