@@ -46,7 +46,7 @@
 						</a>
 						</c:if>
 						<c:if test="${not empty acount}">
-							<a href="/jyhwebstore/store/html/operation/information.jsp?path=index.jsp" id="log">
+							<a href="/jyhwebstore/store/html/operation/userdetails.jsp?path=index.jsp" id="log">
 							${acount.aname }
 							<a href="javascript:out()" id="out">退出</a>
 						</a>

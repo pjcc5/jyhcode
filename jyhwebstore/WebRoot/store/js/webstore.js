@@ -201,7 +201,10 @@ function out(){
 			url:"/jyhwebstore/quit",
 			data:"quit="+1,
 			success:function(result){
-				alert(result);
+				$
+				
+				
+				
 				if(result == "OK")
 				{
 					location.reload();
