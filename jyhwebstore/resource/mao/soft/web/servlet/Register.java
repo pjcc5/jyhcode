@@ -57,42 +57,50 @@ public class Register extends HttpServlet {
 			e1.printStackTrace();
 		}
 		
-		if(f==true||!clintCode.equalsIgnoreCase(serverCode))
+		
+		if(f==true)
 		{
-			//返回一个false
+			//手机号或者用户名存在返回false
 			String flag = "{flag:"+"false"+"}";
 			JSONObject fl = JSONObject.fromObject(flag);
 			PrintWriter out = response.getWriter();
 			out.print(fl.toString());
-//			System.out.println("A错误");
 		}
-		else {
-				//返回一个true
-			RegisterService rs = new RegisterService();
-			try {
-				boolean flags = rs.register(aname, apassword, aphone);
-//				System.out.println("/jyhwebstore/resource/mao/soft/web/servlet/Register.java:==========="+flags);
-				if(flags)
-				{
-					String flag = "{flag:"+"true"+"}";
-					JSONObject flg = JSONObject.fromObject(flag);
-					PrintWriter out = response.getWriter();
-					out.print(flg.toString());
-					
-					
-//					System.out.println("成功！");
+		else
+		{
+			if(clintCode.equalsIgnoreCase(serverCode))
+			{
+				//手机号和验证码都正确，返回true
+				RegisterService rs = new RegisterService();
+				try {
+					boolean flags = rs.register(aname, apassword, aphone);
+					if(flags)
+					{
+						String flag = "{flag:"+"true"+"}";
+						JSONObject flg = JSONObject.fromObject(flag);
+						PrintWriter out = response.getWriter();
+						out.print(flg.toString());
+						System.out.println("成功！");
+					}
+					else
+					{
+						String fl = "{error:"+"false"+"}";
+						JSONObject fls = JSONObject.fromObject(fl);
+						PrintWriter out = response.getWriter();
+						out.print(fls.toString());
+						System.out.println("插入失败------");
+					}
+				} catch (Exception e) {
+					e.printStackTrace();
 				}
-				else
-				{
-					String fl = "{error:"+"false"+"}";
-					JSONObject fls = JSONObject.fromObject(fl);
-					PrintWriter out = response.getWriter();
-					out.print(fls.toString());
-//					System.out.println("错误！");
-				}
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
+			}
+			else
+			{
+				//返回一个not
+				String flag = "{valde:"+"false"+"}";
+				JSONObject flg = JSONObject.fromObject(flag);
+				PrintWriter out = response.getWriter();
+				out.print(flg.toString());
 			}
 		}
 	}

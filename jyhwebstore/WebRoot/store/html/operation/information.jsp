@@ -31,7 +31,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 				</div>
 				<span id="current" style="display:inline-block;margin:0 auto;"></span>
 				<div class="right">
-						<a href="/jyhwebstore/store/html/order.jsp">
+						<a href="/jyhwebstore/store/html/operation/order.jsp">
 							<span class="glyphicon glyphicon-list-alt"></span>
 							我的订单
 						</a>
@@ -93,7 +93,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 								<span class="glyphicon glyphicon-star"></span> 会员资料
 							</p>
 							<a href="/jyhwebstore/store/html/operation/information.jsp" class="active">个人资料</a>
-							<a href="/jyhwebstore/store/html/address.jsp">地址管理</a>
+							<a href="/jyhwebstore/store/html/operation/address.jsp">地址管理</a>
 						</div>
 				</div>
 			<div class="information">

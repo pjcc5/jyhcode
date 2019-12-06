@@ -470,7 +470,7 @@ var address=`
 		orderform.price=price;
 		GetDateNow();
 		orderform.ordernum=sNow;
-
+    if(orderform.name!=null){
 		
 		$.ajax({
 			type:"post",
@@ -481,6 +481,10 @@ var address=`
 				location.href="/jyhwebstore/pay/index.jsp?price="+price+"&coumid="+comid+"&order="+sNow;
 			}
 		});
+    }else{
+    	 var show=$("#show").fadeIn();
+			$("#show").fadeOut(3000);
+    }
 		
 		
 		

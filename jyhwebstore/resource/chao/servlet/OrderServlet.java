@@ -77,36 +77,29 @@ public class OrderServlet extends HttpServlet {
 				
 				
 				
-				Connection conn=DbHelp.getConnection();
+
 				
-				if(action.equals("delete")){
+				if(action.equals("cancel")){
 					String orderid=request.getParameter("orderid");
-				OrderMiddleDao dao=new  OrderMiddleDaoImpl();
-				OrderFormDao dao1=new OrderFormDaoImpl();
-				try {
-					conn.setAutoCommit(false);
-					dao.deleteOrdermiddle(orderid, conn);
-					dao1.deleteOrderformByorderid(orderid, conn);
-					conn.commit();
+//				
+//					
+					OrderService order=new OrderService();
+					order.modifyOrderFormState(orderid, 4, 1);
 					out.print(true);
-				} catch (Exception e) {
-					// TODO Auto-generated catch block
-					e.printStackTrace();
-					try {
-						conn.rollback();
-					} catch (SQLException e1) {
-						// TODO Auto-generated catch block
-						e1.printStackTrace();
-					}
 				}
+				
+				if("delete".equals(action)){
+					String orderid=request.getParameter("orderid");
+					OrderService order=new OrderService();
+					order.deleteOrderform(orderid);
+					
 				}
 				
 				
 				if("buy".equals(action)){
 					double price=0;
 					String orderid=request.getParameter("orderid");
-					OrderFormDao dao1=new OrderFormDaoImpl();
-					List<Orderform> list= dao1.getAllOrderformByOrderid(orderid, conn);
+					List<Orderform> list=new OrderService().getAllOrderformByOrderid(orderid);
 					for(int i=0;i<list.size();i++){
 						price=price+list.get(i).getOrderprice()*list.get(i).getComcount();
 					}
@@ -117,14 +110,17 @@ public class OrderServlet extends HttpServlet {
 					
 					
 				}
-				DbHelp.closeConnection(conn);
+				
+				
+				
+
 			
 
 				if("editstate".equals(action))
 				{	
 					String orderid =  request.getParameter("orderid");
 					boolean result = false;
-					try {
+
 						int orderstatement = Integer.parseInt(request.getParameter("orderstatement"));
 						int orderpay = Integer.parseInt(request.getParameter("orderpay"));
 						if(orderid != null)
@@ -133,9 +129,7 @@ public class OrderServlet extends HttpServlet {
 						}
 						out.print(result);
 						
-					} catch (Exception e) {
-						e.printStackTrace();
-					}
+			
 					
 				}
 

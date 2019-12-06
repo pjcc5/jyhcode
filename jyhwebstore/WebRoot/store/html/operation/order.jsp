@@ -87,7 +87,7 @@
 						<span class="glyphicon glyphicon-star"></span> 会员资料
 					</p>
 					<a href="/jyhwebstore/store/html/operation/userdetails.jsp">个人资料</a>
-					<a href="/jyhwebstore/store/html/address.jsp">地址管理</a>
+					<a href="/jyhwebstore/store/html/operation/address.jsp">地址管理</a>
 				</div>
 				
 				
@@ -388,7 +388,7 @@ $(function(){
 					
 						orderstatmentstr = "已完成";
 						var str1=`<div class="buy-btn" onclick="buyagin(this)">再次购买</div>
- 									
+ 									<div class="cancel-btn" onclick="deleteform(this)">删除订单</div>
  								</div>
  							</div>
  							<div class="order-btns">`+orderstatmentstr+`</div>
@@ -430,6 +430,7 @@ $(function(){
 					{
 						orderstatmentstr = "已取消";
 						var str1=`<div class="buy-btn" onclick="buyagin(this)">再次购买</div>
+						<div class="cancel-btn" onclick="deleteform(this)">删除订单</div>
  								</div>
  							</div>
  							<div class="order-btns">`+orderstatmentstr+`</div>
@@ -460,7 +461,7 @@ $(function(){
  							
  						<div class="order-right">
  							<div class="price">总金额：`+orderprice+`元</div>
- 							<div class="state">`+orderstatmentstr+"  "+orderpaystr+`</div>
+ 							<div class="state">`+orderpaystr+`</div>
  						
  						</div>
  							
@@ -496,6 +497,7 @@ $(function(){
 
 function goorderdetail(obj){
 var orderid= $(obj).parent().siblings().eq(0).children().eq(0).children().eq(1).children().eq(0).html();
+
 location.href="/jyhwebstore/store/html/operation/orderdetail.jsp?orderid="+orderid;
 
 }
@@ -509,10 +511,10 @@ var action;
 
 
 function cancel(obj){
-if(confirm("删除订单")==true){
+if(confirm("取消订单")==true){
 var orderid=$(obj).parent().parent().parent().siblings().eq(0).children().eq(0).children().eq(1).children().eq(0).html();
 (function(){
-action="delete";
+action="cancel";
 
 	$.ajax({
 		  type:"POST",
@@ -521,14 +523,35 @@ action="delete";
 		  dataType:"json",
 		  success:function(result){
                console.log(result);
-               $(obj).parent().parent().parent().parent().remove();
+              $(obj).parent().parent().siblings().eq(0).html("已取消");
+              $(obj).attr("onclick","deleteform(this)").html("删除订单"); 
+		  }
+	})
+		  })();
+		  }
+}
+
+function deleteform(obj){
+if(confirm("删除订单")==true){
+var orderid=$(obj).parent().parent().parent().siblings().eq(0).children().eq(0).children().eq(1).children().eq(0).html();
+(function(){
+action="delete";
+$(obj).parent().parent().parent().parent().remove();
+
+	$.ajax({
+		  type:"POST",
+		  url:"/jyhwebstore/order",
+		  data:{"action":action,"orderid":orderid},
+		  dataType:"json",
+		  success:function(result){
+               console.log(result);
+             
                
 		  }
 	})
 		  })();
-		  }else{
-		  return;
-		  }
+
+}
 }
 
 

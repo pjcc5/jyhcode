@@ -14,7 +14,7 @@ import dao.impl.OrderformDaoImpl;
 public class OrderFormDaoImpl extends OrderformDaoImpl implements OrderFormDao{
 
 	@Override
-	public List<Orderform> getAllOrderformByAid(String aid,Connection conn) {
+	public List<Orderform> getAllOrderformByAid(String aid,Connection conn) throws Exception{
 			
 			if(conn==null)
 			{
@@ -23,7 +23,7 @@ public class OrderFormDaoImpl extends OrderformDaoImpl implements OrderFormDao{
 			
 			List<Orderform> list=new ArrayList<Orderform>();
 			
-				try {
+//				try {
 					if(!conn.isClosed())
 					{	
 						String sql ="select * from orderform where aid=?";
@@ -52,9 +52,9 @@ public class OrderFormDaoImpl extends OrderformDaoImpl implements OrderFormDao{
 							list.add(order);
 						}
 					}
-				} catch (SQLException e) {
-					e.printStackTrace();
-				}
+//				} catch (SQLException e) {
+//					e.printStackTrace();
+//				}
 				return list;
 			
 		}
@@ -62,7 +62,7 @@ public class OrderFormDaoImpl extends OrderformDaoImpl implements OrderFormDao{
 
 	@Override
 	public List<Orderform> getAllOrderformByOrderid(String orderid,
-			Connection conn) {
+			Connection conn)throws Exception {
 		if(conn==null)
 		{
 			return null;
@@ -70,7 +70,7 @@ public class OrderFormDaoImpl extends OrderformDaoImpl implements OrderFormDao{
 		
 		List<Orderform> list=new ArrayList<Orderform>();
 		
-			try {
+//			try {
 				if(!conn.isClosed())
 				{	
 					String sql ="select * from orderform where orderid=?";
@@ -99,9 +99,9 @@ public class OrderFormDaoImpl extends OrderformDaoImpl implements OrderFormDao{
 						list.add(order);
 					}
 				}
-			} catch (SQLException e) {
-				e.printStackTrace();
-			}
+//			} catch (SQLException e) {
+//				e.printStackTrace();
+//			}
 			return list;
 	}
 	

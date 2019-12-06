@@ -133,10 +133,25 @@
     <servlet-name>OrderServlet</servlet-name>
     <servlet-class>chao.servlet.OrderServlet</servlet-class>
   </servlet>
- 
-
-
-
+  
+ <!-- 管理员页面商品显示的servlet -->
+  <servlet>
+    <servlet-name>ComiAdmiServlet</servlet-name>
+    <servlet-class>mao.soft.web.servlet.ComiAdmiServlet</servlet-class>
+  </servlet>
+ <servlet-mapping>
+    <servlet-name>ComiAdmiServlet</servlet-name>
+    <url-pattern>/ComiAdmiServlet</url-pattern>
+  </servlet-mapping>
+  <!-- 删除商品的servlet -->
+  <servlet>
+    <servlet-name>DeleteCommodityServlet</servlet-name>
+    <servlet-class>mao.soft.web.servlet.DeleteCommodityServlet</servlet-class>
+  </servlet>
+	<servlet-mapping>
+	    <servlet-name>DeleteCommodityServlet</servlet-name>
+	    <url-pattern>/DeleteCommodityServlet</url-pattern>
+	  </servlet-mapping>
 
 
    <servlet-mapping>
@@ -211,8 +226,6 @@
     <servlet-name>OrderServlet</servlet-name>
     <url-pattern>/order</url-pattern>
   </servlet-mapping>
-  
-  
 <!-- 字符转码 -->
 
 	  <filter>
