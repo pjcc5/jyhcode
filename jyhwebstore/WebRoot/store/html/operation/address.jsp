@@ -109,13 +109,13 @@
 			  <div class="address">
 			  	<div class="addr-header">
 			  		<p class="tit">地址管理</p>
-			  		<div class="addr-btn add">+ 添加新地址</div>
+			  		<div class="addr-btn add">+ 添加新地址</div></div>
 			  		<div class="mod-address">
 			  			<ul class="addr-bar">
 			  				
 			  			
 			  			</ul>
-			  			<div class="addr-btn add-bottom">+ 添加新地址</div>
+			  			<div class="addr-btn add-bottom">+ 添加新地址</div></div>
 			  		</div>
 			  	</div>
 			  </div>
@@ -127,7 +127,7 @@
 					
 					<div class="user">
 					<label>收件人:　</label>
-					<input type="text" placeholder="请输入收货人"/>
+					<input type="text" placeholder="请输入收货人,不能填写空格"/>
 					</div>
 					
 					<div class="three-addr">
@@ -152,7 +152,7 @@
 					</div>
 					<div class="detail-addr">
 						<label>详细地址:　</label>
-						<input type="text" placeholder="请输入详细地址"/>
+						<input type="text" placeholder="请输入详细地址，首位不能为空格"/>
 					</div>
 					
 					<div class="addr-call" onmouseenter="">
@@ -165,7 +165,8 @@
 					<button class="save" disabled="true">保存</button>
 					<button class="cancel">取消</button>
 					</div>
-				</div>
+				<!-- 	
+				</div> -->
 			</div>
 			
 			</div>

@@ -2,10 +2,11 @@ $('#login-div2-div1').slideDown(1000);
 
 $('#logo').fadeIn(2000);
 
-
+var flag=true;
 
 function login(){
-	
+	if(flag){
+		flag=false;
 	var uname= $('#loginUsername').val();
 	var upass=$('#loginPassword').val();
 	var acount={"uname":uname,"upass":upass};
@@ -17,11 +18,13 @@ function login(){
 	}
 //	getUrlVal(1);
 	if(uname==null||uname==""||uname.length<3||uname.indexOf(" ")!=-1){
+		flag=true;
 		alert("账号输入格式错误");
 		return;
 	}else{
 		if(upass==null||upass==""||upass.length<6||upass.indexOf(" ")!=-1)
 			{
+			flag=true;
 			alert("密码输入格式错误");
 			return;
 			}else{
@@ -36,11 +39,13 @@ function login(){
 						var show=$("#show").html("登录成功").fadeIn(500);
 						$("#show").fadeOut(2500);
 						setTimeout(function(){
+							flag=true;
 							location.href=path;
 						}, 3000);
 //						
 					}else{
 						alert("账号或密码不正确，请重新输入");
+						flag=true;
 					}	
 					}
 					
@@ -49,7 +54,7 @@ function login(){
 			}
 	}
 	
-	
+	}
 	
 	
 }

@@ -248,7 +248,7 @@ function out(){
  		var goods =$(obj).parent();
  		var input = goods.find("input");
  		//组织字符串访问详情页
- 		location.href="/jyhwebstore/store/html/operation/ordersubmit.jsp?comid="+input.attr("id")+"&num="+1;
+ 		location.href="/jyhwebstore/store/html/product.jsp?comid="+input.attr("id")+"&num="+1;
  		
  	}
 	

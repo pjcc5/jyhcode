@@ -23,7 +23,7 @@ $(function(){
 		
 			var json=JSON.parse(result);
 			orderform.goods=json[1];
-			console.log(json[1]);
+
 			for(var i=0;i<json[1].length;i++){
 				var js=json[1];
 				price=price+(parseInt(js[i].comprice)*parseInt(js[i].count));
@@ -144,7 +144,7 @@ $(function(){
 
 //更改地址
 var flag=false;
-	function defaultAddr(obj){
+	function defaultAddr(obj,event){
 	
 		msg.oldflag="";
 		var oldaddr=$('.item-selected').attr('addr');
@@ -222,6 +222,7 @@ var flag=false;
 	
 	//删除地址
 	function removeAddr(obj){
+		window.event.stopPropagation();
 		$(obj).parent().parent().parent().remove();
 
 		msg.flag=$(obj).attr('addr');
@@ -233,6 +234,7 @@ var flag=false;
 				data:{"action":"delete","msg":JSON.stringify(msg)},
 				datatype:"json",
 				success:function(result){
+					
 				}
 				})
 			
@@ -246,6 +248,7 @@ var flag=false;
 	//编辑地址
 	var par;
 	function edit(obj){
+		window.event.stopPropagation();
 		msg.flag=$(obj).attr('addr');
 		par=$(obj).parent().parent().siblings();
 		$('.mod').css({
@@ -306,25 +309,173 @@ var flag=false;
 	
 	
 	
+var callnumber,prov1,city1,country1,name1,detailaddr;
+	
+	
 	$('.addr-call input').keyup(function(){
 		var call=$('.addr-call input').val();
 		var reg = /^1[3456789]\d{9}$/g;
 		if(reg.test(call)){
-			$('.save').attr('disabled',false).css({
-				'cursor':'pointer',
-			});
 			$('.addr-call span').css({
 				'display':'none',
 			})
+			callnumber=true;
+			
 		}else{
-			$('.save').attr('disabled',false).css({
-				'cursor':'not-allowed',
-			});
 			$('.addr-call span').css({
 				'display':'inline',
 			})
+			callnumber=false;
 		}
+		console.log("callnumber="+callnumber+",prov1="+prov1+",city1="+city1+",country1="+country1+",name1="+name1+",detailaddr="+detailaddr);
+		if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			$('.save').attr('disabled',false).css({
+				'cursor':'pointer',
+			});
+			
+		}else{
+			$('.save').attr('disabled',true).css({
+				'cursor':'not-allowed',
+			});
+			
+		}
+		
 	});
+	
+	$('.user input').keyup(function(){
+		var username=$('.user input').val();
+		
+	if(username.indexOf(" ",0)==-1&&username.length>=1){
+		name1=true;
+	}else{
+		name1=false;
+	}
+		console.log("name="+name1);
+		if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			
+			$('.save').attr('disabled',false).css({
+				'cursor':'pointer',
+			});
+			
+		}else{
+			
+			$('.save').attr('disabled',true).css({
+				'cursor':'not-allowed',
+			});
+			
+		}
+		
+		
+	})
+	
+	
+		$("#prov").click(function(){
+			var index=$(this).find("option:selected").html();
+			var idname=$(this).attr('id');
+		
+			if(index!="请选择省份"&&idname=="prov"){
+				prov1=true;
+				city1=false;
+				country1=false;
+				
+			}else{
+				prov1=false;
+				city1=false;
+				country1=false;
+			}
+			
+			
+			if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			$('.save').attr('disabled',false).css({
+				'cursor':'pointer',
+			});
+			
+		}else{
+			$('.save').attr('disabled',true).css({
+				'cursor':'not-allowed',
+			});
+			
+		}
+		})
+		
+		$("#city").click(function(){
+			var index=$(this).find("option:selected").html();
+			var idname=$(this).attr('id');
+		
+			
+			if(index!="请选择城市"&&idname=="city"){
+				
+				city1=true;
+				country1=false;
+				
+			}else{
+				city1=false;
+				country1=false;
+			}
+			
+			if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			$('.save').attr('disabled',false).css({
+				'cursor':'pointer',
+			});
+			
+		}else{
+			$('.save').attr('disabled',true).css({
+				'cursor':'not-allowed',
+			});
+			
+		}
+		})
+		
+		$("#country").click(function(){
+			var index=$(this).find("option:selected").html();
+			var idname=$(this).attr('id');
+		
+			
+			if(index!="请选择县区"&&idname=="country"){
+				
+				country1=true;
+				
+			}else{
+				country1=false;
+			}
+			if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			$('.save').attr('disabled',false).css({
+				'cursor':'pointer',
+			});
+			
+		}else{
+			$('.save').attr('disabled',true).css({
+				'cursor':'not-allowed',
+			});
+			
+		}
+		})
+	
+	
+	
+	$('.detail-addr input').keyup(function(){
+		var addr=$('.detail-addr input').val();
+		
+		if(addr.indexOf(" ",0)!=0&&addr.length>=1){
+			detailaddr=true;
+			console.log("detailaddr="+detailaddr);
+			
+		}else{
+			detailaddr=false;
+		}
+		if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			$('.save').attr('disabled',false).css({
+				'cursor':'pointer',
+			});
+			
+		}else{
+			$('.save').attr('disabled',true).css({
+				'cursor':'not-allowed',
+			});
+			
+		}
+	})
+	
 	
 	
 	$('.cancel').click(function(){
@@ -461,9 +612,11 @@ var address=`
 		
 	}
 	
-	
+	var submitorderflag=true;
 	//提交订单
 	function submitorder(obj){
+		if(submitorderflag){
+			submitorderflag=false;
 		orderform.name=$('.pat_name').html();
 		orderform.call=$('.pat_name').siblings().eq(1).html();
 		orderform.address=$('.area_Name').html();
@@ -479,15 +632,17 @@ var address=`
 			datatype:"json",
 			success:function(result){
 				location.href="/jyhwebstore/pay/index.jsp?price="+price+"&coumid="+comid+"&order="+sNow;
+				setTimeout(function(){submitorderflag=true;},100);
 			}
 		});
     }else{
     	 var show=$("#show").fadeIn();
 			$("#show").fadeOut(3000);
+			setTimeout(function(){submitorderflag=true;},3100);
     }
 		
 		
-		
+		}	
 		
 	}
 	
@@ -515,3 +670,6 @@ var address=`
 		  return result[2];
 		};
 	
+		
+		
+		
