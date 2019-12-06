@@ -63,16 +63,19 @@ public class AddressServlet extends HttpServlet {
 		
 		if(action.equals("update")){
 			
+			
 		String data=request.getParameter("msg");
 		JSONObject object=JSONObject.fromObject(data);
 	
-			
+		System.out.println(data);
 			String oldflag=object.getString("oldflag");
 			AddressService addr= new AddressService();
 		if(!oldflag.equals("")){
 		addr.changeDefault(oldflag, 0);
 	}
-		addr.changeDefault(object.getString("newflag"), 1);
+		String newflag=object.getString("newflag");
+		if(newflag!=null||!"".equals(newflag)){
+		addr.changeDefault(newflag, 1);}
 
 		}
 		

@@ -201,19 +201,35 @@ function out(){
 			url:"/jyhwebstore/quit",
 			data:"quit="+1,
 			success:function(result){
-				$
+				var modol = $("<div>");
+				modol.css({
+					"width":"400px",
+					"height":"100px",
+					"background":"red",
+					"position":"fixed",
+					"top":"0px",
+					"left":"40%",
+					"text-align":"center",
+					"font-size":"30px",
+					"color":"orange",
+					"display":"none",
+					"z-index":"100000",
+				});
+				modol.html("退出成功");
+				$("body").prepend(modol);
+				modol.slideDown(600);
+				setTimeout(function(){
+					if(result == "OK")
+					{
+						location.reload();
+					}
+				},600);
+			}	
 				
-				
-				
-				if(result == "OK")
-				{
-					location.reload();
-				}
-			}
 		
 		});
+		
 }
-
 //一开始就获取用户名通过localStorage
  $(function(){
 	 var username = localStorage.getItem('username');
@@ -251,7 +267,7 @@ function out(){
  		var goods =$(obj).parent();
  		var input = goods.find("input");
  		//组织字符串访问详情页
- 		location.href="/jyhwebstore/store/html/operation/ordersubmit.jsp?comid="+input.attr("id")+"&num="+1;
+ 		location.href="/jyhwebstore/store/html/product.jsp?comid="+input.attr("id")+"&num="+1;
  		
  	}
 	

@@ -3,7 +3,7 @@ var detail;
 
 var pic=new Array();
 var comid= getUrlVal('comid');
-
+var stock=0;
 (function(){
 	
   $.ajax({
@@ -12,12 +12,12 @@ var comid= getUrlVal('comid');
 	  data:{'msg':comid},
 	  dataType:"json",
 	  success:function(result){
-		 
+		 stock=result.detailsstock;
 		  var str = `
 			<p class="name">${result.comname}</p>
 			<p class="price"><span>价格</span><span class="price-m">￥${result.comprice}</span></p>
 			<p class="desc"><span>销量</span><span class="desc-p">${result.detailssale}</span></p>
-			<div class="hot"><span>点击量</span><span class="hot-p"><span class="glyphicon glyphicon-star"></span>${result.detailsdot}</span>
+			<div class="hot"><span>库存</span><span class="hot-p"><span class="glyphicon glyphicon-star"></span>${result.detailsstock}</span>
               </div>
 	    `;
 
@@ -177,7 +177,7 @@ function imgchange(obj){
   var sum=1;
   $('.add').click(function(){
   	sum++;
-  	if(sum>10){sum=10};
+  	if(sum>200){sum=200};
   	$('.number').val(sum);
   	
   	detail.num=sum;
@@ -191,7 +191,19 @@ function imgchange(obj){
   })
   
   $('.number').keyup(function(){
-  	$('.number').val(1);
+  	 sum=$('.number').val();
+  	if(sum>200){
+  		$('.number').val(200);
+  	}
+  	if(sum<0){
+  		$('.number').val(1);
+  	}
+  	detail.num=sum;
+  	if(detail.num==""||detail.num==0){
+  		detail.num=1;
+  	}
+  	console.log(detail.num);
+  	
   })
 })();
 
@@ -236,8 +248,17 @@ var pagesize=43;
 })();
 
 
-
+var addcartflag=true;
 function addcart(){
+	if(addcartflag){
+		
+		addcartflag=false;
+		console.log(addcartflag);
+	if(detail.num>stock){
+		var show=$("#show").html("库存不够").fadeIn();
+		$("#show").fadeOut(1500);
+		setTimeout(function(){addcartflag=true;},1500);
+	}else{
 	(function(){
 		$.ajax({
 			  type:"POST",
@@ -248,10 +269,12 @@ function addcart(){
 				 if(result==true){
 					 var show=$("#show").html("加入成功").fadeIn();
 						$("#show").fadeOut(1000);
+						setTimeout(function(){addcartflag=true;},1100);
 				 }else{
 					 var show=$("#show").html("请先登录").fadeIn();
 						$("#show").fadeOut(1500);
 						setTimeout(function(){
+							addcartflag=true;
 							gologin();
 						},1500);
 				 }
@@ -259,12 +282,13 @@ function addcart(){
 			  }
 		})
 			  })();
+	}
+	}
 	
 	
 }
 
 function gocart(obj){
-	
 	location.href="/jyhwebstore/store/html/operation/cart.jsp";
 }
 
@@ -277,10 +301,22 @@ $("#searchBtn1").click(function(){
 });
 
 
-
+var buynowflag=true;
 function buynow(){
+	if(buynowflag){
+		buynowflag=false;
+		console.log("buynow="+buynowflag);
+	if(detail.num>stock){
+		var show=$("#show").html("库存不够").fadeIn();
+		$("#show").fadeOut(1500);
+		setTimeout(function(){
+			buynowflag=true;
+		},1600);
+	}else{
 	var num=$('.number').val();
-	console.log(num);
+	buynowflag=true;
 	location.href="/jyhwebstore/store/html/operation/ordersubmit.jsp?comid="+comid+"&num="+num;
+	}
+	}
 }
 

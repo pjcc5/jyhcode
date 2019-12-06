@@ -157,7 +157,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					<h3>编辑地址</h3>
 					<div class="user">
 					<label>收件人:　</label>
-					<input type="text" placeholder="请输入收货人"/>
+					<input type="text" placeholder="请输入收货人,不能填写空格"/>
 					</div>
 					
 					<div class="three-addr">
@@ -182,7 +182,7 @@ String basePath = request.getScheme()+"://"+request.getServerName()+":"+request.
 					</div>
 					<div class="detail-addr">
 						<label>详细地址:　</label>
-						<input type="text" placeholder="请输入详细地址"/>
+						<input type="text" placeholder="请输入详细地址，首位不能为空格"/>
 					</div>
 					
 					<div class="addr-call" onmouseenter="">

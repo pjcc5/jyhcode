@@ -72,7 +72,7 @@ public class OrdersubmitServlet extends HttpServlet {
 			OrdersubmitServes orderserves=new OrdersubmitServes();
 			List<Object> addranddetail=orderserves.getAddrAnddetai(aid, orderid);
 			
-			try {
+			
 				List<Address> address=(List<Address>) addranddetail.get(0);
 				List<OrderDetailDto> list= (List<OrderDetailDto>) addranddetail.get(1);
 				List<Cart> list1=new ArrayList<>();
@@ -99,10 +99,7 @@ public class OrdersubmitServlet extends HttpServlet {
 				
 				JSONArray arry=JSONArray.fromObject(list3);
 				out.print(arry.toString());
-			} catch (Exception e) {
-				// TODO Auto-generated catch block
-				e.printStackTrace();
-			}
+			
 		}
 		
 		
