@@ -34,6 +34,7 @@ public class loginDaoImpl extends AcountDaoImpl implements loginDao{
 				acount.setAname(rs.getString("aname"));
 				acount.setApass(rs.getString("apass"));
 				acount.setAphone(rs.getString("aphone"));
+				acount.setIsadm(rs.getInt("isadm"));
 				return acount;
 			}
 		}
