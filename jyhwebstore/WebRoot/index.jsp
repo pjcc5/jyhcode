@@ -34,7 +34,7 @@
 					<div class="col-md-5 links-right   text-right">
 						<span id="goodnight">
 						<c:if test="${acount.isadm eq 1}">
-								<a href="/jyhwebstore/store/html/operation/admindex.jsp" id="log">
+								<a href="/jyhwebstore/store/html/operation/admindex.jsp" style="color:red;" id="log">
 							管理员
 						</a>
 							</c:if>
