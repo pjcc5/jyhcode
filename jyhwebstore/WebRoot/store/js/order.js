@@ -59,7 +59,9 @@ $(window).scroll(function(){
 		var orderstatement;
 		var orderpay;
 		var form = forms[i];
+		
 		var goods=form.orderForms;
+		
 			var aid = goods[0].aid;
 			var comid=goods[0].comid;
 			var comname=goods[0].comname;
