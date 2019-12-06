@@ -124,28 +124,172 @@ function defaultAddr(obj){
 		
 	
 	
-	
+	var callnumber,prov1,city1,country1,name1,detailaddr;
 	
 	
 	$('.addr-call input').keyup(function(){
 		var call=$('.addr-call input').val();
 		var reg = /^1[3456789]\d{9}$/g;
 		if(reg.test(call)){
-			$('.save').attr('disabled',false).css({
-				'cursor':'pointer',
-			});
 			$('.addr-call span').css({
 				'display':'none',
 			})
+			callnumber=true;
+			
 		}else{
-			$('.save').attr('disabled',false).css({
-				'cursor':'not-allowed',
-			});
 			$('.addr-call span').css({
 				'display':'inline',
 			})
+			callnumber=false;
 		}
+		console.log("callnumber="+callnumber+",prov1="+prov1+",city1="+city1+",country1="+country1+",name1="+name1+",detailaddr="+detailaddr);
+		if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			$('.save').attr('disabled',false).css({
+				'cursor':'pointer',
+			});
+			
+		}else{
+			$('.save').attr('disabled',true).css({
+				'cursor':'not-allowed',
+			});
+			
+		}
+		
 	});
+	
+	$('.user input').keyup(function(){
+		var username=$('.user input').val();
+		
+	if(username.indexOf(" ",0)==-1&&username.length>=1){
+		name1=true;
+	}else{
+		name1=false;
+	}
+		console.log("name="+name1);
+		if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			
+			$('.save').attr('disabled',false).css({
+				'cursor':'pointer',
+			});
+			
+		}else{
+			
+			$('.save').attr('disabled',true).css({
+				'cursor':'not-allowed',
+			});
+			
+		}
+		
+		
+	})
+	
+	
+		$("#prov").click(function(){
+			var index=$(this).find("option:selected").html();
+			var idname=$(this).attr('id');
+		
+			if(index!="请选择省份"&&idname=="prov"){
+				prov1=true;
+				city1=false;
+				country1=false;
+				
+			}else{
+				prov1=false;
+				city1=false;
+				country1=false;
+			}
+			
+			
+			if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			$('.save').attr('disabled',false).css({
+				'cursor':'pointer',
+			});
+			
+		}else{
+			$('.save').attr('disabled',true).css({
+				'cursor':'not-allowed',
+			});
+			
+		}
+		})
+		
+		$("#city").click(function(){
+			var index=$(this).find("option:selected").html();
+			var idname=$(this).attr('id');
+		
+			
+			if(index!="请选择城市"&&idname=="city"){
+				
+				city1=true;
+				country1=false;
+				
+			}else{
+				city1=false;
+				country1=false;
+			}
+			
+			if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			$('.save').attr('disabled',false).css({
+				'cursor':'pointer',
+			});
+			
+		}else{
+			$('.save').attr('disabled',true).css({
+				'cursor':'not-allowed',
+			});
+			
+		}
+		})
+		
+		$("#country").click(function(){
+			var index=$(this).find("option:selected").html();
+			var idname=$(this).attr('id');
+		
+			
+			if(index!="请选择县区"&&idname=="country"){
+				
+				country1=true;
+				
+			}else{
+				country1=false;
+			}
+			if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			$('.save').attr('disabled',false).css({
+				'cursor':'pointer',
+			});
+			
+		}else{
+			$('.save').attr('disabled',true).css({
+				'cursor':'not-allowed',
+			});
+			
+		}
+		})
+	
+	
+	
+	$('.detail-addr input').keyup(function(){
+		var addr=$('.detail-addr input').val();
+		
+		if(addr.indexOf(" ",0)!=0&&addr.length>=1){
+			detailaddr=true;
+			console.log("detailaddr="+detailaddr);
+			
+		}else{
+			detailaddr=false;
+		}
+		if(callnumber&&prov1&&city1&&country1&&name1&&detailaddr){
+			$('.save').attr('disabled',false).css({
+				'cursor':'pointer',
+			});
+			
+		}else{
+			$('.save').attr('disabled',true).css({
+				'cursor':'not-allowed',
+			});
+			
+		}
+	})
 	
 	
 	$('.cancel').click(function(){
@@ -329,6 +473,7 @@ function defaultAddr(obj){
 		$('.mod').css({
 			'display':'none',
 		})
+		
 	});
 		
 		
