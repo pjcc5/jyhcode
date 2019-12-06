@@ -5,6 +5,7 @@ $('#logo').fadeIn(2000);
 var flag=true;
 
 function login(){
+
 	if(flag){
 		flag=false;
 	var uname= $('#loginUsername').val();

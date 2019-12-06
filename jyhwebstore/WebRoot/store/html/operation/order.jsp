@@ -525,6 +525,7 @@ action="cancel";
                console.log(result);
               $(obj).parent().parent().siblings().eq(0).html("已取消");
               $(obj).attr("onclick","deleteform(this)").html("删除订单"); 
+              location.reload();
 		  }
 	})
 		  })();
@@ -533,6 +534,7 @@ action="cancel";
 
 function deleteform(obj){
 if(confirm("删除订单")==true){
+	console.log("OKKSKOSKOSK");
 var orderid=$(obj).parent().parent().parent().siblings().eq(0).children().eq(0).children().eq(1).children().eq(0).html();
 (function(){
 action="delete";
@@ -543,10 +545,9 @@ $(obj).parent().parent().parent().parent().remove();
 		  url:"/jyhwebstore/order",
 		  data:{"action":action,"orderid":orderid},
 		  dataType:"json",
-		  success:function(result){
+		  success:function(result){console.log("sasdkjsdsa");
                console.log(result);
-             
-               
+               location.reload();
 		  }
 	})
 		  })();

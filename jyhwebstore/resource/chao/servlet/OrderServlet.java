@@ -96,6 +96,7 @@ public class OrderServlet extends HttpServlet {
 					String orderid=request.getParameter("orderid");
 					OrderService order=new OrderService();
 					order.deleteOrderform(orderid);
+					out.print(true);
 					
 				}
 				
