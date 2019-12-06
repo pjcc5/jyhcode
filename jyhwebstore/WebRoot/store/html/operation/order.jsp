@@ -350,7 +350,7 @@ $(function(){
 		//	console.log(json);
 			for(var j=0; j<json.length;j++)//遍历所有订单
 			{	
-				console.log("订单"+j);
+				//console.log("订单"+j);
 				var orderid;
 				var ordername;
 				var orderprice;
@@ -379,7 +379,7 @@ $(function(){
 		 				 orderprice =orderForms[i].orderprice;
 		 				orderstatement =orderForms[i].orderstatement;
 		 				orderpay =orderForms[i].orderpay;
-		 				console.log(orderForms[i]);
+		 			//	console.log(orderForms[i]);
 		 				
 						}
 				if(orderstatement == 1)
@@ -460,7 +460,6 @@ $(function(){
  							
  							
  						<div class="order-right">
- 							<div class="price">总金额：`+orderprice+`元</div>
  							<div class="state">`+orderpaystr+`</div>
  						
  						</div>
@@ -522,7 +521,7 @@ action="cancel";
 		  data:{"action":action,"orderid":orderid},
 		  dataType:"json",
 		  success:function(result){
-               console.log(result);
+            //   console.log(result);
               $(obj).parent().parent().siblings().eq(0).html("已取消");
               $(obj).attr("onclick","deleteform(this)").html("删除订单"); 
               location.reload();
@@ -534,7 +533,7 @@ action="cancel";
 
 function deleteform(obj){
 if(confirm("删除订单")==true){
-	console.log("OKKSKOSKOSK");
+	//console.log("OKKSKOSKOSK");
 var orderid=$(obj).parent().parent().parent().siblings().eq(0).children().eq(0).children().eq(1).children().eq(0).html();
 (function(){
 action="delete";

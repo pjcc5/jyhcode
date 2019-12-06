@@ -180,6 +180,7 @@ $(function showgoods(){
 							var size = product[i].size;
 							var comcount = product[i].comcount;
 							var comprice = product[i].comprice;
+							var compricecount = product[i].comprice*comcount;
 							var str = `
 							<div class="box">
 							<div class="dib_tit">聚优汇</div>
@@ -189,8 +190,9 @@ $(function showgoods(){
 										<p class="color">`+color+`</p>
 									<p class="size">`+size+`	
 										<span class="exist">有货</span>
-										<span class="count">×`+comcount+`</span>
-										<span class="price">`+comprice+`元</span>
+										<span class="count">件数×`+comcount+`</span>
+										<span class="count">单价:`+comprice+`</span>
+										<span class="price">总价:`+compricecount+`元</span>
 									</p>
 									</div>
 						</div>
