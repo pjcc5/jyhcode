@@ -108,8 +108,8 @@
 										<td>${commo.color}</td>
 										<td>${commo.pai}</td>
 										<td>${commo.size}</td>
-										<td><button id="deletecom" onclick="deleteStudent('${commo.comid }')">删除</button>
-										<button id="updatecom" onclick="updateStudent('${commo.comid }')">修改</button></td>
+										<td><input type="button" id="${commo.comid }" onclick="deleteStudent('${commo.comid }',this)" value="删除"/>
+										<input type="button"  onclick="updateStudent('${commo.comid }')" value="修改" /></td>
 									</tr>
 								</c:forEach>	
 							</tbody>
@@ -127,9 +127,54 @@
 					</center>
     </div>
 </div>
-			
+			<center id="delete_com" style="display:none">
+				
+			</center>
   </body>
 </html>
 <script src="/jyhwebstore/store/js/jquery-1.8.3.min.js" type="text/javascript" charset="utf-8"></script>
 <script src="/jyhwebstore/store/js/jquery.min.js" type="text/javascript" charset="utf-8"></script>
 <script type="/jyhwebstore/store/js/javascript" src="js/libs/modernizr.min.js"></script>
+<script type="text/javascript">
+	//删除方法
+	function deleteStudent(obj,that){
+		$("#delete_com").show();
+	$("#delete_com").html(`<div style="width: 300px;height: 150px;background:#E1E1E1;line-height: 130px;">
+	<div style="font-size: 20px;margin-top: -400px;">
+	<span>您确定删除吗？</span>
+	 <input type="button" name="deletes" id="delete_sure" value="确定" style="margin-top: -150px;margin-right: 100px;width: 20%;"/>
+<input type="button" name="deletes" id="delete_canser" value="取消" style="margin-top: -150px;margin-right: 0px;width: 20%;" />
+</div>
+
+</div>`);
+	var comid = obj;
+	$("#delete_sure").click(function(){
+		console.log(comid);
+		$.get({
+			type:"post",
+			url:"/jyhwebstore/DeleteCommodityServlet",
+			data:{"comid":comid},
+			success:function(result){
+				var json =JSON.parse(result);
+				if(json.flag==true)
+				{
+					$("#delete_com").hide();
+					$(that).parent().parent().remove();
+					alert("删除成功！");
+					return true;
+				}
+				else if(json.flag==false)
+				{
+					alert("删除失败，系统错误");
+					return true;
+				}
+			},
+		});
+	});
+	$("#delete_canser").click(function(){
+		$("#delete_com").hide();
+		return true;
+	});
+};
+	
+</script>
