@@ -97,7 +97,7 @@ $(window).scroll(function(){
 						<div class="state">未支付</div>
 					
 					</div>
-						
+		
 					</div >
 					 
 					<div class="order-4list">
@@ -208,7 +208,8 @@ function getgoodsok(){
 		var orderpay;
 		var form = forms[i];
 		var goods=form.orderForms;
-		console.log(goods[0].aid);
+		if(goods.length > 0)
+			{
 			var aid = goods[0].aid;
 			var comid=goods[0].comid;
 			var comname=goods[0].comname;
@@ -270,6 +271,9 @@ function getgoodsok(){
 		
 			$(".order-fished").append(str);
 			
+			
+			
+			}
 			}
 		
 	}
@@ -285,7 +289,8 @@ function getgoodscancel(){
 		var orderpay;
 		var form = forms[i];
 		var goods=form.orderForms;
-		console.log(goods[0].aid);
+		if(goods.length > 0)
+			{
 			var aid = goods[0].aid;
 			var comid=goods[0].comid;
 			var comname=goods[0].comname;
@@ -343,6 +348,8 @@ function getgoodscancel(){
 			 					</div>
 									`;
 				$(".order-cancel").append(str);
+			}
+			
 			}
 		
 	}
