@@ -21,9 +21,9 @@
  <div class="topbar-wrap white">
     <div class="topbar-inner clearfix">
         <div class="topbar-logo-wrap clearfix">
-            <h1 class="topbar-logo none"><a href="/jyhwebstore/admindex.jsp" class="navbar-brand">后台管理</a></h1>
+            <h1 class="topbar-logo none"><a href="/jyhwebstore/store/html/operation/admindex.jsp" class="navbar-brand">后台管理</a></h1>
             <ul class="navbar-list clearfix">
-                <li><a class="on" href="/jyhwebstore/admindex.jsp">首页</a></li>
+                <li><a class="on" href="/jyhwebstore/store/html/operation/admindex.jsp">首页</a></li>
                 <li><a href="/jyhwebstore/index.jsp">网站首页</a></li>
             </ul>
         </div>
@@ -52,8 +52,8 @@
                 <li>
                     <a href="#">用户管理</a>
                     <ul class="sub-menu">
-                        <li id="user_illegal"><a href="/jyhwebstore/system.jsp">违规管理</a></li>
-                        <li id="com_send"><a href="/jyhwebstore/system.jsp">发货管理</a></li>
+                        <li id="user_illegal"><a href="/jyhwebstore/store/html/operation/system.jsp">违规管理</a></li>
+                        <li id="com_send"><a href="/jyhwebstore/store/html/operation/system.jsp">发货管理</a></li>
                     </ul>
                 </li>
             </ul>
@@ -61,7 +61,7 @@
     </div>
     <div class="main-wrap">
         <div class="crumb-wrap">
-            <div class="crumb-list"><a href="/jyhwebstore/admindex.jsp">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">商品管理</span></div>
+            <div class="crumb-list"><a href="/jyhwebstore/store/html/operation/admindex.jsp">首页</a><span class="crumb-step">&gt;</span><span class="crumb-name">商品管理</span></div>
         </div>
         <div class="search-wrap">
             <div class="search-content">
